@@ -7,7 +7,7 @@ on:
 
 jobs:
   run-slurm:
-    runs-on: node1
+    runs-on: self-hosted
 
     steps:
       - name: Checkout repository
