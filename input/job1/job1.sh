@@ -12,4 +12,4 @@
 module load mpi
 
 # Run the MPI program
-mpirun -n 4 --use-hwthread-cpus /home/hpc/hpl-2.3/testing/xhpl
+mpirun -n 4 --use-hwthread-cpus ./xhpl
