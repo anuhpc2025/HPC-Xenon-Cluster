@@ -12,4 +12,5 @@
 module load mpi
 
 # Run the MPI program
-mpirun -n 4 --use-hwthread-cpus ./xhpl
+salloc -N 2 -n 4 --ntasks-per-node=2
+mpirun ./xhpl
