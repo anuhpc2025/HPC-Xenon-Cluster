@@ -70,8 +70,8 @@ jobs:
           failed=0
           while read line; do
             jobid=$(echo "$line" | cut -d: -f2)
-            state=$(sacct -j "$jobid" --format=JobID,State,ExitCode -P | grep "^$jobid" | cut -d'|' -f2)
-            exitcode=$(sacct -j "$jobid" --format=JobID,State,ExitCode -P | grep "^$jobid" | cut -d'|' -f3)
+            state=$(scontrol show job "$jobid" | awk -F= '/JobState=/{print $2}' | awk '{print $1}')
+            exitcode=$(scontrol show job "$jobid" | awk -F= '/ExitCode=/{print $2}' | awk '{print $1}')
             echo "Job $jobid finished with state=$state exitcode=$exitcode"
             if [[ "$exitcode" != "0:0" ]]; then
               failed=1
