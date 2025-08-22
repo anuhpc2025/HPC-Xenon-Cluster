@@ -9,7 +9,7 @@
 #SBATCH --error=hpl-%j.err        # Standard error file
 
 # Load MPI module (adjust for your system)
-module load openmpi
+# module load openmpi
 
 # Run the MPI program
 mpirun ./xhpl
