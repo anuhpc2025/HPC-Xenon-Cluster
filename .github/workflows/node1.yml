@@ -1,5 +1,8 @@
 name: Run SLURM Jobs (Self-Hosted, Subfolder Support)
 
+permissions:
+  contents: write
+
 on:
   push:
     paths:
