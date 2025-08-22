@@ -1,4 +1,4 @@
-name: Run SLURM Jobs (Self-Hosted, Subfolder Support)
+name: Run SLURM Jobs
 
 permissions:
   contents: write
@@ -18,47 +18,83 @@ jobs:
 
       - name: Prepare working and output directories
         run: |
+          set -euo pipefail
           mkdir -p output
           export SLURM_TMP_BASE="/tmp/slurm_jobs_${GITHUB_RUN_ID}"
           mkdir -p "$SLURM_TMP_BASE"
-          echo "SLURM_TMP_BASE=$SLURM_TMP_BASE" >> $GITHUB_ENV
+          echo "SLURM_TMP_BASE=$SLURM_TMP_BASE" >> "$GITHUB_ENV"
 
-      - name: Copy input subfolders to SLURM temp dir
+      - name: Copy nested job folders to SLURM temp dir
         run: |
-          for jobdir in input/*; do
-            if [ -d "$jobdir" ]; then
-              jobname=$(basename "$jobdir")
-              mkdir -p "${SLURM_TMP_BASE}/${jobname}"
-              cp -r "$jobdir"/* "${SLURM_TMP_BASE}/${jobname}/" || true
-              echo "Copied $jobdir to ${SLURM_TMP_BASE}/${jobname}"
-            fi
+          set -euo pipefail
+          shopt -s nullglob
+
+          copied_any=0
+          for jobdir in input/{hpl,sst,ece}/{a,b,c,d,e,f,g}/*; do
+            [ -d "$jobdir" ] || continue
+            relpath="${jobdir#input/}"
+            dest="${SLURM_TMP_BASE}/${relpath}"
+            mkdir -p "$dest"
+            # Copy including hidden files
+            cp -r "$jobdir"/. "$dest"/ || true
+            echo "Copied $jobdir -> $dest"
+            copied_any=1
           done
+
+          if [ "$copied_any" -eq 0 ]; then
+            echo "No job directories found under input/{hpl,sst,ece}/{a..g}/*"
+          fi
+
           echo "Directory structure in temp dir:"
-          tree "${SLURM_TMP_BASE}" || ls -R "${SLURM_TMP_BASE}"
+          command -v tree >/dev/null && tree "$SLURM_TMP_BASE" || ls -R "$SLURM_TMP_BASE"
 
-      - name: Submit jobs to SLURM
+      - name: Submit jobs to SLURM (.sh files in each job folder)
         run: |
-          > joblist.txt
-          for jobdir in "${SLURM_TMP_BASE}"/*; do
-            if [ -d "$jobdir" ]; then
-              for script in "$jobdir"/*.sh "$jobdir"/*.txt; do
-                [ -f "$script" ] || continue
-                fname=$(basename "$script")
-                jobname=$(basename "$jobdir")
-                echo "Submitting $fname from $jobname..."
-                jobid=$(sbatch --parsable \
-                  --chdir="$jobdir" \
-                  --output="${jobdir}/${fname}-%j.out" \
-                  "$script")
-                echo "${jobname}/${fname}:$jobid" >> joblist.txt
-              done
+          set -euo pipefail
+          shopt -s nullglob
+
+          : > joblist.txt
+          any_submitted=0
+
+          for jobdir in "${SLURM_TMP_BASE}"/{hpl,sst,ece}/{a,b,c,d,e,f,g}/*; do
+            [ -d "$jobdir" ] || continue
+            jobrel="${jobdir#${SLURM_TMP_BASE}/}"
+
+            scripts_found=0
+            for script in "$jobdir"/*.sh; do
+              [ -f "$script" ] || continue
+              scripts_found=1
+              fname="$(basename "$script")"
+              echo "Submitting $fname from $jobrel..."
+              jobid="$(sbatch --parsable \
+                --chdir="$jobdir" \
+                --output="${jobdir}/${fname}-%j.out" \
+                "$script")"
+              echo "${jobrel}|${fname}:$jobid" >> joblist.txt
+              any_submitted=1
+            done
+
+            if [ "$scripts_found" -eq 0 ]; then
+              echo "No .sh scripts found in $jobrel; skipping." >&2
             fi
           done
-          echo "Submitted jobs:"
-          cat joblist.txt || true
+
+          if [ "$any_submitted" -eq 0 ]; then
+            echo "No jobs submitted. Nothing to do."
+          else
+            echo "Submitted jobs:"
+            cat joblist.txt || true
+          fi
 
       - name: Wait for jobs to finish
         run: |
+          set -euo pipefail
+
+          if [ ! -s joblist.txt ]; then
+            echo "No jobs to wait for."
+            exit 0
+          fi
+
           echo "Waiting for SLURM jobs to complete..."
           while read -r line; do
             [ -n "$line" ] || continue
@@ -68,39 +104,49 @@ jobs:
             done
           done < joblist.txt
 
-      - name: Check job exit codes and mark completed input dirs
+      - name: Check job exit codes and mark completed job dirs
         run: |
+          set -euo pipefail
+
+          if [ ! -s joblist.txt ]; then
+            echo "No jobs submitted; skipping checks."
+            : > completed_dirs.txt
+            exit 0
+          fi
+
           echo "Checking SLURM job exit codes..."
           failed_any=0
 
-          # Build list of all job directories involved
-          cut -d: -f1 joblist.txt | awk -F/ '{print $1}' | sort -u \
-            > jobdirs_all.txt || true
+          # Build list of all job directories involved (relative to input/)
+          cut -d: -f1 joblist.txt | awk -F'|' '{print $1}' | sort -u \
+            > jobdirs_all.txt
 
           : > failed_dirs.txt
 
           while read -r line; do
             [ -n "$line" ] || continue
-            entry="${line%%:*}"
+            entry="${line%%:*}"   # jobrel|script
             jobid="${line##*:}"
-            jobdir="${entry%%/*}"
+            jobrel="${entry%%|*}"
+            script="${entry##*|}"
 
-            state=$(scontrol show job "$jobid" \
-              | awk -F= '/JobState=/{print $2}' | awk '{print $1}')
-            exitcode=$(scontrol show job "$jobid" \
-              | awk -F= '/ExitCode=/{print $2}' | awk '{print $1}')
+            state="$(scontrol show job "$jobid" \
+              | awk -F= '/JobState=/{print $2}' | awk '{print $1}')"
+            exitcode="$(scontrol show job "$jobid" \
+              | awk -F= '/ExitCode=/{print $2}' | awk '{print $1}')"
 
-            echo "Job $jobid in dir $jobdir finished with state=$state exitcode=$exitcode"
+            echo "Job $jobid ($script) in $jobrel finished with state=$state exitcode=$exitcode"
             if [[ "$state" != "COMPLETED" ]]; then
               failed_any=1
-              echo "$jobdir" >> failed_dirs.txt
+              echo "$jobrel" >> failed_dirs.txt
             fi
           done < joblist.txt
 
           sort -u failed_dirs.txt > failed_dirs_sorted.txt || true
           sort -u jobdirs_all.txt > jobdirs_all_sorted.txt || true
+          touch failed_dirs_sorted.txt jobdirs_all_sorted.txt
 
-          # Directories where all jobs completed successfully
+          # Job directories where all submitted scripts completed successfully
           comm -23 jobdirs_all_sorted.txt failed_dirs_sorted.txt \
             > completed_dirs.txt || true
 
@@ -112,21 +158,27 @@ jobs:
             exit 1
           fi
 
-      - name: Collect all output files
+      - name: Collect all output files (preserve nested structure)
         run: |
+          set -euo pipefail
+          shopt -s nullglob
+
           echo "Collecting all output files..."
-          for jobdir in "${SLURM_TMP_BASE}"/*; do
-            if [ -d "$jobdir" ]; then
-              jobname=$(basename "$jobdir")
-              mkdir -p "output/${jobname}"
-              cp "$jobdir"/* "output/${jobname}/" || true
-            fi
+          for jobdir in "${SLURM_TMP_BASE}"/{hpl,sst,ece}/{a,b,c,d,e,f,g}/*; do
+            [ -d "$jobdir" ] || continue
+            rel="${jobdir#${SLURM_TMP_BASE}/}"
+            mkdir -p "output/${rel}"
+            # Copy including hidden files and generated outputs
+            cp -r "$jobdir"/. "output/${rel}/" || true
           done
+
           rm -rf "${SLURM_TMP_BASE}"
 
       - name: Commit output and remove completed inputs
         run: |
-          # Remove input directories that completed successfully
+          set -euo pipefail
+
+          # Remove only job directories (hpl/sst/ece)/(a..g)/* that completed
           if [ -s completed_dirs.txt ]; then
             echo "Removing input directories for completed jobs..."
             while read -r d; do
@@ -143,9 +195,9 @@ jobs:
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git remote set-url origin \
-            https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
+            "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
 
-          # Stage both outputs and input deletions only
+          # Stage outputs and input deletions
           git add -A output/ input/
           git commit -m "Add SLURM job output and remove completed inputs from run ${GITHUB_RUN_ID} [skip ci]" \
             || echo "No changes to commit"
