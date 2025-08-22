@@ -30,7 +30,7 @@ jobs:
           shopt -s nullglob
 
           copied_any=0
-          for jobdir in input/{hpl,sst,ece}/{Ayush,Beno,Daniel,John,Nicholas,Sithum,Will}/*; do
+          for jobdir in input/{HPL,SST,ECE}/{Ayush,Beno,Daniel,John,Nicholas,Sithum,Will}/*; do
             [ -d "$jobdir" ] || continue
             relpath="${jobdir#input/}"
             dest="${SLURM_TMP_BASE}/${relpath}"
@@ -42,7 +42,7 @@ jobs:
           done
 
           if [ "$copied_any" -eq 0 ]; then
-            echo "No job directories found under input/{hpl,sst,ece}/{Ayush,Beno,Daniel,John,Nicholas,Sithum,Will}/*"
+            echo "No job directories found under input/{HPL,SST,ECE}/{Ayush,Beno,Daniel,John,Nicholas,Sithum,Will}/*"
           fi
 
           echo "Directory structure in temp dir:"
@@ -56,7 +56,7 @@ jobs:
           : > joblist.txt
           any_submitted=0
 
-          for jobdir in "${SLURM_TMP_BASE}"/{hpl,sst,ece}/{Ayush,Beno,Daniel,John,Nicholas,Sithum,Will}/*; do
+          for jobdir in "${SLURM_TMP_BASE}"/{HPL,SST,ECE}/{Ayush,Beno,Daniel,John,Nicholas,Sithum,Will}/*; do
             [ -d "$jobdir" ] || continue
             jobrel="${jobdir#${SLURM_TMP_BASE}/}"
 
@@ -164,7 +164,7 @@ jobs:
           shopt -s nullglob
 
           echo "Collecting all output files..."
-          for jobdir in "${SLURM_TMP_BASE}"/{hpl,sst,ece}/{Ayush,Beno,Daniel,John,Nicholas,Sithum,Will}/*; do
+          for jobdir in "${SLURM_TMP_BASE}"/{HPL,SST,ECE}/{Ayush,Beno,Daniel,John,Nicholas,Sithum,Will}/*; do
             [ -d "$jobdir" ] || continue
             rel="${jobdir#${SLURM_TMP_BASE}/}"
             mkdir -p "output/${rel}"
@@ -178,7 +178,7 @@ jobs:
         run: |
           set -euo pipefail
 
-          # Remove only job directories (hpl/sst/ece)/(Ayush,Beno,Daniel,John,Nicholas,Sithum,Will)/* that completed
+          # Remove only job directories (HPL/SST/ECE)/(Ayush,Beno,Daniel,John,Nicholas,Sithum,Will)/* that completed
           if [ -s completed_dirs.txt ]; then
             echo "Removing input directories for completed jobs..."
             while read -r d; do
