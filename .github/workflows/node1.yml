@@ -29,7 +29,7 @@ jobs:
             if [ -d "$jobdir" ]; then
               jobname=$(basename "$jobdir")
               mkdir -p "${SLURM_TMP_BASE}/${jobname}"
-              cp -r "$jobdir"/* "${SLURM_TMP_BASE}/${jobname}/"
+              cp -r "$jobdir"/* "${SLURM_TMP_BASE}/${jobname}/" || true
               echo "Copied $jobdir to ${SLURM_TMP_BASE}/${jobname}"
             fi
           done
@@ -55,33 +55,59 @@ jobs:
             fi
           done
           echo "Submitted jobs:"
-          cat joblist.txt
+          cat joblist.txt || true
 
       - name: Wait for jobs to finish
         run: |
           echo "Waiting for SLURM jobs to complete..."
-          while read line; do
-            jobid=$(echo "$line" | cut -d: -f2)
+          while read -r line; do
+            [ -n "$line" ] || continue
+            jobid="${line##*:}"
             while squeue -j "$jobid" | grep -q "$jobid"; do
               sleep 10
             done
           done < joblist.txt
 
-      - name: Check job exit codes
+      - name: Check job exit codes and mark completed input dirs
         run: |
           echo "Checking SLURM job exit codes..."
-          failed=0
-          while read line; do
-            jobid=$(echo "$line" | cut -d: -f2)
-            state=$(scontrol show job "$jobid" | awk -F= '/JobState=/{print $2}' | awk '{print $1}')
-            exitcode=$(scontrol show job "$jobid" | awk -F= '/ExitCode=/{print $2}' | awk '{print $1}')
-            echo "Job $jobid finished with state=$state exitcode=$exitcode"
-            # Only fail if Slurm says the job failed
+          failed_any=0
+
+          # Build list of all job directories involved
+          cut -d: -f1 joblist.txt | awk -F/ '{print $1}' | sort -u \
+            > jobdirs_all.txt || true
+
+          : > failed_dirs.txt
+
+          while read -r line; do
+            [ -n "$line" ] || continue
+            entry="${line%%:*}"
+            jobid="${line##*:}"
+            jobdir="${entry%%/*}"
+
+            state=$(scontrol show job "$jobid" \
+              | awk -F= '/JobState=/{print $2}' | awk '{print $1}')
+            exitcode=$(scontrol show job "$jobid" \
+              | awk -F= '/ExitCode=/{print $2}' | awk '{print $1}')
+
+            echo "Job $jobid in dir $jobdir finished with state=$state exitcode=$exitcode"
             if [[ "$state" != "COMPLETED" ]]; then
-              failed=1
+              failed_any=1
+              echo "$jobdir" >> failed_dirs.txt
             fi
           done < joblist.txt
-          if [[ $failed -ne 0 ]]; then
+
+          sort -u failed_dirs.txt > failed_dirs_sorted.txt || true
+          sort -u jobdirs_all.txt > jobdirs_all_sorted.txt || true
+
+          # Directories where all jobs completed successfully
+          comm -23 jobdirs_all_sorted.txt failed_dirs_sorted.txt \
+            > completed_dirs.txt || true
+
+          echo "Job directories with all jobs completed successfully:"
+          cat completed_dirs.txt || echo "(none)"
+
+          if [[ $failed_any -ne 0 ]]; then
             echo "One or more jobs failed at the Slurm level."
             exit 1
           fi
@@ -98,13 +124,31 @@ jobs:
           done
           rm -rf "${SLURM_TMP_BASE}"
 
-      - name: Commit output to repo
+      - name: Commit output and remove completed inputs
         run: |
+          # Remove input directories that completed successfully
+          if [ -s completed_dirs.txt ]; then
+            echo "Removing input directories for completed jobs..."
+            while read -r d; do
+              [ -n "$d" ] || continue
+              if [ -d "input/$d" ]; then
+                rm -rf "input/$d"
+                echo "Deleted input/$d"
+              fi
+            done < completed_dirs.txt
+          else
+            echo "No completed job directories to remove."
+          fi
+
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git remote set-url origin https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
-          git add output/
-          git commit -m "Add SLURM job output from run $GITHUB_RUN_ID" || echo "No changes to commit"
+          git remote set-url origin \
+            https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
+
+          # Stage both outputs and input deletions only
+          git add -A output/ input/
+          git commit -m "Add SLURM job output and remove completed inputs from run ${GITHUB_RUN_ID} [skip ci]" \
+            || echo "No changes to commit"
           git push
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
