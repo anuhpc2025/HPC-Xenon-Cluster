@@ -73,12 +73,13 @@ jobs:
             state=$(scontrol show job "$jobid" | awk -F= '/JobState=/{print $2}' | awk '{print $1}')
             exitcode=$(scontrol show job "$jobid" | awk -F= '/ExitCode=/{print $2}' | awk '{print $1}')
             echo "Job $jobid finished with state=$state exitcode=$exitcode"
-            if [[ "$exitcode" != "0:0" ]]; then
+            # Only fail if Slurm says the job failed
+            if [[ "$state" != "COMPLETED" ]]; then
               failed=1
             fi
           done < joblist.txt
           if [[ $failed -ne 0 ]]; then
-            echo "One or more jobs failed."
+            echo "One or more jobs failed at the Slurm level."
             exit 1
           fi
 
