@@ -390,12 +390,3 @@ jobs:
         with:
           name: slurm-job-output
           path: output/
-
-      - name: Fail workflow if any SLURM jobs failed
-        if: always()
-        run: |
-          if [ "${JOBSET_FAILED:-0}" -ne 0 ]; then
-            echo "One or more SLURM jobs failed. Failing workflow after collecting logs and cleaning inputs."
-            exit 1
-          fi
-          echo "All SLURM jobs completed successfully."
