@@ -13,7 +13,7 @@
 export LD_LIBRARY_PATH=/opt/nvidia/nvidia_hpc_benchmarks_openmpi/lib/nvshmem/:$LD_LIBRARY_PATH
 
 #testing
-export NVSHMEM_TRANSPORT=none
+export UCX_NET_DEVICES=ibp225s0:1
 
 # Run the MPI program
 mpirun ./xhpl
