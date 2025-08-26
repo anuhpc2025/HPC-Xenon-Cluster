@@ -9,17 +9,14 @@
 #SBATCH --error=hpl-%j.err        # Standard error file
 #SBATCH --nodelist=node1
 #SBATCH --gpus-per-task=1
-#SBATCH --hint=nomultithread
 
 # Load MPI module (adjust for your system)
 # module load openmpi
 export LD_LIBRARY_PATH=/opt/nvidia/nvidia_hpc_benchmarks_openmpi/lib/nvshmem/:$LD_LIBRARY_PATH
 
 #testing
-export CUDA_VISIBLE_DEVICES=0,1,2,3
-
 ulimit -l unlimited
 ulimit -n 65536
 
 # Run the MPI program
-mpirun ./xhpl
+bash -c 'export CUDA_VISIBLE_DEVICES=$SLURM_LOCALID; ./xhpl'
