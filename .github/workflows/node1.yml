@@ -48,6 +48,88 @@ jobs:
           echo "Directory structure in temp dir:"
           command -v tree >/dev/null && tree "$SLURM_TMP_BASE" || ls -R "$SLURM_TMP_BASE"
 
+      - name: Discover SLURM nodes
+        run: |
+          set -euo pipefail
+          # Collect nodes in useful states (exclude down/drain)
+          sinfo -N -h -t idle,alloc,mix,comp -o "%n" | sort -u > nodes.txt
+          node_count="$(wc -l < nodes.txt | tr -d ' ')"
+          echo "Found $node_count nodes:"
+          cat nodes.txt || true
+          echo "NODES_FILE=$(pwd)/nodes.txt" >> "$GITHUB_ENV"
+
+      - name: Distribute job folders to all cluster nodes
+        run: |
+          set -euo pipefail
+          nodes_file="${NODES_FILE:-nodes.txt}"
+          remote_base="${SLURM_TMP_BASE}"
+          : "${DISTRIBUTION_CONCURRENCY:=8}"
+
+          if [ ! -s "$nodes_file" ]; then
+            echo "No nodes found; skipping distribution."
+            exit 0
+          fi
+
+          echo "Distributing $SLURM_TMP_BASE to all nodes..."
+          failures=0
+          running=0
+
+          copy_to_node() {
+            local node="$1"
+            echo "[${node}] creating $remote_base"
+            if ! ssh -o BatchMode=yes -o StrictHostKeyChecking=no \
+              "$node" "mkdir -p '$remote_base'"
+            then
+              echo "[${node}] mkdir failed"
+              return 1
+            fi
+
+            if ssh -o BatchMode=yes -o StrictHostKeyChecking=no \
+              "$node" 'command -v rsync >/dev/null 2>&1'
+            then
+              echo "[${node}] rsync -> $remote_base"
+              rsync -a --delete \
+                -e "ssh -o BatchMode=yes -o StrictHostKeyChecking=no" \
+                "$SLURM_TMP_BASE"/ "$node:$remote_base"/
+            else
+              echo "[${node}] tar stream -> $remote_base"
+              tar -C "$SLURM_TMP_BASE" -cf - . \
+                | ssh -o BatchMode=yes -o StrictHostKeyChecking=no \
+                  "$node" "tar -C '$remote_base' -xf -"
+            fi
+          }
+
+          while IFS= read -r node; do
+            [ -n "$node" ] || continue
+            (
+              if ! copy_to_node "$node"; then
+                echo "[${node}] distribution failed"
+                exit 1
+              fi
+            ) &
+            running=$((running + 1))
+            if [ "$running" -ge "$DISTRIBUTION_CONCURRENCY" ]; then
+              if ! wait -n; then
+                failures=$((failures + 1))
+              fi
+              running=$((running - 1))
+            fi
+          done < "$nodes_file"
+
+          # Wait for remaining background jobs
+          while [ "$running" -gt 0 ]; do
+            if ! wait -n; then
+              failures=$((failures + 1))
+            fi
+            running=$((running - 1))
+          done
+
+          if [ "$failures" -ne 0 ]; then
+            echo "Distribution encountered $failures failures."
+            exit 1
+          fi
+          echo "Distribution completed successfully."
+
       - name: Submit jobs to SLURM (.sh files in each job folder)
         run: |
           set -euo pipefail
@@ -158,21 +240,105 @@ jobs:
             exit 1
           fi
 
-      - name: Collect all output files (preserve nested structure)
+      - name: Gather output files from all nodes
         run: |
           set -euo pipefail
           shopt -s nullglob
+          nodes_file="${NODES_FILE:-nodes.txt}"
 
-          echo "Collecting all output files..."
-          for jobdir in "${SLURM_TMP_BASE}"/{HPL,SST,ECE}/{Ayush,Beno,Daniel,John,Nicholas,Sithum,Will}/*; do
-            [ -d "$jobdir" ] || continue
-            rel="${jobdir#${SLURM_TMP_BASE}/}"
-            mkdir -p "output/${rel}"
-            # Copy including hidden files and generated outputs
-            cp -r "$jobdir"/. "output/${rel}/" || true
+          mkdir -p output
+
+          if [ ! -s "$nodes_file" ]; then
+            echo "No nodes found; skipping output collection."
+            exit 0
+          fi
+
+          echo "Collecting outputs from all nodes..."
+          failures=0
+          running=0
+          : "${GATHER_CONCURRENCY:=8}"
+
+          fetch_from_node() {
+            local node="$1"
+            # Skip node if remote dir doesn't exist
+            if ! ssh -o BatchMode=yes -o StrictHostKeyChecking=no \
+              "$node" "test -d '$SLURM_TMP_BASE'"
+            then
+              echo "[${node}] $SLURM_TMP_BASE not found; skipping."
+              return 0
+            fi
+
+            if ssh -o BatchMode=yes -o StrictHostKeyChecking=no \
+              "$node" 'command -v rsync >/dev/null 2>&1'
+            then
+              echo "[${node}] rsync -> output/"
+              rsync -a --ignore-errors \
+                -e "ssh -o BatchMode=yes -o StrictHostKeyChecking=no" \
+                "$node:$SLURM_TMP_BASE"/ output/
+            else
+              echo "[${node}] tar stream -> output/"
+              ssh -o BatchMode=yes -o StrictHostKeyChecking=no \
+                "$node" "tar -C '$SLURM_TMP_BASE' -cf - ." \
+                | tar -C output -xf -
+            fi
+          }
+
+          while IFS= read -r node; do
+            [ -n "$node" ] || continue
+            (
+              if ! fetch_from_node "$node"; then
+                echo "[${node}] fetch failed"
+                exit 1
+              fi
+            ) &
+            running=$((running + 1))
+            if [ "$running" -ge "$GATHER_CONCURRENCY" ]; then
+              if ! wait -n; then
+                failures=$((failures + 1))
+              fi
+              running=$((running - 1))
+            fi
+          done < "$nodes_file"
+
+          while [ "$running" -gt 0 ]; do
+            if ! wait -n; then
+              failures=$((failures + 1))
+            fi
+            running=$((running - 1))
           done
 
+          if [ "$failures" -ne 0 ]; then
+            echo "Output collection encountered $failures failures."
+            exit 1
+          fi
+
+          # Clean up local staging after collection
           rm -rf "${SLURM_TMP_BASE}"
+
+      - name: Cleanup remote staging on all nodes
+        run: |
+          set -euo pipefail
+          nodes_file="${NODES_FILE:-nodes.txt}"
+          if [ ! -s "$nodes_file" ]; then
+            echo "No nodes found; skipping remote cleanup."
+            exit 0
+          fi
+
+          echo "Removing $SLURM_TMP_BASE from all nodes..."
+          pdsh_ok=0
+          if command -v pdsh >/dev/null 2>&1; then
+            pdsh_ok=1
+          fi
+
+          if [ "$pdsh_ok" -eq 1 ]; then
+            pdsh -R ssh -w ^"$nodes_file" "rm -rf '$SLURM_TMP_BASE'" || true
+          else
+            while IFS= read -r node; do
+              [ -n "$node" ] || continue
+              ssh -o BatchMode=yes -o StrictHostKeyChecking=no \
+                "$node" "rm -rf '$SLURM_TMP_BASE'" || true
+            done < "$nodes_file"
+          fi
 
       - name: Commit output and remove completed inputs
         run: |
