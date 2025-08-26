@@ -1,0 +1,103 @@
+/dvs/p4/build/sw/rel/gpgpu/toolkit/r12.8/main_nvshmem/src/modules/transport/ibrc/ibrc.cpp:305: NULL value cq creation failed 
+
+/dvs/p4/build/sw/rel/gpgpu/toolkit/r12.8/main_nvshmem/src/modules/transport/ibrc/ibrc.cpp:1395: non-zero status: 7 ep_create failed
+
+[node1:52796:0:52796] Caught signal 11 (Segmentation fault: address not mapped to object at address 0x38)
+==== backtrace (tid:  52796) ====
+ 0  /lib/x86_64-linux-gnu/libucs.so.0(ucs_handle_error+0x2ec) [0x7b07952dc64c]
+ 1  /lib/x86_64-linux-gnu/libucs.so.0(+0x2d34d) [0x7b07952de34d]
+ 2  /lib/x86_64-linux-gnu/libucs.so.0(+0x2d51d) [0x7b07952de51d]
+ 3  /lib/x86_64-linux-gnu/libc.so.6(+0x45330) [0x7b0758845330]
+ 4  /opt/nvidia/nvidia_hpc_benchmarks_openmpi/lib/nvshmem/nvshmem_transport_ibrc.so.3(+0x9e60) [0x7b0734409e60]
+ 5  /opt/nvidia/nvidia_hpc_benchmarks_openmpi/lib/nvshmem/nvshmem_transport_ibrc.so.3(+0xa126) [0x7b073440a126]
+ 6  /opt/nvidia/nvidia_hpc_benchmarks_openmpi/lib/nvshmem/nvshmem_transport_ibrc.so.3(+0xb2bd) [0x7b073440b2bd]
+ 7  /opt/nvidia/nvidia_hpc_benchmarks_openmpi/lib/nvshmem/libnvshmem_host.so.3(+0x10e11e) [0x7b075950e11e]
+ 8  /opt/nvidia/nvidia_hpc_benchmarks_openmpi/lib/nvshmem/libnvshmem_host.so.3(+0x113641) [0x7b0759513641]
+ 9  /opt/nvidia/nvidia_hpc_benchmarks_openmpi/lib/nvshmem/libnvshmem_host.so.3(+0x114b89) [0x7b0759514b89]
+10  /opt/nvidia/nvidia_hpc_benchmarks_openmpi/lib/nvshmem/libnvshmem_host.so.3(nvshmemid_hostlib_init_attr+0x1e6) [0x7b0759515146]
+11  ./xhpl() [0xa9d099]
+12  ./xhpl() [0x48e89d]
+13  ./xhpl() [0x45bf83]
+14  /lib/x86_64-linux-gnu/libc.so.6(+0x2a1ca) [0x7b075882a1ca]
+15  /lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0x8b) [0x7b075882a28b]
+16  ./xhpl() [0x45da3e]
+=================================
+/dvs/p4/build/sw/rel/gpgpu/toolkit/r12.8/main_nvshmem/src/modules/transport/ibrc/ibrc.cpp:305: NULL value cq creation failed 
+
+/dvs/p4/build/sw/rel/gpgpu/toolkit/r12.8/main_nvshmem/src/modules/transport/ibrc/ibrc.cpp:1395: non-zero status: 7 ep_create failed
+
+[node1:52795:0:52795] Caught signal 11 (Segmentation fault: address not mapped to object at address 0x38)
+==== backtrace (tid:  52795) ====
+ 0  /lib/x86_64-linux-gnu/libucs.so.0(ucs_handle_error+0x2ec) [0x7f6b9f3c564c]
+ 1  /lib/x86_64-linux-gnu/libucs.so.0(+0x2d34d) [0x7f6b9f3c734d]
+ 2  /lib/x86_64-linux-gnu/libucs.so.0(+0x2d51d) [0x7f6b9f3c751d]
+ 3  /lib/x86_64-linux-gnu/libc.so.6(+0x45330) [0x7f6b5be45330]
+ 4  /opt/nvidia/nvidia_hpc_benchmarks_openmpi/lib/nvshmem/nvshmem_transport_ibrc.so.3(+0x9e60) [0x7f6b30809e60]
+ 5  /opt/nvidia/nvidia_hpc_benchmarks_openmpi/lib/nvshmem/nvshmem_transport_ibrc.so.3(+0xa126) [0x7f6b3080a126]
+ 6  /opt/nvidia/nvidia_hpc_benchmarks_openmpi/lib/nvshmem/nvshmem_transport_ibrc.so.3(+0xb2bd) [0x7f6b3080b2bd]
+ 7  /opt/nvidia/nvidia_hpc_benchmarks_openmpi/lib/nvshmem/libnvshmem_host.so.3(+0x10e11e) [0x7f6b5cb0e11e]
+ 8  /opt/nvidia/nvidia_hpc_benchmarks_openmpi/lib/nvshmem/libnvshmem_host.so.3(+0x113641) [0x7f6b5cb13641]
+ 9  /opt/nvidia/nvidia_hpc_benchmarks_openmpi/lib/nvshmem/libnvshmem_host.so.3(+0x114b89) [0x7f6b5cb14b89]
+10  /opt/nvidia/nvidia_hpc_benchmarks_openmpi/lib/nvshmem/libnvshmem_host.so.3(nvshmemid_hostlib_init_attr+0x1e6) [0x7f6b5cb15146]
+11  ./xhpl() [0xa9d099]
+12  ./xhpl() [0x48e89d]
+13  ./xhpl() [0x45bf83]
+14  /lib/x86_64-linux-gnu/libc.so.6(+0x2a1ca) [0x7f6b5be2a1ca]
+15  /lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0x8b) [0x7f6b5be2a28b]
+16  ./xhpl() [0x45da3e]
+=================================
+/dvs/p4/build/sw/rel/gpgpu/toolkit/r12.8/main_nvshmem/src/modules/transport/ibrc/ibrc.cpp:305: NULL value cq creation failed 
+
+/dvs/p4/build/sw/rel/gpgpu/toolkit/r12.8/main_nvshmem/src/modules/transport/ibrc/ibrc.cpp:1395: non-zero status: 7 ep_create failed
+
+/dvs/p4/build/sw/rel/gpgpu/toolkit/r12.8/main_nvshmem/src/modules/transport/ibrc/ibrc.cpp:305: NULL value cq creation failed 
+
+/dvs/p4/build/sw/rel/gpgpu/toolkit/r12.8/main_nvshmem/src/modules/transport/ibrc/ibrc.cpp:1395: non-zero status: 7 ep_create failed
+
+[node1:52798:0:52798] Caught signal 11 (Segmentation fault: address not mapped to object at address 0x38)
+[node1:52797:0:52797] Caught signal 11 (Segmentation fault: address not mapped to object at address 0x38)
+==== backtrace (tid:  52798) ====
+ 0  /lib/x86_64-linux-gnu/libucs.so.0(ucs_handle_error+0x2ec) [0x7fd1067c564c]
+ 1  /lib/x86_64-linux-gnu/libucs.so.0(+0x2d34d) [0x7fd1067c734d]
+ 2  /lib/x86_64-linux-gnu/libucs.so.0(+0x2d51d) [0x7fd1067c751d]
+ 3  /lib/x86_64-linux-gnu/libc.so.6(+0x45330) [0x7fd0c3245330]
+ 4  /opt/nvidia/nvidia_hpc_benchmarks_openmpi/lib/nvshmem/nvshmem_transport_ibrc.so.3(+0x9e60) [0x7fd094c09e60]
+ 5  /opt/nvidia/nvidia_hpc_benchmarks_openmpi/lib/nvshmem/nvshmem_transport_ibrc.so.3(+0xa126) [0x7fd094c0a126]
+ 6  /opt/nvidia/nvidia_hpc_benchmarks_openmpi/lib/nvshmem/nvshmem_transport_ibrc.so.3(+0xb2bd) [0x7fd094c0b2bd]
+ 7  /opt/nvidia/nvidia_hpc_benchmarks_openmpi/lib/nvshmem/libnvshmem_host.so.3(+0x10e11e) [0x7fd0c3f0e11e]
+ 8  /opt/nvidia/nvidia_hpc_benchmarks_openmpi/lib/nvshmem/libnvshmem_host.so.3(+0x113641) [0x7fd0c3f13641]
+ 9  /opt/nvidia/nvidia_hpc_benchmarks_openmpi/lib/nvshmem/libnvshmem_host.so.3(+0x114b89) [0x7fd0c3f14b89]
+==== backtrace (tid:  52797) ====
+ 0  /lib/x86_64-linux-gnu/libucs.so.0(ucs_handle_error+0x2ec) [0x7353c2fc564c]
+ 1  /lib/x86_64-linux-gnu/libucs.so.0(+0x2d34d) [0x7353c2fc734d]
+ 2  /lib/x86_64-linux-gnu/libucs.so.0(+0x2d51d) [0x7353c2fc751d]
+ 3  /lib/x86_64-linux-gnu/libc.so.6(+0x45330) [0x73537fa45330]
+10  /opt/nvidia/nvidia_hpc_benchmarks_openmpi/lib/nvshmem/libnvshmem_host.so.3(nvshmemid_hostlib_init_attr+0x1e6) [0x7fd0c3f15146]
+11  ./xhpl() [0xa9d099]
+12  ./xhpl() [0x48e89d]
+13  ./xhpl() [0x45bf83]
+14  /lib/x86_64-linux-gnu/libc.so.6(+0x2a1ca) [0x7fd0c322a1ca]
+ 4  /opt/nvidia/nvidia_hpc_benchmarks_openmpi/lib/nvshmem/nvshmem_transport_ibrc.so.3(+0x9e60) [0x73535c809e60]
+ 5  /opt/nvidia/nvidia_hpc_benchmarks_openmpi/lib/nvshmem/nvshmem_transport_ibrc.so.3(+0xa126) [0x73535c80a126]
+ 6  /opt/nvidia/nvidia_hpc_benchmarks_openmpi/lib/nvshmem/nvshmem_transport_ibrc.so.3(+0xb2bd) [0x73535c80b2bd]
+ 7  /opt/nvidia/nvidia_hpc_benchmarks_openmpi/lib/nvshmem/libnvshmem_host.so.3(+0x10e11e) [0x73538070e11e]
+ 8  /opt/nvidia/nvidia_hpc_benchmarks_openmpi/lib/nvshmem/libnvshmem_host.so.3(+0x113641) [0x735380713641]
+ 9  /opt/nvidia/nvidia_hpc_benchmarks_openmpi/lib/nvshmem/libnvshmem_host.so.3(+0x114b89) [0x735380714b89]
+10  /opt/nvidia/nvidia_hpc_benchmarks_openmpi/lib/nvshmem/libnvshmem_host.so.3(nvshmemid_hostlib_init_attr+0x1e6) [0x735380715146]
+11  ./xhpl() [0xa9d099]
+12  ./xhpl() [0x48e89d]
+13  ./xhpl() [0x45bf83]
+14  /lib/x86_64-linux-gnu/libc.so.6(+0x2a1ca) [0x73537fa2a1ca]
+15  /lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0x8b) [0x73537fa2a28b]
+16  ./xhpl() [0x45da3e]
+=================================
+15  /lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0x8b) [0x7fd0c322a28b]
+16  ./xhpl() [0x45da3e]
+=================================
+--------------------------------------------------------------------------
+Primary job  terminated normally, but 1 process returned
+a non-zero exit code. Per user-direction, the job has been aborted.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+mpirun noticed that process rank 3 with PID 52798 on node node1 exited on signal 11 (Segmentation fault).
+--------------------------------------------------------------------------

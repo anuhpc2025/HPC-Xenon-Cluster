@@ -1,0 +1,78 @@
+[1756188983.172391] [node1:52798:0]           ib_md.c:295  UCX  ERROR ibv_reg_mr(address=0x7fd0a7400000, length=39845888, access=0xf) failed: Cannot allocate memory : Please set max locked memory (ulimit -l) to 'unlimited' (current: 8192 kbytes)
+[1756188983.172471] [node1:52798:0]           mpool.c:269  UCX  ERROR Failed to allocate memory pool (name=rc_recv_desc) chunk: Input/output error
+[1756188983.187611] [node1:52797:0]           ib_md.c:295  UCX  ERROR ibv_reg_mr(address=0x735363c00000, length=39845888, access=0xf) failed: Cannot allocate memory : Please set max locked memory (ulimit -l) to 'unlimited' (current: 8192 kbytes)
+[1756188983.187905] [node1:52797:0]           mpool.c:269  UCX  ERROR Failed to allocate memory pool (name=rc_recv_desc) chunk: Input/output error
+[1756188983.191267] [node1:52796:0]           ib_md.c:295  UCX  ERROR ibv_reg_mr(address=0x7b073cc00000, length=39845888, access=0xf) failed: Cannot allocate memory : Please set max locked memory (ulimit -l) to 'unlimited' (current: 8192 kbytes)
+[1756188983.191299] [node1:52796:0]           mpool.c:269  UCX  ERROR Failed to allocate memory pool (name=rc_recv_desc) chunk: Input/output error
+[1756188983.191540] [node1:52798:0]           ib_md.c:295  UCX  ERROR ibv_reg_mr(address=0x7fd0a7400000, length=39845888, access=0xf) failed: Cannot allocate memory : Please set max locked memory (ulimit -l) to 'unlimited' (current: 8192 kbytes)
+[1756188983.191573] [node1:52798:0]           mpool.c:269  UCX  ERROR Failed to allocate memory pool (name=rc_recv_desc) chunk: Input/output error
+[1756188983.192252] [node1:52795:0]           ib_md.c:295  UCX  ERROR ibv_reg_mr(address=0x7f6b37e00000, length=39845888, access=0xf) failed: Cannot allocate memory : Please set max locked memory (ulimit -l) to 'unlimited' (current: 8192 kbytes)
+[1756188983.192315] [node1:52795:0]           mpool.c:269  UCX  ERROR Failed to allocate memory pool (name=rc_recv_desc) chunk: Input/output error
+[1756188983.206293] [node1:52797:0]           ib_md.c:295  UCX  ERROR ibv_reg_mr(address=0x735363c00000, length=39845888, access=0xf) failed: Cannot allocate memory : Please set max locked memory (ulimit -l) to 'unlimited' (current: 8192 kbytes)
+[1756188983.206332] [node1:52797:0]           mpool.c:269  UCX  ERROR Failed to allocate memory pool (name=rc_recv_desc) chunk: Input/output error
+[1756188983.209769] [node1:52796:0]           ib_md.c:295  UCX  ERROR ibv_reg_mr(address=0x7b073cc00000, length=39845888, access=0xf) failed: Cannot allocate memory : Please set max locked memory (ulimit -l) to 'unlimited' (current: 8192 kbytes)
+[1756188983.209808] [node1:52796:0]           mpool.c:269  UCX  ERROR Failed to allocate memory pool (name=rc_recv_desc) chunk: Input/output error
+[1756188983.213671] [node1:52795:0]           ib_md.c:295  UCX  ERROR ibv_reg_mr(address=0x7f6b37e00000, length=39845888, access=0xf) failed: Cannot allocate memory : Please set max locked memory (ulimit -l) to 'unlimited' (current: 8192 kbytes)
+[1756188983.213720] [node1:52795:0]           mpool.c:269  UCX  ERROR Failed to allocate memory pool (name=rc_recv_desc) chunk: Input/output error
+
+================================================================================
+HPL-NVIDIA 25.4.0  -- NVIDIA accelerated HPL benchmark -- NVIDIA
+================================================================================
+HPLinpack 2.1  --  High-Performance Linpack benchmark  --   October 26, 2012
+Written by A. Petitet and R. Clint Whaley,  Innovative Computing Laboratory, UTK
+Modified by Piotr Luszczek, Innovative Computing Laboratory, UTK
+Modified by Julien Langou, University of Colorado Denver
+================================================================================
+
+An explanation of the input/output parameters follows:
+T/V    : Wall time / encoded variant.
+N      : The order of the coefficient matrix A.
+NB     : The partitioning blocking factor.
+P      : The number of process rows.
+Q      : The number of process columns.
+Time   : Time in seconds to solve the linear system.
+Gflops : Rate of execution for solving the linear system.
+
+The following parameter values will be used:
+
+N      :   50000 
+NB     :    1024 
+PMAP   : Column-major process mapping
+P      :       2 
+Q      :       2 
+PFACT  :    Left 
+NBMIN  :       2 
+NDIV   :       2 
+RFACT  :    Left 
+BCAST  :  2ringM 
+DEPTH  :       1 
+SWAP   : Spread-roll (long)
+L1     : no-transposed form
+U      : transposed form
+EQUIL  : no
+ALIGN  : 8 double precision words
+
+--------------------------------------------------------------------------------
+
+- The matrix A is randomly generated for each test.
+- The following scaled residual check will be computed:
+      ||Ax-b||_oo / ( eps * ( || x ||_oo * || A ||_oo + || b ||_oo ) * N )
+- The relative machine precision (eps) is taken to be               1.110223e-16
+- Computational tests pass if scaled residuals are less than                16.0
+
+
+HPL-NVIDIA ignores the following parameters from input file:
+	* Broadcast parameters
+	* Panel factorization parameters
+	* Look-ahead value
+	* L1 layout
+	* U layout
+	* Equilibration parameter
+	* Memory alignment parameter
+
+HPL-NVIDIA settings from environment variables:
+--- DEVICE INFO ---
+  Peak clock frequency: 1410 MHz
+  SM version          : 80
+  Number of SMs       : 108
+-------------------
