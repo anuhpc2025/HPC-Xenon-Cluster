@@ -23,6 +23,8 @@ jobs:
           export SLURM_TMP_BASE="/tmp/slurm_jobs_${GITHUB_RUN_ID}"
           mkdir -p "$SLURM_TMP_BASE"
           echo "SLURM_TMP_BASE=$SLURM_TMP_BASE" >> "$GITHUB_ENV"
+          # Initialize failure flag
+          echo "JOBSET_FAILED=0" >> "$GITHUB_ENV"
 
       - name: Copy nested job folders to SLURM temp dir
         run: |
@@ -151,6 +153,7 @@ jobs:
               jobid="$(sbatch --parsable \
                 --chdir="$jobdir" \
                 --output="${jobdir}/${fname}-%j.out" \
+                --error="${jobdir}/${fname}-%j.err" \
                 "$script")"
               echo "${jobrel}|${fname}:$jobid" >> joblist.txt
               any_submitted=1
@@ -193,6 +196,7 @@ jobs:
           if [ ! -s joblist.txt ]; then
             echo "No jobs submitted; skipping checks."
             : > completed_dirs.txt
+            : > jobdirs_all_sorted.txt
             exit 0
           fi
 
@@ -201,7 +205,7 @@ jobs:
 
           # Build list of all job directories involved (relative to input/)
           cut -d: -f1 joblist.txt | awk -F'|' '{print $1}' | sort -u \
-            > jobdirs_all.txt
+            > jobdirs_all_sorted.txt
 
           : > failed_dirs.txt
 
@@ -212,10 +216,14 @@ jobs:
             jobrel="${entry%%|*}"
             script="${entry##*|}"
 
-            state="$(scontrol show job "$jobid" \
-              | awk -F= '/JobState=/{print $2}' | awk '{print $1}')"
-            exitcode="$(scontrol show job "$jobid" \
-              | awk -F= '/ExitCode=/{print $2}' | awk '{print $1}')"
+            # Robustly fetch job info without failing the step if missing
+            jobinfo="$(scontrol show job "$jobid" 2>/dev/null || true)"
+            state="$(awk -F= '/JobState=/{print $2}' <<< "$jobinfo" | awk '{print $1}')"
+            exitcode="$(awk -F= '/ExitCode=/{print $2}' <<< "$jobinfo" | awk '{print $1}')"
+            if [ -z "${state:-}" ]; then
+              state="UNKNOWN"
+              exitcode="N/A"
+            fi
 
             echo "Job $jobid ($script) in $jobrel finished with state=$state exitcode=$exitcode"
             if [[ "$state" != "COMPLETED" ]]; then
@@ -225,8 +233,6 @@ jobs:
           done < joblist.txt
 
           sort -u failed_dirs.txt > failed_dirs_sorted.txt || true
-          sort -u jobdirs_all.txt > jobdirs_all_sorted.txt || true
-          touch failed_dirs_sorted.txt jobdirs_all_sorted.txt
 
           # Job directories where all submitted scripts completed successfully
           comm -23 jobdirs_all_sorted.txt failed_dirs_sorted.txt \
@@ -237,10 +243,13 @@ jobs:
 
           if [[ $failed_any -ne 0 ]]; then
             echo "One or more jobs failed at the Slurm level."
-            exit 1
+            echo "JOBSET_FAILED=1" >> "$GITHUB_ENV"
+          else
+            echo "JOBSET_FAILED=0" >> "$GITHUB_ENV"
           fi
 
       - name: Gather output files from all nodes
+        if: always()
         run: |
           set -euo pipefail
           shopt -s nullglob
@@ -316,6 +325,7 @@ jobs:
           rm -rf "${SLURM_TMP_BASE}"
 
       - name: Cleanup remote staging on all nodes
+        if: always()
         run: |
           set -euo pipefail
           nodes_file="${NODES_FILE:-nodes.txt}"
@@ -340,22 +350,25 @@ jobs:
             done < "$nodes_file"
           fi
 
-      - name: Commit output and remove completed inputs
+      - name: Commit output and remove input job dirs (success or fail)
+        if: always()
         run: |
           set -euo pipefail
 
-          # Remove only job directories (HPL/SST/ECE)/(Ayush,Beno,Daniel,John,Nicholas,Sithum,Will)/* that completed
-          if [ -s completed_dirs.txt ]; then
-            echo "Removing input directories for completed jobs..."
+          # Remove input job directories for all submitted jobs (regardless of success)
+          if [ -s joblist.txt ]; then
+            echo "Removing input directories for all submitted jobs..."
+            cut -d: -f1 joblist.txt | awk -F'|' '{print $1}' | sort -u \
+              > jobdirs_to_remove.txt
             while read -r d; do
               [ -n "$d" ] || continue
               if [ -d "input/$d" ]; then
                 rm -rf "input/$d"
                 echo "Deleted input/$d"
               fi
-            done < completed_dirs.txt
+            done < jobdirs_to_remove.txt
           else
-            echo "No completed job directories to remove."
+            echo "No recorded job submissions; skipping input cleanup."
           fi
 
           git config --global user.name "github-actions[bot]"
@@ -365,14 +378,24 @@ jobs:
 
           # Stage outputs and input deletions
           git add -A output/ input/
-          git commit -m "Add SLURM job output and remove completed inputs from run ${GITHUB_RUN_ID} [skip ci]" \
+          git commit -m "Add SLURM job output and purge inputs (incl. failed jobs) from run ${GITHUB_RUN_ID} [skip ci]" \
             || echo "No changes to commit"
           git push
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Upload output as artifact
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: slurm-job-output
           path: output/
+
+      - name: Fail workflow if any SLURM jobs failed
+        if: always()
+        run: |
+          if [ "${JOBSET_FAILED:-0}" -ne 0 ]; then
+            echo "One or more SLURM jobs failed. Failing workflow after collecting logs and cleaning inputs."
+            exit 1
+          fi
+          echo "All SLURM jobs completed successfully."
