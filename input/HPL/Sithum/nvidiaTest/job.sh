@@ -10,7 +10,7 @@
 
 # Load MPI module (adjust for your system)
 # module load openmpi
-export LD_LIBRARY_PATH=/opt/nvidia/nvidia_hpc_benchmarks_openmpi/lib/:$LD_LIBRARY_PATH
+export LD_LIBRARY_PATH=/opt/nvidia/nvidia_hpc_benchmarks_openmpi/lib/nvshmem/:$LD_LIBRARY_PATH
 
 #testing
 
