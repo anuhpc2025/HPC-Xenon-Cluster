@@ -15,7 +15,6 @@
 export LD_LIBRARY_PATH=/opt/nvidia/nvidia_hpc_benchmarks_openmpi/lib/nvshmem/:$LD_LIBRARY_PATH
 
 #testing
-
 export CUDA_VISIBLE_DEVICES=0,1,2,3
 
 ulimit -l unlimited
