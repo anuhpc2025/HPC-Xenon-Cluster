@@ -9,7 +9,6 @@
 #SBATCH --error=hpl-%j.err        # Standard error file
 #SBATCH --nodelist=node1
 #SBATCH --gpus-per-task=1
-#SBATCH --gpu-bind=per-task:1
 
 # Load MPI module (adjust for your system)
 # module load openmpi
@@ -23,4 +22,8 @@ echo "CUDA_VISIBLE_DEVICES = $CUDA_VISIBLE_DEVICES"
 nvidia-smi
 
 # Run the MPI program
-mpirun ./xhpl
+mpirun -np 4 \
+  -x CUDA_VISIBLE_DEVICES=0 ./xhpl : \
+  -x CUDA_VISIBLE_DEVICES=1 ./xhpl : \
+  -x CUDA_VISIBLE_DEVICES=2 ./xhpl : \
+  -x CUDA_VISIBLE_DEVICES=3 ./xhpl
