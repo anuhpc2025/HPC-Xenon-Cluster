@@ -1,0 +1,17 @@
+get_pivot_rows_nvs on rank 2 (node1) returns: unspecified launch failure
+HPL ERROR: CUDART Error: cudaEventRecord(u_event[chunk], fact_stream) = 719 (unspecified launch failure) on node1 at (cugetrfs_mp/getrfs_mp.cu:1184)
+get_pivot_rows_nvs on rank 3 (node1) returns: unspecified launch failure
+HPL ERROR: CUDART Error: cudaEventRecord(u_event[chunk], fact_stream) = 719 (unspecified launch failure) on node1 at (cugetrfs_mp/getrfs_mp.cu:1184)
+HPL ERROR: CUDART Error: cudaMemcpyAsync( ipiv_l, ipiv + step * nb, nb * sizeof(int64_t), cudaMemcpyDeviceToDevice, fact_stream) = 719 (unspecified launch failure) on node1 at (cugetrfs_mp/getrfs_mp.cu:910)
+HPL ERROR: CUDART Error: cudaMemcpyAsync( ipiv_l, ipiv + step * nb, nb * sizeof(int64_t), cudaMemcpyDeviceToDevice, fact_stream) = 719 (unspecified launch failure) on node1 at (cugetrfs_mp/getrfs_mp.cu:910)
+--------------------------------------------------------------------------
+Primary job  terminated normally, but 1 process returned
+a non-zero exit code. Per user-direction, the job has been aborted.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+mpirun detected that one or more processes exited with non-zero status, thus causing
+the job to be terminated. The first process to do so was:
+
+  Process name: [[2130,1],2]
+  Exit code:    1
+--------------------------------------------------------------------------
