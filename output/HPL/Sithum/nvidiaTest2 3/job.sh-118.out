@@ -1,0 +1,79 @@
+
+================================================================================
+HPL-NVIDIA 25.4.0  -- NVIDIA accelerated HPL benchmark -- NVIDIA
+================================================================================
+HPLinpack 2.1  --  High-Performance Linpack benchmark  --   October 26, 2012
+Written by A. Petitet and R. Clint Whaley,  Innovative Computing Laboratory, UTK
+Modified by Piotr Luszczek, Innovative Computing Laboratory, UTK
+Modified by Julien Langou, University of Colorado Denver
+================================================================================
+
+An explanation of the input/output parameters follows:
+T/V    : Wall time / encoded variant.
+N      : The order of the coefficient matrix A.
+NB     : The partitioning blocking factor.
+P      : The number of process rows.
+Q      : The number of process columns.
+Time   : Time in seconds to solve the linear system.
+Gflops : Rate of execution for solving the linear system.
+
+The following parameter values will be used:
+
+N      :   45000 
+NB     :    1024 
+PMAP   : Column-major process mapping
+P      :       2 
+Q      :       2 
+PFACT  :    Left 
+NBMIN  :       2 
+NDIV   :       2 
+RFACT  :    Left 
+BCAST  :  2ringM 
+DEPTH  :       1 
+SWAP   : Spread-roll (long)
+L1     : no-transposed form
+U      : transposed form
+EQUIL  : no
+ALIGN  : 8 double precision words
+
+--------------------------------------------------------------------------------
+
+- The matrix A is randomly generated for each test.
+- The following scaled residual check will be computed:
+      ||Ax-b||_oo / ( eps * ( || x ||_oo * || A ||_oo + || b ||_oo ) * N )
+- The relative machine precision (eps) is taken to be               1.110223e-16
+- Computational tests pass if scaled residuals are less than                16.0
+
+
+HPL-NVIDIA ignores the following parameters from input file:
+	* Broadcast parameters
+	* Panel factorization parameters
+	* Look-ahead value
+	* L1 layout
+	* U layout
+	* Equilibration parameter
+	* Memory alignment parameter
+
+HPL-NVIDIA settings from environment variables:
+--- DEVICE INFO ---
+  Peak clock frequency: 1410 MHz
+  SM version          : 80
+  Number of SMs       : 108
+-------------------
+[HPL TRACE] cuda_nvshmem_init: max=8.9082 (1) min=8.9082 (3)
+[WARNING] Change Input N 45000 to 44032
+[HPL TRACE] ncclCommInitRank: max=0.8915 (0) min=0.8866 (1)
+[HPL TRACE] cugetrfs_mp_init: max=0.9447 (0) min=0.9446 (3)
+--- MEMORY INFO ---
+DEVICE
+  System           =      6.27460 GiB (MIN)      6.62617 GiB (MAX)      6.45039 GiB (AVG)
+  HPL buffers      =      7.10353 GiB (MIN)      7.43948 GiB (MAX)      7.26955 GiB (AVG)
+  Used             =     13.37814 GiB (MIN)     13.89377 GiB (MAX)     13.71994 GiB (AVG)
+  Total            =     40.00000 GiB (MIN)     40.00000 GiB (MAX)     40.00000 GiB (AVG)
+HOST
+  HPL buffers      =      0.00021 GiB (MIN)      0.00021 GiB (MAX)      0.00021 GiB (AVG)
+-------------------
+
+ ... Testing HPL components ... 
+
+ **** Factorization, m = 22528, policy = 0 **** 
