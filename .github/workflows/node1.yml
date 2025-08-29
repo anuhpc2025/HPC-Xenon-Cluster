@@ -32,7 +32,7 @@ jobs:
           shopt -s nullglob
 
           copied_any=0
-          for jobdir in input/{HPL,SST,ECE}/{Ayush,Beno,Daniel,John,Nicholas,Sithum,Will}/*; do
+          for jobdir in input/{HPL_NVIDIA,HPL,SST,ECE}/{Ayush,Beno,Daniel,John,Nicholas,Sithum,Will}/*; do
             [ -d "$jobdir" ] || continue
             relpath="${jobdir#input/}"
             dest="${SLURM_TMP_BASE}/${relpath}"
@@ -44,7 +44,7 @@ jobs:
           done
 
           if [ "$copied_any" -eq 0 ]; then
-            echo "No job directories found under input/{HPL,SST,ECE}/{Ayush,Beno,Daniel,John,Nicholas,Sithum,Will}/*"
+            echo "No job directories found under input/{HPL_NVIDIA,HPL,SST,ECE}/{Ayush,Beno,Daniel,John,Nicholas,Sithum,Will}/*"
           fi
 
           echo "Directory structure in temp dir:"
@@ -59,6 +59,30 @@ jobs:
           echo "Found $node_count nodes:"
           cat nodes.txt || true
           echo "NODES_FILE=$(pwd)/nodes.txt" >> "$GITHUB_ENV"
+
+      - name: Ensure binaries exist in each job folder (symlink if missing)
+        run: |
+          set -euo pipefail
+
+          for jobdir in "${SLURM_TMP_BASE}"/{HPL_NVIDIA,HPL,SST,ECE}/{Ayush,Beno,Daniel,John,Nicholas,Sithum,Will}/*; do
+            [ -d "$jobdir" ] || continue
+
+            case "$jobdir" in
+              *HPL_NVIDIA*) src="/home/hpc/HPL_NVIDIA/xhpl-nvidia" ; bin_name="xhpl-nvidia" ;;
+              *HPL*)        src="/home/hpc/hpl-2.3/testing/xhpl"   ; bin_name="xhpl" ;;
+              *SST*)        src="/opt/sst/sst_binary"              ; bin_name="sst_binary" ;;
+              *ECE*)        src="/opt/ece/ece_binary"              ; bin_name="ece_binary" ;;
+              *)            src="" ; bin_name="" ;;
+            esac
+
+            [ -n "$src" ] || continue
+
+            if [ ! -x "$jobdir/$bin_name" ]; then
+              echo "No $bin_name in $jobdir, symlinking from $src"
+              ln -sf "$src" "$jobdir/$bin_name"
+            fi
+          done
+
 
       - name: Distribute job folders to all cluster nodes
         run: |
@@ -140,7 +164,7 @@ jobs:
           : > joblist.txt
           any_submitted=0
 
-          for jobdir in "${SLURM_TMP_BASE}"/{HPL,SST,ECE}/{Ayush,Beno,Daniel,John,Nicholas,Sithum,Will}/*; do
+          for jobdir in "${SLURM_TMP_BASE}"/{HPL_NVIDIA,HPL,SST,ECE}/{Ayush,Beno,Daniel,John,Nicholas,Sithum,Will}/*; do
             [ -d "$jobdir" ] || continue
             jobrel="${jobdir#${SLURM_TMP_BASE}/}"
 
