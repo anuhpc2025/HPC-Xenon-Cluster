@@ -68,7 +68,7 @@ jobs:
             [ -d "$jobdir" ] || continue
 
             case "$jobdir" in
-              *HPL_NVIDIA*) src="/home/hpc/HPL_NVIDIA/xhpl-nvidia" ; bin_name="xhpl-nvidia" ;;
+              *HPL_NVIDIA*) src="/_HPC/defaults/HPL_NVIDIA/xhpl-nvidia" ; bin_name="xhpl-nvidia" ;;
               *HPL*)        src="/home/hpc/hpl-2.3/testing/xhpl"   ; bin_name="xhpl" ;;
               *SST*)        src="/opt/sst/sst_binary"              ; bin_name="sst_binary" ;;
               *ECE*)        src="/opt/ece/ece_binary"              ; bin_name="ece_binary" ;;
