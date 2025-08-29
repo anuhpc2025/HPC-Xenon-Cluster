@@ -1,10 +1,9 @@
-HPL.dat
 HPLinpack benchmark input file
 Innovative Computing Laboratory, University of Tennessee
 HPL.out      output file name (if any)
 6            device out (6=stdout,7=stderr,file)
 1            # of problems sizes (N)
-234496       Ns
+241664       Ns
 1            # of NBs
 512          NBs
 0            PMAP process mapping (0=Row-,1=Column-major)
@@ -24,7 +23,7 @@ HPL.out      output file name (if any)
 3            BCASTs (0=1rg,1=1rM,2=2rg,3=2rM,4=Lng,5=LnM)
 1            # of lookahead depth
 2            DEPTHs (>=0)
-1            SWAP (0=bin-exch,1=long,2=mix)
+2            SWAP (0=bin-exch,1=long,2=mix)
 192          swapping threshold
 0            L1 in (0=transposed,1=no-transposed) form
 1            U  in (0=transposed,1=no-transposed) form
