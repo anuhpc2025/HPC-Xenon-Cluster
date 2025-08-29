@@ -423,7 +423,20 @@ jobs:
 
           # Clean up local staging after collection
           rm -rf "${SLURM_TMP_BASE}"
-
+ 
+      - name: Prune symlinked binaries from output
+        if: always()
+        run: |
+          set -euo pipefail
+          if [ -d output ]; then
+            echo "Removing symlinked job binaries from output/ ..."
+            # Only remove the known binary names we symlinked for runs.
+            find output -type l \
+              \( -name 'xhpl' -o -name 'xhpl-nvidia' \
+                 -o -name 'sst_binary' -o -name 'ece_binary' \) \
+              -print -delete || true
+          fi
+          
       - name: Cleanup remote staging on all nodes
         if: always()
         run: |
