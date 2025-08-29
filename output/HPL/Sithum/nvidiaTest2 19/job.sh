@@ -7,4 +7,4 @@
 #SBATCH --gpus-per-task=1
 
 # Run the MPI program
-mpirun ./xhpl
+mpirun ./xhpl-nvidia

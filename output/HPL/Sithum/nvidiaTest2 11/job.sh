@@ -27,4 +27,4 @@ export NVSHMEM_DEBUG=INFO
 export NCCL_DEBUG=INFO
 
 # Run the MPI program
-srun --mpi=pmix --gpu-bind=single:1 --cpu-bind=cores ./xhpl
+srun --mpi=pmix --gpu-bind=single:1 --cpu-bind=cores ./xhpl-nvidia

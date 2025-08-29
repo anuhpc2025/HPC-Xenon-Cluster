@@ -21,4 +21,4 @@ ulimit -n 65536
 unset CUDA_VISIBLE_DEVICES
 
 # Run the MPI program
-mpirun ./xhpl
+mpirun ./xhpl-nvidia

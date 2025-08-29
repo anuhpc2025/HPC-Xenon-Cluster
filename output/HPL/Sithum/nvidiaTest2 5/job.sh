@@ -19,4 +19,4 @@ ulimit -l unlimited
 ulimit -n 65536
 
 # Run the MPI program
-mpirun --bind-to none --map-by ppr:1:gpu ./xhpl
+mpirun --bind-to none --map-by ppr:1:gpu ./xhpl-nvidia

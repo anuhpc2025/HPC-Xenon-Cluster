@@ -23,7 +23,7 @@ nvidia-smi
 
 # Run the MPI program
 mpirun -np 4 \
-  -x CUDA_VISIBLE_DEVICES=0 ./xhpl : \
-  -x CUDA_VISIBLE_DEVICES=1 ./xhpl : \
-  -x CUDA_VISIBLE_DEVICES=2 ./xhpl : \
-  -x CUDA_VISIBLE_DEVICES=3 ./xhpl
+  -x CUDA_VISIBLE_DEVICES=0 ./xhpl-nvidia : \
+  -x CUDA_VISIBLE_DEVICES=1 ./xhpl-nvidia : \
+  -x CUDA_VISIBLE_DEVICES=2 ./xhpl-nvidia : \
+  -x CUDA_VISIBLE_DEVICES=3 ./xhpl-nvidia

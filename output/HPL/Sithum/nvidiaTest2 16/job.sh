@@ -22,4 +22,4 @@ echo "CUDA_VISIBLE_DEVICES = $CUDA_VISIBLE_DEVICES"
 nvidia-smi
 
 # Run the MPI program
-mpirun --map-by ppr:1:gpu --mca btl ^openib ./xhpl
+mpirun --map-by ppr:1:gpu --mca btl ^openib ./xhpl-nvidia

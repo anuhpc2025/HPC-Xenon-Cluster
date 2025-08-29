@@ -20,4 +20,4 @@ export NVSHMEM_USE_IBRC=0
 
 
 # Run the MPI program
-mpirun ./xhpl
+mpirun ./xhpl-nvidia
