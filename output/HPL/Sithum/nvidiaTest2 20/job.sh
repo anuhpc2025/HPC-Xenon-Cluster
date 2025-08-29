@@ -14,4 +14,4 @@ ulimit -l unlimited
 ulimit -n 65536
 
 # Run the MPI program
-mpirun ./xhpl
+mpirun ./xhpl-nvidia

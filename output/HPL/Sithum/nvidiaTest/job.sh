@@ -18,4 +18,4 @@ export NVSHMEM_USE_IBRC=0
 export NVSHMEM_USE_CUDA_IPC=1
 
 # Run the MPI program
-mpirun ./xhpl
+mpirun ./xhpl-nvidia

@@ -23,4 +23,4 @@ nvidia-smi
 
 # Run the MPI program
 export CUDA_VISIBLE_DEVICES=0,1,2,3
-mpirun -np 4 ./xhpl
+mpirun -np 4 ./xhpl-nvidia

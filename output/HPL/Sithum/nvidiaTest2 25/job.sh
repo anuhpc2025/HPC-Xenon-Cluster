@@ -14,4 +14,4 @@ ulimit -l unlimited
 ulimit -n 65536
 
 # Run the MPI program
-mpirun bash -c 'echo "Rank $SLURM_PROCID on host $HOSTNAME, GPU: $CUDA_VISIBLE_DEVICES" && ./xhpl'
+mpirun bash -c 'echo "Rank $SLURM_PROCID on host $HOSTNAME, GPU: $CUDA_VISIBLE_DEVICES" && ./xhpl-nvidia'

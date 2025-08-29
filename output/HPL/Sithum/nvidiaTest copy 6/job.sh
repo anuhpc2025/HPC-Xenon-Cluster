@@ -19,4 +19,4 @@ ulimit -l unlimited
 ulimit -n 65536
 
 # Run the MPI program
-bash -c 'export CUDA_VISIBLE_DEVICES=$SLURM_LOCALID; ./xhpl'
+bash -c 'export CUDA_VISIBLE_DEVICES=$SLURM_LOCALID; ./xhpl-nvidia'

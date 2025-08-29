@@ -24,7 +24,7 @@ export CUDA_VISIBLE_DEVICES=\$OMPI_COMM_WORLD_LOCAL_RANK
 echo "MPI Rank: \$OMPI_COMM_WORLD_RANK, Local Rank: \$OMPI_COMM_WORLD_LOCAL_RANK, CUDA_VISIBLE_DEVICES: \$CUDA_VISIBLE_DEVICES"
 
 # Execute the HPL benchmark
-./xhpl
+./xhpl-nvidia
 EOF
 
 chmod +x run_hpl_gpu_assign.sh

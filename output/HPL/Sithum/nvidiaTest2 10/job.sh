@@ -27,4 +27,4 @@ export NVSHMEM_DEBUG=INFO
 export NCCL_DEBUG=INFO
 
 # Run the MPI program
-mpirun ./xhpl
+mpirun ./xhpl-nvidia

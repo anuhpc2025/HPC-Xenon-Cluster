@@ -22,4 +22,4 @@ echo "CUDA_VISIBLE_DEVICES = $CUDA_VISIBLE_DEVICES"
 nvidia-smi
 
 # Run the MPI program
-srun ./xhpl
+srun ./xhpl-nvidia
