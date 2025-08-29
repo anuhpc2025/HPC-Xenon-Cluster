@@ -11,6 +11,10 @@ export CUDA_VISIBLE_DEVICES=0,1,2,3
 export HPL_USE_GPU=1
 export HPL_CUDA_MODE=1
 
+export PATH=/opt/ompi-4.1.6/bin:$PATH
+export LD_LIBRARY_PATH=/opt/ompi-4.1.6/lib:$LD_LIBRARY_PATH
+export LD_LIBRARY_PATH=/usr/local/cuda-12.6/lib64:/opt/nvidia/nvidia_hpc_benchmarks_openmpi/lib/nvshmem:/opt/nvidia/nvidia_hpc_benchmarks_openmpi/lib/nccl:/opt/nvidia/nvidia_hpc_benchmarks_openmpi/lib:$LD_LIBRARY_PATH
+
 #testing
 ulimit -l unlimited
 ulimit -n 65536
