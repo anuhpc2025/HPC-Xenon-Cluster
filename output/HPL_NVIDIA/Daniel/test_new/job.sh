@@ -6,7 +6,7 @@
 #SBATCH --nodes=2                 #
 #SBATCH --nodelist=node1,node2    # nodes 1 and 2 are the only ones with hpcx for now
 
-# Load hpcx module
+# Load hpcx modul
 
 
 # module load openmpi
