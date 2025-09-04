@@ -7,7 +7,6 @@
 #SBATCH --nodelist=node1,node2    # nodes 1 and 2 are the only ones with hpcx for now
 
 # Load hpcx module - and everything else we need for that matter
-source ~/.bashrc
 
 # hpc-x
 export HPCX_HOME=/home/hpc/hpcx/hpcx-v2.24-gcc-doca_ofed-ubuntu24.04-cuda13-x86_64
