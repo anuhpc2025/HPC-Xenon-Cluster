@@ -9,7 +9,6 @@
 # Load hpcx module - and everything else we need for that matter
 source ~/.bashrc
 
-
 # module load openmpi
 
 #testing
