@@ -1,6 +1,6 @@
 #!/bin/bash
 #SBATCH --job-name=hpl-test       # Job name
-#SBATCH --ntasks=16                # Total MPI tasks - 4 x 4
+#SBATCH --ntasks=8                # Total MPI tasks - 4 x 4
 #SBATCH --ntasks-per-node=4       # balance tasks across nodes - 1 per gpu
 #SBATCH --time=01:00:00           # Time limit hh:mm:ss
 #SBATCH --nodes=2                 #
