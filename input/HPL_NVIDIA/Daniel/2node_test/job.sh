@@ -11,25 +11,6 @@ export CUDA_VISIBLE_DEVICES=0,1,2,3
 export HPL_USE_GPU=1
 export HPL_CUDA_MODE=1
 
-# openmpi
-export PATH=/usr/local/bin:$PATH
-export LD_LIBRARY_PATH=/usr/lib/x86_64-linux-gnu:$LD_LIBRARY_PATH
-export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
-export LD_LIBRARY_PATH=/usr/lib/llvm-18/lib:$LD_LIBRARY_PATH
-
-# hpc-x
-export HPCX_HOME=/home/hpc/hpcx/hpcx-v2.24-gcc-doca_ofed-ubuntu24.04-cuda13-x86_64
-export LD_LIBRARY_PATH=$HPCX_HOME/ucx/lib:$HPCX_HOME/ompi/lib:$LD_LIBRARY_PATH
-export PATH=$HPCX_HOME/ompi/bin:$PATH
-
-# nvidia
-export CUDA_VISIBLE_DEVICES=0,1,2,3
-export HPL_USE_GPU=1
-export HPL_CUDA_MODE=1
-export LD_LIBRARY_PATH=/opt/nvidia/nvidia_hpc_benchmarks_openmpi/lib/omp:$LD_LIBRARY_PATH
-export LD_LIBRARY_PATH=/usr/local/cuda-12.6/lib64:/opt/nvidia/nvidia_hpc_benchmarks_openmpi/lib/nccl:/opt/nvidia/nvidia_hpc_benchmarks_openmpi/lib:$LD_LIBRARY_PATH
-export LD_LIBRARY_PATH=/usr/lib/x86_64-linux-gnu/nvshmem/12:$LD_LIBRARY_PATH
-
 #testing
 ulimit -l unlimited
 ulimit -n 65536
