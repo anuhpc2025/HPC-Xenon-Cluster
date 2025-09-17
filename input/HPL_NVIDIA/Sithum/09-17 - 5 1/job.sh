@@ -24,9 +24,19 @@ export LD_LIBRARY_PATH=/opt/nvidia/nvidia_hpc_benchmarks_openmpi/lib/omp:$LD_LIB
 export LD_LIBRARY_PATH=/usr/local/cuda-12.6/lib64:/opt/nvidia/nvidia_hpc_benchmarks_openmpi/lib/nccl:/opt/nvidia/nvidia_hpc_benchmarks_openmpi/lib:$LD_LIBRARY_PATH
 export LD_LIBRARY_PATH=/usr/lib/x86_64-linux-gnu/nvshmem/12:$LD_LIBRARY_PATH
 
+export UCX_LOG_LEVEL=info
+export NCCL_DEBUG=INFO
+export NCCL_DEBUG_SUBSYS=ALL
+export HPL_VERBOSE=1
+export HPL_DEBUG=1
+
 #testing
 ulimit -l unlimited
 ulimit -n 65536
 
 # Run the MPI program
-mpirun ./xhpl-nvidia
+mpirun --mca plm_base_verbose 10 \
+       --mca btl_base_verbose 100 \
+       --mca oob_base_verbose 100 \
+       --tag-output \
+       ./xhpl-nvidia
