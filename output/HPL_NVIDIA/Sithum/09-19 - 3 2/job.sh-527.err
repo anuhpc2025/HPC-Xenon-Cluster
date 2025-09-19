@@ -1,0 +1,352 @@
+[node1:56185] mca: base: components_register: registering framework plm components
+[node1:56185] mca: base: components_register: found loaded component slurm
+[node1:56185] mca: base: components_register: component slurm register function successful
+[node1:56185] mca: base: components_register: found loaded component isolated
+[node1:56185] mca: base: components_register: component isolated has no register or open function
+[node1:56185] mca: base: components_register: found loaded component rsh
+[node1:56185] mca: base: components_register: component rsh register function successful
+[node1:56185] mca: base: components_open: opening plm components
+[node1:56185] mca: base: components_open: found loaded component slurm
+[node1:56185] mca: base: components_open: component slurm open function successful
+[node1:56185] mca: base: components_open: found loaded component isolated
+[node1:56185] mca: base: components_open: component isolated open function successful
+[node1:56185] mca: base: components_open: found loaded component rsh
+[node1:56185] mca: base: components_open: component rsh open function successful
+[node1:56185] mca:base:select: Auto-selecting plm components
+[node1:56185] mca:base:select:(  plm) Querying component [slurm]
+[node1:56185] mca:base:select:(  plm) Query of component [slurm] set priority to 75
+[node1:56185] mca:base:select:(  plm) Querying component [isolated]
+[node1:56185] mca:base:select:(  plm) Query of component [isolated] set priority to 0
+[node1:56185] mca:base:select:(  plm) Querying component [rsh]
+[node1:56185] mca:base:select:(  plm) Query of component [rsh] set priority to 10
+[node1:56185] mca:base:select:(  plm) Selected component [slurm]
+[node1:56185] mca: base: close: component isolated closed
+[node1:56185] mca: base: close: unloading component isolated
+[node1:56185] mca: base: close: component rsh closed
+[node1:56185] mca: base: close: unloading component rsh
+[node1:56185] mca: base: components_register: registering framework oob components
+[node1:56185] mca: base: components_register: found loaded component tcp
+[node1:56185] mca: base: components_register: component tcp register function successful
+[node1:56185] mca: base: components_open: opening oob components
+[node1:56185] mca: base: components_open: found loaded component tcp
+[node1:56185] mca: base: components_open: component tcp open function successful
+[node1:56185] mca:oob:select: checking available component tcp
+[node1:56185] mca:oob:select: Querying component [tcp]
+[node1:56185] oob:tcp: component_available called
+[node1:56185] WORKING INTERFACE 1 KERNEL INDEX 1 FAMILY: V4
+[node1:56185] [[36881,0],0] oob:tcp:init rejecting loopback interface lo
+[node1:56185] WORKING INTERFACE 2 KERNEL INDEX 2 FAMILY: V4
+[node1:56185] [[36881,0],0] oob:tcp:init adding 192.168.2.21 to our list of V4 connections
+[node1:56185] [[36881,0],0] TCP STARTUP
+[node1:56185] [[36881,0],0] attempting to bind to IPv4 port 0
+[node1:56185] [[36881,0],0] assigned IPv4 port 42753
+[node1:56185] mca:oob:select: Adding component to end
+[node1:56185] mca:oob:select: Found 1 active transports
+[node1:56185] [[36881,0],0]: get transports
+[node1:56185] [[36881,0],0]:get transports for component tcp
+[node1:56185] [[36881,0],0] plm:slurm: final top-level argv:
+	srun --ntasks-per-node=1 --kill-on-bad-exit --mpi=none --external-launcher --nodes=1 --nodelist=node4 --ntasks=1 orted -mca ess "slurm" -mca ess_base_jobid "2417033216" -mca ess_base_vpid "1" -mca ess_base_num_procs "2" -mca orte_node_regex "node[1:1,4]@0(2)" -mca orte_hnp_uri "2417033216.0;tcp://192.168.2.21:42753" --mca plm_base_verbose "10" --mca btl_base_verbose "100" --mca oob_base_verbose "100"
+[node4:04330] mca: base: components_register: registering framework oob components
+[node4:04330] mca: base: components_register: found loaded component tcp
+[node4:04330] mca: base: components_register: component tcp register function successful
+[node4:04330] mca: base: components_open: opening oob components
+[node4:04330] mca: base: components_open: found loaded component tcp
+[node4:04330] mca: base: components_open: component tcp open function successful
+[node4:04330] mca:oob:select: checking available component tcp
+[node4:04330] mca:oob:select: Querying component [tcp]
+[node4:04330] oob:tcp: component_available called
+[node4:04330] WORKING INTERFACE 1 KERNEL INDEX 1 FAMILY: V4
+[node4:04330] [[36881,0],1] oob:tcp:init rejecting loopback interface lo
+[node4:04330] WORKING INTERFACE 2 KERNEL INDEX 2 FAMILY: V4
+[node4:04330] [[36881,0],1] oob:tcp:init adding 192.168.2.24 to our list of V4 connections
+[node4:04330] [[36881,0],1] TCP STARTUP
+[node4:04330] [[36881,0],1] attempting to bind to IPv4 port 0
+[node4:04330] [[36881,0],1] assigned IPv4 port 33385
+[node4:04330] mca:oob:select: Adding component to end
+[node4:04330] mca:oob:select: Found 1 active transports
+[node4:04330] [[36881,0],1]: get transports
+[node4:04330] [[36881,0],1]:get transports for component tcp
+[node4:04330] [[36881,0],1] OOB_SEND: rml_oob_send.c:265
+[node4:04330] [[36881,0],1] oob:base:send to target [[36881,0],0] - attempt 0
+[node4:04330] [[36881,0],1] oob:base:send unknown peer [[36881,0],0]
+[node4:04330] [[36881,0],1]:set_addr checking if peer [[36881,0],0] is reachable via component tcp
+[node4:04330] [[36881,0],1] oob:tcp: working peer [[36881,0],0] address tcp://192.168.2.21:42753
+[node4:04330] [[36881,0],1] SET_PEER ADDING PEER [[36881,0],0]
+[node4:04330] [[36881,0],1] set_peer: peer [[36881,0],0] is listening on net 192.168.2.21 port 42753
+[node4:04330] [[36881,0],1]: peer [[36881,0],0] is reachable via component tcp
+[node4:04330] [[36881,0],1] oob:tcp:send_nb to peer [[36881,0],0]:10 seq = -1
+[node4:04330] [[36881,0],1]:[oob_tcp.c:198] processing send to peer [[36881,0],0]:10 seq_num = -1 via [[36881,0],0]
+[node4:04330] [[36881,0],1]:[oob_tcp.c:215] queue pending to [[36881,0],0]
+[node4:04330] [[36881,0],1] tcp:send_nb: initiating connection to [[36881,0],0]
+[node4:04330] [[36881,0],1]:[oob_tcp.c:229] connect to [[36881,0],0]
+[node4:04330] [[36881,0],1] orte_tcp_peer_try_connect: attempting to connect to proc [[36881,0],0]
+[node4:04330] [[36881,0],1] orte_tcp_peer_try_connect: attempting to connect to proc [[36881,0],0] on socket -1
+[node4:04330] [[36881,0],1] orte_tcp_peer_try_connect: attempting to connect to proc [[36881,0],0] on 192.168.2.21:42753 - 0 retries
+[node4:04330] [[36881,0],1] waiting for connect completion to [[36881,0],0] - activating send event
+[node1:56185] [[36881,0],0] mca_oob_tcp_listen_thread: incoming connection: (23, 0) 192.168.2.24:56284
+[node1:56185] [[36881,0],0] connection_handler: working connection (23, 2) 192.168.2.24:56284
+[node1:56185] [[36881,0],0] accept_connection: 192.168.2.24:56284
+[node1:56185] [[36881,0],0]:tcp:recv:handler called
+[node1:56185] [[36881,0],0] RECV CONNECT ACK FROM UNKNOWN ON SOCKET 23
+[node1:56185] [[36881,0],0] waiting for connect ack from UNKNOWN
+[node1:56185] [[36881,0],0] connect ack received from UNKNOWN
+[node1:56185] [[36881,0],0] connect-ack recvd from UNKNOWN
+[node1:56185] [[36881,0],0] mca_oob_tcp_recv_connect: connection from new peer
+[node1:56185] [[36881,0],0] connect-ack header from [[36881,0],1] is okay
+[node1:56185] [[36881,0],0] waiting for connect ack from [[36881,0],1]
+[node1:56185] [[36881,0],0] connect ack received from [[36881,0],1]
+[node1:56185] [[36881,0],0] connect-ack version from [[36881,0],1] matches ours
+[node1:56185] [[36881,0],0] tcp:peer_accept called for peer [[36881,0],1] in state UNKNOWN on socket 23
+[node1:56185] [[36881,0],0] SEND CONNECT ACK
+[node1:56185] [[36881,0],0] send blocking of 72 bytes to socket 23
+[node1:56185] [[36881,0],0] blocking send complete to socket 23
+[node1:56185] [[36881,0],0]-[[36881,0],1] tcp_peer_connected on socket 23
+[node1:56185] [[36881,0],0]-[[36881,0],1] accepted: 192.168.2.21 - 192.168.2.24 nodelay 1 sndbuf 65536 rcvbuf 65536 flags 00000802
+[node1:56185] [[36881,0],0] tcp:set_module called for peer [[36881,0],1]
+[node1:56185] [[36881,0],0]:tcp:recv:handler called for peer [[36881,0],1]
+[node1:56185] [[36881,0],0]:tcp:recv:handler CONNECTED
+[node1:56185] [[36881,0],0]:tcp:recv:handler allocate new recv msg
+[node1:56185] [[36881,0],0]:tcp:recv:handler read hdr
+[node4:04330] [[36881,0],1] tcp:send_handler called to send to peer [[36881,0],0]
+[node4:04330] [[36881,0],1] tcp:send_handler CONNECTING
+[node4:04330] [[36881,0],1]:tcp:complete_connect called for peer [[36881,0],0] on socket 18
+[node4:04330] [[36881,0],1] tcp_peer_complete_connect: sending ack to [[36881,0],0]
+[node1:56185] [[36881,0],0]:tcp:recv:handler allocate data region of size 3988
+[node4:04330] [[36881,0],1] SEND CONNECT ACK
+[node4:04330] [[36881,0],1] send blocking of 72 bytes to socket 18
+[node4:04330] [[36881,0],1] blocking send complete to socket 18
+[node4:04330] [[36881,0],1] tcp_peer_complete_connect: setting read event on connection to [[36881,0],0]
+[node4:04330] [[36881,0],1]:tcp:recv:handler called for peer [[36881,0],0]
+[node4:04330] [[36881,0],1] RECV CONNECT ACK FROM [[36881,0],0] ON SOCKET 18
+[node4:04330] [[36881,0],1] waiting for connect ack from [[36881,0],0]
+[node1:56185] [[36881,0],0] RECVD COMPLETE MESSAGE FROM [[36881,0],1] (ORIGIN [[36881,0],1]) OF 3988 BYTES FOR DEST [[36881,0],0] TAG 10
+[node4:04330] [[36881,0],1] connect ack received from [[36881,0],0]
+[node1:56185] [[36881,0],0] DELIVERING TO RML tag = 10 seq_num = -1
+[node4:04330] [[36881,0],1] connect-ack recvd from [[36881,0],0]
+[node4:04330] [[36881,0],1] connect-ack header from [[36881,0],0] is okay
+[node4:04330] [[36881,0],1] waiting for connect ack from [[36881,0],0]
+[node4:04330] [[36881,0],1] connect ack received from [[36881,0],0]
+[node4:04330] [[36881,0],1] connect-ack version from [[36881,0],0] matches ours
+[node4:04330] [[36881,0],1]-[[36881,0],0] tcp_peer_connected on socket 18
+[node4:04330] [[36881,0],1]-[[36881,0],0] connected: 192.168.2.24 - 192.168.2.21 nodelay 1 sndbuf 65536 rcvbuf 65536 flags 00000802
+[node4:04330] [[36881,0],1]:tcp:recv:handler starting send/recv events
+[node4:04330] [[36881,0],1] tcp:set_module called for peer [[36881,0],0]
+[node4:04330] [[36881,0],1] tcp:send_handler called to send to peer [[36881,0],0]
+[node4:04330] [[36881,0],1] tcp:send_handler SENDING TO [[36881,0],0]
+[node4:04330] oob:tcp:send_handler SENDING MSG
+[node4:04330] [[36881,0],1] MESSAGE SEND COMPLETE TO [[36881,0],0] OF 3988 BYTES ON SOCKET 18
+[node1:56185] [[36881,0],0] complete_setup on job [36881,1]
+[node1:56185] [[36881,0],0] OOB_SEND: rml_oob_send.c:265
+[node1:56185] [[36881,0],0] oob:base:send to target [[36881,0],1] - attempt 0
+[node1:56185] [[36881,0],0] oob:base:send known transport for peer [[36881,0],1]
+[node1:56185] [[36881,0],0] oob:tcp:send_nb to peer [[36881,0],1]:15 seq = -1
+[node1:56185] [[36881,0],0]:[oob_tcp.c:198] processing send to peer [[36881,0],1]:15 seq_num = -1 via [[36881,0],1]
+[node1:56185] [[36881,0],0] tcp:send_nb: already connected to [[36881,0],1] - queueing for send
+[node1:56185] [[36881,0],0]:[oob_tcp.c:208] queue send to [[36881,0],1]
+[node1:56185] [[36881,0],0] tcp:send_handler called to send to peer [[36881,0],1]
+[node1:56185] [[36881,0],0] tcp:send_handler SENDING TO [[36881,0],1]
+[node1:56185] oob:tcp:send_handler SENDING MSG
+[node1:56185] [[36881,0],0] MESSAGE SEND COMPLETE TO [[36881,0],1] OF 1373 BYTES ON SOCKET 23
+[node1:56185] [[36881,0],0]:tcp:recv:handler called for peer [[36881,0],1]
+[node1:56185] [[36881,0],0]:tcp:recv:handler CONNECTED
+[node1:56185] [[36881,0],0]:tcp:recv:handler allocate new recv msg
+[node1:56185] [[36881,0],0]:tcp:recv:handler read hdr
+[node4:04330] [[36881,0],1]:tcp:recv:handler called for peer [[36881,0],0]
+[node1:56185] [[36881,0],0]:tcp:recv:handler allocate data region of size 146
+[node4:04330] [[36881,0],1]:tcp:recv:handler CONNECTED
+[node4:04330] [[36881,0],1]:tcp:recv:handler allocate new recv msg
+[node4:04330] [[36881,0],1]:tcp:recv:handler read hdr
+[node1:56185] [[36881,0],0] RECVD COMPLETE MESSAGE FROM [[36881,0],1] (ORIGIN [[36881,0],1]) OF 146 BYTES FOR DEST [[36881,0],0] TAG 2
+[node4:04330] [[36881,0],1]:tcp:recv:handler allocate data region of size 1373
+[node1:56185] [[36881,0],0] DELIVERING TO RML tag = 2 seq_num = -1
+[node4:04330] [[36881,0],1] RECVD COMPLETE MESSAGE FROM [[36881,0],0] (ORIGIN [[36881,0],0]) OF 1373 BYTES FOR DEST [[36881,0],1] TAG 15
+[node4:04330] [[36881,0],1] DELIVERING TO RML tag = 15 seq_num = -1
+[node4:04330] [[36881,0],1] OOB_SEND: rml_oob_send.c:265
+[node4:04330] [[36881,0],1] OOB_SEND: rml_oob_send.c:265
+[node1:56185] [[36881,0],0]:tcp:recv:handler called for peer [[36881,0],1]
+[node4:04330] [[36881,0],1] OOB_SEND: rml_oob_send.c:265
+[node1:56185] [[36881,0],0]:tcp:recv:handler CONNECTED
+[node1:56185] [[36881,0],0]:tcp:recv:handler allocate new recv msg
+[node1:56185] [[36881,0],0]:tcp:recv:handler read hdr
+[node1:56185] [[36881,0],0]:tcp:recv:handler allocate data region of size 146
+[node4:04330] [[36881,0],1] oob:base:send to target [[36881,0],0] - attempt 0
+[node1:56185] [[36881,0],0] RECVD COMPLETE MESSAGE FROM [[36881,0],1] (ORIGIN [[36881,0],1]) OF 146 BYTES FOR DEST [[36881,0],0] TAG 2
+[node4:04330] [[36881,0],1] oob:base:send known transport for peer [[36881,0],0]
+[node1:56185] [[36881,0],0] DELIVERING TO RML tag = 2 seq_num = -1
+[node4:04330] [[36881,0],1] oob:tcp:send_nb to peer [[36881,0],0]:2 seq = -1
+[node4:04330] [[36881,0],1]:[oob_tcp.c:198] processing send to peer [[36881,0],0]:2 seq_num = -1 via [[36881,0],0]
+[1,4]<stderr>:./xhpl-nvidia: error while loading shared libraries: libiomp5.so: cannot open shared object file: No such file or directory
+[node4:04330] [[36881,0],1] tcp:send_nb: already connected to [[36881,0],0] - queueing for send
+[node1:56185] [[36881,0],0]:tcp:recv:handler called for peer [[36881,0],1]
+[node1:56185] [[36881,0],0]:tcp:recv:handler CONNECTED
+[node1:56185] [[36881,0],0]:tcp:recv:handler allocate new recv msg
+[node1:56185] [[36881,0],0]:tcp:recv:handler read hdr
+[node1:56185] [[36881,0],0]:tcp:recv:handler allocate data region of size 146
+[node4:04330] [[36881,0],1]:[oob_tcp.c:208] queue send to [[36881,0],0]
+[node4:04330] [[36881,0],1] oob:base:send to target [[36881,0],0] - attempt 0
+[node4:04330] [[36881,0],1] oob:base:send known transport for peer [[36881,0],0]
+[node4:04330] [[36881,0],1] oob:tcp:send_nb to peer [[36881,0],0]:2 seq = -1
+[node1:56185] [[36881,0],0] RECVD COMPLETE MESSAGE FROM [[36881,0],1] (ORIGIN [[36881,0],1]) OF 146 BYTES FOR DEST [[36881,0],0] TAG 2
+[node4:04330] [[36881,0],1]:[oob_tcp.c:198] processing send to peer [[36881,0],0]:2 seq_num = -1 via [[36881,0],0]
+[node1:56185] [[36881,0],0] DELIVERING TO RML tag = 2 seq_num = -1
+[node4:04330] [[36881,0],1] tcp:send_nb: already connected to [[36881,0],0] - queueing for send
+[1,5]<stderr>:./xhpl-nvidia: error while loading shared libraries: libiomp5.so: cannot open shared object file: No such file or directory
+[node4:04330] [[36881,0],1]:[oob_tcp.c:208] queue send to [[36881,0],0]
+[node4:04330] [[36881,0],1] oob:base:send to target [[36881,0],0] - attempt 0
+[node4:04330] [[36881,0],1] oob:base:send known transport for peer [[36881,0],0]
+[1,6]<stderr>:./xhpl-nvidia: error while loading shared libraries: libiomp5.so: cannot open shared object file: No such file or directory
+[node4:04330] [[36881,0],1] oob:tcp:send_nb to peer [[36881,0],0]:2 seq = -1
+[node4:04330] [[36881,0],1]:[oob_tcp.c:198] processing send to peer [[36881,0],0]:2 seq_num = -1 via [[36881,0],0]
+[node4:04330] [[36881,0],1] tcp:send_nb: already connected to [[36881,0],0] - queueing for send
+[node4:04330] [[36881,0],1]:[oob_tcp.c:208] queue send to [[36881,0],0]
+[node4:04330] [[36881,0],1] tcp:send_handler called to send to peer [[36881,0],0]
+[node4:04330] [[36881,0],1] tcp:send_handler SENDING TO [[36881,0],0]
+[node4:04330] oob:tcp:send_handler SENDING MSG
+[node4:04330] [[36881,0],1] MESSAGE SEND COMPLETE TO [[36881,0],0] OF 146 BYTES ON SOCKET 18
+[node4:04330] [[36881,0],1] tcp:send_handler called to send to peer [[36881,0],0]
+[node4:04330] [[36881,0],1] tcp:send_handler SENDING TO [[36881,0],0]
+[node4:04330] oob:tcp:send_handler SENDING MSG
+[node1:56185] [[36881,0],0]:tcp:recv:handler called for peer [[36881,0],1]
+[node4:04330] [[36881,0],1] MESSAGE SEND COMPLETE TO [[36881,0],0] OF 146 BYTES ON SOCKET 18
+[node1:56185] [[36881,0],0]:tcp:recv:handler CONNECTED
+[node4:04330] [[36881,0],1] tcp:send_handler called to send to peer [[36881,0],0]
+[node1:56185] [[36881,0],0]:tcp:recv:handler allocate new recv msg
+[node4:04330] [[36881,0],1] tcp:send_handler SENDING TO [[36881,0],0]
+[node1:56185] [[36881,0],0]:tcp:recv:handler read hdr
+[node4:04330] oob:tcp:send_handler SENDING MSG
+[node1:56185] [[36881,0],0]:tcp:recv:handler allocate data region of size 46
+[node4:04330] [[36881,0],1] MESSAGE SEND COMPLETE TO [[36881,0],0] OF 146 BYTES ON SOCKET 18
+[node1:56185] [[36881,0],0] RECVD COMPLETE MESSAGE FROM [[36881,0],1] (ORIGIN [[36881,0],1]) OF 46 BYTES FOR DEST [[36881,0],0] TAG 5
+[node1:56185] [[36881,0],0] DELIVERING TO RML tag = 5 seq_num = -1
+[node1:56185] [[36881,0],0] plm:base:receive update proc state command from [[36881,0],1]
+[node4:04330] [[36881,0],1] OOB_SEND: rml_oob_send.c:265
+[node1:56185] [[36881,0],0] plm:base:receive got update_proc_state for job [36881,1]
+[node4:04330] [[36881,0],1] oob:base:send to target [[36881,0],0] - attempt 0
+[node4:04330] [[36881,0],1] oob:base:send known transport for peer [[36881,0],0]
+[node4:04330] [[36881,0],1] oob:tcp:send_nb to peer [[36881,0],0]:5 seq = -1
+[node4:04330] [[36881,0],1]:[oob_tcp.c:198] processing send to peer [[36881,0],0]:5 seq_num = -1 via [[36881,0],0]
+[node4:04330] [[36881,0],1] tcp:send_nb: already connected to [[36881,0],0] - queueing for send
+[node4:04330] [[36881,0],1]:[oob_tcp.c:208] queue send to [[36881,0],0]
+[node4:04330] [[36881,0],1] tcp:send_handler called to send to peer [[36881,0],0]
+[node4:04330] [[36881,0],1] tcp:send_handler SENDING TO [[36881,0],0]
+[node4:04330] oob:tcp:send_handler SENDING MSG
+--------------------------------------------------------------------------
+Primary job  terminated normally, but 1 process returned
+a non-zero exit code. Per user-direction, the job has been aborted.
+--------------------------------------------------------------------------
+[node1:56185] [[36881,0],0]:tcp:recv:handler called for peer [[36881,0],1]
+[node1:56185] [[36881,0],0]:tcp:recv:handler CONNECTED
+[node1:56185] [[36881,0],0]:tcp:recv:handler allocate new recv msg
+[node1:56185] [[36881,0],0]:tcp:recv:handler read hdr
+[node1:56185] [[36881,0],0]:tcp:recv:handler allocate data region of size 153
+[node1:56185] [[36881,0],0] RECVD COMPLETE MESSAGE FROM [[36881,0],1] (ORIGIN [[36881,0],1]) OF 153 BYTES FOR DEST [[36881,0],0] TAG 5
+[node1:56185] [[36881,0],0] DELIVERING TO RML tag = 5 seq_num = -1
+[node1:56185] [[36881,0],0] OOB_SEND: rml_oob_send.c:265
+[node1:56185] [[36881,0],0] plm:base:receive update proc state command from [[36881,0],1]
+[node1:56185] [[36881,0],0] plm:base:receive got update_proc_state for job [36881,1]
+[node1:56185] [[36881,0],0] oob:base:send to target [[36881,0],1] - attempt 0
+[node1:56185] [[36881,0],0] oob:base:send known transport for peer [[36881,0],1]
+[node1:56185] [[36881,0],0] oob:tcp:send_nb to peer [[36881,0],1]:15 seq = -1
+[node1:56185] [[36881,0],0]:[oob_tcp.c:198] processing send to peer [[36881,0],1]:15 seq_num = -1 via [[36881,0],1]
+[node1:56185] [[36881,0],0] tcp:send_nb: already connected to [[36881,0],1] - queueing for send
+[node1:56185] [[36881,0],0]:[oob_tcp.c:208] queue send to [[36881,0],1]
+[node4:04330] [[36881,0],1] MESSAGE SEND COMPLETE TO [[36881,0],0] OF 46 BYTES ON SOCKET 18
+[node4:04330] [[36881,0],1] OOB_SEND: rml_oob_send.c:265
+[node4:04330] [[36881,0],1] oob:base:send to target [[36881,0],0] - attempt 0
+[node4:04330] [[36881,0],1] oob:base:send known transport for peer [[36881,0],0]
+[node4:04330] [[36881,0],1] oob:tcp:send_nb to peer [[36881,0],0]:5 seq = -1
+[node4:04330] [[36881,0],1]:[oob_tcp.c:198] processing send to peer [[36881,0],0]:5 seq_num = -1 via [[36881,0],0]
+[node4:04330] [[36881,0],1] tcp:send_nb: already connected to [[36881,0],0] - queueing for send
+[node4:04330] [[36881,0],1]:[oob_tcp.c:208] queue send to [[36881,0],0]
+[node4:04330] [[36881,0],1] tcp:send_handler called to send to peer [[36881,0],0]
+[node4:04330] [[36881,0],1] tcp:send_handler SENDING TO [[36881,0],0]
+[node4:04330] oob:tcp:send_handler SENDING MSG
+[node4:04330] [[36881,0],1] MESSAGE SEND COMPLETE TO [[36881,0],0] OF 153 BYTES ON SOCKET 18
+[node4:04330] [[36881,0],1] OOB_SEND: rml_oob_send.c:265
+[node4:04330] [[36881,0],1] oob:base:send to target [[36881,0],0] - attempt 0
+[node4:04330] [[36881,0],1] oob:base:send known transport for peer [[36881,0],0]
+[node4:04330] [[36881,0],1] oob:tcp:send_nb to peer [[36881,0],0]:2 seq = -1
+[node4:04330] [[36881,0],1]:[oob_tcp.c:198] processing send to peer [[36881,0],0]:2 seq_num = -1 via [[36881,0],0]
+[node4:04330] [[36881,0],1] tcp:send_nb: already connected to [[36881,0],0] - queueing for send
+[node4:04330] [[36881,0],1]:[oob_tcp.c:208] queue send to [[36881,0],0]
+[node4:04330] [[36881,0],1] tcp:send_handler called to send to peer [[36881,0],0]
+[node4:04330] [[36881,0],1] tcp:send_handler SENDING TO [[36881,0],0]
+[node4:04330] oob:tcp:send_handler SENDING MSG
+[node4:04330] [[36881,0],1] MESSAGE SEND COMPLETE TO [[36881,0],0] OF 146 BYTES ON SOCKET 18
+[node1:56185] [[36881,0],0]:tcp:recv:handler called for peer [[36881,0],1]
+[node1:56185] [[36881,0],0]:tcp:recv:handler CONNECTED
+[node1:56185] [[36881,0],0]:tcp:recv:handler allocate new recv msg
+[node1:56185] [[36881,0],0]:tcp:recv:handler read hdr
+[node1:56185] [[36881,0],0]:tcp:recv:handler allocate data region of size 146
+[node1:56185] [[36881,0],0] RECVD COMPLETE MESSAGE FROM [[36881,0],1] (ORIGIN [[36881,0],1]) OF 146 BYTES FOR DEST [[36881,0],0] TAG 2
+[node1:56185] [[36881,0],0] DELIVERING TO RML tag = 2 seq_num = -1
+[node1:56185] [[36881,0],0] tcp:send_handler called to send to peer [[36881,0],1]
+[node1:56185] [[36881,0],0] tcp:send_handler SENDING TO [[36881,0],1]
+[node1:56185] oob:tcp:send_handler SENDING MSG
+[node1:56185] [[36881,0],0] MESSAGE SEND COMPLETE TO [[36881,0],1] OF 35 BYTES ON SOCKET 23
+[1,2]<stderr>:[node1:56199] mca: base: components_register: registering framework btl components
+[1,2]<stderr>:[node1:56199] mca: base: components_register: found loaded component self
+[1,2]<stderr>:[node1:56199] mca: base: components_register: component self register function successful
+[1,2]<stderr>:[node1:56199] mca: base: components_open: opening btl components
+[1,2]<stderr>:[node1:56199] mca: base: components_open: found loaded component self
+[1,2]<stderr>:[node1:56199] mca: base: components_open: component self open function successful
+[1,2]<stderr>:[node1:56199] select: initializing btl component self
+[1,2]<stderr>:[node1:56199] select: init of component self returned success
+[1,1]<stderr>:[node1:56198] mca: base: components_register: registering framework btl components
+[1,1]<stderr>:[node1:56198] mca: base: components_register: found loaded component self
+[1,1]<stderr>:[node1:56198] mca: base: components_register: component self register function successful
+[1,1]<stderr>:[node1:56198] mca: base: components_open: opening btl components
+[1,1]<stderr>:[node1:56198] mca: base: components_open: found loaded component self
+[1,1]<stderr>:[node1:56198] mca: base: components_open: component self open function successful
+[1,1]<stderr>:[node1:56198] select: initializing btl component self
+[1,1]<stderr>:[node1:56198] select: init of component self returned success
+[1,3]<stderr>:[node1:56200] mca: base: components_register: registering framework btl components
+[1,3]<stderr>:[node1:56200] mca: base: components_register: found loaded component self
+[1,3]<stderr>:[node1:56200] mca: base: components_register: component self register function successful
+[1,3]<stderr>:[node1:56200] mca: base: components_open: opening btl components
+[1,3]<stderr>:[node1:56200] mca: base: components_open: found loaded component self
+[1,3]<stderr>:[node1:56200] mca: base: components_open: component self open function successful
+[1,3]<stderr>:[node1:56200] select: initializing btl component self
+[1,3]<stderr>:[node1:56200] select: init of component self returned success
+[1,0]<stderr>:[node1:56197] mca: base: components_register: registering framework btl components
+[1,0]<stderr>:[node1:56197] mca: base: components_register: found loaded component self
+[1,0]<stderr>:[node1:56197] mca: base: components_register: component self register function successful
+[1,0]<stderr>:[node1:56197] mca: base: components_open: opening btl components
+[1,0]<stderr>:[node1:56197] mca: base: components_open: found loaded component self
+[1,0]<stderr>:[node1:56197] mca: base: components_open: component self open function successful
+[1,0]<stderr>:[node1:56197] select: initializing btl component self
+[1,0]<stderr>:[node1:56197] select: init of component self returned success
+[1,7]<stderr>:./xhpl-nvidia: error while loading shared libraries: libiomp5.so: cannot open shared object file: No such file or directory
+[node4:04330] [[36881,0],1]:tcp:recv:handler called for peer [[36881,0],0]
+[node4:04330] [[36881,0],1]:tcp:recv:handler CONNECTED
+[node4:04330] [[36881,0],1]:tcp:recv:handler allocate new recv msg
+[node4:04330] [[36881,0],1]:tcp:recv:handler read hdr
+[node4:04330] [[36881,0],1]:tcp:recv:handler allocate data region of size 35
+[node4:04330] [[36881,0],1] RECVD COMPLETE MESSAGE FROM [[36881,0],0] (ORIGIN [[36881,0],0]) OF 35 BYTES FOR DEST [[36881,0],1] TAG 15
+[node4:04330] [[36881,0],1] DELIVERING TO RML tag = 15 seq_num = -1
+[node1:56185] [[36881,0],0]:tcp:recv:handler called for peer [[36881,0],1]
+[node1:56185] [[36881,0],0]:tcp:recv:handler CONNECTED
+[node1:56185] [[36881,0],0]:tcp:recv:handler allocate new recv msg
+[node1:56185] [[36881,0],0]:tcp:recv:handler read hdr
+[node1:56185] [[36881,0],0]-[[36881,0],1] mca_oob_tcp_msg_recv: peer closed connection
+[node4:04330] [[36881,0],1] TCP SHUTDOWN
+[node4:04330] no hnp or not active
+[node4:04330] [[36881,0],1] CLOSING SOCKET 18
+[node4:04330] [[36881,0],1] TCP SHUTDOWN done
+[node1:56185] [[36881,0],0] tcp_peer_close for [[36881,0],1] sd 23 state CONNECTED
+[node4:04330] mca: base: close: component tcp closed
+[node4:04330] mca: base: close: unloading component tcp
+[node1:56185] [[36881,0],0] tcp:lost connection called for peer [[36881,0],1]
+--------------------------------------------------------------------------
+mpirun detected that one or more processes exited with non-zero status, thus causing
+the job to be terminated. The first process to do so was:
+
+  Process name: [[36881,1],4]
+  Exit code:    127
+--------------------------------------------------------------------------
+[node1:56185] mca: base: close: component slurm closed
+[node1:56185] mca: base: close: unloading component slurm
+[node1:56185] [[36881,0],0] TCP SHUTDOWN
+[node1:56185] [[36881,0],0] TCP SHUTDOWN done
+[node1:56185] mca: base: close: component tcp closed
+[node1:56185] mca: base: close: unloading component tcp
