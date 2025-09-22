@@ -55,11 +55,11 @@ jobs:
             echo "No /tmp/hpl-website-data/data directory to sync"
           fi
 
-          if [ -d "/tmp/hpl-website-data/raw" ]; then
-            rsync -a --delete "/tmp/hpl-website-data/raw/" website-branch/public/raw/
-          else
-            echo "No /tmp/hpl-website-data/raw directory to sync"
-          fi
+#          if [ -d "/tmp/hpl-website-data/raw" ]; then
+#            rsync -a --delete "/tmp/hpl-website-data/raw/" website-branch/public/raw/
+#          else
+#            echo "No /tmp/hpl-website-data/raw directory to sync"
+#          fi
 
           cd website-branch
           git config user.name "github-actions[bot]"
