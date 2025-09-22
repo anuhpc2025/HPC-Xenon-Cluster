@@ -42,6 +42,18 @@ async function listFiles(dir) {
     return ents.filter((e) => e.isFile()).map((e) => e.name);
 }
 
+async function dirHasRunFiles(dir) {
+  try {
+    const files = await listFiles(dir);
+    return files.some(
+      (f) =>
+        /^(HPL|HPT)\.dat$/i.test(f) || /\.out$/i.test(f) || /\.sh$/i.test(f)
+    );
+  } catch {
+    return false;
+  }
+}
+
 async function readFileSafe(p) {
     try {
         return await fs.readFile(p, "utf8");
@@ -490,15 +502,23 @@ function bestFromRuns(runs) {
 
 async function processSuite(suite, index) {
     const suiteRoot = path.join(SRC_ROOT, suite);
-    if (!(await exists(suiteRoot))) return;
+    if (!(await exists(suiteRoot))) {
+      console.warn(`[collector] Suite root not found: ${suiteRoot}`);
+      return;
+    }
 
     const groups = await listDirs(suiteRoot);
+    let runsFound = 0;
 
     for (const group of groups) {
         const groupDir = path.join(suiteRoot, group);
-        const runs = await listDirs(groupDir);
+        let runs = await listDirs(groupDir);
+        // If files are directly in the group folder, treat it as a single run.
+        if (runs.length === 0 && (await dirHasRunFiles(groupDir))) {
+            runs = ["__root__"];
+        }
         for (const run of runs) {
-            const runDir = path.join(groupDir, run);
+            const runDir = run === "__root__" ? groupDir : path.join(groupDir, run);
             const files = await listFiles(runDir);
 
             // Variations: HPL.dat or HPT.dat, one .sh, .out, optional .err
@@ -607,13 +627,17 @@ async function processSuite(suite, index) {
                 outSummary: runJson.out ? runJson.out.summary : null,
                 hasErr: !!errRaw && errRaw.trim().length > 0,
             });
+            runsFound++;
         }
     }
+    console.log(`[collector] ${suite}: groups=${groups.length}, runs=${runsFound}`);
 }
 
 async function main() {
     await ensureDir(DATA_ROOT);
     await ensureDir(RAW_ROOT);
+    console.log(`[collector] Using SRC_ROOT=${SRC_ROOT}`);
+    console.log(`[collector] Writing OUT_ROOT=${OUT_ROOT}`);
     const index = [];
 
     for (const suite of SUITES) {
