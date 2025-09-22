@@ -1,0 +1,64 @@
+name: website.yml
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Generate web data from HPL outputs
+        run: |
+          node --version
+          node scripts/collect-hpl.js
+          ls -R /tmp/hpl-web-data || true
+
+      - name: Checkout web branch
+        uses: actions/checkout@v4
+        with:
+          ref: web
+          path: web-branch
+
+      - name: Sync data/raw into web branch public/
+        run: |
+          mkdir -p web-branch/public/data
+          mkdir -p web-branch/public/raw
+          rsync -a --delete /tmp/hpl-web-data/data/ web-branch/public/data/
+          rsync -a --delete /tmp/hpl-web-data/raw/  web-branch/public/raw/
+          cd web-branch
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add public/data public/raw
+          if git commit -m "Update HPL data artifacts from main"; then
+            git push origin web
+          else
+            echo "No data changes to commit"
+          fi
+
+      - name: Build React app
+        working-directory: web-branch
+        run: |
+          npm ci
+          npm run build
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: web-branch/build
+          publish_branch: gh-pages
