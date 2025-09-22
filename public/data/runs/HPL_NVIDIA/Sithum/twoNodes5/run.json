@@ -1,0 +1,85 @@
+{
+  "id": "HPL_NVIDIA/Sithum/twoNodes5",
+  "suite": "HPL_NVIDIA",
+  "group": "Sithum",
+  "run": "twoNodes5",
+  "dat": {
+    "raw": "HPLinpack benchmark input file\nInnovative Computing Laboratory, University of Tennessee\nHPL.out      output file name (if any)\n6            device out (6=stdout,7=stderr,file)\n1            # of problems sizes (N)\n131072       Ns\n1            # of NBs\n512          NBs\n0            PMAP process mapping (0=Row-,1=Column-major)\n1            # of process grids (P x Q)\n2            Ps\n4            Qs\n16.0         threshold\n1            # of panel fact\n1            PFACTs (ignored by HPL-NVIDIA)\n1            # of recursive stopping criterium\n8            NBMINs (ignored)\n1            # of panels in recursion\n2            NDIVs\n1            # of recursive panel fact.\n1            RFACTs (ignored)\n1            # of broadcast\n3            BCASTs (ignored)\n1            # of lookahead depth\n2            DEPTHs (ignored)\n2            SWAP (0=bin-exch,1=long,2=mix)\n192          swapping threshold\n0            L1 in (ignored)\n1            U  in (ignored)\n1            Equilibration (ignored)\n32           memory alignment in double (> 0, ignored)",
+    "parsed": {
+      "header": [
+        "HPLinpack benchmark input file",
+        "Innovative Computing Laboratory, University of Tennessee"
+      ],
+      "outputFilename": "HPL.out",
+      "deviceOut": 6,
+      "numProblemSizes": 1,
+      "Ns": [
+        131072
+      ],
+      "numNBs": 1,
+      "NBs": [
+        512
+      ],
+      "pmap": 0,
+      "numGrids": 1,
+      "Ps": [
+        2
+      ],
+      "Qs": [
+        4
+      ],
+      "threshold": 16,
+      "numPFACT": 1,
+      "PFACTs": [
+        1
+      ],
+      "numNBMIN": 1,
+      "NBMINs": [
+        8
+      ],
+      "numPanelsInRecursion": 1,
+      "NDIVs": [
+        2
+      ],
+      "numRFACT": 1,
+      "RFACTs": [
+        1
+      ],
+      "numBCAST": 1,
+      "BCASTs": [
+        3
+      ],
+      "numDEPTH": 1,
+      "DEPTHs": [
+        2
+      ],
+      "swapMode": 2,
+      "swapThreshold": 192,
+      "L1": null,
+      "U": null,
+      "equilibration": 1,
+      "memoryAlignment": 32
+    },
+    "path": "/raw/HPL_NVIDIA/Sithum/twoNodes5/HPL.dat"
+  },
+  "job": {
+    "filename": "job.sh",
+    "raw": "#!/bin/bash\n#SBATCH --job-name=hpl-test       # Job name\n#SBATCH --nodes=2\n#SBATCH --ntasks-per-node=4\n#SBATCH --cpus-per-task=8        # CPU cores per MPI task\n#SBATCH --gres=gpu:4,ib:1\n#SBATCH --time=01:00:00           # Time limit hh:mm:ss\n#SBATCH --nodelist=node1,node2\n\n# Load MPI module (adjust for your system)\n# module load openmpi\nexport HPL_USE_GPU=1\nexport HPL_CUDA_MODE=1\n\nexport PATH=/opt/ompi-4.1.6/bin:$PATH\nexport LD_LIBRARY_PATH=/opt/ompi-4.1.6/lib:$LD_LIBRARY_PATH\nexport LD_LIBRARY_PATH=/usr/local/cuda-12.6/lib64:/opt/nvidia/nvidia_hpc_benchmarks_openmpi/lib/nvshmem:/opt/nvidia/nvidia_hpc_benchmarks_openmpi/lib/nccl:/opt/nvidia/nvidia_hpc_benchmarks_openmpi/lib:$LD_LIBRARY_PATH\n\n\n# NCCL: force IB, forbid TCP fallback\nexport NCCL_DEBUG=WARN\nexport NCCL_NET=IB\nexport NCCL_IB_DISABLE=0\nexport NCCL_IB_GID_INDEX=0\nexport NCCL_IB_HCA=${IB_DEV}\n# If a TCP fallback ever happens, make it go over IPoIB, not Ethernet\n[ -n \"$IB_IF\" ] && export NCCL_SOCKET_IFNAME=\"$IB_IF\"\n# Optional perf tweaks for A100 + ConnectX\nexport NCCL_IB_PCI_RELAXED_ORDERING=1\n\n\n# UCX: force RDMA over InfiniBand (no TCP), enable GPU-direct\n# Use mlx5_* names from ibdev2netdev; default to mlx5_0:1 if detection fails\nIB_DEV=$(ibdev2netdev 2>/dev/null | awk '/\\(Up\\)|ACTIVE/{print $1}' | head -n1)\n[ -z \"$IB_DEV\" ] && IB_DEV=mlx5_0\nexport UCX_TLS=rc,sm,self,cuda_copy,gdr_copy,rdmacm\nexport UCX_NET_DEVICES=${IB_DEV}:1\nexport UCX_SOCKADDR_TLS_PRIORITY=rdmacm\nexport UCX_IB_GPU_DIRECT_RDMA=y\nexport UCX_LOG_LEVEL=warn\n\n\n#testing\nulimit -l unlimited\nulimit -n 65536\n\n# Run the MPI program\nmpirun ./xhpl-nvidia",
+    "sbatch": {
+      "job-name": "hpl-test       # Job name",
+      "nodes": 2,
+      "ntasks-per-node": 4,
+      "cpus-per-task": null,
+      "gres": "gpu:4,ib:1",
+      "time": "01:00:00           # Time limit hh:mm:ss",
+      "nodelist": "node1,node2"
+    },
+    "path": "/raw/HPL_NVIDIA/Sithum/twoNodes5/job.sh"
+  },
+  "out": null,
+  "err": {
+    "path": "/raw/HPL_NVIDIA/Sithum/twoNodes5/job.sh-223.err",
+    "size": 518
+  },
+  "best": null
+}

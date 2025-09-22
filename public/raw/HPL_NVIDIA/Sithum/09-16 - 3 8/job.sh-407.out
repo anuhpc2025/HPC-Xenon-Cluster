@@ -1,0 +1,107 @@
+[1757990889.653302] [node1:87503:0]           ib_md.c:1190 UCX  WARN  mlx5_0: relaxed order memory access requested, but unsupported
+[1757990889.670519] [node2:20048:0]           ib_md.c:1190 UCX  WARN  mlx5_0: relaxed order memory access requested, but unsupported
+[1757990889.688942] [node1:87506:0]           ib_md.c:1190 UCX  WARN  mlx5_0: relaxed order memory access requested, but unsupported
+[1757990889.693889] [node1:87504:0]           ib_md.c:1190 UCX  WARN  mlx5_0: relaxed order memory access requested, but unsupported
+[1757990889.699280] [node1:87505:0]           ib_md.c:1190 UCX  WARN  mlx5_0: relaxed order memory access requested, but unsupported
+[1757990889.698291] [node2:20045:0]           ib_md.c:1190 UCX  WARN  mlx5_0: relaxed order memory access requested, but unsupported
+[1757990889.718044] [node2:20047:0]           ib_md.c:1190 UCX  WARN  mlx5_0: relaxed order memory access requested, but unsupported
+[1757990889.718854] [node2:20046:0]           ib_md.c:1190 UCX  WARN  mlx5_0: relaxed order memory access requested, but unsupported
+[1757990889.780814] [node2:20047:0]           ib_md.c:1190 UCX  WARN  mlx5_0: relaxed order memory access requested, but unsupported
+[1757990889.783585] [node2:20046:0]           ib_md.c:1190 UCX  WARN  mlx5_0: relaxed order memory access requested, but unsupported
+[1757990889.783635] [node2:20045:0]           ib_md.c:1190 UCX  WARN  mlx5_0: relaxed order memory access requested, but unsupported
+[1757990889.787751] [node1:87503:0]           ib_md.c:1190 UCX  WARN  mlx5_0: relaxed order memory access requested, but unsupported
+[1757990889.783845] [node2:20048:0]           ib_md.c:1190 UCX  WARN  mlx5_0: relaxed order memory access requested, but unsupported
+[1757990889.789856] [node1:87506:0]           ib_md.c:1190 UCX  WARN  mlx5_0: relaxed order memory access requested, but unsupported
+[1757990889.789919] [node1:87505:0]           ib_md.c:1190 UCX  WARN  mlx5_0: relaxed order memory access requested, but unsupported
+[1757990889.790071] [node1:87504:0]           ib_md.c:1190 UCX  WARN  mlx5_0: relaxed order memory access requested, but unsupported
+[1757990889.832694] [node2:20047:0]           ib_md.c:1190 UCX  WARN  mlx5_0: relaxed order memory access requested, but unsupported
+[1757990889.847709] [node1:87506:0]           ib_md.c:1190 UCX  WARN  mlx5_0: relaxed order memory access requested, but unsupported
+[1757990889.847738] [node1:87503:0]           ib_md.c:1190 UCX  WARN  mlx5_0: relaxed order memory access requested, but unsupported
+[1757990889.847839] [node1:87505:0]           ib_md.c:1190 UCX  WARN  mlx5_0: relaxed order memory access requested, but unsupported
+[1757990889.847999] [node1:87504:0]           ib_md.c:1190 UCX  WARN  mlx5_0: relaxed order memory access requested, but unsupported
+[1757990889.844123] [node2:20048:0]           ib_md.c:1190 UCX  WARN  mlx5_0: relaxed order memory access requested, but unsupported
+[1757990889.844167] [node2:20046:0]           ib_md.c:1190 UCX  WARN  mlx5_0: relaxed order memory access requested, but unsupported
+[1757990889.844327] [node2:20045:0]           ib_md.c:1190 UCX  WARN  mlx5_0: relaxed order memory access requested, but unsupported
+[1757990889.939053] [node2:20047:0]           ib_md.c:1190 UCX  WARN  mlx5_0: relaxed order memory access requested, but unsupported
+[1757990889.947227] [node2:20046:0]           ib_md.c:1190 UCX  WARN  mlx5_0: relaxed order memory access requested, but unsupported
+[1757990889.948798] [node2:20045:0]           ib_md.c:1190 UCX  WARN  mlx5_0: relaxed order memory access requested, but unsupported
+[1757990889.953644] [node1:87504:0]           ib_md.c:1190 UCX  WARN  mlx5_0: relaxed order memory access requested, but unsupported
+[1757990889.953678] [node1:87505:0]           ib_md.c:1190 UCX  WARN  mlx5_0: relaxed order memory access requested, but unsupported
+[1757990889.954034] [node1:87503:0]           ib_md.c:1190 UCX  WARN  mlx5_0: relaxed order memory access requested, but unsupported
+[1757990889.958364] [node2:20048:0]           ib_md.c:1190 UCX  WARN  mlx5_0: relaxed order memory access requested, but unsupported
+[1757990889.962562] [node1:87506:0]           ib_md.c:1190 UCX  WARN  mlx5_0: relaxed order memory access requested, but unsupported
+
+================================================================================
+HPL-NVIDIA 25.4.0  -- NVIDIA accelerated HPL benchmark -- NVIDIA
+================================================================================
+HPLinpack 2.1  --  High-Performance Linpack benchmark  --   October 26, 2012
+Written by A. Petitet and R. Clint Whaley,  Innovative Computing Laboratory, UTK
+Modified by Piotr Luszczek, Innovative Computing Laboratory, UTK
+Modified by Julien Langou, University of Colorado Denver
+================================================================================
+
+An explanation of the input/output parameters follows:
+T/V    : Wall time / encoded variant.
+N      : The order of the coefficient matrix A.
+NB     : The partitioning blocking factor.
+P      : The number of process rows.
+Q      : The number of process columns.
+Time   : Time in seconds to solve the linear system.
+Gflops : Rate of execution for solving the linear system.
+
+The following parameter values will be used:
+
+N      :  200000 
+NB     :     512 
+PMAP   : Column-major process mapping
+P      :       4 
+Q      :       2 
+PFACT  :    Left 
+NBMIN  :       2 
+NDIV   :       2 
+RFACT  :    Left 
+BCAST  :  2ringM 
+DEPTH  :       1 
+SWAP   : Spread-roll (long)
+L1     : no-transposed form
+U      : transposed form
+EQUIL  : no
+ALIGN  : 8 double precision words
+
+--------------------------------------------------------------------------------
+
+- The matrix A is randomly generated for each test.
+- The following scaled residual check will be computed:
+      ||Ax-b||_oo / ( eps * ( || x ||_oo * || A ||_oo + || b ||_oo ) * N )
+- The relative machine precision (eps) is taken to be               1.110223e-16
+- Computational tests pass if scaled residuals are less than                16.0
+
+
+HPL-NVIDIA ignores the following parameters from input file:
+	* Broadcast parameters
+	* Panel factorization parameters
+	* Look-ahead value
+	* L1 layout
+	* U layout
+	* Equilibration parameter
+	* Memory alignment parameter
+
+HPL-NVIDIA settings from environment variables:
+--- DEVICE INFO ---
+  Peak clock frequency: 1410 MHz
+  SM version          : 80
+  Number of SMs       : 108
+-------------------
+[HPL TRACE] cuda_nvshmem_init: max=1.0911 (6) min=1.0911 (4)
+[WARNING] Change Input N 200000 to 199680
+[HPL TRACE] ncclCommInitRank: max=0.0928 (4) min=0.0916 (7)
+[HPL TRACE] cugetrfs_mp_init: max=0.1665 (0) min=0.1665 (5)
+--- MEMORY INFO ---
+DEVICE
+  System           =      2.78660 GiB (MIN)      2.78660 GiB (MAX)      2.78660 GiB (AVG)
+  HPL buffers      =     40.74900 GiB (MIN)     41.12987 GiB (MAX)     40.93944 GiB (AVG)
+  Used             =     43.53561 GiB (MIN)     43.91647 GiB (MAX)     43.72604 GiB (AVG)
+  Total            =     40.00000 GiB (MIN)     40.00000 GiB (MAX)     40.00000 GiB (AVG)
+HOST
+  HPL buffers      =      0.00041 GiB (MIN)      0.00041 GiB (MAX)      0.00041 GiB (AVG)
+-------------------

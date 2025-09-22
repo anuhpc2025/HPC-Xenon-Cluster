@@ -1,0 +1,162 @@
+
+================================================================================
+HPL-NVIDIA 25.4.0  -- NVIDIA accelerated HPL benchmark -- NVIDIA
+================================================================================
+HPLinpack 2.1  --  High-Performance Linpack benchmark  --   October 26, 2012
+Written by A. Petitet and R. Clint Whaley,  Innovative Computing Laboratory, UTK
+Modified by Piotr Luszczek, Innovative Computing Laboratory, UTK
+Modified by Julien Langou, University of Colorado Denver
+================================================================================
+
+An explanation of the input/output parameters follows:
+T/V    : Wall time / encoded variant.
+N      : The order of the coefficient matrix A.
+NB     : The partitioning blocking factor.
+P      : The number of process rows.
+Q      : The number of process columns.
+Time   : Time in seconds to solve the linear system.
+Gflops : Rate of execution for solving the linear system.
+
+The following parameter values will be used:
+
+N      :   50000 
+NB     :    1024 
+PMAP   : Column-major process mapping
+P      :       2 
+Q      :       2 
+PFACT  :    Left 
+NBMIN  :       2 
+NDIV   :       2 
+RFACT  :    Left 
+BCAST  :  2ringM 
+DEPTH  :       1 
+SWAP   : Spread-roll (long)
+L1     : no-transposed form
+U      : transposed form
+EQUIL  : no
+ALIGN  : 8 double precision words
+
+--------------------------------------------------------------------------------
+
+- The matrix A is randomly generated for each test.
+- The following scaled residual check will be computed:
+      ||Ax-b||_oo / ( eps * ( || x ||_oo * || A ||_oo + || b ||_oo ) * N )
+- The relative machine precision (eps) is taken to be               1.110223e-16
+- Computational tests pass if scaled residuals are less than                16.0
+
+
+HPL-NVIDIA ignores the following parameters from input file:
+	* Broadcast parameters
+	* Panel factorization parameters
+	* Look-ahead value
+	* L1 layout
+	* U layout
+	* Equilibration parameter
+	* Memory alignment parameter
+
+HPL-NVIDIA settings from environment variables:
+--- DEVICE INFO ---
+  Peak clock frequency: 1410 MHz
+  SM version          : 80
+  Number of SMs       : 108
+-------------------
+[HPL TRACE] cuda_nvshmem_init: max=8.8781 (3) min=8.8781 (1)
+[WARNING] Change Input N 50000 to 49152
+[HPL TRACE] ncclCommInitRank: max=0.8826 (1) min=0.8647 (2)
+[HPL TRACE] cugetrfs_mp_init: max=0.9351 (0) min=0.9350 (1)
+--- MEMORY INFO ---
+DEVICE
+  System           =      6.22768 GiB (MIN)      6.57925 GiB (MAX)      6.40347 GiB (AVG)
+  HPL buffers      =      8.20530 GiB (MIN)      8.20530 GiB (MAX)      8.20530 GiB (AVG)
+  Used             =     14.43298 GiB (MIN)     14.78455 GiB (MAX)     14.60876 GiB (AVG)
+  Total            =     40.00000 GiB (MIN)     40.00000 GiB (MAX)     40.00000 GiB (AVG)
+HOST
+  HPL buffers      =      0.00023 GiB (MIN)      0.00023 GiB (MAX)      0.00023 GiB (AVG)
+-------------------
+
+ ... Testing HPL components ... 
+
+ **** Factorization, m = 24576, policy = 0 **** 
+avg time =    28.17 ms, avg =   914.87. min =   909.58 [rank 2, host node1, gpuID 0000:81:00.0], max =   920.22 GFLOPS
+
+ **** Factorization, m = 24576, policy = 1 **** 
+avg time =    39.46 ms, avg =   653.14. min =   528.48 [rank 2, host node1, gpuID 0000:81:00.0], max =   854.78 GFLOPS
+
+ **** Factorization, m = 12288, policy = 0 **** 
+avg time =    21.14 ms, avg =   609.63. min =   609.54 [rank 0, host node1, gpuID 0000:01:00.0], max =   609.71 GFLOPS
+
+ **** Factorization, m = 12288, policy = 1 **** 
+avg time =    35.97 ms, avg =   358.19. min =   285.75 [rank 2, host node1, gpuID 0000:81:00.0], max =   479.84 GFLOPS
+
+ **** Factorization, m = 6144, policy = 0 **** 
+avg time =    19.22 ms, avg =   335.26. min =   334.84 [rank 2, host node1, gpuID 0000:81:00.0], max =   335.69 GFLOPS
+
+ **** Factorization, m = 6144, policy = 1 **** 
+avg time =    33.92 ms, avg =   189.92. min =   150.43 [rank 2, host node1, gpuID 0000:81:00.0], max =   257.54 GFLOPS
+
+ **** Factorization, m = 1024, policy = 0 **** 
+avg time =    17.22 ms, avg =    62.35. min =    62.15 [rank 2, host node1, gpuID 0000:81:00.0], max =    62.56 GFLOPS
+
+ **** Factorization, m = 1024, policy = 1 **** 
+avg time =    32.40 ms, avg =    33.14. min =    25.95 [rank 2, host node1, gpuID 0000:81:00.0], max =    45.85 GFLOPS
+
+ **** ncclBcast( Row ) **** 
+avg time =     0.00 ms, avg = 312788.93. min = 258475.53 [rank 0, host node1, gpuID 0000:01:00.0], max = 344796.36 GBS
+
+ **** ncclAllGather( Col ) **** 
+avg time =     0.00 ms, avg = 259608.76. min = 257122.08 [rank 0, host node1, gpuID 0000:01:00.0], max = 263172.02 GBS
+
+ **** Latency ncclAllGather, m = 1 **** 
+avg time =     0.29 ms, avg =     0.06. min =     0.06 [rank 1, host node1, gpuID 0000:41:00.0], max =     0.06 GBS
+
+ **** Latency ncclAllGather, m = 2 **** 
+avg time =     0.29 ms, avg =     0.11. min =     0.11 [rank 2, host node1, gpuID 0000:81:00.0], max =     0.11 GBS
+
+ **** Latency ncclAllGather, m = 32 **** 
+avg time =     0.31 ms, avg =     1.69. min =     1.45 [rank 1, host node1, gpuID 0000:41:00.0], max =     1.80 GBS
+
+ **** Latency ncclAllGather, m = 1024 **** 
+avg time =     0.29 ms, avg =    57.25. min =    57.08 [rank 2, host node1, gpuID 0000:81:00.0], max =    57.38 GBS
+
+ **** Latency ncclAllGather, m = 2048 **** 
+avg time =     0.29 ms, avg =   114.59. min =   114.36 [rank 1, host node1, gpuID 0000:41:00.0], max =   114.89 GBS
+
+ **** Latency Host MPI_Allgather, m = 1 **** 
+avg time =     0.72 ms, avg =     0.02. min =     0.02 [rank 3, host node1, gpuID 0000:C1:00.0], max =     0.02 GBS
+
+ **** Latency Host MPI_Allgather, m = 2 **** 
+avg time =     0.72 ms, avg =     0.05. min =     0.04 [rank 3, host node1, gpuID 0000:C1:00.0], max =     0.05 GBS
+
+ **** Latency Host MPI_Allgather, m = 32 **** 
+avg time =     0.84 ms, avg =     0.63. min =     0.62 [rank 2, host node1, gpuID 0000:81:00.0], max =     0.63 GBS
+
+ **** Latency Host MPI_Allgather, m = 1024 **** 
+avg time =     6.34 ms, avg =     2.65. min =     2.64 [rank 2, host node1, gpuID 0000:81:00.0], max =     2.65 GBS
+
+ **** Latency Host MPI_Allgather, m = 2048 **** 
+avg time =    11.61 ms, avg =     2.89. min =     2.85 [rank 0, host node1, gpuID 0000:01:00.0], max =     2.93 GBS
+
+ **** Latency ncclBcast, m = 1 **** 
+avg time =     0.31 ms, avg =     0.03. min =     0.03 [rank 2, host node1, gpuID 0000:81:00.0], max =     0.03 GBS
+
+ **** Latency ncclBcast, m = 32 **** 
+avg time =     0.31 ms, avg =     0.84. min =     0.83 [rank 3, host node1, gpuID 0000:C1:00.0], max =     0.84 GBS
+
+ **** Latency ncclBcast, m = 1024 **** 
+avg time =     0.31 ms, avg =    26.81. min =    26.70 [rank 2, host node1, gpuID 0000:81:00.0], max =    26.90 GBS
+
+ **** Latency Host MPI_Bcast, m = 1 **** 
+avg time =     0.12 ms, avg =     0.07. min =     0.07 [rank 3, host node1, gpuID 0000:C1:00.0], max =     0.07 GBS
+
+ **** Latency Host MPI_Bcast, m = 32 **** 
+avg time =     0.16 ms, avg =     1.62. min =     1.59 [rank 3, host node1, gpuID 0000:C1:00.0], max =     1.65 GBS
+
+ **** Latency Host MPI_Bcast, m = 1024 **** 
+avg time =     0.59 ms, avg =    14.24. min =    13.15 [rank 1, host node1, gpuID 0000:41:00.0], max =    15.51 GBS
+
+ **** GEMM **** 
+avg time =    44.76 ms, avg = 18424.71. min = 18249.29 [rank 2, host node1, gpuID 0000:81:00.0], max = 18561.73 GFLOPS
+
+ ... End of Testing HPL components ... 
+
+[HPL TRACE] HPL_pdmatgen_gpu: max=0.0038 (3) min=0.0037 (1)

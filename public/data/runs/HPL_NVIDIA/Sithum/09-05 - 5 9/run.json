@@ -1,0 +1,87 @@
+{
+  "id": "HPL_NVIDIA/Sithum/09-05 - 5 9",
+  "suite": "HPL_NVIDIA",
+  "group": "Sithum",
+  "run": "09-05 - 5 9",
+  "dat": {
+    "raw": "HPLinpack benchmark input file\nInnovative Computing Laboratory, University of Tennessee\nHPL.out\n6\n\n3            # of problems sizes (N)\n337920 343040 348160\n2            # of NBs\n384 512\n\n1            PMAP process mapping (column-major)\n\n1            # of process grids (P x Q)\n2            Ps\n4            Qs\n\n16.0\n1\n1\n1\n8\n1\n2\n1\n1\n1\n3\n1\n1\n2\n192\n1\n1\n0\n32",
+    "parsed": {
+      "header": [
+        "HPLinpack benchmark input file",
+        "Innovative Computing Laboratory, University of Tennessee"
+      ],
+      "outputFilename": null,
+      "deviceOut": null,
+      "numProblemSizes": 3,
+      "Ns": [],
+      "numNBs": 2,
+      "NBs": [],
+      "pmap": 1,
+      "numGrids": 1,
+      "Ps": [
+        2
+      ],
+      "Qs": [
+        4
+      ],
+      "threshold": null,
+      "numPFACT": null,
+      "PFACTs": [],
+      "numNBMIN": null,
+      "NBMINs": [],
+      "numPanelsInRecursion": null,
+      "NDIVs": [],
+      "numRFACT": null,
+      "RFACTs": [],
+      "numBCAST": null,
+      "BCASTs": [],
+      "numDEPTH": null,
+      "DEPTHs": [],
+      "swapMode": null,
+      "swapThreshold": null,
+      "L1": null,
+      "U": null,
+      "equilibration": null,
+      "memoryAlignment": null
+    },
+    "path": "/raw/HPL_NVIDIA/Sithum/09-05 - 5 9/HPL.dat"
+  },
+  "job": {
+    "filename": "job.sh",
+    "raw": "#!/bin/bash\n#SBATCH --job-name=hpl-test       # Job name\n#SBATCH --ntasks=8                # Total MPI tasks - 4 x 4\n#SBATCH --ntasks-per-node=4       # balance tasks across nodes - 1 per gpu\n#SBATCH --time=01:00:00           # Time limit hh:mm:ss\n#SBATCH --nodes=2                 #\n#SBATCH --nodelist=node1,node2    # nodes 1 and 2 are the only ones with hpcx for now\n\n# Load hpcx module - and everything else we need for that matter\nsource ~/.bashrc\n\n# hpc-x\nexport HPCX_HOME=/home/hpc/hpcx/hpcx-v2.24-gcc-doca_ofed-ubuntu24.04-cuda13-x86_64\nexport LD_LIBRARY_PATH=$HPCX_HOME/ucx/lib:$HPCX_HOME/ompi/lib:$LD_LIBRARY_PATH\nexport PATH=$HPCX_HOME/ompi/bin:$PATH\nsource $HPCX_HOME/hpcx-init.sh\nhpcx_load\n\n# nvidia\nexport CUDA_VISIBLE_DEVICES=0,1,2,3\nexport HPL_USE_GPU=1\nexport HPL_CUDA_MODE=1\nexport LD_LIBRARY_PATH=/opt/nvidia/nvidia_hpc_benchmarks_openmpi/lib/omp:$LD_LIBRARY_PATH\nexport LD_LIBRARY_PATH=/usr/local/cuda-12.6/lib64:/opt/nvidia/nvidia_hpc_benchmarks_openmpi/lib/nccl:/opt/nvidia/nvidia_hpc_benchmarks_openmpi/lib:$LD_LIBRARY_PATH\nexport LD_LIBRARY_PATH=/usr/lib/x86_64-linux-gnu/nvshmem/12:$LD_LIBRARY_PATH\n\nexport OMPI_MCA_pml=ucx\nexport OMPI_MCA_osc=ucx\nexport OMPI_MCA_btl=^openib\nexport OMPI_MCA_opal_cuda_support=true\nexport OMPI_MCA_mpi_leave_pinned=1\n# Rank mapping/binding via MCA (equiv to --map-by ppr:2:numa:pe=8 --bind-to core)\nexport OMPI_MCA_rmaps_base_mapping_policy=\"ppr:2:numa:pe=8\"\nexport OMPI_MCA_hwloc_base_binding_policy=core\n\nexport UCX_TLS=rc_x,sm,self,cuda_copy,gdr_copy\nexport UCX_IB_GPU_DIRECT_RDMA=y\nexport UCX_MEMTYPE_CACHE=y\nexport UCX_RNDV_SCHEME=put_zcopy\nexport UCX_IB_PCI_RELAXED_ORDERING=on\n\n\n#testing\nulimit -l unlimited\nulimit -n 65536\n\n# Run the MPI program\nmpirun ./xhpl-nvidia",
+    "sbatch": {
+      "job-name": "hpl-test       # Job name",
+      "ntasks": null,
+      "ntasks-per-node": null,
+      "time": "01:00:00           # Time limit hh:mm:ss",
+      "nodes": null,
+      "nodelist": "node1,node2    # nodes 1 and 2 are the only ones with hpcx for now"
+    },
+    "path": "/raw/HPL_NVIDIA/Sithum/09-05 - 5 9/job.sh"
+  },
+  "out": {
+    "path": "/raw/HPL_NVIDIA/Sithum/09-05 - 5 9/job.sh-339.out",
+    "runs": [],
+    "summary": {
+      "testsTotal": null,
+      "testsPassed": null,
+      "testsFailed": null,
+      "testsSkipped": null
+    },
+    "deviceInfo": {},
+    "memInfo": {
+      "DEVICE": {},
+      "HOST": {}
+    },
+    "traces": [],
+    "startTime": null,
+    "endTime": null,
+    "residual": null,
+    "residualPassed": null
+  },
+  "err": {
+    "path": "/raw/HPL_NVIDIA/Sithum/09-05 - 5 9/job.sh-339.err",
+    "size": 874
+  },
+  "best": null
+}

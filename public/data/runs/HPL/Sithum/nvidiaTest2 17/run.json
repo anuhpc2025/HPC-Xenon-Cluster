@@ -1,0 +1,122 @@
+{
+  "id": "HPL/Sithum/nvidiaTest2 17",
+  "suite": "HPL",
+  "group": "Sithum",
+  "run": "nvidiaTest2 17",
+  "dat": {
+    "raw": "HPLinpack benchmark input file\nInnovative Computing Laboratory, University of Tennessee\nHPL.out      output file name (if any)\n6            device out (6=stdout,7=stderr,file)\n1            # of problems sizes (N)\n50000         Ns\n1            # of NBs\n1024          NBs\n1            PMAP process mapping (0=Row-,1=Column-major)\n1            # of process grids (P x Q)\n2            Ps\n2            Qs\n16.0         threshold\n1            # of panel fact\n0 1 2        PFACTs (0=left, 1=Crout, 2=Right)\n1            # of recursive stopping criterium\n2 8          NBMINs (>= 1)\n1            # of panels in recursion\n2            NDIVs\n1            # of recursive panel fact.\n0 1 2        RFACTs (0=left, 1=Crout, 2=Right)\n1            # of broadcast\n3 2          BCASTs (0=1rg,1=1rM,2=2rg,3=2rM,4=Lng,5=LnM)\n1            # of lookahead depth\n1 0          DEPTHs (>=0)\n1            SWAP (0=bin-exch,1=long,2=mix)\n192          swapping threshold\n1            L1 in (0=transposed,1=no-transposed) form\n0            U  in (0=transposed,1=no-transposed) form\n0            Equilibration (0=no,1=yes)\n8            memory alignment in double (> 0)",
+    "parsed": {
+      "header": [
+        "HPLinpack benchmark input file",
+        "Innovative Computing Laboratory, University of Tennessee"
+      ],
+      "outputFilename": "HPL.out",
+      "deviceOut": 6,
+      "numProblemSizes": 1,
+      "Ns": [
+        50000
+      ],
+      "numNBs": 1,
+      "NBs": [
+        1024
+      ],
+      "pmap": 1,
+      "numGrids": 1,
+      "Ps": [
+        2
+      ],
+      "Qs": [
+        2
+      ],
+      "threshold": 16,
+      "numPFACT": 1,
+      "PFACTs": [
+        0,
+        1,
+        2,
+        0,
+        1,
+        2
+      ],
+      "numNBMIN": 1,
+      "NBMINs": [
+        2,
+        8,
+        1
+      ],
+      "numPanelsInRecursion": 1,
+      "NDIVs": [
+        2
+      ],
+      "numRFACT": 1,
+      "RFACTs": [
+        0,
+        1,
+        2,
+        0,
+        1,
+        2
+      ],
+      "numBCAST": 1,
+      "BCASTs": [
+        3,
+        2,
+        0,
+        1,
+        1,
+        1,
+        2,
+        2,
+        3,
+        2,
+        4,
+        5
+      ],
+      "numDEPTH": 1,
+      "DEPTHs": [
+        1,
+        0,
+        0
+      ],
+      "swapMode": 1,
+      "swapThreshold": 192,
+      "L1": 1,
+      "U": 0,
+      "equilibration": 0,
+      "memoryAlignment": 8
+    },
+    "path": "/raw/HPL/Sithum/nvidiaTest2 17/HPL.dat"
+  },
+  "job": {
+    "filename": "job.sh",
+    "raw": "#!/bin/bash\n#SBATCH --job-name=hpl-test       # Job name\n#SBATCH --nodes=1                 # Number of nodes\n#SBATCH --ntasks=4                # Total MPI tasks\n#SBATCH --ntasks-per-node=4       # MPI tasks per node\n#SBATCH --cpus-per-task=8        # CPU cores per MPI task\n#SBATCH --time=01:00:00           # Time limit hh:mm:ss\n#SBATCH --output=hpl-%j.out       # Standard output file\n#SBATCH --error=hpl-%j.err        # Standard error file\n#SBATCH --nodelist=node1\n#SBATCH --gpus-per-task=1\n\n# Load MPI module (adjust for your system)\n# module load openmpi\nexport LD_LIBRARY_PATH=/opt/nvidia/nvidia_hpc_benchmarks_openmpi/lib/nvshmem/:$LD_LIBRARY_PATH\n\n#testing\nulimit -l unlimited\nulimit -n 65536\n\necho \"CUDA_VISIBLE_DEVICES = $CUDA_VISIBLE_DEVICES\"\nnvidia-smi\n\n# Run the MPI program\nexport CUDA_VISIBLE_DEVICES=0,1,2,3\nmpirun -np 4 ./xhpl-nvidia",
+    "sbatch": {
+      "job-name": "hpl-test       # Job name",
+      "nodes": null,
+      "ntasks": null,
+      "ntasks-per-node": null,
+      "cpus-per-task": null,
+      "time": "01:00:00           # Time limit hh:mm:ss",
+      "output": "hpl-%j.out       # Standard output file",
+      "error": "hpl-%j.err        # Standard error file",
+      "nodelist": "node1",
+      "gpus-per-task": "1"
+    },
+    "path": "/raw/HPL/Sithum/nvidiaTest2 17/job.sh"
+  },
+  "out": {
+    "path": "/raw/HPL/Sithum/nvidiaTest2 17/job.sh-136.out",
+    "runs": [],
+    "summary": {
+      "testsTotal": null,
+      "testsPassed": null,
+      "testsFailed": null,
+      "testsSkipped": null
+    }
+  },
+  "err": {
+    "path": "/raw/HPL/Sithum/nvidiaTest2 17/job.sh-136.err",
+    "size": 1475
+  },
+  "best": null
+}

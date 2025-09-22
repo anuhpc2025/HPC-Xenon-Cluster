@@ -1,0 +1,61 @@
+[1,0]<stdout>:[1758262395.617461] [node1:91271:0]     ucp_context.c:2339 UCX  INFO  Version 1.19.0 (loaded from /home/hpc/hpcx/hpcx-v2.24-gcc-doca_ofed-ubuntu24.04-cuda13-x86_64/ucx/lib/libucp.so.0)
+[1,3]<stdout>:[1758262395.617530] [node1:91274:0]     ucp_context.c:2339 UCX  INFO  Version 1.19.0 (loaded from /home/hpc/hpcx/hpcx-v2.24-gcc-doca_ofed-ubuntu24.04-cuda13-x86_64/ucx/lib/libucp.so.0)
+[1,2]<stdout>:[1758262395.617729] [node1:91273:0]     ucp_context.c:2339 UCX  INFO  Version 1.19.0 (loaded from /home/hpc/hpcx/hpcx-v2.24-gcc-doca_ofed-ubuntu24.04-cuda13-x86_64/ucx/lib/libucp.so.0)
+[1,1]<stdout>:[1758262395.617777] [node1:91272:0]     ucp_context.c:2339 UCX  INFO  Version 1.19.0 (loaded from /home/hpc/hpcx/hpcx-v2.24-gcc-doca_ofed-ubuntu24.04-cuda13-x86_64/ucx/lib/libucp.so.0)
+[1,4]<stdout>:[1758262395.612480] [node3:17394:f]        vfs_sock.c:63   UCX  DIAG  failed to create directory '/run/user/1000/ucx': No such file or directory
+[1,4]<stdout>:[1758262395.612513] [node3:17394:f]        vfs_fuse.c:440  UCX  DIAG  failed to watch on '/run/user/1000/ucx/vfs.sock': Input/output error, VFS will be disabled
+[1,5]<stdout>:[1758262395.612548] [node3:17395:f]        vfs_sock.c:63   UCX  DIAG  failed to create directory '/run/user/1000/ucx': No such file or directory
+[1,5]<stdout>:[1758262395.612568] [node3:17395:f]        vfs_fuse.c:440  UCX  DIAG  failed to watch on '/run/user/1000/ucx/vfs.sock': Input/output error, VFS will be disabled
+[1,7]<stdout>:[1758262395.612598] [node3:17397:f]        vfs_sock.c:63   UCX  DIAG  failed to create directory '/run/user/1000/ucx': No such file or directory
+[1,7]<stdout>:[1758262395.612617] [node3:17397:f]        vfs_fuse.c:440  UCX  DIAG  failed to watch on '/run/user/1000/ucx/vfs.sock': Input/output error, VFS will be disabled
+[1,4]<stdout>:[1758262395.612733] [node3:17394:0]     ucp_context.c:2339 UCX  INFO  Version 1.19.0 (loaded from /home/hpc/hpcx/hpcx-v2.24-gcc-doca_ofed-ubuntu24.04-cuda13-x86_64/ucx/lib/libucp.so.0)
+[1,7]<stdout>:[1758262395.612766] [node3:17397:0]     ucp_context.c:2339 UCX  INFO  Version 1.19.0 (loaded from /home/hpc/hpcx/hpcx-v2.24-gcc-doca_ofed-ubuntu24.04-cuda13-x86_64/ucx/lib/libucp.so.0)
+[1,5]<stdout>:[1758262395.612795] [node3:17395:0]     ucp_context.c:2339 UCX  INFO  Version 1.19.0 (loaded from /home/hpc/hpcx/hpcx-v2.24-gcc-doca_ofed-ubuntu24.04-cuda13-x86_64/ucx/lib/libucp.so.0)
+[1,6]<stdout>:[1758262395.612827] [node3:17396:f]        vfs_sock.c:63   UCX  DIAG  failed to create directory '/run/user/1000/ucx': No such file or directory
+[1,6]<stdout>:[1758262395.612844] [node3:17396:f]        vfs_fuse.c:440  UCX  DIAG  failed to watch on '/run/user/1000/ucx/vfs.sock': Input/output error, VFS will be disabled
+[1,6]<stdout>:[1758262395.613013] [node3:17396:0]     ucp_context.c:2339 UCX  INFO  Version 1.19.0 (loaded from /home/hpc/hpcx/hpcx-v2.24-gcc-doca_ofed-ubuntu24.04-cuda13-x86_64/ucx/lib/libucp.so.0)
+[1,3]<stdout>:[1758262396.644762] [node1:91274:0]          parser.c:2368 UCX  INFO  UCX_* env variables: UCX_TLS=tcp,sm,self,cuda_copy,cuda_ipc UCX_LOG_LEVEL=info
+[1,2]<stdout>:[1758262396.647425] [node1:91273:0]          parser.c:2368 UCX  INFO  UCX_* env variables: UCX_TLS=tcp,sm,self,cuda_copy,cuda_ipc UCX_LOG_LEVEL=info
+[1,1]<stdout>:[1758262396.650499] [node1:91272:0]          parser.c:2368 UCX  INFO  UCX_* env variables: UCX_TLS=tcp,sm,self,cuda_copy,cuda_ipc UCX_LOG_LEVEL=info
+[1,0]<stdout>:[1758262396.660322] [node1:91271:0]          parser.c:2368 UCX  INFO  UCX_* env variables: UCX_TLS=tcp,sm,self,cuda_copy,cuda_ipc UCX_LOG_LEVEL=info
+[1,7]<stdout>:[1758262396.824824] [node3:17397:0]          parser.c:2368 UCX  INFO  UCX_* env variables: UCX_TLS=tcp,sm,self,cuda_copy,cuda_ipc UCX_LOG_LEVEL=info
+[1,6]<stdout>:[1758262396.829865] [node3:17396:0]          parser.c:2368 UCX  INFO  UCX_* env variables: UCX_TLS=tcp,sm,self,cuda_copy,cuda_ipc UCX_LOG_LEVEL=info
+[1,4]<stdout>:[1758262396.830495] [node3:17394:0]          parser.c:2368 UCX  INFO  UCX_* env variables: UCX_TLS=tcp,sm,self,cuda_copy,cuda_ipc UCX_LOG_LEVEL=info
+[1,5]<stdout>:[1758262396.836628] [node3:17395:0]          parser.c:2368 UCX  INFO  UCX_* env variables: UCX_TLS=tcp,sm,self,cuda_copy,cuda_ipc UCX_LOG_LEVEL=info
+[1,0]<stdout>:[1758262396.843606] [node1:91271:0]     ucp_context.c:2339 UCX  INFO  Version 1.19.0 (loaded from /home/hpc/hpcx/hpcx-v2.24-gcc-doca_ofed-ubuntu24.04-cuda13-x86_64/ucx/lib/libucp.so.0)
+[1,2]<stdout>:[1758262396.843684] [node1:91273:0]     ucp_context.c:2339 UCX  INFO  Version 1.19.0 (loaded from /home/hpc/hpcx/hpcx-v2.24-gcc-doca_ofed-ubuntu24.04-cuda13-x86_64/ucx/lib/libucp.so.0)
+[1,3]<stdout>:[1758262396.843706] [node1:91274:0]     ucp_context.c:2339 UCX  INFO  Version 1.19.0 (loaded from /home/hpc/hpcx/hpcx-v2.24-gcc-doca_ofed-ubuntu24.04-cuda13-x86_64/ucx/lib/libucp.so.0)
+[1,6]<stdout>:[1758262396.837820] [node3:17396:0]     ucp_context.c:2339 UCX  INFO  Version 1.19.0 (loaded from /home/hpc/hpcx/hpcx-v2.24-gcc-doca_ofed-ubuntu24.04-cuda13-x86_64/ucx/lib/libucp.so.0)
+[1,1]<stdout>:[1758262396.843785] [node1:91272:0]     ucp_context.c:2339 UCX  INFO  Version 1.19.0 (loaded from /home/hpc/hpcx/hpcx-v2.24-gcc-doca_ofed-ubuntu24.04-cuda13-x86_64/ucx/lib/libucp.so.0)
+[1,7]<stdout>:[1758262396.837874] [node3:17397:0]     ucp_context.c:2339 UCX  INFO  Version 1.19.0 (loaded from /home/hpc/hpcx/hpcx-v2.24-gcc-doca_ofed-ubuntu24.04-cuda13-x86_64/ucx/lib/libucp.so.0)
+[1,4]<stdout>:[1758262396.837876] [node3:17394:0]     ucp_context.c:2339 UCX  INFO  Version 1.19.0 (loaded from /home/hpc/hpcx/hpcx-v2.24-gcc-doca_ofed-ubuntu24.04-cuda13-x86_64/ucx/lib/libucp.so.0)
+[1,5]<stdout>:[1758262396.837977] [node3:17395:0]     ucp_context.c:2339 UCX  INFO  Version 1.19.0 (loaded from /home/hpc/hpcx/hpcx-v2.24-gcc-doca_ofed-ubuntu24.04-cuda13-x86_64/ucx/lib/libucp.so.0)
+[1,6]<stdout>:[1758262396.866244] [node3:17396:0]      ucp_worker.c:1903 UCX  INFO    ucp_context_0 self cfg#1 tag(self/memory cma/memory)
+[1,6]<stdout>:[1758262396.866822] [node3:17396:0]      ucp_worker.c:1903 UCX  INFO    ucp_context_0 intra-node cfg#2 tag(sysv/memory cma/memory cuda_ipc/cuda)
+[1,7]<stdout>:[1758262396.868010] [node3:17397:0]      ucp_worker.c:1903 UCX  INFO    ucp_context_0 self cfg#1 tag(self/memory cma/memory)
+[1,4]<stdout>:[1758262396.868243] [node3:17394:0]      ucp_worker.c:1903 UCX  INFO    ucp_context_0 self cfg#1 tag(self/memory cma/memory)
+[1,5]<stdout>:[1758262396.868379] [node3:17395:0]      ucp_worker.c:1903 UCX  INFO    ucp_context_0 self cfg#1 tag(self/memory cma/memory)
+[1,7]<stdout>:[1758262396.868818] [node3:17397:0]      ucp_worker.c:1903 UCX  INFO    ucp_context_0 intra-node cfg#2 tag(sysv/memory cma/memory cuda_ipc/cuda)
+[1,5]<stdout>:[1758262396.869161] [node3:17395:0]      ucp_worker.c:1903 UCX  INFO    ucp_context_0 intra-node cfg#2 tag(sysv/memory cma/memory cuda_ipc/cuda)
+[1,4]<stdout>:[1758262396.869186] [node3:17394:0]      ucp_worker.c:1903 UCX  INFO    ucp_context_0 intra-node cfg#2 tag(sysv/memory cma/memory cuda_ipc/cuda)
+[1,0]<stdout>:[1758262396.876887] [node1:91271:0]      ucp_worker.c:1903 UCX  INFO    ucp_context_0 self cfg#1 tag(self/memory cma/memory)
+[1,0]<stdout>:[1758262396.877700] [node1:91271:0]      ucp_worker.c:1903 UCX  INFO    ucp_context_0 intra-node cfg#2 tag(sysv/memory cma/memory cuda_ipc/cuda)
+[1,3]<stdout>:[1758262396.881375] [node1:91274:0]      ucp_worker.c:1903 UCX  INFO    ucp_context_0 self cfg#1 tag(self/memory cma/memory)
+[1,2]<stdout>:[1758262396.881464] [node1:91273:0]      ucp_worker.c:1903 UCX  INFO    ucp_context_0 self cfg#1 tag(self/memory cma/memory)
+[1,1]<stdout>:[1758262396.881867] [node1:91272:0]      ucp_worker.c:1903 UCX  INFO    ucp_context_0 self cfg#1 tag(self/memory cma/memory)
+[1,3]<stdout>:[1758262396.882379] [node1:91274:0]      ucp_worker.c:1903 UCX  INFO    ucp_context_0 intra-node cfg#2 tag(sysv/memory cma/memory cuda_ipc/cuda)
+[1,2]<stdout>:[1758262396.882441] [node1:91273:0]      ucp_worker.c:1903 UCX  INFO    ucp_context_0 intra-node cfg#2 tag(sysv/memory cma/memory cuda_ipc/cuda)
+[1,1]<stdout>:[1758262396.882826] [node1:91272:0]      ucp_worker.c:1903 UCX  INFO    ucp_context_0 intra-node cfg#2 tag(sysv/memory cma/memory cuda_ipc/cuda)
+[1,0]<stdout>:[1758262396.892579] [node1:91271:0]     ucp_context.c:2339 UCX  INFO  Version 1.19.0 (loaded from /home/hpc/hpcx/hpcx-v2.24-gcc-doca_ofed-ubuntu24.04-cuda13-x86_64/ucx/lib/libucp.so.0)
+[1,3]<stdout>:[1758262396.893649] [node1:91274:0]     ucp_context.c:2339 UCX  INFO  Version 1.19.0 (loaded from /home/hpc/hpcx/hpcx-v2.24-gcc-doca_ofed-ubuntu24.04-cuda13-x86_64/ucx/lib/libucp.so.0)
+[1,2]<stdout>:[1758262396.893652] [node1:91273:0]     ucp_context.c:2339 UCX  INFO  Version 1.19.0 (loaded from /home/hpc/hpcx/hpcx-v2.24-gcc-doca_ofed-ubuntu24.04-cuda13-x86_64/ucx/lib/libucp.so.0)
+[1,1]<stdout>:[1758262396.893661] [node1:91272:0]     ucp_context.c:2339 UCX  INFO  Version 1.19.0 (loaded from /home/hpc/hpcx/hpcx-v2.24-gcc-doca_ofed-ubuntu24.04-cuda13-x86_64/ucx/lib/libucp.so.0)
+[1,6]<stdout>:[1758262396.908373] [node3:17396:0]     ucp_context.c:2339 UCX  INFO  Version 1.19.0 (loaded from /home/hpc/hpcx/hpcx-v2.24-gcc-doca_ofed-ubuntu24.04-cuda13-x86_64/ucx/lib/libucp.so.0)
+[1,7]<stdout>:[1758262396.908376] [node3:17397:0]     ucp_context.c:2339 UCX  INFO  Version 1.19.0 (loaded from /home/hpc/hpcx/hpcx-v2.24-gcc-doca_ofed-ubuntu24.04-cuda13-x86_64/ucx/lib/libucp.so.0)
+[1,5]<stdout>:[1758262396.908382] [node3:17395:0]     ucp_context.c:2339 UCX  INFO  Version 1.19.0 (loaded from /home/hpc/hpcx/hpcx-v2.24-gcc-doca_ofed-ubuntu24.04-cuda13-x86_64/ucx/lib/libucp.so.0)
+[1,4]<stdout>:[1758262396.911525] [node3:17394:0]     ucp_context.c:2339 UCX  INFO  Version 1.19.0 (loaded from /home/hpc/hpcx/hpcx-v2.24-gcc-doca_ofed-ubuntu24.04-cuda13-x86_64/ucx/lib/libucp.so.0)
+[1,3]<stdout>:[1758262396.957793] [node1:91274:0]      ucp_worker.c:1903 UCX  INFO    ucp_context_0 inter-node cfg#3 tag(tcp/ibp225s0)
+[1,7]<stdout>:[1758262396.967749] [node3:17397:0]      ucp_worker.c:1903 UCX  INFO    ucp_context_0 inter-node cfg#3 tag(tcp/ibp225s0)
+[1,5]<stdout>:[1758262396.967878] [node3:17395:0]      ucp_worker.c:1903 UCX  INFO    ucp_context_0 inter-node cfg#3 tag(tcp/ibp225s0)
+[1,6]<stdout>:[1758262396.967967] [node3:17396:0]      ucp_worker.c:1903 UCX  INFO    ucp_context_0 inter-node cfg#3 tag(tcp/ibp225s0)
+[1,4]<stdout>:[1758262396.968243] [node3:17394:0]      ucp_worker.c:1903 UCX  INFO    ucp_context_0 inter-node cfg#3 tag(tcp/ibp225s0)

@@ -1,0 +1,176 @@
+{
+  "id": "HPL_NVIDIA/Will/nvhpl1",
+  "suite": "HPL_NVIDIA",
+  "group": "Will",
+  "run": "nvhpl1",
+  "dat": {
+    "raw": "HPLinpack benchmark input file\nInnovative Computing Laboratory, University of Tennessee\nHPL.out      output file name (if any)\n6            device out (6=stdout,7=stderr,file)\n1            # of problems sizes (N)\n50000         Ns\n1            # of NBs\n1024          NBs\n1            PMAP process mapping (0=Row-,1=Column-major)\n1            # of process grids (P x Q)\n2            Ps\n2            Qs\n16.0         threshold\n1            # of panel fact\n0 1 2        PFACTs (0=left, 1=Crout, 2=Right)\n1            # of recursive stopping criterium\n2 8          NBMINs (>= 1)\n1            # of panels in recursion\n2            NDIVs\n1            # of recursive panel fact.\n0 1 2        RFACTs (0=left, 1=Crout, 2=Right)\n1            # of broadcast\n3 2          BCASTs (0=1rg,1=1rM,2=2rg,3=2rM,4=Lng,5=LnM)\n1            # of lookahead depth\n1 0          DEPTHs (>=0)\n1            SWAP (0=bin-exch,1=long,2=mix)\n192          swapping threshold\n1            L1 in (0=transposed,1=no-transposed) form\n0            U  in (0=transposed,1=no-transposed) form\n0            Equilibration (0=no,1=yes)\n8            memory alignment in double (> 0)",
+    "parsed": {
+      "header": [
+        "HPLinpack benchmark input file",
+        "Innovative Computing Laboratory, University of Tennessee"
+      ],
+      "outputFilename": "HPL.out",
+      "deviceOut": 6,
+      "numProblemSizes": 1,
+      "Ns": [
+        50000
+      ],
+      "numNBs": 1,
+      "NBs": [
+        1024
+      ],
+      "pmap": 1,
+      "numGrids": 1,
+      "Ps": [
+        2
+      ],
+      "Qs": [
+        2
+      ],
+      "threshold": 16,
+      "numPFACT": 1,
+      "PFACTs": [
+        0,
+        1,
+        2,
+        0,
+        1,
+        2
+      ],
+      "numNBMIN": 1,
+      "NBMINs": [
+        2,
+        8,
+        1
+      ],
+      "numPanelsInRecursion": 1,
+      "NDIVs": [
+        2
+      ],
+      "numRFACT": 1,
+      "RFACTs": [
+        0,
+        1,
+        2,
+        0,
+        1,
+        2
+      ],
+      "numBCAST": 1,
+      "BCASTs": [
+        3,
+        2,
+        0,
+        1,
+        1,
+        1,
+        2,
+        2,
+        3,
+        2,
+        4,
+        5
+      ],
+      "numDEPTH": 1,
+      "DEPTHs": [
+        1,
+        0,
+        0
+      ],
+      "swapMode": 1,
+      "swapThreshold": 192,
+      "L1": 1,
+      "U": 0,
+      "equilibration": 0,
+      "memoryAlignment": 8
+    },
+    "path": "/raw/HPL_NVIDIA/Will/nvhpl1/HPL.dat"
+  },
+  "job": {
+    "filename": "job.sh",
+    "raw": "#!/bin/bash\n#SBATCH --job-name=hpl-test       # Job name\n#SBATCH --ntasks=4                # Total MPI tasks\n#SBATCH --cpus-per-task=4        # CPU cores per MPI task\n#SBATCH --time=01:00:00           # Time limit hh:mm:ss\n#SBATCH --nodelist=node1\n\n# Load MPI module (adjust for your system)\n# module load openmpi\nexport CUDA_VISIBLE_DEVICES=0,1,2,3\nexport HPL_USE_GPU=1\nexport HPL_CUDA_MODE=1\n\nexport PATH=/opt/ompi-4.1.6/bin:$PATH\nexport LD_LIBRARY_PATH=/opt/ompi-4.1.6/lib:$LD_LIBRARY_PATH\nexport LD_LIBRARY_PATH=/usr/local/cuda-12.6/lib64:/opt/nvidia/nvidia_hpc_benchmarks_openmpi/lib/nvshmem:/opt/nvidia/nvidia_hpc_benchmarks_openmpi/lib/nccl:/opt/nvidia/nvidia_hpc_benchmarks_openmpi/lib:$LD_LIBRARY_PATH\n\n#testing\nulimit -l unlimited\nulimit -n 65536\n\n# Run the MPI program\nmpirun ./xhpl-nvidia",
+    "sbatch": {
+      "job-name": "hpl-test       # Job name",
+      "ntasks": null,
+      "cpus-per-task": null,
+      "time": "01:00:00           # Time limit hh:mm:ss",
+      "nodelist": "node1"
+    },
+    "path": "/raw/HPL_NVIDIA/Will/nvhpl1/job.sh"
+  },
+  "out": {
+    "path": "/raw/HPL_NVIDIA/Will/nvhpl1/job.sh-183.out",
+    "runs": [
+      {
+        "tv": "WC0",
+        "N": 49152,
+        "NB": 1024,
+        "P": 2,
+        "Q": 2,
+        "timeSec": 2.09,
+        "gflops": 37890,
+        "gflopsPerGpu": 9472
+      }
+    ],
+    "summary": {
+      "testsTotal": 1,
+      "testsPassed": 1,
+      "testsFailed": 0,
+      "testsSkipped": 0
+    },
+    "deviceInfo": {
+      "peakClockMHz": 1410,
+      "smVersion": 80,
+      "numSms": 108
+    },
+    "memInfo": {
+      "DEVICE": {
+        "System": {
+          "minGiB": 3.66323,
+          "maxGiB": 3.66323,
+          "avgGiB": 3.66323
+        },
+        "HPL buffers": {
+          "minGiB": 8.2053,
+          "maxGiB": 8.2053,
+          "avgGiB": 8.2053
+        },
+        "Used": {
+          "minGiB": 11.86853,
+          "maxGiB": 11.86853,
+          "avgGiB": 11.86853
+        },
+        "Total": {
+          "minGiB": 40,
+          "maxGiB": 40,
+          "avgGiB": 40
+        }
+      },
+      "HOST": {
+        "HPL buffers": {
+          "minGiB": 0.00023,
+          "maxGiB": 0.00023,
+          "avgGiB": 0.00023
+        }
+      }
+    },
+    "traces": [
+      "[HPL TRACE] cuda_nvshmem_init: max=1.5854 (2) min=1.5853 (3)",
+      "[HPL TRACE] ncclCommInitRank: max=0.1836 (0) min=0.1826 (1)",
+      "[HPL TRACE] cugetrfs_mp_init: max=0.2394 (1) min=0.2393 (3)",
+      "[HPL TRACE] HPL_pdmatgen_gpu: max=0.0038 (2) min=0.0038 (3)"
+    ],
+    "startTime": "Fri Aug 29 03:58:56 2025",
+    "endTime": "Fri Aug 29 03:58:58 2025",
+    "residual": 0.000515462377,
+    "residualPassed": true
+  },
+  "err": null,
+  "best": {
+    "gflops": 37890,
+    "N": 49152,
+    "NB": 1024,
+    "timeSec": 2.09
+  }
+}
