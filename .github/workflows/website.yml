@@ -26,8 +26,8 @@ jobs:
         run: |
           node --version
           node scripts/collect-hpl.js
-          echo "Listing generated data at $HPL_OUT_ROOT (if any):"
-          ls -R "$HPL_OUT_ROOT" || true
+          echo "Listing generated data at /tmp/hpl-website-data (if any):"
+          ls -R "/tmp/hpl-website-data" || true
 
       - name: Checkout website branch
         uses: actions/checkout@v4
@@ -40,16 +40,16 @@ jobs:
           mkdir -p website-branch/public/data
           mkdir -p website-branch/public/raw
 
-          if [ -d "$HPL_OUT_ROOT/data" ]; then
-            rsync -a --delete "$HPL_OUT_ROOT/data/" website-branch/public/data/
+          if [ -d "/tmp/hpl-website-data/data" ]; then
+            rsync -a --delete "/tmp/hpl-website-data/data/" website-branch/public/data/
           else
-            echo "No $HPL_OUT_ROOT/data directory to sync"
+            echo "No /tmp/hpl-website-data/data directory to sync"
           fi
 
-          if [ -d "$HPL_OUT_ROOT/raw" ]; then
-            rsync -a --delete "$HPL_OUT_ROOT/raw/" website-branch/public/raw/
+          if [ -d "/tmp/hpl-website-data/raw" ]; then
+            rsync -a --delete "/tmp/hpl-website-data/raw/" website-branch/public/raw/
           else
-            echo "No $HPL_OUT_ROOT/raw directory to sync"
+            echo "No /tmp/hpl-website-data/raw directory to sync"
           fi
 
           cd website-branch
@@ -65,7 +65,7 @@ jobs:
       - name: Build React app
         working-directory: website-branch
         run: |
-          npm ci
+          npm i
           npm run build
 
       - name: Deploy to GitHub Pages
