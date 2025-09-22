@@ -6,7 +6,7 @@ import path from "path";
 
 const CWD = process.cwd();
 const SUITES = ["HPL", "HPL_NVIDIA"];
-const SRC_ROOT = path.join(CWD, "src", "output");
+const SRC_ROOT = path.join(CWD, "output");
 const OUT_ROOT = "/tmp/hpl-website-data";
 const DATA_ROOT = path.join(OUT_ROOT, "data");
 const RAW_ROOT = path.join(OUT_ROOT, "raw");
