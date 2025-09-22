@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
 import type { BenchmarkData, BenchmarkSuite } from '../types';
 import { LeaderboardTable } from './LeaderboardTable';
-import { AlertCircle, BarChart3, Clock, CheckCircle } from 'lucide-react';
+import { AlertCircle, BarChart3, Clock } from 'lucide-react';
+// import { AlertCircle, BarChart3, Clock, CheckCircle } from 'lucide-react';
 
 interface BenchmarkPageProps {
     suite: BenchmarkSuite;
@@ -72,14 +73,14 @@ export const BenchmarkPage: React.FC<BenchmarkPageProps> = ({
     const validPerfRuns = filteredRuns.filter(
         (r) => !r.hasErr && r.best && typeof r.best.gflops === 'number'
     );
-    const validSummaryRuns = filteredRuns.filter(
-        (r) =>
-            !r.hasErr &&
-            r.outSummary &&
-            typeof r.outSummary.testsTotal === 'number' &&
-            typeof r.outSummary.testsPassed === 'number' &&
-            (r.outSummary.testsTotal ?? 0) > 0
-    );
+    // const validSummaryRuns = filteredRuns.filter(
+    //     (r) =>
+    //         !r.hasErr &&
+    //         r.outSummary &&
+    //         typeof r.outSummary.testsTotal === 'number' &&
+    //         typeof r.outSummary.testsPassed === 'number' &&
+    //         (r.outSummary.testsTotal ?? 0) > 0
+    // );
 
     // "Coming soon" suites (unchanged behavior: only when no runs at all)
     if (
@@ -122,16 +123,16 @@ export const BenchmarkPage: React.FC<BenchmarkPageProps> = ({
             ? Math.max(...validPerfRuns.map((r) => r.best!.gflops))
             : null;
 
-    const { totalPassed, totalTests } = validSummaryRuns.reduce(
-        (acc, r) => {
-            acc.totalPassed += r.outSummary!.testsPassed ?? 0;
-            acc.totalTests += r.outSummary!.testsTotal ?? 0;
-            return acc;
-        },
-        { totalPassed: 0, totalTests: 0 }
-    );
-    const successRate =
-        totalTests > 0 ? (totalPassed / totalTests) * 100 : null;
+    // const { totalPassed, totalTests } = validSummaryRuns.reduce(
+    //     (acc, r) => {
+    //         acc.totalPassed += r.outSummary!.testsPassed ?? 0;
+    //         acc.totalTests += r.outSummary!.testsTotal ?? 0;
+    //         return acc;
+    //     },
+    //     { totalPassed: 0, totalTests: 0 }
+    // );
+    // const successRate =
+    //     totalTests > 0 ? (totalPassed / totalTests) * 100 : null;
 
     const hasValidLeaderboard = validPerfRuns.length > 0;
 
@@ -207,19 +208,19 @@ export const BenchmarkPage: React.FC<BenchmarkPageProps> = ({
                             </div>
                         )}
 
-                        {successRate !== null && (
-                            <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
-                                <div className="flex items-center space-x-3">
-                                    <CheckCircle className="w-8 h-8 text-emerald-600" />
-                                    <div>
-                                        <div className="text-2xl font-bold text-gray-900">
-                                            {successRate.toFixed(1)}%
-                                        </div>
-                                        <div className="text-sm text-gray-600">Success Rate</div>
-                                    </div>
-                                </div>
-                            </div>
-                        )}
+                        {/*{successRate !== null && (*/}
+                        {/*    <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">*/}
+                        {/*        <div className="flex items-center space-x-3">*/}
+                        {/*            <CheckCircle className="w-8 h-8 text-emerald-600" />*/}
+                        {/*            <div>*/}
+                        {/*                <div className="text-2xl font-bold text-gray-900">*/}
+                        {/*                    {successRate.toFixed(1)}%*/}
+                        {/*                </div>*/}
+                        {/*                <div className="text-sm text-gray-600">Success Rate</div>*/}
+                        {/*            </div>*/}
+                        {/*        </div>*/}
+                        {/*    </div>*/}
+                        {/*)}*/}
                     </div>
 
                     {errorCount > 0 && (
