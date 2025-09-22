@@ -22,6 +22,15 @@ jobs:
         with:
           node-version: "20"
 
+      - name: Show source tree (debug)
+        run: |
+          echo "Listing output (if exists):"
+          ls -la "output" || true
+          ls -la "output/HPL" || true
+          ls -la "output/HPL_NVIDIA" || true
+          echo "Sample deeper listing:"
+          find "output" -maxdepth 3 -type d -print || true
+
       - name: Generate website data from HPL outputs
         run: |
           node --version
