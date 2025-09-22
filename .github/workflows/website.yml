@@ -22,36 +22,36 @@ jobs:
         with:
           node-version: "20"
 
-      - name: Generate web data from HPL outputs
+      - name: Generate website data from HPL outputs
         run: |
           node --version
           node scripts/collect-hpl.js
-          ls -R /tmp/hpl-web-data || true
+          ls -R /tmp/hpl-website-data || true
 
-      - name: Checkout web branch
+      - name: Checkout website branch
         uses: actions/checkout@v4
         with:
-          ref: web
-          path: web-branch
+          ref: website
+          path: website-branch
 
-      - name: Sync data/raw into web branch public/
+      - name: Sync data/raw into website branch public/
         run: |
-          mkdir -p web-branch/public/data
-          mkdir -p web-branch/public/raw
-          rsync -a --delete /tmp/hpl-web-data/data/ web-branch/public/data/
-          rsync -a --delete /tmp/hpl-web-data/raw/  web-branch/public/raw/
-          cd web-branch
+          mkdir -p website-branch/public/data
+          mkdir -p website-branch/public/raw
+          rsync -a --delete /tmp/hpl-website-data/data/ website-branch/public/data/
+          rsync -a --delete /tmp/hpl-website-data/raw/  website-branch/public/raw/
+          cd website-branch
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add public/data public/raw
           if git commit -m "Update HPL data artifacts from main"; then
-            git push origin web
+            git push origin website
           else
             echo "No data changes to commit"
           fi
 
       - name: Build React app
-        working-directory: web-branch
+        working-directory: website-branch
         run: |
           npm ci
           npm run build
@@ -60,5 +60,5 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: web-branch/build
+          publish_dir: website-branch/build
           publish_branch: gh-pages
