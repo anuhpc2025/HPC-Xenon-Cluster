@@ -28,7 +28,7 @@ export const LeaderboardTable: React.FC<LeaderboardTableProps> = ({ runs, suite 
         setRunDetails(null);
 
         try {
-            const response = await fetch(`/data/runs/${run.suite}/${run.group}/${run.run}/run.json`);
+            const response = await fetch(`${import.meta.env.BASE_URL}data/runs/${run.suite}/${run.group}/${run.run}/run.json`);
             if (!response.ok) {
                 throw new Error(`Failed to load run details: ${response.status} ${response.statusText}`);
             }
