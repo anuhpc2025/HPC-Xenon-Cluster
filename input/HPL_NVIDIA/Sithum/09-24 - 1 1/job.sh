@@ -23,6 +23,7 @@ export LD_LIBRARY_PATH=/usr/local/cuda-12.6/lib64:/opt/nvidia/nvidia_hpc_benchma
 
 ENV_SCRIPT_DIR="/opt/nvidia/nvidia_hpc_benchmarks_openmpi"
 
+export LD_LIBRARY_PATH="$ENV_SCRIPT_DIR/lib/cuda${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}"
 [[ -z "${NCCL_PATH+x}" ]] && export LD_LIBRARY_PATH="$ENV_SCRIPT_DIR/lib/nccl${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}"
 [[ -z "${NVSHMEM_PATH+x}" ]] && export LD_LIBRARY_PATH="$ENV_SCRIPT_DIR/lib/nvshmem${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}"
 [[ -z "${NVPL_BLAS_PATH+x}" ]] && export LD_LIBRARY_PATH="$ENV_SCRIPT_DIR/lib/nvpl_blas${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}"
@@ -32,6 +33,8 @@ ENV_SCRIPT_DIR="/opt/nvidia/nvidia_hpc_benchmarks_openmpi"
 [[ -z "${TCMALLOC_PATH+x}" ]] && export LD_LIBRARY_PATH="$ENV_SCRIPT_DIR/lib/tcmalloc${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}"
 
 export OMPI_MCA_coll_hcoll_enable=0
+
+export LD_LIBRARY_PATH=/usr/lib/x86_64-linux-gnu/nvshmem/12:$LD_LIBRARY_PATH
 
 modprobe nvidia-peermem
 
