@@ -54,8 +54,8 @@ export const Navigation: React.FC<NavigationProps> = ({ activeSuite, onSuiteChan
               <Zap className="w-6 h-6 text-white" />
             </div>
             <div>
-              <h1 className="text-xl font-bold text-gray-900">Performance Leaderboard</h1>
-              <p className="text-sm text-gray-600">Benchmarking Suite Dashboard</p>
+              <h1 className="text-xl font-bold text-gray-900">HPC Xenon Cluster Leaderboard Website</h1>
+              <p className="text-sm text-gray-600">https://github.com/anuhpc2025/HPC-Xenon-Cluster</p>
             </div>
           </div>
         </div>
