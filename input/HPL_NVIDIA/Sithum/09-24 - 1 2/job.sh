@@ -19,7 +19,7 @@ export CUDA_VISIBLE_DEVICES=0,1,2,3
 export HPL_USE_GPU=1
 export HPL_CUDA_MODE=1
 
-export LD_LIBRARY_PATH=/usr/local/cuda-13.0/lib64:/opt/nvidia/nvidia_hpc_benchmarks_openmpi/lib:$LD_LIBRARY_PATH
+export LD_LIBRARY_PATH=/usr/local/cuda-12.6/lib64:/opt/nvidia/nvidia_hpc_benchmarks_openmpi/lib:$LD_LIBRARY_PATH
 
 ENV_SCRIPT_DIR="/opt/nvidia/nvidia_hpc_benchmarks_openmpi"
 
