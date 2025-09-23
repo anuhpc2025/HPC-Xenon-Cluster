@@ -1,8 +1,9 @@
 name: website.yml
 on:
-  push:
-    branches:
-      - main
+  workflow_run:
+    workflows: ["Run SLURM Jobs"]
+    types:
+      - completed
 
 permissions:
   contents: write
@@ -74,12 +75,22 @@ jobs:
       - name: Build React app
         working-directory: website-branch
         run: |
-          npm i
-          npm run build
+          if [ -f package-lock.json ] || [ -f npm-shrinkwrap.json ]; then
+            npm ci
+          else
+            npm install
+          fi
+
+      - name: Build site
+        working-directory: website-branch
+        run: npm run build
+        env:
+          CI: true
+          BASE_PATH: "/HPC-Xenon-Cluster/"
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: website-branch/build
+          publish_dir: website-branch/dist
           publish_branch: gh-pages
