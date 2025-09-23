@@ -4,7 +4,7 @@
   "group": "Sithum",
   "run": "09-23 - 5 0",
   "dat": {
-    "raw": "HPLinpack benchmark input file\nInnovative Computing Laboratory, University of Tennessee\nHPL.out      output file name (if any)\n6            device out (6=stdout,7=stderr,file)\n1            # of problems sizes (N)\n189440       Ns\n1            # of NBs\n512          NBs\n1            PMAP process mapping (0=Row-,1=Column-major)\n1            # of process grids (P x Q)\n4            Ps\n2            Qs\n16.0         threshold\n1            # of panel fact\n0 1 2        PFACTs (0=left, 1=Crout, 2=Right)\n1            # of recursive stopping criterium\n2 8          NBMINs (>= 1)\n1            # of panels in recursion\n2            NDIVs\n1            # of recursive panel fact.\n0 1 2        RFACTs (0=left, 1=Crout, 2=Right)\n1            # of broadcast\n3 2          BCASTs (0=1rg,1=1rM,2=2rg,3=2rM,4=Lng,5=LnM)\n1            # of lookahead depth\n1 0          DEPTHs (>=0)\n1            SWAP (0=bin-exch,1=long,2=mix)\n192          swapping threshold\n1            L1 in (0=transposed,1=no-transposed) form\n0            U  in (0=transposed,1=no-transposed) form\n0            Equilibration (0=no,1=yes)\n8            memory alignment in double (> 0)",
+    "raw": "HPLinpack benchmark input file\nInnovative Computing Laboratory, University of Tennessee\nHPL.out      output file name (if any)\n6            device out (6=stdout,7=stderr,file)\n1            # of problems sizes (N)\n189440       Ns\n1            # of NBs\n512          NBs\n1            PMAP process mapping (0=Row-,1=Column-major)\n1            # of process grids (P x Q)\n4            Ps\n4            Qs\n16.0         threshold\n1            # of panel fact\n0 1 2        PFACTs (0=left, 1=Crout, 2=Right)\n1            # of recursive stopping criterium\n2 8          NBMINs (>= 1)\n1            # of panels in recursion\n2            NDIVs\n1            # of recursive panel fact.\n0 1 2        RFACTs (0=left, 1=Crout, 2=Right)\n1            # of broadcast\n3 2          BCASTs (0=1rg,1=1rM,2=2rg,3=2rM,4=Lng,5=LnM)\n1            # of lookahead depth\n1 0          DEPTHs (>=0)\n1            SWAP (0=bin-exch,1=long,2=mix)\n192          swapping threshold\n1            L1 in (0=transposed,1=no-transposed) form\n0            U  in (0=transposed,1=no-transposed) form\n0            Equilibration (0=no,1=yes)\n8            memory alignment in double (> 0)",
     "parsed": {
       "header": [
         "HPLinpack benchmark input file",
@@ -26,7 +26,7 @@
         4
       ],
       "Qs": [
-        2
+        4
       ],
       "threshold": 16,
       "numPFACT": 1,
@@ -101,13 +101,24 @@
     "path": "/raw/HPL_NVIDIA/Sithum/09-23 - 5 0/job.sh"
   },
   "out": {
-    "path": "/raw/HPL_NVIDIA/Sithum/09-23 - 5 0/job.sh-587.out",
-    "runs": [],
+    "path": "/raw/HPL_NVIDIA/Sithum/09-23 - 5 0/job.sh-588.out",
+    "runs": [
+      {
+        "tv": "WC0",
+        "N": 189440,
+        "NB": 512,
+        "P": 4,
+        "Q": 4,
+        "timeSec": 34.73,
+        "gflops": 130500,
+        "gflopsPerGpu": 8156
+      }
+    ],
     "summary": {
-      "testsTotal": null,
-      "testsPassed": null,
-      "testsFailed": null,
-      "testsSkipped": null
+      "testsTotal": 1,
+      "testsPassed": 1,
+      "testsFailed": 0,
+      "testsSkipped": 0
     },
     "deviceInfo": {
       "peakClockMHz": 1410,
@@ -115,17 +126,52 @@
       "numSms": 108
     },
     "memInfo": {
-      "DEVICE": {},
-      "HOST": {}
+      "DEVICE": {
+        "System": {
+          "minGiB": 3.00736,
+          "maxGiB": 3.00736,
+          "avgGiB": 3.00736
+        },
+        "HPL buffers": {
+          "minGiB": 20.11745,
+          "maxGiB": 20.47878,
+          "avgGiB": 20.29763
+        },
+        "Used": {
+          "minGiB": 23.12481,
+          "maxGiB": 23.48615,
+          "avgGiB": 23.30499
+        },
+        "Total": {
+          "minGiB": 40,
+          "maxGiB": 40,
+          "avgGiB": 40
+        }
+      },
+      "HOST": {
+        "HPL buffers": {
+          "minGiB": 0.00039,
+          "maxGiB": 0.00039,
+          "avgGiB": 0.00039
+        }
+      }
     },
     "traces": [
-      "[HPL TRACE] cuda_nvshmem_init: max=1.1610 (11) min=1.1610 (4)"
+      "[HPL TRACE] cuda_nvshmem_init: max=1.1507 (15) min=1.1506 (9)",
+      "[HPL TRACE] ncclCommInitRank: max=0.0893 (11) min=0.0867 (0)",
+      "[HPL TRACE] cugetrfs_mp_init: max=0.1711 (0) min=0.1710 (14)",
+      "[HPL TRACE] HPL_pdmatgen_gpu: max=0.0135 (2) min=0.0134 (7)"
     ],
-    "startTime": null,
-    "endTime": null,
-    "residual": null,
-    "residualPassed": null
+    "startTime": "Tue Sep 23 03:48:33 2025",
+    "endTime": "Tue Sep 23 03:49:07 2025",
+    "residual": 0.000313984974,
+    "residualPassed": true
   },
   "err": null,
-  "best": null
+  "best": {
+    "gflops": 130500,
+    "N": 189440,
+    "NB": 512,
+    "timeSec": 34.73
+  }
 }
