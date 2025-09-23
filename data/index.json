@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2025-09-23T04:37:35.510Z",
+  "generatedAt": "2025-09-23T05:17:50.323Z",
   "runs": [
     {
       "id": "HPL/Sithum/job1",
@@ -3151,6 +3151,77 @@
       "suite": "HPL_NVIDIA",
       "group": "Sithum",
       "run": "09-23 - 8 9",
+      "best": null,
+      "outSummary": {
+        "testsTotal": null,
+        "testsPassed": null,
+        "testsFailed": null,
+        "testsSkipped": null
+      },
+      "hasErr": true
+    },
+    {
+      "id": "HPL_NVIDIA/Sithum/09-23 - 9 0",
+      "suite": "HPL_NVIDIA",
+      "group": "Sithum",
+      "run": "09-23 - 9 0",
+      "best": {
+        "gflops": 186300,
+        "N": 269824,
+        "NB": 512,
+        "timeSec": 70.3
+      },
+      "outSummary": {
+        "testsTotal": 1,
+        "testsPassed": 1,
+        "testsFailed": 0,
+        "testsSkipped": 0
+      },
+      "hasErr": false
+    },
+    {
+      "id": "HPL_NVIDIA/Sithum/09-23 - 9 1",
+      "suite": "HPL_NVIDIA",
+      "group": "Sithum",
+      "run": "09-23 - 9 1",
+      "best": {
+        "gflops": 187900,
+        "N": 272384,
+        "NB": 512,
+        "timeSec": 71.69
+      },
+      "outSummary": {
+        "testsTotal": 1,
+        "testsPassed": 1,
+        "testsFailed": 0,
+        "testsSkipped": 0
+      },
+      "hasErr": false
+    },
+    {
+      "id": "HPL_NVIDIA/Sithum/09-23 - 9 2",
+      "suite": "HPL_NVIDIA",
+      "group": "Sithum",
+      "run": "09-23 - 9 2",
+      "best": {
+        "gflops": 189700,
+        "N": 274944,
+        "NB": 512,
+        "timeSec": 73.03
+      },
+      "outSummary": {
+        "testsTotal": 1,
+        "testsPassed": 1,
+        "testsFailed": 0,
+        "testsSkipped": 0
+      },
+      "hasErr": false
+    },
+    {
+      "id": "HPL_NVIDIA/Sithum/09-23 - 9 3",
+      "suite": "HPL_NVIDIA",
+      "group": "Sithum",
+      "run": "09-23 - 9 3",
       "best": null,
       "outSummary": {
         "testsTotal": null,
