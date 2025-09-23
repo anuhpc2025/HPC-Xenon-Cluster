@@ -1,6 +1,13 @@
 import React, { useState } from 'react';
-import { ChevronUp, ChevronDown, Trophy, Medal, Award, Eye } from 'lucide-react';
-import type {BenchmarkRun} from '../types';
+import {
+    ChevronUp,
+    ChevronDown,
+    Trophy,
+    Medal,
+    Award,
+    Eye,
+} from 'lucide-react';
+import type { BenchmarkRun } from '../types';
 import { RunDetailsModal } from './RunDetailsModal';
 
 interface LeaderboardTableProps {
@@ -19,6 +26,8 @@ export const LeaderboardTable: React.FC<LeaderboardTableProps> = ({ runs, suite 
     const [runDetails, setRunDetails] = useState<any>(null);
     const [loadingDetails, setLoadingDetails] = useState(false);
     const [detailsError, setDetailsError] = useState<string | null>(null);
+
+    const [showBestPerGroup, setShowBestPerGroup] = useState(true);
 
     const handleViewDetails = async (run: BenchmarkRun) => {
         setSelectedRun(run);
@@ -57,7 +66,20 @@ export const LeaderboardTable: React.FC<LeaderboardTableProps> = ({ runs, suite 
         }
     };
 
-    const sortedRuns = [...runs].sort((a, b) => {
+    // Get best run per group
+    const bestPerGroupRuns = Object.values(
+        runs.reduce<Record<string, BenchmarkRun>>((acc, run) => {
+            if (!acc[run.group] || run.best.gflops > acc[run.group].best.gflops) {
+                acc[run.group] = run;
+            }
+            return acc;
+        }, {})
+    );
+
+    // decide which runs to display
+    const runsToDisplay = showBestPerGroup ? bestPerGroupRuns : runs;
+
+    const sortedRuns = [...runsToDisplay].sort((a, b) => {
         let aValue: string | number;
         let bValue: string | number;
 
@@ -131,10 +153,18 @@ export const LeaderboardTable: React.FC<LeaderboardTableProps> = ({ runs, suite 
     return (
         <>
             <div className="bg-white rounded-lg shadow-sm border border-gray-200">
-                <div className="px-6 py-4 border-b border-gray-200">
+                <div className="px-6 py-4 border-b border-gray-200 flex items-center justify-between">
                     <h2 className="text-lg font-semibold text-gray-900">
-                        {suite} Leaderboard ({runs.length} runs)
+                        {suite} Leaderboard ({runsToDisplay.length}{' '}
+                        {showBestPerGroup ? 'groups' : 'runs'})
                     </h2>
+                    {/* Toggle */}
+                    <button
+                        onClick={() => setShowBestPerGroup((prev) => !prev)}
+                        className="px-3 py-1 bg-blue-100 hover:bg-blue-200 text-blue-700 text-sm font-medium rounded-lg transition-colors"
+                    >
+                        {showBestPerGroup ? 'Show All Runs' : 'Show Best Per Group'}
+                    </button>
                 </div>
 
                 <div className="overflow-x-auto">
@@ -150,7 +180,7 @@ export const LeaderboardTable: React.FC<LeaderboardTableProps> = ({ runs, suite 
                             >
                                 <div className="flex items-center space-x-1">
                                     <span>Group</span>
-                                    <SortIcon field="group"/>
+                                    <SortIcon field="group" />
                                 </div>
                             </th>
                             <th
@@ -159,7 +189,7 @@ export const LeaderboardTable: React.FC<LeaderboardTableProps> = ({ runs, suite 
                             >
                                 <div className="flex items-center space-x-1">
                                     <span>Run</span>
-                                    <SortIcon field="run"/>
+                                    <SortIcon field="run" />
                                 </div>
                             </th>
                             <th
@@ -168,7 +198,7 @@ export const LeaderboardTable: React.FC<LeaderboardTableProps> = ({ runs, suite 
                             >
                                 <div className="flex items-center space-x-1">
                                     <span>Performance (GFLOPS)</span>
-                                    <SortIcon field="gflops"/>
+                                    <SortIcon field="gflops" />
                                 </div>
                             </th>
                             <th
@@ -177,7 +207,7 @@ export const LeaderboardTable: React.FC<LeaderboardTableProps> = ({ runs, suite 
                             >
                                 <div className="flex items-center space-x-1">
                                     <span>Time (sec)</span>
-                                    <SortIcon field="timeSec"/>
+                                    <SortIcon field="timeSec" />
                                 </div>
                             </th>
                             <th
@@ -186,7 +216,7 @@ export const LeaderboardTable: React.FC<LeaderboardTableProps> = ({ runs, suite 
                             >
                                 <div className="flex items-center space-x-1">
                                     <span>Test Results</span>
-                                    <SortIcon field="testsPassed"/>
+                                    <SortIcon field="testsPassed" />
                                 </div>
                             </th>
                             <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
@@ -199,15 +229,19 @@ export const LeaderboardTable: React.FC<LeaderboardTableProps> = ({ runs, suite 
                         </thead>
                         <tbody className="bg-white divide-y divide-gray-200">
                         {sortedRuns.map((run, index) => (
-                            <tr key={run.id}
-                                className={`hover:bg-gray-50 ${index < 3 ? 'bg-gradient-to-r from-blue-50 to-transparent' : ''}`}>
+                            <tr
+                                key={run.id}
+                                className={`hover:bg-gray-50 ${
+                                    index < 3 ? 'bg-gradient-to-r from-blue-50 to-transparent' : ''
+                                }`}
+                            >
                                 <td className="px-6 py-4 whitespace-nowrap">
-                                    <div className="flex items-center">
-                                        {getRankIcon(index)}
-                                    </div>
+                                    <div className="flex items-center">{getRankIcon(index)}</div>
                                 </td>
                                 <td className="px-6 py-4 whitespace-nowrap">
-                                    <div className="text-sm font-medium text-gray-900">{run.group}</div>
+                                    <div className="text-sm font-medium text-gray-900">
+                                        {run.group}
+                                    </div>
                                 </td>
                                 <td className="px-6 py-4 whitespace-nowrap">
                                     <div className="text-sm text-gray-900">{run.run}</div>
@@ -228,9 +262,12 @@ export const LeaderboardTable: React.FC<LeaderboardTableProps> = ({ runs, suite 
                                 <td className="px-6 py-4 whitespace-nowrap">
                                     <div className="flex items-center space-x-2">
                                         <div
-                                            className={`px-2 py-1 text-xs font-medium rounded-full ${getSuccessRate(run.outSummary) === 100
-                                                ? 'bg-green-100 text-green-800'
-                                                : 'bg-yellow-100 text-yellow-800'}`}>
+                                            className={`px-2 py-1 text-xs font-medium rounded-full ${
+                                                getSuccessRate(run.outSummary) === 100
+                                                    ? 'bg-green-100 text-green-800'
+                                                    : 'bg-yellow-100 text-yellow-800'
+                                            }`}
+                                        >
                                             {getSuccessRate(run.outSummary).toFixed(0)}%
                                         </div>
                                         <div className="text-xs text-gray-500">
@@ -254,7 +291,7 @@ export const LeaderboardTable: React.FC<LeaderboardTableProps> = ({ runs, suite 
                                         onClick={() => handleViewDetails(run)}
                                         className="inline-flex items-center space-x-2 px-3 py-1 bg-blue-100 hover:bg-blue-200 text-blue-700 text-sm font-medium rounded-lg transition-colors"
                                     >
-                                        <Eye className="w-4 h-4"/>
+                                        <Eye className="w-4 h-4" />
                                         <span>View Details</span>
                                     </button>
                                 </td>
@@ -264,7 +301,7 @@ export const LeaderboardTable: React.FC<LeaderboardTableProps> = ({ runs, suite 
                     </table>
                 </div>
 
-                {runs.length === 0 && (
+                {runsToDisplay.length === 0 && (
                     <div className="text-center py-12">
                         <div className="text-gray-500">No benchmark runs available</div>
                     </div>
@@ -275,6 +312,8 @@ export const LeaderboardTable: React.FC<LeaderboardTableProps> = ({ runs, suite 
                 onClose={closeModal}
                 runData={runDetails}
                 loading={loadingDetails}
-                error={detailsError}/></>
-);
+                error={detailsError}
+            />
+        </>
+    );
 };
