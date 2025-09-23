@@ -4,7 +4,7 @@
   "group": "Sithum",
   "run": "09-23 - 12 0",
   "dat": {
-    "raw": "HPLinpack benchmark input file\nInnovative Computing Laboratory, University of Tennessee\nHPL.out      output file name (if any)\n6            device out (6=stdout,7=stderr,file)\n1            # of problems sizes (N)\n272000       Ns\n1            # of NBs\n512          NBs\n1            PMAP process mapping (0=Row-,1=Column-major)\n1            # of process grids (P x Q)\n4            Ps\n4            Qs\n16.0         threshold\n1            # of panel fact\n0 1 2        PFACTs (0=left, 1=Crout, 2=Right)\n1            # of recursive stopping criterium\n2 8          NBMINs (>= 1)\n1            # of panels in recursion\n2            NDIVs\n1            # of recursive panel fact.\n0 1 2        RFACTs (0=left, 1=Crout, 2=Right)\n1            # of broadcast\n3 2          BCASTs (0=1rg,1=1rM,2=2rg,3=2rM,4=Lng,5=LnM)\n1            # of lookahead depth\n1 0          DEPTHs (>=0)\n1            SWAP (0=bin-exch,1=long,2=mix)\n192          swapping threshold\n1            L1 in (0=transposed,1=no-transposed) form\n0            U  in (0=transposed,1=no-transposed) form\n0            Equilibration (0=no,1=yes)\n8            memory alignment in double (> 0)",
+    "raw": "HPLinpack benchmark input file\nInnovative Computing Laboratory, University of Tennessee\nHPL.out      output file name (if any)\n6            device out (6=stdout,7=stderr,file)\n1            # of problems sizes (N)\n271872       Ns\n1            # of NBs\n512          NBs\n1            PMAP process mapping (0=Row-,1=Column-major)\n1            # of process grids (P x Q)\n4            Ps\n4            Qs\n16.0         threshold\n1            # of panel fact\n0 1 2        PFACTs (0=left, 1=Crout, 2=Right)\n1            # of recursive stopping criterium\n2 8          NBMINs (>= 1)\n1            # of panels in recursion\n2            NDIVs\n1            # of recursive panel fact.\n0 1 2        RFACTs (0=leaft, 1=Crout, 2=Right)\n1            # of broadcast\n3 2          BCASTs (0=1rg,1=1rM,2=2rg,3=2rM,4=Lng,5=LnM)\n1            # of lookahead depth\n1 0          DEPTHs (>=0)\n1            SWAP (0=bin-exch,1=long,2=mix)\n192          swapping threshold\n1            L1 in (0=transposed,1=no-transposed) form\n0            U  in (0=transposed,1=no-transposed) form\n0            Equilibration (0=no,1=yes)\n8            memory alignment in double (> 0)",
     "parsed": {
       "header": [
         "HPLinpack benchmark input file",
@@ -14,7 +14,7 @@
       "deviceOut": 6,
       "numProblemSizes": 1,
       "Ns": [
-        272000
+        271872
       ],
       "numNBs": 1,
       "NBs": [
@@ -101,7 +101,7 @@
     "path": "/raw/HPL_NVIDIA/Sithum/09-23 - 12 0/job.sh"
   },
   "out": {
-    "path": "/raw/HPL_NVIDIA/Sithum/09-23 - 12 0/job.sh-640.out",
+    "path": "/raw/HPL_NVIDIA/Sithum/09-23 - 12 0/job.sh-641.out",
     "runs": [
       {
         "tv": "WC0",
@@ -109,9 +109,9 @@
         "NB": 512,
         "P": 4,
         "Q": 4,
-        "timeSec": 71.34,
-        "gflops": 187800,
-        "gflopsPerGpu": 11740
+        "timeSec": 71.36,
+        "gflops": 187700,
+        "gflopsPerGpu": 11730
       }
     ],
     "summary": {
@@ -157,21 +157,21 @@
       }
     },
     "traces": [
-      "[HPL TRACE] cuda_nvshmem_init: max=1.1555 (15) min=1.1554 (10)",
-      "[HPL TRACE] ncclCommInitRank: max=0.0903 (5) min=0.0869 (2)",
-      "[HPL TRACE] cugetrfs_mp_init: max=0.1693 (0) min=0.1693 (8)",
-      "[HPL TRACE] HPL_pdmatgen_gpu: max=0.0267 (14) min=0.0266 (0)"
+      "[HPL TRACE] cuda_nvshmem_init: max=1.1573 (13) min=1.1572 (0)",
+      "[HPL TRACE] ncclCommInitRank: max=0.0895 (8) min=0.0874 (7)",
+      "[HPL TRACE] cugetrfs_mp_init: max=0.1711 (9) min=0.1710 (2)",
+      "[HPL TRACE] HPL_pdmatgen_gpu: max=0.0267 (14) min=0.0267 (0)"
     ],
-    "startTime": "Tue Sep 23 07:25:58 2025",
-    "endTime": "Tue Sep 23 07:27:10 2025",
+    "startTime": "Tue Sep 23 07:33:54 2025",
+    "endTime": "Tue Sep 23 07:35:05 2025",
     "residual": 0.000357677957,
     "residualPassed": true
   },
   "err": null,
   "best": {
-    "gflops": 187800,
+    "gflops": 187700,
     "N": 271872,
     "NB": 512,
-    "timeSec": 71.34
+    "timeSec": 71.36
   }
 }
