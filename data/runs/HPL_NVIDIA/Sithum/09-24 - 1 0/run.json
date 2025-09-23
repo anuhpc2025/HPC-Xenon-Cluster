@@ -101,7 +101,7 @@
     "path": "/raw/HPL_NVIDIA/Sithum/09-24 - 1 0/job.sh"
   },
   "out": {
-    "path": "/raw/HPL_NVIDIA/Sithum/09-24 - 1 0/job.sh-674.out",
+    "path": "/raw/HPL_NVIDIA/Sithum/09-24 - 1 0/job.sh-677.out",
     "runs": [
       {
         "tv": "WC0",
@@ -109,7 +109,7 @@
         "NB": 512,
         "P": 4,
         "Q": 4,
-        "timeSec": 71.39,
+        "timeSec": 71.38,
         "gflops": 187700,
         "gflopsPerGpu": 11730
       }
@@ -157,13 +157,13 @@
       }
     },
     "traces": [
-      "[HPL TRACE] cuda_nvshmem_init: max=1.1989 (4) min=1.1988 (14)",
-      "[HPL TRACE] ncclCommInitRank: max=0.0887 (8) min=0.0866 (7)",
-      "[HPL TRACE] cugetrfs_mp_init: max=0.1645 (0) min=0.1645 (13)",
-      "[HPL TRACE] HPL_pdmatgen_gpu: max=0.0268 (14) min=0.0267 (3)"
+      "[HPL TRACE] cuda_nvshmem_init: max=1.1510 (4) min=1.1509 (13)",
+      "[HPL TRACE] ncclCommInitRank: max=0.0872 (10) min=0.0853 (1)",
+      "[HPL TRACE] cugetrfs_mp_init: max=0.1629 (10) min=0.1629 (14)",
+      "[HPL TRACE] HPL_pdmatgen_gpu: max=0.0267 (14) min=0.0266 (15)"
     ],
-    "startTime": "Tue Sep 23 21:57:54 2025",
-    "endTime": "Tue Sep 23 21:59:05 2025",
+    "startTime": "Tue Sep 23 22:03:01 2025",
+    "endTime": "Tue Sep 23 22:04:12 2025",
     "residual": 0.000357677957,
     "residualPassed": true
   },
@@ -172,6 +172,6 @@
     "gflops": 187700,
     "N": 271872,
     "NB": 512,
-    "timeSec": 71.39
+    "timeSec": 71.38
   }
 }
