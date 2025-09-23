@@ -33,6 +33,8 @@ ENV_SCRIPT_DIR="/opt/nvidia/nvidia_hpc_benchmarks_openmpi"
 
 export OMPI_MCA_coll_hcoll_enable=0
 
+modprobe nvidia-peermem
+
 # OMPI / UCX tuning
 export OMPI_MCA_pml=ucx
 export OMPI_MCA_osc=ucx

@@ -34,6 +34,8 @@ export LD_LIBRARY_PATH="$ENV_SCRIPT_DIR/lib/cuda${LD_LIBRARY_PATH:+:${LD_LIBRARY
 
 export OMPI_MCA_coll_hcoll_enable=0
 
+modprobe nvidia-peermem
+
 # OMPI / UCX tuning
 export OMPI_MCA_pml=ucx
 export OMPI_MCA_osc=ucx
