@@ -89,7 +89,7 @@
   },
   "job": {
     "filename": "job.sh",
-    "raw": "#!/bin/bash\n#SBATCH --job-name=base       # Job name\n#SBATCH --ntasks=16                # Total MPI tasks - 4 x 4\n#SBATCH --ntasks-per-node=4       # balance tasks across nodes - 1 per gpu\n#SBATCH --time=01:00:00           # Time limit hh:mm:ss\n#SBATCH --nodes=4                 #\n#SBATCH --nodelist=node1,node2,node3,node4    # nodes 1 and 2 are the only ones with hpcx for now\n\n# Load HPCX\nsource ~/.bashrc\nexport HPCX_HOME=/home/hpc/hpcx/hpcx-v2.24-gcc-doca_ofed-ubuntu24.04-cuda13-x86_64\nexport LD_LIBRARY_PATH=$HPCX_HOME/ucx/lib:$HPCX_HOME/ompi/lib:$LD_LIBRARY_PATH\nexport PATH=$HPCX_HOME/ompi/bin:$PATH\nsource $HPCX_HOME/hpcx-init.sh\nhpcx_load\n\n# NVIDIA env\nexport CUDA_VISIBLE_DEVICES=0,1,2,3\nexport HPL_USE_GPU=1\nexport HPL_CUDA_MODE=1\n\nexport LD_LIBRARY_PATH=/usr/local/cuda-13.0/lib64:/opt/nvidia/nvidia_hpc_benchmarks_openmpi/lib:$LD_LIBRARY_PATH\n\nENV_SCRIPT_DIR=\"/opt/nvidia/nvidia_hpc_benchmarks_openmpi\"\n\n[[ -z \"${NCCL_PATH+x}\" ]] && export LD_LIBRARY_PATH=\"$ENV_SCRIPT_DIR/lib/nccl${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}\"\n[[ -z \"${NVSHMEM_PATH+x}\" ]] && export LD_LIBRARY_PATH=\"$ENV_SCRIPT_DIR/lib/nvshmem${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}\"\n[[ -z \"${NVPL_BLAS_PATH+x}\" ]] && export LD_LIBRARY_PATH=\"$ENV_SCRIPT_DIR/lib/nvpl_blas${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}\"\n[[ -z \"${NVPL_LAPACK_PATH+x}\" ]] && export LD_LIBRARY_PATH=\"$ENV_SCRIPT_DIR/lib/nvpl_lapack${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}\"\n[[ -z \"${NVPL_SPARSE_PATH+x}\" ]] && export LD_LIBRARY_PATH=\"$ENV_SCRIPT_DIR/lib/nvpl_sparse${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}\"\n[[ -z \"${OMP_PATH+x}\" ]] && export LD_LIBRARY_PATH=\"$ENV_SCRIPT_DIR/lib/omp${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}\"\n[[ -z \"${TCMALLOC_PATH+x}\" ]] && export LD_LIBRARY_PATH=\"$ENV_SCRIPT_DIR/lib/tcmalloc${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}\"\n\nexport OMPI_MCA_coll_hcoll_enable=0\n\n# OMPI / UCX tuning\nexport OMPI_MCA_pml=ucx\nexport OMPI_MCA_osc=ucx\nexport OMPI_MCA_btl=^openib\nexport OMPI_MCA_opal_cuda_support=true\nexport OMPI_MCA_mpi_leave_pinned=1\nexport OMPI_MCA_rmaps_base_mapping_policy=\"ppr:2:numa:pe=8\"\nexport OMPI_MCA_hwloc_base_binding_policy=core\n\nexport UCX_TLS=rc_x,sm,self,cuda_copy,gdr_copy,cuda_ipc\nexport UCX_IB_GPU_DIRECT_RDMA=y\nexport UCX_MEMTYPE_CACHE=y\nexport UCX_RNDV_SCHEME=put_zcopy\nexport UCX_IB_PCI_RELAXED_ORDERING=on\n\n# Ulimits\nulimit -l unlimited\nulimit -n 65536\n\n# Run\nmpirun ./xhpl-nvidia",
+    "raw": "#!/bin/bash\n#SBATCH --job-name=base       # Job name\n#SBATCH --ntasks=16                # Total MPI tasks - 4 x 4\n#SBATCH --ntasks-per-node=4       # balance tasks across nodes - 1 per gpu\n#SBATCH --time=01:00:00           # Time limit hh:mm:ss\n#SBATCH --nodes=4                 #\n#SBATCH --nodelist=node1,node2,node3,node4    # nodes 1 and 2 are the only ones with hpcx for now\n\n# Load HPCX\nsource ~/.bashrc\nexport HPCX_HOME=/home/hpc/hpcx/hpcx-v2.24-gcc-doca_ofed-ubuntu24.04-cuda13-x86_64\nexport LD_LIBRARY_PATH=$HPCX_HOME/ucx/lib:$HPCX_HOME/ompi/lib:$LD_LIBRARY_PATH\nexport PATH=$HPCX_HOME/ompi/bin:$PATH\nsource $HPCX_HOME/hpcx-init.sh\nhpcx_load\n\n# NVIDIA env\nexport CUDA_VISIBLE_DEVICES=0,1,2,3\nexport HPL_USE_GPU=1\nexport HPL_CUDA_MODE=1\n\nexport LD_LIBRARY_PATH=/usr/local/cuda-12.6/lib64:/opt/nvidia/nvidia_hpc_benchmarks_openmpi/lib:$LD_LIBRARY_PATH\n\nENV_SCRIPT_DIR=\"/opt/nvidia/nvidia_hpc_benchmarks_openmpi\"\n\n[[ -z \"${NCCL_PATH+x}\" ]] && export LD_LIBRARY_PATH=\"$ENV_SCRIPT_DIR/lib/nccl${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}\"\n[[ -z \"${NVSHMEM_PATH+x}\" ]] && export LD_LIBRARY_PATH=\"$ENV_SCRIPT_DIR/lib/nvshmem${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}\"\n[[ -z \"${NVPL_BLAS_PATH+x}\" ]] && export LD_LIBRARY_PATH=\"$ENV_SCRIPT_DIR/lib/nvpl_blas${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}\"\n[[ -z \"${NVPL_LAPACK_PATH+x}\" ]] && export LD_LIBRARY_PATH=\"$ENV_SCRIPT_DIR/lib/nvpl_lapack${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}\"\n[[ -z \"${NVPL_SPARSE_PATH+x}\" ]] && export LD_LIBRARY_PATH=\"$ENV_SCRIPT_DIR/lib/nvpl_sparse${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}\"\n[[ -z \"${OMP_PATH+x}\" ]] && export LD_LIBRARY_PATH=\"$ENV_SCRIPT_DIR/lib/omp${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}\"\n[[ -z \"${TCMALLOC_PATH+x}\" ]] && export LD_LIBRARY_PATH=\"$ENV_SCRIPT_DIR/lib/tcmalloc${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}\"\n\nexport OMPI_MCA_coll_hcoll_enable=0\n\n# OMPI / UCX tuning\nexport OMPI_MCA_pml=ucx\nexport OMPI_MCA_osc=ucx\nexport OMPI_MCA_btl=^openib\nexport OMPI_MCA_opal_cuda_support=true\nexport OMPI_MCA_mpi_leave_pinned=1\nexport OMPI_MCA_rmaps_base_mapping_policy=\"ppr:2:numa:pe=8\"\nexport OMPI_MCA_hwloc_base_binding_policy=core\n\nexport UCX_TLS=rc_x,sm,self,cuda_copy,gdr_copy,cuda_ipc\nexport UCX_IB_GPU_DIRECT_RDMA=y\nexport UCX_MEMTYPE_CACHE=y\nexport UCX_RNDV_SCHEME=put_zcopy\nexport UCX_IB_PCI_RELAXED_ORDERING=on\n\n# Ulimits\nulimit -l unlimited\nulimit -n 65536\n\n# Run\nmpirun ./xhpl-nvidia",
     "sbatch": {
       "job-name": "base       # Job name",
       "ntasks": null,
@@ -101,7 +101,7 @@
     "path": "/raw/HPL_NVIDIA/Sithum/09-24 - 1 2/job.sh"
   },
   "out": {
-    "path": "/raw/HPL_NVIDIA/Sithum/09-24 - 1 2/job.sh-670.out",
+    "path": "/raw/HPL_NVIDIA/Sithum/09-24 - 1 2/job.sh-673.out",
     "runs": [],
     "summary": {
       "testsTotal": null,
@@ -109,20 +109,26 @@
       "testsFailed": null,
       "testsSkipped": null
     },
-    "deviceInfo": {},
+    "deviceInfo": {
+      "peakClockMHz": 1410,
+      "smVersion": 80,
+      "numSms": 108
+    },
     "memInfo": {
       "DEVICE": {},
       "HOST": {}
     },
-    "traces": [],
+    "traces": [
+      "[HPL TRACE] cuda_nvshmem_init: max=0.1725 (15) min=0.1646 (10)"
+    ],
     "startTime": null,
     "endTime": null,
     "residual": null,
     "residualPassed": null
   },
   "err": {
-    "path": "/raw/HPL_NVIDIA/Sithum/09-24 - 1 2/job.sh-670.err",
-    "size": 1275
+    "path": "/raw/HPL_NVIDIA/Sithum/09-24 - 1 2/job.sh-673.err",
+    "size": 19863
   },
   "best": null
 }
