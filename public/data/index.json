@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2025-09-24T04:27:46.204Z",
+  "generatedAt": "2025-09-24T05:45:21.131Z",
   "runs": [
     {
       "id": "HPL/Sithum/job1",
@@ -3994,6 +3994,39 @@
         "testsSkipped": null
       },
       "hasErr": true
+    },
+    {
+      "id": "HPL_NVIDIA/Will/nvhpl6",
+      "suite": "HPL_NVIDIA",
+      "group": "Will",
+      "run": "nvhpl6",
+      "best": null,
+      "outSummary": {
+        "testsTotal": null,
+        "testsPassed": null,
+        "testsFailed": null,
+        "testsSkipped": null
+      },
+      "hasErr": true
+    },
+    {
+      "id": "HPL_NVIDIA/Will/nvhpl7",
+      "suite": "HPL_NVIDIA",
+      "group": "Will",
+      "run": "nvhpl7",
+      "best": {
+        "gflops": 190100,
+        "N": 274944,
+        "NB": 512,
+        "timeSec": 72.88
+      },
+      "outSummary": {
+        "testsTotal": 1,
+        "testsPassed": 1,
+        "testsFailed": 0,
+        "testsSkipped": 0
+      },
+      "hasErr": false
     }
   ]
 }
