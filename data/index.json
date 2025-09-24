@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2025-09-24T00:39:11.452Z",
+  "generatedAt": "2025-09-24T00:45:54.692Z",
   "runs": [
     {
       "id": "HPL/Sithum/job1",
@@ -3600,6 +3600,58 @@
         "testsSkipped": 0
       },
       "hasErr": false
+    },
+    {
+      "id": "HPL_NVIDIA/Sithum/09-24 - 3 0",
+      "suite": "HPL_NVIDIA",
+      "group": "Sithum",
+      "run": "09-24 - 3 0",
+      "best": {
+        "gflops": 190100,
+        "N": 274944,
+        "NB": 512,
+        "timeSec": 72.88
+      },
+      "outSummary": {
+        "testsTotal": 1,
+        "testsPassed": 1,
+        "testsFailed": 0,
+        "testsSkipped": 0
+      },
+      "hasErr": false
+    },
+    {
+      "id": "HPL_NVIDIA/Sithum/09-24 - 3 1",
+      "suite": "HPL_NVIDIA",
+      "group": "Sithum",
+      "run": "09-24 - 3 1",
+      "best": {
+        "gflops": 189500,
+        "N": 274944,
+        "NB": 512,
+        "timeSec": 73.12
+      },
+      "outSummary": {
+        "testsTotal": 1,
+        "testsPassed": 1,
+        "testsFailed": 0,
+        "testsSkipped": 0
+      },
+      "hasErr": false
+    },
+    {
+      "id": "HPL_NVIDIA/Sithum/09-24 - 3 2",
+      "suite": "HPL_NVIDIA",
+      "group": "Sithum",
+      "run": "09-24 - 3 2",
+      "best": null,
+      "outSummary": {
+        "testsTotal": null,
+        "testsPassed": null,
+        "testsFailed": null,
+        "testsSkipped": null
+      },
+      "hasErr": true
     },
     {
       "id": "HPL_NVIDIA/Sithum/fourNodes1",
