@@ -435,11 +435,8 @@ jobs:
             echo "Removing symlinked job binaries from output/ ..."
             # Only remove the known binary names we symlinked for runs.
             find output -type l \
-              \( -name 'xhpl' \ 
-                -o -name 'xhpl-nvidia' \
-                -o -name 'xhpl_mxp-nvidia' \
-                -o -name 'sst_binary' \
-                -o -name 'ece_binary' \) \
+              \( -name 'xhpl' -o -name 'xhpl-nvidia' -o -name 'xhpl_mxp-nvidia' \
+                 -o -name 'sst_binary' -o -name 'ece_binary' \) \
               -print -delete || true
           fi
           
