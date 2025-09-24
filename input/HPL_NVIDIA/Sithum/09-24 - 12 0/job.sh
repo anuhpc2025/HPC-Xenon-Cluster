@@ -2,7 +2,7 @@
 #SBATCH --job-name=hpl-test       # Job name
 #SBATCH --ntasks=16                # Total MPI tasks - 4 x 4
 #SBATCH --ntasks-per-node=4       # balance tasks across nodes - 1 per gpu
-#SBATCH --time=00:03:00           # Time limit hh:mm:ss
+#SBATCH --time=00:10:00           # Time limit hh:mm:ss
 #SBATCH --nodes=4                 #
 #SBATCH --nodelist=node1,node2,node3,node4    # nodes 1 and 2 are the only ones with hpcx for now
 
