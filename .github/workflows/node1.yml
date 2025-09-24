@@ -34,7 +34,7 @@ jobs:
           shopt -s nullglob
 
           copied_any=0
-          for jobdir in input/{HPL_NVIDIA,HPL,SST,ECE}/{Ayush,Beno,Daniel,John,Nicholas,Sithum,Will}/*; do
+          for jobdir in input/{HPL-MxP_NVIDIA,HPL_NVIDIA,HPL,SST,ECE}/{Ayush,Beno,Daniel,John,Nicholas,Sithum,Will}/*; do
             [ -d "$jobdir" ] || continue
             relpath="${jobdir#input/}"
             dest="${SLURM_TMP_BASE}/${relpath}"
@@ -46,7 +46,7 @@ jobs:
           done
 
           if [ "$copied_any" -eq 0 ]; then
-            echo "No job directories found under input/{HPL_NVIDIA,HPL,SST,ECE}/{Ayush,Beno,Daniel,John,Nicholas,Sithum,Will}/*"
+            echo "No job directories found under input/{HPL-MxP_NVIDIA,HPL_NVIDIA,HPL,SST,ECE}/{Ayush,Beno,Daniel,John,Nicholas,Sithum,Will}/*"
           fi
 
           echo "Directory structure in temp dir:"
@@ -66,11 +66,12 @@ jobs:
         run: |
           set -euo pipefail
 
-          for jobdir in "${SLURM_TMP_BASE}"/{HPL_NVIDIA,HPL,SST,ECE}/{Ayush,Beno,Daniel,John,Nicholas,Sithum,Will}/*; do
+          for jobdir in "${SLURM_TMP_BASE}"/{HPL-MxP_NVIDIA,HPL_NVIDIA,HPL,SST,ECE}/{Ayush,Beno,Daniel,John,Nicholas,Sithum,Will}/*; do
             [ -d "$jobdir" ] || continue
 
             case "$jobdir" in
               *HPL_NVIDIA*) src="/_HPC/defaults/HPL_NVIDIA/xhpl-nvidia" ; bin_name="xhpl-nvidia" ;;
+              *HPL-MxP_NVIDIA*) src="/_HPC/defaults/HPL-MxP_NVIDIA/xhpl_mxp-nvidia" ; bin_name="xhpl_mxp-nvidia" ;;
               *HPL*)        src="/home/hpc/hpl-2.3/testing/xhpl"   ; bin_name="xhpl" ;;
               *SST*)        src="/opt/sst/sst_binary"              ; bin_name="sst_binary" ;;
               *ECE*)        src="/opt/ece/ece_binary"              ; bin_name="ece_binary" ;;
@@ -166,7 +167,7 @@ jobs:
           : > joblist.txt
           any_submitted=0
 
-          for jobdir in "${SLURM_TMP_BASE}"/{HPL_NVIDIA,HPL,SST,ECE}/{Ayush,Beno,Daniel,John,Nicholas,Sithum,Will}/*; do
+          for jobdir in "${SLURM_TMP_BASE}"/{HPL-MxP_NVIDIA,HPL_NVIDIA,HPL,SST,ECE}/{Ayush,Beno,Daniel,John,Nicholas,Sithum,Will}/*; do
             [ -d "$jobdir" ] || continue
             jobrel="${jobdir#${SLURM_TMP_BASE}/}"
 
