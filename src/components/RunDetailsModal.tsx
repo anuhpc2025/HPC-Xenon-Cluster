@@ -76,13 +76,22 @@ export const RunDetailsModal: React.FC<RunDetailsModalProps> = ({
 
     if (!isOpen) return null;
 
-    const [copied, setCopied] = useState(false);
+    const [copiedJob, setCopiedJob] = useState(false);
+    const [copiedHPL, setCopiedHPL] = useState(false);
 
-    const handleCopy = async () => {
+    const handleCopyJob = async () => {
         if (runData?.job?.raw) {
             await navigator.clipboard.writeText(runData.job.raw);
-            setCopied(true);
-            setTimeout(() => setCopied(false), 2000);
+            setCopiedJob(true);
+            setTimeout(() => setCopiedJob(false), 2000);
+        }
+    };
+
+    const handleCopyHPL = async () => {
+        if (runData?.dat?.raw) {
+            await navigator.clipboard.writeText(runData.dat.raw);
+            setCopiedHPL(true);
+            setTimeout(() => setCopiedHPL(false), 2000);
         }
     };
 
@@ -341,60 +350,54 @@ export const RunDetailsModal: React.FC<RunDetailsModalProps> = ({
                                         <span>Job Script ({runData.job.filename})</span>
                                     </h3>
 
-                                    {/* Script area with copy button + feedback inside */}
-                                    <div className="bg-gray-900 rounded-lg p-4 overflow-x-auto relative">
-                                        {/* Copy button inside code box */}
-                                        <button
-                                            onClick={handleCopy}
-                                            className="absolute top-2 right-2 p-2 rounded-md bg-gray-800 hover:bg-gray-700 transition"
-                                            title="Copy script"
-                                        >
-                                            <Copy className="w-4 h-4 text-gray-300" />
-                                        </button>
+                                    <div className="bg-gray-900 rounded-lg p-4 relative" >
+                                        {/* Copy controls float outside scroll */}
+                                        <div className="sticky top-2 flex justify-end items-center space-x-2 z-10">
+                                            {copiedJob && (
+                                                <span className="text-xs text-green-400">Copied!</span>
+                                            )}
+                                            <button
+                                                onClick={handleCopyJob}
+                                                className="p-2 rounded-md bg-gray-800 hover:bg-gray-700 transition"
+                                                title="Copy script"
+                                            >
+                                                <Copy className="w-4 h-4 text-gray-300" />
+                                            </button>
+                                        </div>
 
-                                        {/* ✅ Copied feedback sits next to button now */}
-                                        {copied && (
-                                            <span className="absolute top-3 right-12 text-xs text-green-400">
-                Copied!
-              </span>
-                                        )}
-
-                                        <pre className="text-sm text-gray-100 whitespace-pre-wrap">
-              {runData.job.raw}
-            </pre>
+                                        <pre className="overflow-x-auto text-sm text-gray-100 whitespace-pre-wrap mt-2" style={{marginTop: -35}}>
+                                            {runData.job.raw}
+                                        </pre>
                                     </div>
                                 </div>
                             )}
 
                             {/* HPL File */}
                             {runData.dat && (
-                                <div className="bg-gray-50 rounded-lg p-4">
+                                <div className="bg-gray-50 rounded-lg p-4 mt-6">
                                     <h3 className="font-semibold text-gray-900 mb-3 flex items-center space-x-2">
                                         <FileText className="w-5 h-5" />
                                         <span>HPL File (HPL.dat)</span>
                                     </h3>
 
-                                    {/* Code area with copy button */}
-                                    <div className="bg-gray-900 rounded-lg p-4 overflow-x-auto relative">
-                                        {/* Copy button top-right */}
-                                        <button
-                                            onClick={handleCopy}
-                                            className="absolute top-2 right-2 p-2 rounded-md bg-gray-800 hover:bg-gray-700 transition"
-                                            title="Copy script"
-                                        >
-                                            <Copy className="w-4 h-4 text-gray-300" />
-                                        </button>
+                                    <div className="bg-gray-900 rounded-lg p-4 relative">
+                                        {/* Copy controls float outside scroll */}
+                                        <div className="sticky top-2 flex justify-end items-center space-x-2 z-10">
+                                            {copiedHPL && (
+                                                <span className="text-xs text-green-400">Copied!</span>
+                                            )}
+                                            <button
+                                                onClick={handleCopyHPL}
+                                                className="p-2 rounded-md bg-gray-800 hover:bg-gray-700 transition"
+                                                title="Copy HPL file"
+                                            >
+                                                <Copy className="w-4 h-4 text-gray-300" />
+                                            </button>
+                                        </div>
 
-                                        {/* Copied feedback */}
-                                        {copied && (
-                                            <span className="absolute top-3 right-12 text-xs text-green-400">
-                Copied!
-              </span>
-                                        )}
-
-                                        <pre className="text-sm text-gray-100 whitespace-pre-wrap">
-              {runData.dat.raw}
-            </pre>
+                                        <pre className="overflow-x-auto text-sm text-gray-100 whitespace-pre-wrap mt-2" style={{marginTop: -35}}>
+                                            {runData.dat.raw}
+                                        </pre>
                                     </div>
                                 </div>
                             )}
