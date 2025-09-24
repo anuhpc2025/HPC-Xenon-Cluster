@@ -15,7 +15,7 @@ source $HPCX_HOME/hpcx-init.sh
 hpcx_load
 
 # NVIDIA env
-#export CUDA_VISIBLE_DEVICES=0,1,2,3
+export CUDA_VISIBLE_DEVICES=0,1,2,3
 export HPL_USE_GPU=1
 export HPL_CUDA_MODE=1
 
@@ -48,7 +48,7 @@ ulimit -l unlimited
 ulimit -n 65536
 
 # Run
-mpirun -np 4 --rankfile rankfile ./xhpl_mxp-nvidia \
+mpirun ./xhpl_mxp-nvidia \
   --nprow 2 \
   --npcol 2 \
   --nporder row \

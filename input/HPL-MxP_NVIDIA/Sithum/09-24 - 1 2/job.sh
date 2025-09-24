@@ -5,6 +5,7 @@
 #SBATCH --time=00:03:00           # Time limit hh:mm:ss
 #SBATCH --nodes=1                 #
 #SBATCH --nodelist=node1    # nodes 1 and 2 are the only ones with hpcx for now
+#SBATCH --gpus-per-task=1
 
 # Load HPCX
 source ~/.bashrc
@@ -48,7 +49,7 @@ ulimit -l unlimited
 ulimit -n 65536
 
 # Run
-mpirun --rankfile rankfile ./xhpl_mxp-nvidia \
+mpirun ./xhpl_mxp-nvidia \
   --nprow 2 \
   --npcol 2 \
   --nporder row \
