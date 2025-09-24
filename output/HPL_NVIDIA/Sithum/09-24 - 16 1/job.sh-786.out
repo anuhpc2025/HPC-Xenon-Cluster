@@ -1,0 +1,16 @@
+>>> Checking UCX version...
+                          Verbose level of the UCX components
+                          Set number of calls of internal UCX progress calls per opal_progress call
+                          Use OPAL memory hooks, instead of UCX internal memory hooks
+                          List of UCX transports which should be supported on the system, to enable selecting the UCX component. Special values: any (any available). A '^' prefix negates the list. For example, in order to exclude on shared memory and TCP transports, please set to '^posix,sysv,self,tcp,cma,knem,xpmem'.
+                          List of device driver pattern names, which, if supported by UCX, will bump its priority above ob1. Special values: any (any available)
+                          Priority of the UCX component
+                          Verbose level of the UCX components
+                          Set number of calls of internal UCX progress calls per opal_progress call
+                          Use OPAL memory hooks, instead of UCX internal memory hooks
+                          List of UCX transports which should be supported on the system, to enable selecting the UCX component. Special values: any (any available). A '^' prefix negates the list. For example, in order to exclude on shared memory and TCP transports, please set to '^posix,sysv,self,tcp,cma,knem,xpmem'.
+                          List of device driver pattern names, which, if supported by UCX, will bump its priority above ob1. Special values: any (any available)
+[1758722100.687543] [node2:373589:0]           ib_md.c:1190 UCX  WARN  mlx5_0: relaxed order memory access requested, but unsupported
+[1758722100.692326] [node2:373588:0]           ib_md.c:1190 UCX  WARN  mlx5_0: relaxed order memory access requested, but unsupported
+[1758722100.702598] [node2:373586:0]           ib_md.c:1190 UCX  WARN  mlx5_0: relaxed order memory access requested, but unsupported
+[1758722100.706437] [node2:373587:0]           ib_md.c:1190 UCX  WARN  mlx5_0: relaxed order memory access requested, but unsupported
