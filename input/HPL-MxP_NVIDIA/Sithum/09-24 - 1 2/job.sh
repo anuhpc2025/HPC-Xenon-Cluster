@@ -48,7 +48,7 @@ ulimit -l unlimited
 ulimit -n 65536
 
 # Run
-mpirun --map-by ppr:1:gpu ./xhpl_mxp-nvidia \
+mpirun --rankfile rankfile ./xhpl_mxp-nvidia \
   --nprow 2 \
   --npcol 2 \
   --nporder row \
