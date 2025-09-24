@@ -1,7 +1,7 @@
-import { useState } from 'react';
+import { Routes, Route, Navigate, useParams } from 'react-router';
 import { Navigation } from './components/Navigation';
 import { BenchmarkPage } from './components/BenchmarkPage';
-import type {BenchmarkSuite} from './types';
+import type { BenchmarkSuite } from './types';
 
 const suiteDetails = {
     HPL: {
@@ -26,18 +26,22 @@ const suiteDetails = {
     }
 };
 
-function App() {
-    const [activeSuite, setActiveSuite] = useState<BenchmarkSuite>('HPL');
+function SuiteWrapper() {
+    const { suiteId } = useParams<{ suiteId: BenchmarkSuite }>();
+    const suite = suiteId && suiteDetails[suiteId];
+
+    if (!suite) {
+        return <Navigate to="/HPL" replace />;
+    }
 
     return (
-        <div className={`min-h-screen ${suiteDetails[activeSuite].background}`}>
-            <Navigation activeSuite={activeSuite} onSuiteChange={setActiveSuite} />
-
+        <div className={`min-h-screen ${suite.background}`}>
+            <Navigation activeSuite={suiteId!} />
             <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
                 <BenchmarkPage
-                    suite={activeSuite}
-                    suiteName={suiteDetails[activeSuite].name}
-                    description={suiteDetails[activeSuite].description}
+                    suite={suiteId!}
+                    suiteName={suite.name}
+                    description={suite.description}
                 />
             </main>
 
@@ -49,6 +53,17 @@ function App() {
                 </div>
             </footer>
         </div>
+    );
+}
+
+function App() {
+    return (
+        <Routes>
+            {/* Default route */}
+            <Route path="/" element={<Navigate to="/HPL" replace />} />
+            {/* Dynamic suite route */}
+            <Route path="/:suiteId" element={<SuiteWrapper />} />
+        </Routes>
     );
 }
 
