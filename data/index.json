@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2025-09-24T02:07:24.244Z",
+  "generatedAt": "2025-09-24T02:28:36.477Z",
   "runs": [
     {
       "id": "HPL/Sithum/job1",
@@ -671,6 +671,25 @@
         "N": 46784,
         "NB": 1088,
         "timeSec": 2.01
+      },
+      "outSummary": {
+        "testsTotal": 1,
+        "testsPassed": 1,
+        "testsFailed": 0,
+        "testsSkipped": 0
+      },
+      "hasErr": false
+    },
+    {
+      "id": "HPL_NVIDIA/Daniel/24-09-1",
+      "suite": "HPL_NVIDIA",
+      "group": "Daniel",
+      "run": "24-09-1",
+      "best": {
+        "gflops": 190500,
+        "N": 275968,
+        "NB": 512,
+        "timeSec": 73.54
       },
       "outSummary": {
         "testsTotal": 1,
