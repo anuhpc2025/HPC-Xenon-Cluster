@@ -48,7 +48,7 @@ ulimit -l unlimited
 ulimit -n 65536
 
 # Run
-mpirun ./xhpl_mxp-nvidia \
+srun --mpi=pmix_v3 ./xhpl_mxp-nvidia \
   --nprow 2 \
   --npcol 2 \
   --nporder row \
