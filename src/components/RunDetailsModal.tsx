@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 import {Clock, Cpu, Database, FileText, Play, Settings, X, Zap, Copy} from 'lucide-react';
 
 interface RunDetailsData {
@@ -58,6 +58,24 @@ export const RunDetailsModal: React.FC<RunDetailsModalProps> = ({
                                                                     loading,
                                                                     error
                                                                 }) => {
+
+    useEffect(() => {
+        if (!isOpen) return;
+
+        const handleKeyDown = (e: KeyboardEvent) => {
+            if (e.key === "Escape") {
+                onClose();
+            }
+        };
+
+        window.addEventListener("keydown", handleKeyDown);
+        return () => {
+            window.removeEventListener("keydown", handleKeyDown);
+        };
+    }, [isOpen, onClose]);
+
+    if (!isOpen) return null;
+
     const [copied, setCopied] = useState(false);
 
     const handleCopy = async () => {
@@ -67,8 +85,6 @@ export const RunDetailsModal: React.FC<RunDetailsModalProps> = ({
             setTimeout(() => setCopied(false), 2000);
         }
     };
-
-    if (!isOpen) return null;
 
     const formatGflops = (gflops: number) => {
         if (gflops >= 1000) {
@@ -86,8 +102,8 @@ export const RunDetailsModal: React.FC<RunDetailsModalProps> = ({
     };
 
     return (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4" style={{margin:0}}>
-            <div className="bg-white rounded-lg shadow-xl max-w-6xl w-full max-h-[90vh] overflow-hidden">
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4" style={{margin:0}} onClick={onClose}>
+            <div className="bg-white rounded-lg shadow-xl max-w-6xl w-full max-h-[90vh] overflow-hidden" onClick={(e) => e.stopPropagation()}>
                 <div className="flex items-center justify-between p-6 border-b border-gray-200">
                     <div className="flex items-center space-x-3">
                         <div className="bg-blue-100 p-2 rounded-lg">
