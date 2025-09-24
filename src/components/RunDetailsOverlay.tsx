@@ -1,8 +1,6 @@
-// RunDetailsOverlay.tsx
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router';
 import { RunDetailsModal } from './RunDetailsModal';
-import type { BenchmarkRun } from '../types';
 
 export function RunDetailsOverlay() {
     const { suiteId, group, runId } = useParams();

@@ -28,31 +28,10 @@ export const LeaderboardTable: React.FC<LeaderboardTableProps> = ({ runs, suite 
     const [, setSelectedRun] = useState<BenchmarkRun | null>(null);
     const [modalOpen, setModalOpen] = useState(false);
     const [runDetails, setRunDetails] = useState<any>(null);
-    const [loadingDetails, setLoadingDetails] = useState(false);
+    const [loadingDetails, ] = useState(false);
     const [detailsError, setDetailsError] = useState<string | null>(null);
 
     const [showBestPerGroup, setShowBestPerGroup] = useState(true);
-
-    const handleViewDetails = async (run: BenchmarkRun) => {
-        setSelectedRun(run);
-        setModalOpen(true);
-        setLoadingDetails(true);
-        setDetailsError(null);
-        setRunDetails(null);
-
-        try {
-            const response = await fetch(`${import.meta.env.BASE_URL}data/runs/${run.suite}/${run.group}/${run.run}/run.json`);
-            if (!response.ok) {
-                throw new Error(`Failed to load run details: ${response.status} ${response.statusText}`);
-            }
-            const data = await response.json();
-            setRunDetails(data);
-        } catch (error) {
-            setDetailsError(error instanceof Error ? error.message : 'Failed to load run details');
-        } finally {
-            setLoadingDetails(false);
-        }
-    };
 
     const closeModal = () => {
         setModalOpen(false);
