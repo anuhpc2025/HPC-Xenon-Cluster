@@ -34,8 +34,8 @@ export OMPI_MCA_osc=ucx
 export OMPI_MCA_btl=^openib
 export OMPI_MCA_opal_cuda_support=true
 export OMPI_MCA_mpi_leave_pinned=1
-export OMPI_MCA_rmaps_base_mapping_policy="ppr:2:numa:pe=8"
-export OMPI_MCA_hwloc_base_binding_policy=core
+#export OMPI_MCA_rmaps_base_mapping_policy="ppr:2:numa:pe=8"
+#export OMPI_MCA_hwloc_base_binding_policy=core
 
 export UCX_TLS=rc_x,sm,self,cuda_copy,gdr_copy,cuda_ipc
 export UCX_IB_GPU_DIRECT_RDMA=y
@@ -48,7 +48,7 @@ ulimit -l unlimited
 ulimit -n 65536
 
 # Run
-mpirun --rankfile rankfile ./xhpl_mxp-nvidia \
+mpirun -np 4 --rankfile rankfile ./xhpl_mxp-nvidia \
   --nprow 2 \
   --npcol 2 \
   --nporder row \
