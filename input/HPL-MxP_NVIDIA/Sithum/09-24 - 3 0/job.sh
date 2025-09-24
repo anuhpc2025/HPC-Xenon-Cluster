@@ -58,3 +58,4 @@ mpirun ./xhpl_mxp-nvidia \
   --n 10000 \
   --nb 256 \
   --preset-gemm-kernel 0
+  
