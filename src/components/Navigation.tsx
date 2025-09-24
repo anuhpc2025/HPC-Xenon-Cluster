@@ -75,7 +75,7 @@ export const Navigation: React.FC<NavigationProps> = ({ activeSuite }) => {
                     {suiteInfos.map((suite) => (
                         <Link
                             key={suite.id}
-                            to={`${import.meta.env.BASE_PATH}/${suite.id}`}
+                            to={`/${suite.id}`}
                             className={`flex items-center space-x-2 px-4 py-2 rounded-lg font-medium text-sm whitespace-nowrap transition-colors ${
                                 activeSuite === suite.id
                                     ? 'bg-blue-100 text-blue-700 border-2 border-blue-300'
