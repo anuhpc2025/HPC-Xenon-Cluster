@@ -48,4 +48,10 @@ ulimit -l unlimited
 ulimit -n 65536
 
 # Run
-mpirun ./xhpl_mxp-nvidia --gpu-affinity 0:1:2:3 --nprow 2 --npcol 2 --nporder row --sloppy-type 2 --n 50000 --nb 256
+mpirun -np 4 ./xhpl_mxp-nvidia \
+  --nprow 2 \
+  --npcol 2 \
+  --nporder row \
+  --sloppy-type 2 \
+  --n 50000 \
+  --nb 256
