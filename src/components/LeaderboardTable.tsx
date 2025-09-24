@@ -9,6 +9,7 @@ import {
 } from 'lucide-react';
 import type { BenchmarkRun } from '../types';
 import { RunDetailsModal } from './RunDetailsModal';
+import { useNavigate, useParams } from "react-router";
 
 interface LeaderboardTableProps {
     runs: BenchmarkRun[];
@@ -19,6 +20,9 @@ type SortField = 'gflops' | 'group' | 'run' | 'timeSec' | 'testsPassed';
 type SortDirection = 'asc' | 'desc';
 
 export const LeaderboardTable: React.FC<LeaderboardTableProps> = ({ runs, suite }) => {
+    const navigate = useNavigate();
+    const { suiteId } = useParams();
+
     const [sortField, setSortField] = useState<SortField>('gflops');
     const [sortDirection, setSortDirection] = useState<SortDirection>('desc');
     const [, setSelectedRun] = useState<BenchmarkRun | null>(null);
@@ -290,7 +294,9 @@ export const LeaderboardTable: React.FC<LeaderboardTableProps> = ({ runs, suite 
                                 </td>
                                 <td className="px-6 py-4 whitespace-nowrap">
                                     <button
-                                        onClick={() => handleViewDetails(run)}
+                                        onClick={() =>
+                                            navigate(`/${suiteId}/${run.group}/${run.run}`)
+                                        }
                                         className="inline-flex items-center space-x-2 px-3 py-1 bg-blue-100 hover:bg-blue-200 text-blue-700 text-sm font-medium rounded-lg transition-colors"
                                     >
                                         <Eye className="w-4 h-4" />

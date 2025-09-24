@@ -2,6 +2,8 @@ import { Routes, Route, Navigate, useParams } from 'react-router';
 import { Navigation } from './components/Navigation';
 import { BenchmarkPage } from './components/BenchmarkPage';
 import type { BenchmarkSuite } from './types';
+import { RunDetailsOverlay } from './components/RunDetailsOverlay';
+import { Outlet } from "react-router";
 
 const suiteDetails = {
     HPL: {
@@ -45,6 +47,8 @@ function SuiteWrapper() {
                 />
             </main>
 
+            <Outlet />
+
             <footer className="bg-white border-t border-gray-200 mt-12">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
                     <div className="text-center text-sm text-gray-500">
@@ -62,7 +66,9 @@ function App() {
             {/* Default route */}
             <Route path="/" element={<Navigate to="/HPL" replace />} />
             {/* Dynamic suite route */}
-            <Route path="/:suiteId" element={<SuiteWrapper />} />
+            <Route path="/:suiteId" element={<SuiteWrapper />} >
+                <Route path=":group/:runId" element={<RunDetailsOverlay />} />
+            </Route>
         </Routes>
     );
 }
