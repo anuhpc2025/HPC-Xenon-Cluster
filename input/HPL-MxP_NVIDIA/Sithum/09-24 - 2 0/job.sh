@@ -44,6 +44,7 @@ export UCX_MEMTYPE_CACHE=y
 export UCX_RNDV_SCHEME=put_zcopy
 export UCX_IB_PCI_RELAXED_ORDERING=on
 
+
 # Ulimits
 ulimit -l unlimited
 ulimit -n 65536
