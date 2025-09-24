@@ -57,4 +57,4 @@ mpirun ./xhpl_mxp-nvidia \
   --sloppy-type 2 \
   --n 10000 \
   --nb 256 \
-  --preset-gemm-kernel 0
+  --preset-gemm-kernel 80
