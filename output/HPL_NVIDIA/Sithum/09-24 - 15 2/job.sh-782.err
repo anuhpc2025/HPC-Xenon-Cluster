@@ -1,0 +1,27 @@
+HPL ERROR: CUDART Error: cudaMemsetAsync(fct_sync, 0, nb * sizeof(int), stream) = 700 (an illegal memory access was encountered) on node1 at (cugetrfs_mp/getrfs_mp_test.cu:230)
+HPL ERROR: CUDART Error: cudaMemsetAsync(fct_sync, 0, nb * sizeof(int), stream) = 700 (an illegal memory access was encountered) on node1 at (cugetrfs_mp/getrfs_mp_test.cu:230)
+HPL ERROR: CUDART Error: cudaMemsetAsync(fct_sync, 0, nb * sizeof(int), stream) = 700 (an illegal memory access was encountered) on node1 at (cugetrfs_mp/getrfs_mp_test.cu:230)
+HPL ERROR: CUDART Error: cudaMemsetAsync(fct_sync, 0, nb * sizeof(int), stream) = 700 (an illegal memory access was encountered) on node1 at (cugetrfs_mp/getrfs_mp_test.cu:230)
+HPL ERROR: CUDART Error: cudaMemsetAsync(fct_sync, 0, nb * sizeof(int), stream) = 700 (an illegal memory access was encountered) on node2 at (cugetrfs_mp/getrfs_mp_test.cu:230)
+HPL ERROR: CUDART Error: cudaMemsetAsync(fct_sync, 0, nb * sizeof(int), stream) = 700 (an illegal memory access was encountered) on node2 at (cugetrfs_mp/getrfs_mp_test.cu:230)
+HPL ERROR: CUDART Error: cudaMemsetAsync(fct_sync, 0, nb * sizeof(int), stream) = 700 (an illegal memory access was encountered) on node3 at (cugetrfs_mp/getrfs_mp_test.cu:230)
+HPL ERROR: CUDART Error: cudaMemsetAsync(fct_sync, 0, nb * sizeof(int), stream) = 700 (an illegal memory access was encountered) on node4 at (cugetrfs_mp/getrfs_mp_test.cu:230)
+HPL ERROR: CUDART Error: cudaMemsetAsync(fct_sync, 0, nb * sizeof(int), stream) = 700 (an illegal memory access was encountered) on node2 at (cugetrfs_mp/getrfs_mp_test.cu:230)
+HPL ERROR: CUDART Error: cudaMemsetAsync(fct_sync, 0, nb * sizeof(int), stream) = 700 (an illegal memory access was encountered) on node3 at (cugetrfs_mp/getrfs_mp_test.cu:230)
+HPL ERROR: CUDART Error: cudaMemsetAsync(fct_sync, 0, nb * sizeof(int), stream) = 700 (an illegal memory access was encountered) on node4 at (cugetrfs_mp/getrfs_mp_test.cu:230)
+HPL ERROR: CUDART Error: cudaMemsetAsync(fct_sync, 0, nb * sizeof(int), stream) = 700 (an illegal memory access was encountered) on node2 at (cugetrfs_mp/getrfs_mp_test.cu:230)
+HPL ERROR: CUDART Error: cudaMemsetAsync(fct_sync, 0, nb * sizeof(int), stream) = 700 (an illegal memory access was encountered) on node3 at (cugetrfs_mp/getrfs_mp_test.cu:230)
+HPL ERROR: CUDART Error: cudaMemsetAsync(fct_sync, 0, nb * sizeof(int), stream) = 700 (an illegal memory access was encountered) on node4 at (cugetrfs_mp/getrfs_mp_test.cu:230)
+HPL ERROR: CUDART Error: cudaMemsetAsync(fct_sync, 0, nb * sizeof(int), stream) = 700 (an illegal memory access was encountered) on node3 at (cugetrfs_mp/getrfs_mp_test.cu:230)
+HPL ERROR: CUDART Error: cudaMemsetAsync(fct_sync, 0, nb * sizeof(int), stream) = 700 (an illegal memory access was encountered) on node4 at (cugetrfs_mp/getrfs_mp_test.cu:230)
+--------------------------------------------------------------------------
+Primary job  terminated normally, but 1 process returned
+a non-zero exit code. Per user-direction, the job has been aborted.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+mpirun detected that one or more processes exited with non-zero status, thus causing
+the job to be terminated. The first process to do so was:
+
+  Process name: [[60015,1],8]
+  Exit code:    1
+--------------------------------------------------------------------------
