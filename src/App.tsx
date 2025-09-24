@@ -60,9 +60,16 @@ function App() {
     return (
         <Routes>
             {/* Default route */}
-            <Route path="/" element={<Navigate to="/HPL" replace />} />
+            <Route
+                path={`${import.meta.env.BASE_URL}`}
+                element={<Navigate to={`${import.meta.env.BASE_URL}`} replace />}
+            />
+
             {/* Dynamic suite route */}
-            <Route path="/:suiteId" element={<SuiteWrapper />} />
+            <Route
+                path={`${import.meta.env.BASE_URL}:suiteId`}
+                element={<SuiteWrapper />}
+            />
         </Routes>
     );
 }
