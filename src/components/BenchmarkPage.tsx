@@ -53,7 +53,7 @@ export const BenchmarkPage: React.FC<BenchmarkPageProps> = ({
         const fetchData = async () => {
             try {
                 setLoading(true);
-                const response = await fetch(`${import.meta.env.BASE_URL}data/index.json`);
+                const response = await fetch(`${import.meta.env.BASE_PATH}data/index.json`);
                 if (!response.ok) {
                     throw new Error('Failed to fetch data');
                 }

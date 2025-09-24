@@ -61,13 +61,13 @@ function App() {
         <Routes>
             {/* Default route */}
             <Route
-                path={`${import.meta.env.BASE_URL}`}
-                element={<Navigate to={`${import.meta.env.BASE_URL}`} replace />}
+                path={`${import.meta.env.BASE_PATH}`}
+                element={<Navigate to={`${import.meta.env.BASE_PATH}`} replace />}
             />
 
             {/* Dynamic suite route */}
             <Route
-                path={`${import.meta.env.BASE_URL}:suiteId`}
+                path={`${import.meta.env.BASE_PATH}:suiteId`}
                 element={<SuiteWrapper />}
             />
         </Routes>
