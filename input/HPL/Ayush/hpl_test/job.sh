@@ -1,51 +1,32 @@
 #!/bin/bash
-#SBATCH --job-name=hpl-test       # Job name
-#SBATCH --ntasks=16                # Total MPI tasks - 4 x 4
-#SBATCH --ntasks-per-node=4       # balance tasks across nodes - 1 per gpu
-#SBATCH --time=00:10:00           # Time limit hh:mm:ss
-#SBATCH --nodes=4                 #
-#SBATCH --nodelist=node1,node2,node3,node4    # nodes 1 and 2 are the only ones with hpcx for now
+#SBATCH --job-name=hpl-cpu
+#SBATCH --nodes=1
+#SBATCH --ntasks=9                 # matches P×Q in HPL.dat (3×3)
+#SBATCH --ntasks-per-node=9
+#SBATCH --cpus-per-task=3          # OpenMP threads per rank
+#SBATCH --time=01:00:00
+#SBATCH --output=hpl-%j.out
+#SBATCH --error=hpl-%j.err
 
-# Load HPCX
-source ~/.bashrc
-export HPCX_HOME=/home/hpc/hpcx/hpcx-v2.24-gcc-doca_ofed-ubuntu24.04-cuda13-x86_64
-export LD_LIBRARY_PATH=$HPCX_HOME/ucx/lib:$HPCX_HOME/ompi/lib:$LD_LIBRARY_PATH
-export PATH=$HPCX_HOME/ompi/bin:$PATH
-source $HPCX_HOME/hpcx-init.sh
-hpcx_load
+set -euo pipefail
 
-# NVIDIA env
-export CUDA_VISIBLE_DEVICES=0,1,2,3
-export HPL_USE_GPU=1
-export HPL_CUDA_MODE=1
+# Use HPC-X MPI already installed
+export PATH="/home/hpc/hpcx/hpcx-v2.24-gcc-doca_ofed-ubuntu24.04-cuda13-x86_64/ompi/bin:$PATH"
 
-# ---- NCCL choice: use system 2.27.7 ----
-unset LD_PRELOAD
-export LD_LIBRARY_PATH=/usr/lib/x86_64-linux-gnu:$LD_LIBRARY_PATH
+# If your xhpl needs OpenBLAS/MKL in $HOME/.local/lib, expose it (harmless if not needed)
+export LD_LIBRARY_PATH="$HOME/.local/lib:${LD_LIBRARY_PATH:-}"
 
-# Optional: add CUDA & other NVIDIA libs, but *not* /opt/.../lib/nccl
-export LD_LIBRARY_PATH=/opt/nvidia/nvidia_hpc_benchmarks_openmpi/lib/omp:$LD_LIBRARY_PATH
-export LD_LIBRARY_PATH=/usr/local/cuda-12.6/lib64:/opt/nvidia/nvidia_hpc_benchmarks_openmpi/lib:$LD_LIBRARY_PATH
-export LD_LIBRARY_PATH=/usr/lib/x86_64-linux-gnu/nvshmem/12:$LD_LIBRARY_PATH
+# OpenMP threads = cpus-per-task
+export OMP_NUM_THREADS="${SLURM_CPUS_PER_TASK:-1}"
 
-# OMPI / UCX tuning
-export OMPI_MCA_pml=ucx
-export OMPI_MCA_osc=ucx
-export OMPI_MCA_btl=^openib
-export OMPI_MCA_opal_cuda_support=true
-export OMPI_MCA_mpi_leave_pinned=1
-export OMPI_MCA_rmaps_base_mapping_policy="ppr:2:numa:pe=8"
-export OMPI_MCA_hwloc_base_binding_policy=core
+# Bind ranks cleanly to cores
+MPI_BIND="--bind-to core --map-by socket:PE=${SLURM_CPUS_PER_TASK:-1}"
 
-export UCX_TLS=rc_x,sm,self,cuda_copy,gdr_copy,cuda_ipc
-export UCX_IB_GPU_DIRECT_RDMA=y
-export UCX_MEMTYPE_CACHE=y
-export UCX_RNDV_SCHEME=put_zcopy
-export UCX_IB_PCI_RELAXED_ORDERING=on
+# Go where HPL.dat is
+cd "$(dirname "$0")"
+echo "PWD=$(pwd)"
+echo "mpirun=$(which mpirun)"
+echo "Binary=/home/hpc/xhpl"
+echo "NTASKS=${SLURM_NTASKS:-unset}  OMP_NUM_THREADS=$OMP_NUM_THREADS"
 
-# Ulimits
-ulimit -l unlimited
-ulimit -n 65536
-
-# Run
-mpirun ./xhpl-nvidia
+mpirun ${MPI_BIND} -np "${SLURM_NTASKS:-9}" /home/hpc/xhpl
