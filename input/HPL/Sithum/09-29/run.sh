@@ -19,19 +19,19 @@ source $HPCX_HOME/hpcx-init.sh
 hpcx_load
 
 # OMPI / UCX tuning
-export OMPI_MCA_pml=ucx
-export OMPI_MCA_osc=ucx
-export OMPI_MCA_btl=^openib
-export OMPI_MCA_opal_cuda_support=true
-export OMPI_MCA_mpi_leave_pinned=1
-export OMPI_MCA_rmaps_base_mapping_policy="ppr:2:numa:pe=8"
-export OMPI_MCA_hwloc_base_binding_policy=core
+# export OMPI_MCA_pml=ucx
+# export OMPI_MCA_osc=ucx
+# export OMPI_MCA_btl=^openib
+# export OMPI_MCA_opal_cuda_support=true
+# export OMPI_MCA_mpi_leave_pinned=1
+# export OMPI_MCA_rmaps_base_mapping_policy="ppr:2:numa:pe=8"
+# export OMPI_MCA_hwloc_base_binding_policy=core
 
-export UCX_TLS=rc_x,sm,self,cuda_copy,gdr_copy,cuda_ipc
-export UCX_IB_GPU_DIRECT_RDMA=y
-export UCX_MEMTYPE_CACHE=y
-export UCX_RNDV_SCHEME=put_zcopy
-export UCX_IB_PCI_RELAXED_ORDERING=on
+# export UCX_TLS=rc_x,sm,self,cuda_copy,gdr_copy,cuda_ipc
+# export UCX_IB_GPU_DIRECT_RDMA=y
+# export UCX_MEMTYPE_CACHE=y
+# export UCX_RNDV_SCHEME=put_zcopy
+# export UCX_IB_PCI_RELAXED_ORDERING=on
 
 # Ulimits
 ulimit -l unlimited
