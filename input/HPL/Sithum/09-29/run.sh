@@ -38,4 +38,4 @@ ulimit -l unlimited
 ulimit -n 65536
 
 # Run
-mpirun ./xhpl-nvidia
+mpirun ./xhpl
