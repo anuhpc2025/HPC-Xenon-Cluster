@@ -1,5 +1,5 @@
 import React from 'react';
-import { Cpu, Zap, Cloud, Building } from 'lucide-react';
+import { Cpu, Zap, Cloud, Building, Home } from 'lucide-react';
 import { Link } from 'react-router';
 import type { BenchmarkSuite, SuiteInfo } from '../types';
 
@@ -71,21 +71,31 @@ export const Navigation: React.FC<NavigationProps> = ({ activeSuite }) => {
                 </div>
 
                 {/* Suite Navigation */}
-                <div className="flex space-x-1 overflow-x-auto pb-4">
-                    {suiteInfos.map((suite) => (
-                        <Link
-                            key={suite.id}
-                            to={`/${suite.id}`}
-                            className={`flex items-center space-x-2 px-4 py-2 rounded-lg font-medium text-sm whitespace-nowrap transition-colors ${
-                                activeSuite === suite.id
-                                    ? 'bg-blue-100 text-blue-700 border-2 border-blue-300'
-                                    : 'text-gray-600 hover:text-gray-900 hover:bg-gray-100 border-2 border-transparent'
-                            }`}
-                        >
-                            {getIcon(suite.type)}
-                            <span>{suite.name}</span>
-                        </Link>
-                    ))}
+                <div className="flex justify-between items-center pb-4">
+                    <div className="flex space-x-1 overflow-x-auto">
+                        {suiteInfos.map((suite) => (
+                            <Link
+                                key={suite.id}
+                                to={`/${suite.id}`}
+                                className={`flex items-center space-x-2 px-4 py-2 rounded-lg font-medium text-sm whitespace-nowrap transition-colors ${
+                                    activeSuite === suite.id
+                                        ? 'bg-blue-100 text-blue-700 border-2 border-blue-300'
+                                        : 'text-gray-600 hover:text-gray-900 hover:bg-gray-100 border-2 border-transparent'
+                                }`}
+                            >
+                                {getIcon(suite.type)}
+                                <span>{suite.name}</span>
+                            </Link>
+                        ))}
+                    </div>
+
+                    <Link
+                        to="https://anuhpc2025.github.io/Main-Website/"
+                        className="flex items-center space-x-2 px-4 py-2 rounded-lg font-medium text-sm whitespace-nowrap text-gray-600 hover:text-gray-900 hover:bg-gray-100 border-2 border-transparent"
+                    >
+                        <Home className="w-5 h-5" />
+                        <span>Main Website</span>
+                    </Link>
                 </div>
             </div>
         </nav>
