@@ -12,5 +12,13 @@
 # Load MPI module (adjust for your system)
 # module load openmpi
 
+# Load HPCX
+source ~/.bashrc
+export HPCX_HOME=/home/hpc/hpcx/hpcx-v2.24-gcc-doca_ofed-ubuntu24.04-cuda13-x86_64
+export LD_LIBRARY_PATH=$HPCX_HOME/ucx/lib:$HPCX_HOME/ompi/lib:$LD_LIBRARY_PATH
+export PATH=$HPCX_HOME/ompi/bin:$PATH
+source $HPCX_HOME/hpcx-init.sh
+hpcx_load
+
 # Run the MPI program
 mpirun ./xhpl
