@@ -1,18 +1,18 @@
 HPLinpack benchmark input file
-Innovative Computing Laboratory, University of Tennessee
+Custom quick 3-node test
 HPL.out      output file name (if any)
 6            device out (6=stdout,7=stderr,file)
-3            # of problems sizes (N)
-2000 4000 6000  Ns
-3            # of NBs
-64 96 128       NBs
+1            # of problems sizes (N)
+30000        Ns
+1            # of NBs
+192          NBs
 0            PMAP process mapping (0=Row-,1=Column-major)
 1            # of process grids (P x Q)
-3            Ps
-3            Qs
+8            Ps
+12           Qs
 16.0         threshold
 3            # of panel fact
-0 1 2        PFACTs (0=left, 1=Crout, 2=Right)
+0 1 2        PFACTs (0=left,1=Crout,2=Right)
 2            # of recursive stopping criterium
 2 4          NBMINs (>= 1)
 1            # of panels in recursion

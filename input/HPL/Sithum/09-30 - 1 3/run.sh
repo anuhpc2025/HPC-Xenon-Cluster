@@ -3,7 +3,7 @@
 #SBATCH --ntasks=128              # Total MPI tasks
 #SBATCH --ntasks-per-node=32       # MPI tasks per node
 #SBATCH --cpus-per-task=1         # CPU cores per MPI task
-#SBATCH --time=12:00:00           # Time limit hh:mm:ss
+#SBATCH --time=00:20:00           # Time limit hh:mm:ss
 #SBATCH --output=hpl-%j.out       # Standard output file
 #SBATCH --error=hpl-%j.err        # Standard error file
 #SBATCH --nodes=4                 # Number of nodes
