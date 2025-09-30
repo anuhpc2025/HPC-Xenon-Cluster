@@ -90,8 +90,8 @@
     "path": "/raw/HPL/Sithum/09-30 - 1 3/HPL.dat"
   },
   "job": {
-    "filename": "job4.sh",
-    "raw": "#!/bin/bash\n#SBATCH --job-name=hpl-test       # Job name\n#SBATCH --nodes=3                 # Number of nodes\n#SBATCH --ntasks=36                # Total MPI tasks\n#SBATCH --ntasks-per-node=9       # MPI tasks per node\n#SBATCH --cpus-per-task=3         # CPU cores per MPI task\n#SBATCH --time=01:00:00           # Time limit hh:mm:ss\n#SBATCH --output=hpl-%j.out       # Standard output file\n#SBATCH --error=hpl-%j.err        # Standard error file\n#SBATCH --nodelist=node1,node2,node3,node4    # nodes 1 and 2 are the only ones with hpcx for now\n\n# Load MPI module (adjust for your system)\n# module load openmpi\n\n# Run the MPI program\nmpirun ./xhpl",
+    "filename": "run.sh",
+    "raw": "#!/bin/bash\n#SBATCH --job-name=hpl-test       # Job name\n#SBATCH --nodes=3                 # Number of nodes\n#SBATCH --ntasks=36                # Total MPI tasks\n#SBATCH --ntasks-per-node=9       # MPI tasks per node\n#SBATCH --cpus-per-task=3         # CPU cores per MPI task\n#SBATCH --time=01:00:00           # Time limit hh:mm:ss\n#SBATCH --output=hpl-%j.out       # Standard output file\n#SBATCH --error=hpl-%j.err        # Standard error file\n#SBATCH --nodelist=node1,node2,node3,node4    # nodes 1 and 2 are the only ones with hpcx for now\n\n# Load MPI module (adjust for your system)\n# module load openmpi\n\n# Load HPCX\nsource ~/.bashrc\nexport HPCX_HOME=/home/hpc/hpcx/hpcx-v2.24-gcc-doca_ofed-ubuntu24.04-cuda13-x86_64\nexport LD_LIBRARY_PATH=$HPCX_HOME/ucx/lib:$HPCX_HOME/ompi/lib:$LD_LIBRARY_PATH\nexport PATH=$HPCX_HOME/ompi/bin:$PATH\nsource $HPCX_HOME/hpcx-init.sh\nhpcx_load\n\n# Run the MPI program\nmpirun ./xhpl",
     "sbatch": {
       "job-name": "hpl-test       # Job name",
       "nodes": null,
@@ -103,7 +103,7 @@
       "error": "hpl-%j.err        # Standard error file",
       "nodelist": "node1,node2,node3,node4    # nodes 1 and 2 are the only ones with hpcx for now"
     },
-    "path": "/raw/HPL/Sithum/09-30 - 1 3/job4.sh"
+    "path": "/raw/HPL/Sithum/09-30 - 1 3/run.sh"
   },
   "out": null,
   "err": null,
