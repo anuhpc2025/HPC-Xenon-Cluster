@@ -89,13 +89,13 @@ export const Navigation: React.FC<NavigationProps> = ({ activeSuite }) => {
                         ))}
                     </div>
 
-                    <Link
-                        to="https://anuhpc2025.github.io/Main-Website/"
+                    <a
+                        href="https://anuhpc2025.github.io/Main-Website/"
                         className="flex items-center space-x-2 px-4 py-2 rounded-lg font-medium text-sm whitespace-nowrap text-gray-600 hover:text-gray-900 hover:bg-gray-100 border-2 border-transparent"
                     >
                         <Home className="w-5 h-5" />
                         <span>Main Website</span>
-                    </Link>
+                    </a>
                 </div>
             </div>
         </nav>
