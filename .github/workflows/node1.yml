@@ -74,7 +74,7 @@ jobs:
             case "$jobdir" in
               *HPL_NVIDIA*) src="/_HPC/defaults/HPL_NVIDIA/xhpl-nvidia" ; bin_name="xhpl-nvidia" ;;
               *HPL-MxP_NVIDIA*) src="/_HPC/defaults/HPL-MxP_NVIDIA/xhpl_mxp-nvidia" ; bin_name="xhpl_mxp-nvidia" ;;
-              *HPL*)        src="/home/hpc/hpl-2.3/testing/xhpl"   ; bin_name="xhpl" ;;
+              *HPL*)        src="/_HPC/defaults/hpl-2.3/testing/xhpl"   ; bin_name="xhpl" ;;
               *SST*)        src="/opt/sst/sst_binary"              ; bin_name="sst_binary" ;;
               *ECE*)        src="/opt/ece/ece_binary"              ; bin_name="ece_binary" ;;
               *)            src="" ; bin_name="" ;;
