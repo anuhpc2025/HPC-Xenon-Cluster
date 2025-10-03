@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2025-10-03T02:34:54.843Z",
+  "generatedAt": "2025-10-03T02:46:22.828Z",
   "runs": [
     {
       "id": "HPL/Ayush/hpl_test",
@@ -238,6 +238,25 @@
       "run": "10-03 - 3 3",
       "best": {
         "gflops": 802.23,
+        "N": 10000,
+        "NB": 128,
+        "timeSec": 0.83
+      },
+      "outSummary": {
+        "testsTotal": 18,
+        "testsPassed": 18,
+        "testsFailed": 0,
+        "testsSkipped": 0
+      },
+      "hasErr": false
+    },
+    {
+      "id": "HPL/Sithum/NewRunnerTesting",
+      "suite": "HPL",
+      "group": "Sithum",
+      "run": "NewRunnerTesting",
+      "best": {
+        "gflops": 804.95,
         "N": 10000,
         "NB": 128,
         "timeSec": 0.83
@@ -4769,6 +4788,25 @@
         "N": 276480,
         "NB": 512,
         "timeSec": 73.85
+      },
+      "outSummary": {
+        "testsTotal": 1,
+        "testsPassed": 1,
+        "testsFailed": 0,
+        "testsSkipped": 0
+      },
+      "hasErr": false
+    },
+    {
+      "id": "HPL_NVIDIA/Sithum/NewRunnerTesting",
+      "suite": "HPL_NVIDIA",
+      "group": "Sithum",
+      "run": "NewRunnerTesting",
+      "best": {
+        "gflops": 130400,
+        "N": 189440,
+        "NB": 512,
+        "timeSec": 34.76
       },
       "outSummary": {
         "testsTotal": 1,
