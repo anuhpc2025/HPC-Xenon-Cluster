@@ -8,6 +8,7 @@ import {
     Search,
     Filter as FilterIcon,
 } from 'lucide-react';
+import { GflopsCharts } from "./GflopsCharts";
 
 interface BenchmarkPageProps {
     suite: BenchmarkSuite;
@@ -595,6 +596,12 @@ export const BenchmarkPage: React.FC<BenchmarkPageProps> = ({
                         </div>
                     </div>
                 </>
+            )}
+
+            {statusFilter === "pass" && hasValidLeaderboard && visibleRuns.length > 0 && (
+                <div className="space-y-6">
+                    <GflopsCharts runs={visibleRuns as any[]} />
+                </div>
             )}
 
             {/* Results */}
