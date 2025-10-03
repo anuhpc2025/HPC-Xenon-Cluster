@@ -11,6 +11,7 @@ on:
 jobs:
   run-slurm:
     runs-on: self-hosted
+    timeout-minutes: 7200
 
     steps:
       - name: Checkout repository
@@ -526,7 +527,7 @@ jobs:
             fi
           done
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.PAT }}
 
       - name: Upload output as artifact
         if: always()
