@@ -66,31 +66,12 @@ export const GflopsCharts: React.FC<GflopsChartsProps> = ({ runs }) => {
         }[] = [];
 
         runs.forEach((r) => {
-            if (r.out?.runs?.length) {
-                r.out.runs.forEach((rr) => {
-                    if (
-                        Number.isFinite(rr?.N) &&
-                        Number.isFinite(rr?.NB) &&
-                        Number.isFinite(rr?.gflops)
-                    ) {
-                        points.push({
-                            N: rr.N,
-                            NB: rr.NB,
-                            gflops: rr.gflops,
-                            label: `${r.group}/${r.run}${
-                                rr.tv !== undefined ? ` [tv:${rr.tv}]` : ""
-                            }`,
-                        });
-                    }
-                });
-            } else if (r.best) {
-                points.push({
-                    N: r.best.N,
-                    NB: r.best.NB,
-                    gflops: r.best.gflops,
-                    label: `${r.group}/${r.run}`,
-                });
-            }
+            points.push({
+                N: r.best.N,
+                NB: r.best.NB,
+                gflops: r.best.gflops,
+                label: `${r.group}/${r.run}`,
+            });
         });
 
         return points;
