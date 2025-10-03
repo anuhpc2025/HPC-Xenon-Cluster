@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2025-10-01T06:38:46.955Z",
+  "generatedAt": "2025-10-03T01:26:07.955Z",
   "runs": [
     {
       "id": "HPL/Ayush/hpl_test",
@@ -39,39 +39,64 @@
       "hasErr": true
     },
     {
-      "id": "HPL/Sithum/09-30 - 1 0",
+      "id": "HPL/Sithum/09-30 - 2 0",
       "suite": "HPL",
       "group": "Sithum",
-      "run": "09-30 - 1 0",
+      "run": "09-30 - 2 0",
       "best": null,
-      "outSummary": null,
-      "hasErr": false
+      "outSummary": {
+        "testsTotal": null,
+        "testsPassed": null,
+        "testsFailed": null,
+        "testsSkipped": null
+      },
+      "hasErr": true
     },
     {
-      "id": "HPL/Sithum/09-30 - 1 1",
+      "id": "HPL/Sithum/09-30 - 2 1",
       "suite": "HPL",
       "group": "Sithum",
-      "run": "09-30 - 1 1",
+      "run": "09-30 - 2 1",
       "best": null,
-      "outSummary": null,
-      "hasErr": false
+      "outSummary": {
+        "testsTotal": null,
+        "testsPassed": null,
+        "testsFailed": null,
+        "testsSkipped": null
+      },
+      "hasErr": true
     },
     {
-      "id": "HPL/Sithum/09-30 - 1 2",
+      "id": "HPL/Sithum/09-30 - 2 2",
       "suite": "HPL",
       "group": "Sithum",
-      "run": "09-30 - 1 2",
+      "run": "09-30 - 2 2",
       "best": null,
-      "outSummary": null,
-      "hasErr": false
+      "outSummary": {
+        "testsTotal": null,
+        "testsPassed": null,
+        "testsFailed": null,
+        "testsSkipped": null
+      },
+      "hasErr": true
     },
     {
-      "id": "HPL/Sithum/09-30 - 1 3",
+      "id": "HPL/Sithum/09-30 - 2 3",
       "suite": "HPL",
       "group": "Sithum",
-      "run": "09-30 - 1 3",
-      "best": null,
-      "outSummary": null,
+      "run": "09-30 - 2 3",
+      "best": {
+        "gflops": 749.64,
+        "N": 10000,
+        "NB": 128,
+        "timeSec": 0.89
+      },
+      "outSummary": {
+        "testsTotal": 18,
+        "testsPassed": 18,
+        "testsFailed": 0,
+        "testsSkipped": 0
+      },
       "hasErr": false
     },
     {
