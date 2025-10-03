@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2025-10-03T02:10:40.315Z",
+  "generatedAt": "2025-10-03T02:15:13.514Z",
   "runs": [
     {
       "id": "HPL/Ayush/hpl_test",
@@ -172,6 +172,82 @@
       "run": "10-03 - 2 3",
       "best": null,
       "outSummary": null,
+      "hasErr": false
+    },
+    {
+      "id": "HPL/Sithum/10-03 - 3 0",
+      "suite": "HPL",
+      "group": "Sithum",
+      "run": "10-03 - 3 0",
+      "best": {
+        "gflops": 744.9,
+        "N": 10000,
+        "NB": 128,
+        "timeSec": 0.9
+      },
+      "outSummary": {
+        "testsTotal": 18,
+        "testsPassed": 18,
+        "testsFailed": 0,
+        "testsSkipped": 0
+      },
+      "hasErr": false
+    },
+    {
+      "id": "HPL/Sithum/10-03 - 3 1",
+      "suite": "HPL",
+      "group": "Sithum",
+      "run": "10-03 - 3 1",
+      "best": {
+        "gflops": 849.73,
+        "N": 10000,
+        "NB": 128,
+        "timeSec": 0.78
+      },
+      "outSummary": {
+        "testsTotal": 18,
+        "testsPassed": 18,
+        "testsFailed": 0,
+        "testsSkipped": 0
+      },
+      "hasErr": false
+    },
+    {
+      "id": "HPL/Sithum/10-03 - 3 2",
+      "suite": "HPL",
+      "group": "Sithum",
+      "run": "10-03 - 3 2",
+      "best": {
+        "gflops": 716.07,
+        "N": 10000,
+        "NB": 128,
+        "timeSec": 0.93
+      },
+      "outSummary": {
+        "testsTotal": 18,
+        "testsPassed": 18,
+        "testsFailed": 0,
+        "testsSkipped": 0
+      },
+      "hasErr": false
+    },
+    {
+      "id": "HPL/Sithum/10-03 - 3 3",
+      "suite": "HPL",
+      "group": "Sithum",
+      "run": "10-03 - 3 3",
+      "best": {
+        "gflops": 802.23,
+        "N": 10000,
+        "NB": 128,
+        "timeSec": 0.83
+      },
+      "outSummary": {
+        "testsTotal": 18,
+        "testsPassed": 18,
+        "testsFailed": 0,
+        "testsSkipped": 0
+      },
       "hasErr": false
     },
     {
