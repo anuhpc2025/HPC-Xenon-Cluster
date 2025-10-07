@@ -1,0 +1,126 @@
+ucx_info: symbol lookup error: ucx_info: undefined symbol: ucs_cpu_vendor_name
+[node1:1620905:1:1620943] Caught signal 11 (Segmentation fault: invalid permissions for mapped object at address 0x76c98c400000)
+==== backtrace (tid:1620943) ====
+ 0  /usr/lib/x86_64-linux-gnu/libucs.so.0(ucs_handle_error+0x2ec) [0x76c9f2bc564c]
+ 1  /usr/lib/x86_64-linux-gnu/libucs.so.0(+0x2d34d) [0x76c9f2bc734d]
+ 2  /usr/lib/x86_64-linux-gnu/libucs.so.0(+0x2d51d) [0x76c9f2bc751d]
+ 3  /usr/lib/x86_64-linux-gnu/libc.so.6(+0x45330) [0x76c9f1445330]
+ 4  /usr/lib/x86_64-linux-gnu/libc.so.6(+0x188a4d) [0x76c9f1588a4d]
+ 5  /usr/lib/x86_64-linux-gnu/libucp.so.0(+0x99092) [0x76c9df536092]
+ 6  /usr/lib/x86_64-linux-gnu/ucx/libuct_ib.so.0(uct_rc_mlx5_ep_am_bcopy+0xd9) [0x76c9f166e039]
+ 7  /usr/lib/x86_64-linux-gnu/libucp.so.0(+0x99546) [0x76c9df536546]
+ 8  /usr/lib/x86_64-linux-gnu/libucp.so.0(+0x96de1) [0x76c9df533de1]
+ 9  /usr/lib/x86_64-linux-gnu/libucp.so.0(ucp_proto_rndv_handle_rtr+0x23f) [0x76c9df5356df]
+10  /usr/lib/x86_64-linux-gnu/libucp.so.0(ucp_rndv_rtr_handler+0x2c1) [0x76c9df55b671]
+11  /usr/lib/x86_64-linux-gnu/ucx/libuct_ib.so.0(+0x49ebd) [0x76c9f1678ebd]
+12  /usr/lib/x86_64-linux-gnu/libucp.so.0(ucp_worker_progress+0x7a) [0x76c9df4f82ca]
+13  /home/hpc/hpcx/hpcx-v2.24-gcc-doca_ofed-ubuntu24.04-cuda13-x86_64/ompi/lib/libopen-pal.so.40(opal_progress+0x34) [0x76c9f1720314]
+14  /home/hpc/hpcx/hpcx-v2.24-gcc-doca_ofed-ubuntu24.04-cuda13-x86_64/ompi/lib/libopen-pal.so.40(ompi_sync_wait_mt+0x115) [0x76c9f1726b15]
+15  /home/hpc/hpcx/hpcx-v2.24-gcc-doca_ofed-ubuntu24.04-cuda13-x86_64/ompi/lib/libmpi.so.40(ompi_request_default_wait+0x24b) [0x76ca2a53203b]
+16  /home/hpc/hpcx/hpcx-v2.24-gcc-doca_ofed-ubuntu24.04-cuda13-x86_64/ompi/lib/libmpi.so.40(PMPI_Wait+0x1e) [0x76ca2a55ee9e]
+17  ./xhpl_mxp-nvidia() [0x50eac7]
+18  ./xhpl_mxp-nvidia() [0x4dc7d3]
+19  ./xhpl_mxp-nvidia() [0x4df810]
+20  ./xhpl_mxp-nvidia() [0x4df793]
+21  ./xhpl_mxp-nvidia() [0x4df703]
+22  ./xhpl_mxp-nvidia() [0x4df6bc]
+23  ./xhpl_mxp-nvidia() [0x4df6a0]
+24  ./xhpl_mxp-nvidia() [0x5bd493]
+25  /usr/lib/x86_64-linux-gnu/libc.so.6(+0x9caa4) [0x76c9f149caa4]
+26  /usr/lib/x86_64-linux-gnu/libc.so.6(+0x129c6c) [0x76c9f1529c6c]
+=================================
+[node1:1620905] *** Process received signal ***
+[node1:1620905] Signal: Segmentation fault (11)
+[node1:1620905] Signal code:  (-6)
+[node1:1620905] Failing at address: 0x3e80018bba9
+[node1:1620905] [ 0] /usr/lib/x86_64-linux-gnu/libc.so.6(+0x45330)[0x76c9f1445330]
+[node1:1620905] [ 1] /usr/lib/x86_64-linux-gnu/libc.so.6(+0x188a4d)[0x76c9f1588a4d]
+[node1:1620905] [ 2] /usr/lib/x86_64-linux-gnu/libucp.so.0(+0x99092)[0x76c9df536092]
+[node1:1620905] [ 3] /usr/lib/x86_64-linux-gnu/ucx/libuct_ib.so.0(uct_rc_mlx5_ep_am_bcopy+0xd9)[0x76c9f166e039]
+[node1:1620905] [ 4] /usr/lib/x86_64-linux-gnu/libucp.so.0(+0x99546)[0x76c9df536546]
+[node1:1620905] [ 5] /usr/lib/x86_64-linux-gnu/libucp.so.0(+0x96de1)[0x76c9df533de1]
+[node1:1620905] [ 6] /usr/lib/x86_64-linux-gnu/libucp.so.0(ucp_proto_rndv_handle_rtr+0x23f)[0x76c9df5356df]
+[node1:1620905] [ 7] /usr/lib/x86_64-linux-gnu/libucp.so.0(ucp_rndv_rtr_handler+0x2c1)[0x76c9df55b671]
+[node1:1620905] [ 8] /usr/lib/x86_64-linux-gnu/ucx/libuct_ib.so.0(+0x49ebd)[0x76c9f1678ebd]
+[node1:1620905] [ 9] /usr/lib/x86_64-linux-gnu/libucp.so.0(ucp_worker_progress+0x7a)[0x76c9df4f82ca]
+[node1:1620905] [10] /home/hpc/hpcx/hpcx-v2.24-gcc-doca_ofed-ubuntu24.04-cuda13-x86_64/ompi/lib/libopen-pal.so.40(opal_progress+0x34)[0x76c9f1720314]
+[node1:1620905] [11] /home/hpc/hpcx/hpcx-v2.24-gcc-doca_ofed-ubuntu24.04-cuda13-x86_64/ompi/lib/libopen-pal.so.40(ompi_sync_wait_mt+0x115)[0x76c9f1726b15]
+[node1:1620905] [12] /home/hpc/hpcx/hpcx-v2.24-gcc-doca_ofed-ubuntu24.04-cuda13-x86_64/ompi/lib/libmpi.so.40(ompi_request_default_wait+0x24b)[0x76ca2a53203b]
+[node1:1620905] [13] /home/hpc/hpcx/hpcx-v2.24-gcc-doca_ofed-ubuntu24.04-cuda13-x86_64/ompi/lib/libmpi.so.40(PMPI_Wait+0x1e)[0x76ca2a55ee9e]
+[node1:1620905] [14] ./xhpl_mxp-nvidia[0x50eac7]
+[node1:1620905] [15] ./xhpl_mxp-nvidia[0x4dc7d3]
+[node1:1620905] [16] ./xhpl_mxp-nvidia[0x4df810]
+[node1:1620905] [17] ./xhpl_mxp-nvidia[0x4df793]
+[node1:1620905] [18] ./xhpl_mxp-nvidia[0x4df703]
+[node1:1620905] [19] ./xhpl_mxp-nvidia[0x4df6bc]
+[node1:1620905] [20] ./xhpl_mxp-nvidia[0x4df6a0]
+[node1:1620905] [21] ./xhpl_mxp-nvidia[0x5bd493]
+[node1:1620905] [22] /usr/lib/x86_64-linux-gnu/libc.so.6(+0x9caa4)[0x76c9f149caa4]
+[node1:1620905] [23] /usr/lib/x86_64-linux-gnu/libc.so.6(+0x129c6c)[0x76c9f1529c6c]
+[node1:1620905] *** End of error message ***
+[node1:1620904:1:1620946] Caught signal 11 (Segmentation fault: invalid permissions for mapped object at address 0x7be77c400000)
+==== backtrace (tid:1620946) ====
+ 0  /usr/lib/x86_64-linux-gnu/libucs.so.0(ucs_handle_error+0x2ec) [0x7be7e99c564c]
+ 1  /usr/lib/x86_64-linux-gnu/libucs.so.0(+0x2d34d) [0x7be7e99c734d]
+ 2  /usr/lib/x86_64-linux-gnu/libucs.so.0(+0x2d51d) [0x7be7e99c751d]
+ 3  /usr/lib/x86_64-linux-gnu/libc.so.6(+0x45330) [0x7be7e8245330]
+ 4  /usr/lib/x86_64-linux-gnu/libc.so.6(+0x188a4d) [0x7be7e8388a4d]
+ 5  /usr/lib/x86_64-linux-gnu/libucp.so.0(+0x99092) [0x7be7d6336092]
+ 6  /usr/lib/x86_64-linux-gnu/ucx/libuct_ib.so.0(uct_rc_mlx5_ep_am_bcopy+0xd9) [0x7be7e846e039]
+ 7  /usr/lib/x86_64-linux-gnu/libucp.so.0(+0x99546) [0x7be7d6336546]
+ 8  /usr/lib/x86_64-linux-gnu/libucp.so.0(+0x96de1) [0x7be7d6333de1]
+ 9  /usr/lib/x86_64-linux-gnu/libucp.so.0(ucp_proto_rndv_handle_rtr+0x23f) [0x7be7d63356df]
+10  /usr/lib/x86_64-linux-gnu/libucp.so.0(ucp_rndv_rtr_handler+0x2c1) [0x7be7d635b671]
+11  /usr/lib/x86_64-linux-gnu/ucx/libuct_ib.so.0(+0x49ebd) [0x7be7e8478ebd]
+12  /usr/lib/x86_64-linux-gnu/libucp.so.0(ucp_worker_progress+0x7a) [0x7be7d62f82ca]
+13  /home/hpc/hpcx/hpcx-v2.24-gcc-doca_ofed-ubuntu24.04-cuda13-x86_64/ompi/lib/libopen-pal.so.40(opal_progress+0x34) [0x7be7e8520314]
+14  /home/hpc/hpcx/hpcx-v2.24-gcc-doca_ofed-ubuntu24.04-cuda13-x86_64/ompi/lib/libopen-pal.so.40(ompi_sync_wait_mt+0x115) [0x7be7e8526b15]
+15  /home/hpc/hpcx/hpcx-v2.24-gcc-doca_ofed-ubuntu24.04-cuda13-x86_64/ompi/lib/libmpi.so.40(ompi_request_default_wait+0x24b) [0x7be82133203b]
+16  /home/hpc/hpcx/hpcx-v2.24-gcc-doca_ofed-ubuntu24.04-cuda13-x86_64/ompi/lib/libmpi.so.40(PMPI_Wait+0x1e) [0x7be82135ee9e]
+17  ./xhpl_mxp-nvidia() [0x50eac7]
+18  ./xhpl_mxp-nvidia() [0x4dc7d3]
+19  ./xhpl_mxp-nvidia() [0x4df810]
+20  ./xhpl_mxp-nvidia() [0x4df793]
+21  ./xhpl_mxp-nvidia() [0x4df703]
+22  ./xhpl_mxp-nvidia() [0x4df6bc]
+23  ./xhpl_mxp-nvidia() [0x4df6a0]
+24  ./xhpl_mxp-nvidia() [0x5bd493]
+25  /usr/lib/x86_64-linux-gnu/libc.so.6(+0x9caa4) [0x7be7e829caa4]
+26  /usr/lib/x86_64-linux-gnu/libc.so.6(+0x129c6c) [0x7be7e8329c6c]
+=================================
+[node1:1620904] *** Process received signal ***
+[node1:1620904] Signal: Segmentation fault (11)
+[node1:1620904] Signal code:  (-6)
+[node1:1620904] Failing at address: 0x3e80018bba8
+[node1:1620904] [ 0] /usr/lib/x86_64-linux-gnu/libc.so.6(+0x45330)[0x7be7e8245330]
+[node1:1620904] [ 1] /usr/lib/x86_64-linux-gnu/libc.so.6(+0x188a4d)[0x7be7e8388a4d]
+[node1:1620904] [ 2] /usr/lib/x86_64-linux-gnu/libucp.so.0(+0x99092)[0x7be7d6336092]
+[node1:1620904] [ 3] /usr/lib/x86_64-linux-gnu/ucx/libuct_ib.so.0(uct_rc_mlx5_ep_am_bcopy+0xd9)[0x7be7e846e039]
+[node1:1620904] [ 4] /usr/lib/x86_64-linux-gnu/libucp.so.0(+0x99546)[0x7be7d6336546]
+[node1:1620904] [ 5] /usr/lib/x86_64-linux-gnu/libucp.so.0(+0x96de1)[0x7be7d6333de1]
+[node1:1620904] [ 6] /usr/lib/x86_64-linux-gnu/libucp.so.0(ucp_proto_rndv_handle_rtr+0x23f)[0x7be7d63356df]
+[node1:1620904] [ 7] /usr/lib/x86_64-linux-gnu/libucp.so.0(ucp_rndv_rtr_handler+0x2c1)[0x7be7d635b671]
+[node1:1620904] [ 8] /usr/lib/x86_64-linux-gnu/ucx/libuct_ib.so.0(+0x49ebd)[0x7be7e8478ebd]
+[node1:1620904] [ 9] /usr/lib/x86_64-linux-gnu/libucp.so.0(ucp_worker_progress+0x7a)[0x7be7d62f82ca]
+[node1:1620904] [10] /home/hpc/hpcx/hpcx-v2.24-gcc-doca_ofed-ubuntu24.04-cuda13-x86_64/ompi/lib/libopen-pal.so.40(opal_progress+0x34)[0x7be7e8520314]
+[node1:1620904] [11] /home/hpc/hpcx/hpcx-v2.24-gcc-doca_ofed-ubuntu24.04-cuda13-x86_64/ompi/lib/libopen-pal.so.40(ompi_sync_wait_mt+0x115)[0x7be7e8526b15]
+[node1:1620904] [12] /home/hpc/hpcx/hpcx-v2.24-gcc-doca_ofed-ubuntu24.04-cuda13-x86_64/ompi/lib/libmpi.so.40(ompi_request_default_wait+0x24b)[0x7be82133203b]
+[node1:1620904] [13] /home/hpc/hpcx/hpcx-v2.24-gcc-doca_ofed-ubuntu24.04-cuda13-x86_64/ompi/lib/libmpi.so.40(PMPI_Wait+0x1e)[0x7be82135ee9e]
+[node1:1620904] [14] ./xhpl_mxp-nvidia[0x50eac7]
+[node1:1620904] [15] ./xhpl_mxp-nvidia[0x4dc7d3]
+[node1:1620904] [16] ./xhpl_mxp-nvidia[0x4df810]
+[node1:1620904] [17] ./xhpl_mxp-nvidia[0x4df793]
+[node1:1620904] [18] ./xhpl_mxp-nvidia[0x4df703]
+[node1:1620904] [19] ./xhpl_mxp-nvidia[0x4df6bc]
+[node1:1620904] [20] ./xhpl_mxp-nvidia[0x4df6a0]
+[node1:1620904] [21] ./xhpl_mxp-nvidia[0x5bd493]
+[node1:1620904] [22] /usr/lib/x86_64-linux-gnu/libc.so.6(+0x9caa4)[0x7be7e829caa4]
+[node1:1620904] [23] /usr/lib/x86_64-linux-gnu/libc.so.6(+0x129c6c)[0x7be7e8329c6c]
+[node1:1620904] *** End of error message ***
+--------------------------------------------------------------------------
+Primary job  terminated normally, but 1 process returned
+a non-zero exit code. Per user-direction, the job has been aborted.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+mpirun noticed that process rank 1 with PID 1620905 on node node1 exited on signal 11 (Segmentation fault).
+--------------------------------------------------------------------------
