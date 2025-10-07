@@ -50,7 +50,10 @@ ulimit -l unlimited
 ulimit -n 65536
 
 # Run
-mpirun ./xhpl_mxp-nvidia \
+mpirun \
+  --map-by ppr:4:node:pe=8 \
+  --bind-to core \
+  ./xhpl_mxp-nvidia \
   --nprow 4 \
   --npcol 4 \
   --nporder row \
