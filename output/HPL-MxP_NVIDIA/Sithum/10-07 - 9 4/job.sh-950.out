@@ -1,0 +1,44 @@
+[1759810573.240125] [node1:1594362:0]     ucp_context.c:2137 UCX  WARN  UCP API version is incompatible: required >= 1.19, actual 1.16.0 (loaded from /usr/lib/x86_64-linux-gnu/libucp.so.0)
+[1759810573.240926] [node1:1594365:0]     ucp_context.c:2137 UCX  WARN  UCP API version is incompatible: required >= 1.19, actual 1.16.0 (loaded from /usr/lib/x86_64-linux-gnu/libucp.so.0)
+[1759810573.240926] [node1:1594363:0]     ucp_context.c:2137 UCX  WARN  UCP API version is incompatible: required >= 1.19, actual 1.16.0 (loaded from /usr/lib/x86_64-linux-gnu/libucp.so.0)
+[1759810573.240927] [node1:1594364:0]     ucp_context.c:2137 UCX  WARN  UCP API version is incompatible: required >= 1.19, actual 1.16.0 (loaded from /usr/lib/x86_64-linux-gnu/libucp.so.0)
+[1759810573.251750] [node1:1594362:0]           ib_md.c:1103 UCX  WARN  mlx5_0: relaxed order memory access requested, but unsupported
+[1759810573.251780] [node1:1594365:0]           ib_md.c:1103 UCX  WARN  mlx5_0: relaxed order memory access requested, but unsupported
+[1759810573.251818] [node1:1594364:0]           ib_md.c:1103 UCX  WARN  mlx5_0: relaxed order memory access requested, but unsupported
+[1759810573.251935] [node1:1594363:0]           ib_md.c:1103 UCX  WARN  mlx5_0: relaxed order memory access requested, but unsupported
+[1759810573.255204] [node1:1594362:0]     ucp_context.c:1192 UCX  WARN  intra-node device '^cma' is not available, please use one or more of: 'memory'(cma), 'memory'(posix), 'memory'(sysv)
+[1759810573.255219] [node1:1594362:0]     ucp_context.c:1192 UCX  WARN  transports 'cuda_copy','gdr_copy','cuda_ipc' are not available, please use one or more of: cma, dc, dc_mlx5, dc_x, ib, mm, posix, rc, rc_mlx5, rc_v, rc_verbs, rc_x, self, shm, sm, sysv, tcp, ud, ud_mlx5, ud_v, ud_verbs, ud_x
+[1759810573.255310] [node1:1594365:0]     ucp_context.c:1192 UCX  WARN  intra-node device '^cma' is not available, please use one or more of: 'memory'(cma), 'memory'(posix), 'memory'(sysv)
+[1759810573.255322] [node1:1594365:0]     ucp_context.c:1192 UCX  WARN  transports 'cuda_copy','gdr_copy','cuda_ipc' are not available, please use one or more of: cma, dc, dc_mlx5, dc_x, ib, mm, posix, rc, rc_mlx5, rc_v, rc_verbs, rc_x, self, shm, sm, sysv, tcp, ud, ud_mlx5, ud_v, ud_verbs, ud_x
+[1759810573.255408] [node1:1594364:0]     ucp_context.c:1192 UCX  WARN  intra-node device '^cma' is not available, please use one or more of: 'memory'(cma), 'memory'(posix), 'memory'(sysv)
+[1759810573.255424] [node1:1594364:0]     ucp_context.c:1192 UCX  WARN  transports 'cuda_copy','gdr_copy','cuda_ipc' are not available, please use one or more of: cma, dc, dc_mlx5, dc_x, ib, mm, posix, rc, rc_mlx5, rc_v, rc_verbs, rc_x, self, shm, sm, sysv, tcp, ud, ud_mlx5, ud_v, ud_verbs, ud_x
+[1759810573.255500] [node1:1594363:0]     ucp_context.c:1192 UCX  WARN  intra-node device '^cma' is not available, please use one or more of: 'memory'(cma), 'memory'(posix), 'memory'(sysv)
+[1759810573.255514] [node1:1594363:0]     ucp_context.c:1192 UCX  WARN  transports 'cuda_copy','gdr_copy','cuda_ipc' are not available, please use one or more of: cma, dc, dc_mlx5, dc_x, ib, mm, posix, rc, rc_mlx5, rc_v, rc_verbs, rc_x, self, shm, sm, sysv, tcp, ud, ud_mlx5, ud_v, ud_verbs, ud_x
+[1759810573.258794] [node1:1594362:0]          parser.c:2033 UCX  WARN  unused environment variable: UCX_POSIX_USE_PROC_PATH
+[1759810573.258794] [node1:1594362:0]          parser.c:2033 UCX  WARN  (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1759810573.258794] [node1:1594363:0]          parser.c:2033 UCX  WARN  unused environment variable: UCX_POSIX_USE_PROC_PATH
+[1759810573.258794] [node1:1594363:0]          parser.c:2033 UCX  WARN  (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1759810573.258796] [node1:1594365:0]          parser.c:2033 UCX  WARN  unused environment variable: UCX_POSIX_USE_PROC_PATH
+[1759810573.258796] [node1:1594365:0]          parser.c:2033 UCX  WARN  (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1759810573.258797] [node1:1594364:0]          parser.c:2033 UCX  WARN  unused environment variable: UCX_POSIX_USE_PROC_PATH
+[1759810573.258797] [node1:1594364:0]          parser.c:2033 UCX  WARN  (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1759810573.259458] [node1:1594364:0]     ucp_context.c:2137 UCX  WARN  UCP API version is incompatible: required >= 1.19, actual 1.16.0 (loaded from /usr/lib/x86_64-linux-gnu/libucp.so.0)
+[1759810573.259462] [node1:1594363:0]     ucp_context.c:2137 UCX  WARN  UCP API version is incompatible: required >= 1.19, actual 1.16.0 (loaded from /usr/lib/x86_64-linux-gnu/libucp.so.0)
+[1759810573.259469] [node1:1594365:0]     ucp_context.c:2137 UCX  WARN  UCP API version is incompatible: required >= 1.19, actual 1.16.0 (loaded from /usr/lib/x86_64-linux-gnu/libucp.so.0)
+[1759810573.259535] [node1:1594362:0]     ucp_context.c:2137 UCX  WARN  UCP API version is incompatible: required >= 1.19, actual 1.16.0 (loaded from /usr/lib/x86_64-linux-gnu/libucp.so.0)
+[1759810573.268982] [node1:1594363:0]           ib_md.c:1103 UCX  WARN  mlx5_0: relaxed order memory access requested, but unsupported
+[1759810573.269134] [node1:1594362:0]           ib_md.c:1103 UCX  WARN  mlx5_0: relaxed order memory access requested, but unsupported
+[1759810573.269229] [node1:1594365:0]           ib_md.c:1103 UCX  WARN  mlx5_0: relaxed order memory access requested, but unsupported
+[1759810573.269439] [node1:1594364:0]           ib_md.c:1103 UCX  WARN  mlx5_0: relaxed order memory access requested, but unsupported
+[1759810573.272068] [node1:1594363:0]     ucp_context.c:1192 UCX  WARN  intra-node device '^cma' is not available, please use one or more of: 'memory'(cma), 'memory'(posix), 'memory'(sysv)
+[1759810573.272080] [node1:1594363:0]     ucp_context.c:1192 UCX  WARN  transports 'cuda_copy','gdr_copy','cuda_ipc' are not available, please use one or more of: cma, dc, dc_mlx5, dc_x, ib, mm, posix, rc, rc_mlx5, rc_v, rc_verbs, rc_x, self, shm, sm, sysv, tcp, ud, ud_mlx5, ud_v, ud_verbs, ud_x
+[1759810573.272198] [node1:1594362:0]     ucp_context.c:1192 UCX  WARN  intra-node device '^cma' is not available, please use one or more of: 'memory'(cma), 'memory'(posix), 'memory'(sysv)
+[1759810573.272212] [node1:1594362:0]     ucp_context.c:1192 UCX  WARN  transports 'cuda_copy','gdr_copy','cuda_ipc' are not available, please use one or more of: cma, dc, dc_mlx5, dc_x, ib, mm, posix, rc, rc_mlx5, rc_v, rc_verbs, rc_x, self, shm, sm, sysv, tcp, ud, ud_mlx5, ud_v, ud_verbs, ud_x
+[1759810573.272269] [node1:1594365:0]     ucp_context.c:1192 UCX  WARN  intra-node device '^cma' is not available, please use one or more of: 'memory'(cma), 'memory'(posix), 'memory'(sysv)
+[1759810573.272281] [node1:1594365:0]     ucp_context.c:1192 UCX  WARN  transports 'cuda_copy','gdr_copy','cuda_ipc' are not available, please use one or more of: cma, dc, dc_mlx5, dc_x, ib, mm, posix, rc, rc_mlx5, rc_v, rc_verbs, rc_x, self, shm, sm, sysv, tcp, ud, ud_mlx5, ud_v, ud_verbs, ud_x
+[1759810573.272503] [node1:1594364:0]     ucp_context.c:1192 UCX  WARN  intra-node device '^cma' is not available, please use one or more of: 'memory'(cma), 'memory'(posix), 'memory'(sysv)
+[1759810573.272517] [node1:1594364:0]     ucp_context.c:1192 UCX  WARN  transports 'cuda_copy','gdr_copy','cuda_ipc' are not available, please use one or more of: cma, dc, dc_mlx5, dc_x, ib, mm, posix, rc, rc_mlx5, rc_v, rc_verbs, rc_x, self, shm, sm, sysv, tcp, ud, ud_mlx5, ud_v, ud_verbs, ud_x
+[1759810573.272794] [node1:1594363:0]          select.c:629  UCX  ERROR   no active messages transport to <no debug data>: self/memory - Destination is unreachable
+[1759810573.272905] [node1:1594362:0]          select.c:629  UCX  ERROR   no active messages transport to <no debug data>: self/memory - Destination is unreachable
+[1759810573.272917] [node1:1594365:0]          select.c:629  UCX  ERROR   no active messages transport to <no debug data>: self/memory - Destination is unreachable
+[1759810573.273171] [node1:1594364:0]          select.c:629  UCX  ERROR   no active messages transport to <no debug data>: self/memory - Destination is unreachable
