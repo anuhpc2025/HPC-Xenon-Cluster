@@ -1,0 +1,24 @@
+[node1:1614280] pml_ucx.c:424  Error: ucp_ep_create(proc=0) failed: Destination is unreachable
+[node1:1614278] pml_ucx.c:424  Error: ucp_ep_create(proc=2) failed: Destination is unreachable
+--------------------------------------------------------------------------
+It looks like MPI_INIT failed for some reason; your parallel process is
+likely to abort.  There are many reasons that a parallel process can
+fail during MPI_INIT; some of which are due to configuration or environment
+problems.  This failure appears to be an internal failure; here's some
+additional information (which may only be relevant to an Open MPI
+developer):
+
+  PML add procs failed
+  --> Returned "Error" (-1) instead of "Success" (0)
+--------------------------------------------------------------------------
+[node1:1614277] pml_ucx.c:424  Error: ucp_ep_create(proc=1) failed: Destination is unreachable
+[node1:1614279] pml_ucx.c:424  Error: ucp_ep_create(proc=3) failed: Destination is unreachable
+[node1:1614280] *** An error occurred in MPI_Init_thread
+[node1:1614280] *** reported by process [3937468417,3]
+[node1:1614280] *** on a NULL communicator
+[node1:1614280] *** Unknown error
+[node1:1614280] *** MPI_ERRORS_ARE_FATAL (processes in this communicator will now abort,
+[node1:1614280] ***    and potentially your MPI job)
+[node1:1614273] 3 more processes have sent help message help-mpi-runtime.txt / mpi_init:startup:internal-failure
+[node1:1614273] Set MCA parameter "orte_base_help_aggregate" to 0 to see all help / error messages
+[node1:1614273] 3 more processes have sent help message help-mpi-errors.txt / mpi_errors_are_fatal unknown handle
