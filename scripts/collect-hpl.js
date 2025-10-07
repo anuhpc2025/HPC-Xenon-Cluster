@@ -91,6 +91,42 @@ function floatToken(line) {
     return Number.isFinite(n) ? n : null;
 }
 
+async function findRunDirs(baseDir) {
+  const dirs = [];
+
+  // Walk recursively through subdirs
+  async function walk(dir) {
+    const entries = await fs.readdir(dir, { withFileTypes: true });
+    let hasRunFiles = false;
+
+    // Check if this directory has run-style files
+    try {
+      const files = entries.filter((e) => e.isFile()).map((e) => e.name);
+      hasRunFiles = files.some(
+        (f) =>
+          /^(HPL|HPT)\.dat$/i.test(f) ||
+          /\.out$/i.test(f) ||
+          /\.sh$/i.test(f)
+      );
+    } catch {}
+
+    if (hasRunFiles) {
+      dirs.push(dir);
+      return; // stop recursion here: lowest run folder
+    }
+
+    // Otherwise, go deeper
+    for (const entry of entries) {
+      if (entry.isDirectory()) {
+        await walk(path.join(dir, entry.name));
+      }
+    }
+  }
+
+  await walk(baseDir);
+  return dirs;
+}
+
 // HPL.dat parser (covers classic layout)
 function parseHplDat(raw) {
     const lines = raw.split(/\r?\n/);
@@ -507,16 +543,21 @@ async function processSuite(suite, index) {
       return;
     }
 
-    const groups = await listDirs(suiteRoot);
+    const runDirs = await findRunDirs(suiteRoot);
     let runsFound = 0;
 
-    for (const group of groups) {
-        const groupDir = path.join(suiteRoot, group);
-        let runs = await listDirs(groupDir);
+    for (const runDir of runDirs) {
+        const rel = path.relative(suiteRoot, runDir);
+        const parts = rel.split(path.sep); // suite-relative parts
+        const group = parts[0] || "__root__";
+        const run = parts.slice(1).join("/") || "__root__";
+        const files = await listFiles(runDir);
+
         // If files are directly in the group folder, treat it as a single run.
         if (runs.length === 0 && (await dirHasRunFiles(groupDir))) {
             runs = ["__root__"];
         }
+        
         for (const run of runs) {
             const runDir = run === "__root__" ? groupDir : path.join(groupDir, run);
             const files = await listFiles(runDir);
