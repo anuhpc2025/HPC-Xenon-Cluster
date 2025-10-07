@@ -1,0 +1,105 @@
+[1759830712.332881] [node1:1617736:0]     ucp_context.c:2137 UCX  WARN  UCP API version is incompatible: required >= 1.19, actual 1.16.0 (loaded from /usr/lib/x86_64-linux-gnu/libucp.so.0)
+[1759830712.332881] [node1:1617738:0]     ucp_context.c:2137 UCX  WARN  UCP API version is incompatible: required >= 1.19, actual 1.16.0 (loaded from /usr/lib/x86_64-linux-gnu/libucp.so.0)
+[1759830712.333195] [node1:1617737:0]     ucp_context.c:2137 UCX  WARN  UCP API version is incompatible: required >= 1.19, actual 1.16.0 (loaded from /usr/lib/x86_64-linux-gnu/libucp.so.0)
+[1759830712.333347] [node1:1617739:0]     ucp_context.c:2137 UCX  WARN  UCP API version is incompatible: required >= 1.19, actual 1.16.0 (loaded from /usr/lib/x86_64-linux-gnu/libucp.so.0)
+[1759830712.345594] [node1:1617738:0]           ib_md.c:1103 UCX  WARN  mlx5_0: relaxed order memory access requested, but unsupported
+[1759830712.345604] [node1:1617737:0]           ib_md.c:1103 UCX  WARN  mlx5_0: relaxed order memory access requested, but unsupported
+[1759830712.345659] [node1:1617736:0]           ib_md.c:1103 UCX  WARN  mlx5_0: relaxed order memory access requested, but unsupported
+[1759830712.345796] [node1:1617739:0]           ib_md.c:1103 UCX  WARN  mlx5_0: relaxed order memory access requested, but unsupported
+[1759830712.347657] [node1:1617738:0]     ucp_context.c:1192 UCX  WARN  transports 'cuda_copy','gdr_copy','cuda_ipc' are not available, please use one or more of: cma, dc, dc_mlx5, dc_x, ib, mm, posix, rc, rc_mlx5, rc_v, rc_verbs, rc_x, self, shm, sm, sysv, tcp, ud, ud_mlx5, ud_v, ud_verbs, ud_x
+[1759830712.348072] [node1:1617737:0]     ucp_context.c:1192 UCX  WARN  transports 'cuda_copy','gdr_copy','cuda_ipc' are not available, please use one or more of: cma, dc, dc_mlx5, dc_x, ib, mm, posix, rc, rc_mlx5, rc_v, rc_verbs, rc_x, self, shm, sm, sysv, tcp, ud, ud_mlx5, ud_v, ud_verbs, ud_x
+[1759830712.348436] [node1:1617736:0]     ucp_context.c:1192 UCX  WARN  transports 'cuda_copy','gdr_copy','cuda_ipc' are not available, please use one or more of: cma, dc, dc_mlx5, dc_x, ib, mm, posix, rc, rc_mlx5, rc_v, rc_verbs, rc_x, self, shm, sm, sysv, tcp, ud, ud_mlx5, ud_v, ud_verbs, ud_x
+[1759830712.348484] [node1:1617739:0]     ucp_context.c:1192 UCX  WARN  transports 'cuda_copy','gdr_copy','cuda_ipc' are not available, please use one or more of: cma, dc, dc_mlx5, dc_x, ib, mm, posix, rc, rc_mlx5, rc_v, rc_verbs, rc_x, self, shm, sm, sysv, tcp, ud, ud_mlx5, ud_v, ud_verbs, ud_x
+[1759830712.365440] [node1:1617739:0]     ucp_context.c:2137 UCX  WARN  UCP API version is incompatible: required >= 1.19, actual 1.16.0 (loaded from /usr/lib/x86_64-linux-gnu/libucp.so.0)
+[1759830712.365488] [node1:1617737:0]     ucp_context.c:2137 UCX  WARN  UCP API version is incompatible: required >= 1.19, actual 1.16.0 (loaded from /usr/lib/x86_64-linux-gnu/libucp.so.0)
+[1759830712.365535] [node1:1617738:0]     ucp_context.c:2137 UCX  WARN  UCP API version is incompatible: required >= 1.19, actual 1.16.0 (loaded from /usr/lib/x86_64-linux-gnu/libucp.so.0)
+[1759830712.365538] [node1:1617736:0]     ucp_context.c:2137 UCX  WARN  UCP API version is incompatible: required >= 1.19, actual 1.16.0 (loaded from /usr/lib/x86_64-linux-gnu/libucp.so.0)
+[1759830712.375060] [node1:1617736:0]           ib_md.c:1103 UCX  WARN  mlx5_0: relaxed order memory access requested, but unsupported
+[1759830712.375176] [node1:1617739:0]           ib_md.c:1103 UCX  WARN  mlx5_0: relaxed order memory access requested, but unsupported
+[1759830712.375481] [node1:1617737:0]           ib_md.c:1103 UCX  WARN  mlx5_0: relaxed order memory access requested, but unsupported
+[1759830712.375632] [node1:1617738:0]           ib_md.c:1103 UCX  WARN  mlx5_0: relaxed order memory access requested, but unsupported
+[1759830712.377019] [node1:1617736:0]     ucp_context.c:1192 UCX  WARN  transports 'cuda_copy','gdr_copy','cuda_ipc' are not available, please use one or more of: cma, dc, dc_mlx5, dc_x, ib, mm, posix, rc, rc_mlx5, rc_v, rc_verbs, rc_x, self, shm, sm, sysv, tcp, ud, ud_mlx5, ud_v, ud_verbs, ud_x
+[1759830712.377149] [node1:1617739:0]     ucp_context.c:1192 UCX  WARN  transports 'cuda_copy','gdr_copy','cuda_ipc' are not available, please use one or more of: cma, dc, dc_mlx5, dc_x, ib, mm, posix, rc, rc_mlx5, rc_v, rc_verbs, rc_x, self, shm, sm, sysv, tcp, ud, ud_mlx5, ud_v, ud_verbs, ud_x
+[1759830712.377392] [node1:1617737:0]     ucp_context.c:1192 UCX  WARN  transports 'cuda_copy','gdr_copy','cuda_ipc' are not available, please use one or more of: cma, dc, dc_mlx5, dc_x, ib, mm, posix, rc, rc_mlx5, rc_v, rc_verbs, rc_x, self, shm, sm, sysv, tcp, ud, ud_mlx5, ud_v, ud_verbs, ud_x
+[1759830712.377629] [node1:1617738:0]     ucp_context.c:1192 UCX  WARN  transports 'cuda_copy','gdr_copy','cuda_ipc' are not available, please use one or more of: cma, dc, dc_mlx5, dc_x, ib, mm, posix, rc, rc_mlx5, rc_v, rc_verbs, rc_x, self, shm, sm, sysv, tcp, ud, ud_mlx5, ud_v, ud_verbs, ud_x
+[1759830712.401612] [node1:1617739:0]     ucp_context.c:2137 UCX  WARN  UCP API version is incompatible: required >= 1.19, actual 1.16.0 (loaded from /usr/lib/x86_64-linux-gnu/libucp.so.0)
+[1759830712.401612] [node1:1617737:0]     ucp_context.c:2137 UCX  WARN  UCP API version is incompatible: required >= 1.19, actual 1.16.0 (loaded from /usr/lib/x86_64-linux-gnu/libucp.so.0)
+[1759830712.401616] [node1:1617736:0]     ucp_context.c:2137 UCX  WARN  UCP API version is incompatible: required >= 1.19, actual 1.16.0 (loaded from /usr/lib/x86_64-linux-gnu/libucp.so.0)
+[1759830712.401625] [node1:1617738:0]     ucp_context.c:2137 UCX  WARN  UCP API version is incompatible: required >= 1.19, actual 1.16.0 (loaded from /usr/lib/x86_64-linux-gnu/libucp.so.0)
+[1759830712.411028] [node1:1617736:0]           ib_md.c:1103 UCX  WARN  mlx5_0: relaxed order memory access requested, but unsupported
+[1759830712.411081] [node1:1617738:0]           ib_md.c:1103 UCX  WARN  mlx5_0: relaxed order memory access requested, but unsupported
+[1759830712.411138] [node1:1617739:0]           ib_md.c:1103 UCX  WARN  mlx5_0: relaxed order memory access requested, but unsupported
+[1759830712.411274] [node1:1617737:0]           ib_md.c:1103 UCX  WARN  mlx5_0: relaxed order memory access requested, but unsupported
+[1759830712.412923] [node1:1617736:0]     ucp_context.c:1192 UCX  WARN  transports 'cuda_copy','gdr_copy','cuda_ipc' are not available, please use one or more of: cma, dc, dc_mlx5, dc_x, ib, mm, posix, rc, rc_mlx5, rc_v, rc_verbs, rc_x, self, shm, sm, sysv, tcp, ud, ud_mlx5, ud_v, ud_verbs, ud_x
+[1759830712.413072] [node1:1617738:0]     ucp_context.c:1192 UCX  WARN  transports 'cuda_copy','gdr_copy','cuda_ipc' are not available, please use one or more of: cma, dc, dc_mlx5, dc_x, ib, mm, posix, rc, rc_mlx5, rc_v, rc_verbs, rc_x, self, shm, sm, sysv, tcp, ud, ud_mlx5, ud_v, ud_verbs, ud_x
+[1759830712.413121] [node1:1617739:0]     ucp_context.c:1192 UCX  WARN  transports 'cuda_copy','gdr_copy','cuda_ipc' are not available, please use one or more of: cma, dc, dc_mlx5, dc_x, ib, mm, posix, rc, rc_mlx5, rc_v, rc_verbs, rc_x, self, shm, sm, sysv, tcp, ud, ud_mlx5, ud_v, ud_verbs, ud_x
+[1759830712.413207] [node1:1617737:0]     ucp_context.c:1192 UCX  WARN  transports 'cuda_copy','gdr_copy','cuda_ipc' are not available, please use one or more of: cma, dc, dc_mlx5, dc_x, ib, mm, posix, rc, rc_mlx5, rc_v, rc_verbs, rc_x, self, shm, sm, sysv, tcp, ud, ud_mlx5, ud_v, ud_verbs, ud_x
+
+================================================================================
+HPL-MxP-NVIDIA 25.9.0  -- NVIDIA accelerated HPL-MxP benchmark benchmark -- NVIDIA
+================================================================================
+
+ ****** HPL MxP Settings ****** 
+
+   --nprow =  2 
+   --npcol =  2 
+   --order = row 
+   --n     = 90000 
+   --nb    = 384 
+   --tolerance                        = 1.000000e-12 
+   --test-loop                        = 1 
+   --preset-gemm-kernel               = 80 
+   --u-panel-chunk-nbs                = 8 
+   --call-dgemv-with-multiple-threads = 0 
+   --prioritize-trsm                  = 0 
+   --prioritize-factorization         = 0 
+   --use-separate-stream-for-gemm     = 1 
+   --use-mpi-panel-broadcast          = 50 
+   --mpi-use-host-threads             = 1 
+   --sloppy-type                      = FP16 
+   --Anq-device                       = 0 
+   --cuda-host-register-step          = 2048 
+   --mpi-use-mpi                      = 0 
+   --use-host-mpi                     = 0 
+   --fill-device                      = 0 
+   --fill-device-buffer-size          = 3048 
+   --fp4-scaling-factor-a             = 1.000000e-05 
+
+
+
+ ****** Monitor GPU Settings ****** 
+
+   --monitor-gpu                      = 0 
+
+
+
+ ****** test 1 of 1 starts ****** 
+
+   n      = 90000
+   nb     = 384
+   nprow  = 2
+   npcol  = 2
+
+Device info:
+	Peak clock frequency 1410 MHz
+	SM 80
+	Number of SMs 108
+	Total memory available 39.49 GB
+
+---------------------------------------------------------------------------------------------
+[34m Per process host memory consumption MAX = 15.143 GB, available MIN = 121.535 GB[0m
+---------------------------------------------------------------------------------------------
+
+---------------------------------------------------------------------------------------------
+[34m Per process device memory consumption MAX = 8.487 GB, available MIN = 37.349 GB[0m
+---------------------------------------------------------------------------------------------
+
+Constructor seconds: AVG = 0.21, MAX = 0.23 (2->node1), MIN = 0.17 (3->node1)
+
+
+ ****** Testing HPL MxP components ****** 
+
+GEMM seconds: AVG = 3.17, MAX = 3.23 (0->node1), MIN = 3.10 (3->node1)
+
+GEMM GFLOPS: AVG = 24566.45, MAX = 24975.16 (3->node1), MIN = 24120.51 (0->node1)
+
