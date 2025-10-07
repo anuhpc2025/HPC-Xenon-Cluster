@@ -92,30 +92,31 @@ function floatToken(line) {
 }
 
 async function findRunDirs(baseDir) {
-  const dirs = [];
+  const runDirs = [];
 
-  // Walk recursively through subdirs
   async function walk(dir) {
-    const entries = await fs.readdir(dir, { withFileTypes: true });
-    let hasRunFiles = false;
-
-    // Check if this directory has run-style files
+    let entries;
     try {
-      const files = entries.filter((e) => e.isFile()).map((e) => e.name);
-      hasRunFiles = files.some(
-        (f) =>
-          /^(HPL|HPT)\.dat$/i.test(f) ||
-          /\.out$/i.test(f) ||
-          /\.sh$/i.test(f)
-      );
-    } catch {}
-
-    if (hasRunFiles) {
-      dirs.push(dir);
-      return; // stop recursion here: lowest run folder
+      entries = await fs.readdir(dir, { withFileTypes: true });
+    } catch {
+      return;
     }
 
-    // Otherwise, go deeper
+    // Check if this dir contains HPL-related run files
+    const files = entries.filter((e) => e.isFile()).map((e) => e.name);
+    const hasRunFiles = files.some(
+      (f) =>
+        /^(HPL|HPT)\.dat$/i.test(f) ||
+        /\.out$/i.test(f) ||
+        /\.sh$/i.test(f)
+    );
+
+    if (hasRunFiles) {
+      runDirs.push(dir);
+      return; // stop going deeper under a run folder
+    }
+
+    // Recurse into subdirectories
     for (const entry of entries) {
       if (entry.isDirectory()) {
         await walk(path.join(dir, entry.name));
@@ -124,7 +125,7 @@ async function findRunDirs(baseDir) {
   }
 
   await walk(baseDir);
-  return dirs;
+  return runDirs;
 }
 
 // HPL.dat parser (covers classic layout)
@@ -537,141 +538,115 @@ function bestFromRuns(runs) {
 }
 
 async function processSuite(suite, index) {
-    const suiteRoot = path.join(SRC_ROOT, suite);
-    if (!(await exists(suiteRoot))) {
-      console.warn(`[collector] Suite root not found: ${suiteRoot}`);
-      return;
+  const suiteRoot = path.join(SRC_ROOT, suite);
+  if (!(await exists(suiteRoot))) {
+    console.warn(`[collector] Suite root not found: ${suiteRoot}`);
+    return;
+  }
+
+  const runDirs = await findRunDirs(suiteRoot);
+  let runsFound = 0;
+
+  for (const runDir of runDirs) {
+    const rel = path.relative(suiteRoot, runDir);
+    const parts = rel.split(path.sep);
+    const group = parts[0] || "__root__";
+    const run = parts.slice(1).join("/") || "__root__";
+
+    const files = await listFiles(runDir);
+    const datName =
+      files.find((f) => /^HPL\.dat$/i.test(f)) ||
+      files.find((f) => /^HPT\.dat$/i.test(f));
+    const shName = files.find((f) => /\.sh$/i.test(f));
+    const outName =
+      files.find((f) => /\.out$/i.test(f)) || files.find((f) => /out/i.test(f));
+    const errName =
+      files.find((f) => /\.err$/i.test(f)) || files.find((f) => /err/i.test(f));
+
+    const datRaw = datName ? await readFileSafe(path.join(runDir, datName)) : null;
+    const shRaw = shName ? await readFileSafe(path.join(runDir, shName)) : null;
+    const outRaw = outName ? await readFileSafe(path.join(runDir, outName)) : null;
+    const errRaw = errName ? await readFileSafe(path.join(runDir, errName)) : null;
+
+    const id = [suite, group, run].join("/");
+    const baseParts = [suite, ...parts];
+
+    // Copy raw files to /tmp tree for publication
+    if (datName) {
+      await copyFileSafe(path.join(runDir, datName), toRawPathFS([...baseParts, datName]));
+    }
+    if (shName) {
+      await copyFileSafe(path.join(runDir, shName), toRawPathFS([...baseParts, shName]));
+    }
+    if (outName) {
+      await copyFileSafe(path.join(runDir, outName), toRawPathFS([...baseParts, outName]));
+    }
+    if (errName) {
+      await copyFileSafe(path.join(runDir, errName), toRawPathFS([...baseParts, errName]));
     }
 
-    const runDirs = await findRunDirs(suiteRoot);
-    let runsFound = 0;
+    const datParsed = datRaw ? parseHplDat(datRaw) : null;
+    const sbatch = shRaw ? parseSbatch(shRaw) : null;
 
-    for (const runDir of runDirs) {
-        const rel = path.relative(suiteRoot, runDir);
-        const parts = rel.split(path.sep); // suite-relative parts
-        const group = parts[0] || "__root__";
-        const run = parts.slice(1).join("/") || "__root__";
-        const files = await listFiles(runDir);
-
-        // If files are directly in the group folder, treat it as a single run.
-        if (runs.length === 0 && (await dirHasRunFiles(groupDir))) {
-            runs = ["__root__"];
-        }
-        
-        for (const run of runs) {
-            const runDir = run === "__root__" ? groupDir : path.join(groupDir, run);
-            const files = await listFiles(runDir);
-
-            // Variations: HPL.dat or HPT.dat, one .sh, .out, optional .err
-            const datName =
-                files.find((f) => /^HPL\.dat$/i.test(f)) ||
-                files.find((f) => /^HPT\.dat$/i.test(f));
-            const shName = files.find((f) => /\.sh$/i.test(f));
-            const outName =
-                files.find((f) => /\.out$/i.test(f)) || files.find((f) => /out/i.test(f));
-            const errName =
-                files.find((f) => /\.err$/i.test(f)) || files.find((f) => /err/i.test(f));
-
-            const datRaw =
-                datName ? await readFileSafe(path.join(runDir, datName)) : null;
-            const shRaw = shName ? await readFileSafe(path.join(runDir, shName)) : null;
-            const outRaw =
-                outName ? await readFileSafe(path.join(runDir, outName)) : null;
-            const errRaw =
-                errName ? await readFileSafe(path.join(runDir, errName)) : null;
-
-            const id = [suite, group, run].join("/");
-            const baseParts = [suite, group, run];
-
-            // Copy raw files to /tmp tree for publication
-            if (datName) {
-                await copyFileSafe(
-                    path.join(runDir, datName),
-                    toRawPathFS([...baseParts, datName])
-                );
-            }
-            if (shName) {
-                await copyFileSafe(
-                    path.join(runDir, shName),
-                    toRawPathFS([...baseParts, shName])
-                );
-            }
-            if (outName) {
-                await copyFileSafe(
-                    path.join(runDir, outName),
-                    toRawPathFS([...baseParts, outName])
-                );
-            }
-            if (errName) {
-                await copyFileSafe(
-                    path.join(runDir, errName),
-                    toRawPathFS([...baseParts, errName])
-                );
-            }
-
-            const datParsed = datRaw ? parseHplDat(datRaw) : null;
-            const sbatch = shRaw ? parseSbatch(shRaw) : null;
-
-            let outParsed = null;
-            if (outRaw) {
-                outParsed =
-                    suite === "HPL" ? parseOutCpu(outRaw) : parseOutNvidia(outRaw);
-            }
-
-            const runJson = {
-                id,
-                suite,
-                group,
-                run,
-                dat: datRaw
-                    ? {
-                        raw: datRaw,
-                        parsed: datParsed,
-                        path: toWebRawPath([...baseParts, datName || "HPL.dat"]),
-                    }
-                    : null,
-                job: shRaw
-                    ? {
-                        filename: shName,
-                        raw: shRaw,
-                        sbatch,
-                        path: toWebRawPath([...baseParts, shName]),
-                    }
-                    : null,
-                out: outRaw
-                    ? {
-                        path: toWebRawPath([...baseParts, outName]),
-                        ...(outParsed || {}),
-                    }
-                    : null,
-                err: errRaw
-                    ? {
-                        path: toWebRawPath([...baseParts, errName]),
-                        size: errRaw.length,
-                    }
-                    : null,
-                best: outParsed ? bestFromRuns(outParsed.runs) : null,
-            };
-
-            // Write per-run JSON
-            const runJsonPath = toDataPath(["runs", ...baseParts, "run.json"]);
-            await ensureDir(path.dirname(runJsonPath));
-            await fs.writeFile(runJsonPath, JSON.stringify(runJson, null, 2));
-
-            // Add to index
-            index.push({
-                id,
-                suite,
-                group,
-                run,
-                best: runJson.best,
-                outSummary: runJson.out ? runJson.out.summary : null,
-                hasErr: !!errRaw && errRaw.trim().length > 0,
-            });
-            runsFound++;
-        }
+    let outParsed = null;
+    if (outRaw) {
+      outParsed = suite === "HPL" ? parseOutCpu(outRaw) : parseOutNvidia(outRaw);
     }
-    console.log(`[collector] ${suite}: groups=${groups.length}, runs=${runsFound}`);
+
+    const runJson = {
+      id,
+      suite,
+      group,
+      run,
+      dat: datRaw
+        ? {
+            raw: datRaw,
+            parsed: datParsed,
+            path: toWebRawPath([...baseParts, datName || "HPL.dat"]),
+          }
+        : null,
+      job: shRaw
+        ? {
+            filename: shName,
+            raw: shRaw,
+            sbatch,
+            path: toWebRawPath([...baseParts, shName]),
+          }
+        : null,
+      out: outRaw
+        ? {
+            path: toWebRawPath([...baseParts, outName]),
+            ...(outParsed || {}),
+          }
+        : null,
+      err: errRaw
+        ? {
+            path: toWebRawPath([...baseParts, errName]),
+            size: errRaw.length,
+          }
+        : null,
+      best: outParsed ? bestFromRuns(outParsed.runs) : null,
+    };
+
+    // Write per-run JSON
+    const runJsonPath = toDataPath(["runs", ...baseParts, "run.json"]);
+    await ensureDir(path.dirname(runJsonPath));
+    await fs.writeFile(runJsonPath, JSON.stringify(runJson, null, 2));
+
+    // Add to global index
+    index.push({
+      id,
+      suite,
+      group,
+      run,
+      best: runJson.best,
+      outSummary: runJson.out ? runJson.out.summary : null,
+      hasErr: !!errRaw && errRaw.trim().length > 0,
+    });
+    runsFound++;
+  }
+
+  console.log(`[collector] ${suite}: runs=${runsFound}`);
 }
 
 async function main() {
