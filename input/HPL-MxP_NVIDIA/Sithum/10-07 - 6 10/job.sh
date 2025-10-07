@@ -55,6 +55,6 @@ mpirun ./xhpl_mxp-nvidia \
   --npcol 1 \
   --nporder row \
   --sloppy-type 2 \
-  --n 60000 \
+  --n 110000 \
   --nb 256 \
   --preset-gemm-kernel 0
