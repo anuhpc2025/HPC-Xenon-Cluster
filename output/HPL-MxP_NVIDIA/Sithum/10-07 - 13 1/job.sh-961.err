@@ -1,0 +1,24 @@
+--------------------------------------------------------------------------
+MPI_INIT has failed because at least one MPI process is unreachable
+from another.  This *usually* means that an underlying communication
+plugin -- such as a BTL or an MTL -- has either not loaded or not
+allowed itself to be used.  Your MPI job will now abort.
+
+You may wish to try to narrow down the problem;
+
+ * Check the output of ompi_info to see which BTL/MTL plugins are
+   available.
+ * Run your application with MPI_THREAD_SINGLE.
+ * Set the MCA parameter btl_base_verbose to 100 (or mtl_base_verbose,
+   if using MTL-based communications) to see exactly which
+   communication plugins were considered and/or discarded.
+--------------------------------------------------------------------------
+[node1:1598920] *** An error occurred in MPI_Init_thread
+[node1:1598920] *** reported by process [783482881,1]
+[node1:1598920] *** on a NULL communicator
+[node1:1598920] *** Unknown error
+[node1:1598920] *** MPI_ERRORS_ARE_FATAL (processes in this communicator will now abort,
+[node1:1598920] ***    and potentially your MPI job)
+[node1:1598915] 3 more processes have sent help message help-mpi-runtime.txt / mpi_init:startup:pml-add-procs-fail
+[node1:1598915] Set MCA parameter "orte_base_help_aggregate" to 0 to see all help / error messages
+[node1:1598915] 3 more processes have sent help message help-mpi-errors.txt / mpi_errors_are_fatal unknown handle
