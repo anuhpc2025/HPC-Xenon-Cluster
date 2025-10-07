@@ -1,0 +1,9 @@
+ CHECK_CUBLAS_ERR (0->node1):    cublasLtMatmulDescSetAttribute(_operation_desc_fp4, CUBLASLT_MATMUL_DESC_A_SCALE_MODE, &AScaleMode, sizeof(AScaleMode)) = 7 (an unsupported value or parameter was passed to the function) at (src/matrix.cpp:383), process will now exit
+--------------------------------------------------------------------------
+MPI_ABORT was invoked on rank 0 in communicator MPI_COMM_WORLD
+with errorcode 107.
+
+NOTE: invoking MPI_ABORT causes Open MPI to kill all MPI processes.
+You may or may not see output from other processes, depending on
+exactly when Open MPI kills them.
+--------------------------------------------------------------------------
