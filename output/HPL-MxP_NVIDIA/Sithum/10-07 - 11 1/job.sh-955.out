@@ -1,0 +1,9 @@
+>>> UCX libraries in use:
+[1759811145.386616] [node1:1596553:0]           ib_md.c:1190 UCX  WARN  mlx5_0: relaxed order memory access requested, but unsupported
+[1759811145.391571] [node1:1596552:0]           ib_md.c:1190 UCX  WARN  mlx5_0: relaxed order memory access requested, but unsupported
+[1759811145.395331] [node1:1596555:0]           ib_md.c:1190 UCX  WARN  mlx5_0: relaxed order memory access requested, but unsupported
+[1759811145.397625] [node1:1596553:0]     ucp_context.c:1321 UCX  WARN  intra-node device '^cma' is not available, please use one or more of: 'cuda'(cuda_ipc), 'memory'(cma), 'memory'(posix), 'memory'(sysv)
+[1759811145.401366] [node1:1596554:0]           ib_md.c:1190 UCX  WARN  mlx5_0: relaxed order memory access requested, but unsupported
+[1759811145.401743] [node1:1596553:0]          parser.c:2359 UCX  WARN  unused environment variable: UCX_POSIX_USE_PROC_PATH
+[1759811145.401743] [node1:1596553:0]          parser.c:2359 UCX  WARN  (set UCX_WARN_UNUSED_ENV_VARS=n to suppress this warning)
+[1759811145.402538] [node1:1596552:0]     ucp_context.c:1321 UCX  WARN  intra-node device '^cma' is not available, please use one or more of: 'cuda'(cuda_ipc), 'memory'(cma), 'memory'(posix), 'memory'(sysv)
