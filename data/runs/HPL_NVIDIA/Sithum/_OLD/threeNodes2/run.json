@@ -1,0 +1,86 @@
+{
+  "id": "HPL_NVIDIA/Sithum/_OLD/threeNodes2",
+  "suite": "HPL_NVIDIA",
+  "group": "Sithum",
+  "run": "_OLD/threeNodes2",
+  "dat": {
+    "raw": "HPLinpack benchmark input file\nInnovative Computing Laboratory, University of Tennessee\nHPL.out      output file name (if any)\n6            device out (6=stdout,7=stderr,file)\n1            # of problems sizes (N)\n131072       Ns\n1            # of NBs\n512          NBs\n1            PMAP process mapping (0=Row-,1=Column-major)\n1            # of process grids (P x Q)\n3            Ps\n4            Qs\n16.0         threshold\n1            # of panel fact\n1            PFACTs (ignored by HPL-NVIDIA)\n1            # of recursive stopping criterium\n8            NBMINs (ignored)\n1            # of panels in recursion\n2            NDIVs\n1            # of recursive panel fact.\n1            RFACTs (ignored)\n1            # of broadcast\n3            BCASTs (ignored)\n1            # of lookahead depth\n2            DEPTHs (ignored)\n2            SWAP (0=bin-exch,1=long,2=mix)\n192          swapping threshold\n0            L1 in (ignored)\n1            U  in (ignored)\n1            Equilibration (ignored)\n32           memory alignment in double (> 0, ignored)",
+    "parsed": {
+      "header": [
+        "HPLinpack benchmark input file",
+        "Innovative Computing Laboratory, University of Tennessee"
+      ],
+      "outputFilename": "HPL.out",
+      "deviceOut": 6,
+      "numProblemSizes": 1,
+      "Ns": [
+        131072
+      ],
+      "numNBs": 1,
+      "NBs": [
+        512
+      ],
+      "pmap": 1,
+      "numGrids": 1,
+      "Ps": [
+        3
+      ],
+      "Qs": [
+        4
+      ],
+      "threshold": 16,
+      "numPFACT": 1,
+      "PFACTs": [
+        1
+      ],
+      "numNBMIN": 1,
+      "NBMINs": [
+        8
+      ],
+      "numPanelsInRecursion": 1,
+      "NDIVs": [
+        2
+      ],
+      "numRFACT": 1,
+      "RFACTs": [
+        1
+      ],
+      "numBCAST": 1,
+      "BCASTs": [
+        3
+      ],
+      "numDEPTH": 1,
+      "DEPTHs": [
+        2
+      ],
+      "swapMode": 2,
+      "swapThreshold": 192,
+      "L1": null,
+      "U": null,
+      "equilibration": 1,
+      "memoryAlignment": 32
+    },
+    "path": "/raw/HPL_NVIDIA/Sithum/_OLD/threeNodes2/HPL.dat"
+  },
+  "job": {
+    "filename": "job.sh",
+    "raw": "#!/bin/bash\n#SBATCH --job-name=hpl-12gpu\n#SBATCH --nodes=3\n#SBATCH --ntasks-per-node=4\n#SBATCH --cpus-per-task=4\n#SBATCH --gpus-per-node=4        # or: --gres=gpu:4 (cluster dependent)\n#SBATCH --time=01:00:00\n#SBATCH --exclusive\n#SBATCH --nodelist=node1,node2,node3\n\n# Load your MPI/CUDA stacks as appropriate for your site\n# module load cuda/12.6 openmpi/4.1.6\n\nexport PATH=/opt/ompi-4.1.6/bin:$PATH\nexport LD_LIBRARY_PATH=/opt/ompi-4.1.6/lib:$LD_LIBRARY_PATH\nexport LD_LIBRARY_PATH=/usr/local/cuda-12.6/lib64:\\\n/opt/nvidia/nvidia_hpc_benchmarks_openmpi/lib/nvshmem:\\\n/opt/nvidia/nvidia_hpc_benchmarks_openmpi/lib/nccl:\\\n/opt/nvidia/nvidia_hpc_benchmarks_openmpi/lib:\\\n$LD_LIBRARY_PATH\n\n# Enable GPU path (if your xhpl build uses these)\nexport HPL_USE_GPU=1\nexport HPL_CUDA_MODE=1\n\n# CUDA-aware MPI/UCX (tune per site)\nexport OMPI_MCA_pml=ucx\nexport OMPI_MCA_btl=^openib\nexport OMPI_MCA_opal_cuda_support=true\nexport UCX_TLS=rc_x,sm,cuda_copy,gdr_copy\nexport UCX_MEMTYPE_CACHE=n\n\nulimit -l unlimited\nulimit -n 65536\n\n# Do NOT set CUDA_VISIBLE_DEVICES globally\nunset CUDA_VISIBLE_DEVICES\n\n# 12 ranks total; 1 GPU per rank; bind each rank to the nearest GPU\nmpirun ./xhpl-nvidia",
+    "sbatch": {
+      "job-name": "hpl-12gpu",
+      "nodes": 3,
+      "ntasks-per-node": 4,
+      "cpus-per-task": 4,
+      "gpus-per-node": "4        # or: --gres=gpu:4 (cluster dependent)",
+      "time": "01:00:00",
+      "exclusive": true,
+      "nodelist": "node1,node2,node3"
+    },
+    "path": "/raw/HPL_NVIDIA/Sithum/_OLD/threeNodes2/job.sh"
+  },
+  "out": null,
+  "err": {
+    "path": "/raw/HPL_NVIDIA/Sithum/_OLD/threeNodes2/job.sh-209.err",
+    "size": 518
+  },
+  "best": null
+}

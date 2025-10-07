@@ -1,0 +1,84 @@
+{
+  "id": "HPL_NVIDIA/Sithum/_OLD/job 5",
+  "suite": "HPL_NVIDIA",
+  "group": "Sithum",
+  "run": "_OLD/job 5",
+  "dat": {
+    "raw": "HPL.dat\nHPLinpack benchmark input file\nInnovative Computing Laboratory, University of Tennessee\nHPL.out      output file name (if any)\n6            device out (6=stdout,7=stderr,file)\n1            # of problems sizes (N)\n98304       Ns\n1            # of NBs\n512          NBs\n1            PMAP process mapping (0=Row-,1=Column-major)\n1            # of process grids (P x Q)\n2            Ps\n2            Qs\n16.0         threshold\n1            # of panel fact\n1            PFACTs (ignored by HPL-NVIDIA)\n1            # of recursive stopping criterium\n8            NBMINs (ignored)\n1            # of panels in recursion\n2            NDIVs\n1            # of recursive panel fact.\n1            RFACTs (ignored)\n1            # of broadcast\n3            BCASTs (ignored)\n1            # of lookahead depth\n2            DEPTHs (ignored)\n2            SWAP (0=bin-exch,1=long,2=mix)\n192          swapping threshold\n0            L1 in (ignored)\n1            U  in (ignored)\n1            Equilibration (ignored)\n32           memory alignment in double (> 0, ignored)",
+    "parsed": {
+      "header": [
+        "HPL.dat",
+        "HPLinpack benchmark input file"
+      ],
+      "outputFilename": "HPL.out",
+      "deviceOut": 6,
+      "numProblemSizes": 1,
+      "Ns": [
+        98304
+      ],
+      "numNBs": 1,
+      "NBs": [
+        512
+      ],
+      "pmap": 1,
+      "numGrids": 1,
+      "Ps": [
+        2
+      ],
+      "Qs": [
+        2
+      ],
+      "threshold": 16,
+      "numPFACT": 1,
+      "PFACTs": [
+        1
+      ],
+      "numNBMIN": 1,
+      "NBMINs": [
+        8
+      ],
+      "numPanelsInRecursion": 1,
+      "NDIVs": [
+        2
+      ],
+      "numRFACT": 1,
+      "RFACTs": [
+        1
+      ],
+      "numBCAST": 1,
+      "BCASTs": [
+        3
+      ],
+      "numDEPTH": 1,
+      "DEPTHs": [
+        2
+      ],
+      "swapMode": 2,
+      "swapThreshold": 192,
+      "L1": null,
+      "U": null,
+      "equilibration": 1,
+      "memoryAlignment": 32
+    },
+    "path": "/raw/HPL_NVIDIA/Sithum/_OLD/job 5/HPL.dat"
+  },
+  "job": {
+    "filename": "job.sh",
+    "raw": "#!/bin/bash\n#SBATCH --job-name=hpl-test       # Job name\n#SBATCH --ntasks=4                # Total MPI tasks\n#SBATCH --gpus-per-task=1\n#SBATCH --cpus-per-task=8        # CPU cores per MPI task\n#SBATCH --time=02:00:00           # Time limit hh:mm:ss\n#SBATCH --nodelist=node1\n\n# Load MPI module (adjust for your system)\n# module load openmpi\nexport CUDA_VISIBLE_DEVICES=0,1,2,3\nexport HPL_USE_GPU=1\nexport HPL_CUDA_MODE=1\n\nexport PATH=/opt/ompi-4.1.6/bin:$PATH\nexport LD_LIBRARY_PATH=/opt/ompi-4.1.6/lib:$LD_LIBRARY_PATH\nexport LD_LIBRARY_PATH=/usr/local/cuda-12.6/lib64:/opt/nvidia/nvidia_hpc_benchmarks_openmpi/lib/nvshmem:/opt/nvidia/nvidia_hpc_benchmarks_openmpi/lib/nccl:/opt/nvidia/nvidia_hpc_benchmarks_openmpi/lib:$LD_LIBRARY_PATH\n\n#testing\nulimit -l unlimited\nulimit -n 65536\n\n# Run the MPI program\nmpirun ./xhpl-nvidia",
+    "sbatch": {
+      "job-name": "hpl-test       # Job name",
+      "ntasks": null,
+      "gpus-per-task": "1",
+      "cpus-per-task": null,
+      "time": "02:00:00           # Time limit hh:mm:ss",
+      "nodelist": "node1"
+    },
+    "path": "/raw/HPL_NVIDIA/Sithum/_OLD/job 5/job.sh"
+  },
+  "out": null,
+  "err": {
+    "path": "/raw/HPL_NVIDIA/Sithum/_OLD/job 5/job.sh-179.err",
+    "size": 874
+  },
+  "best": null
+}
