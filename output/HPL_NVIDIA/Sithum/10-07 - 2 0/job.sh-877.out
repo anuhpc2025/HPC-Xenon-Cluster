@@ -1,0 +1,441 @@
+[1759799850.514372] [node2:933293:0]     ucp_context.c:2137 UCX  WARN  UCP API version is incompatible: required >= 1.19, actual 1.16.0 (loaded from /usr/lib/x86_64-linux-gnu/libucp.so.0)
+[1759799850.514406] [node2:933294:0]     ucp_context.c:2137 UCX  WARN  UCP API version is incompatible: required >= 1.19, actual 1.16.0 (loaded from /usr/lib/x86_64-linux-gnu/libucp.so.0)
+[1759799850.496851] [node3:890359:0]     ucp_context.c:2137 UCX  WARN  UCP API version is incompatible: required >= 1.19, actual 1.16.0 (loaded from /usr/lib/x86_64-linux-gnu/libucp.so.0)
+[1759799850.510751] [node4:886972:0]     ucp_context.c:2137 UCX  WARN  UCP API version is incompatible: required >= 1.19, actual 1.16.0 (loaded from /usr/lib/x86_64-linux-gnu/libucp.so.0)
+[1759799850.509239] [node1:1570215:0]     ucp_context.c:2137 UCX  WARN  UCP API version is incompatible: required >= 1.19, actual 1.16.0 (loaded from /usr/lib/x86_64-linux-gnu/libucp.so.0)
+[1759799850.509884] [node1:1570216:0]     ucp_context.c:2137 UCX  WARN  UCP API version is incompatible: required >= 1.19, actual 1.16.0 (loaded from /usr/lib/x86_64-linux-gnu/libucp.so.0)
+[1759799850.511603] [node4:886973:0]     ucp_context.c:2137 UCX  WARN  UCP API version is incompatible: required >= 1.19, actual 1.16.0 (loaded from /usr/lib/x86_64-linux-gnu/libucp.so.0)
+[1759799850.505325] [node3:890360:0]     ucp_context.c:2137 UCX  WARN  UCP API version is incompatible: required >= 1.19, actual 1.16.0 (loaded from /usr/lib/x86_64-linux-gnu/libucp.so.0)
+[1759799850.525971] [node2:933293:0]           ib_md.c:1103 UCX  WARN  mlx5_0: relaxed order memory access requested, but unsupported
+[1759799850.526043] [node2:933294:0]           ib_md.c:1103 UCX  WARN  mlx5_0: relaxed order memory access requested, but unsupported
+[1759799850.507864] [node3:890359:0]           ib_md.c:1103 UCX  WARN  mlx5_0: relaxed order memory access requested, but unsupported
+[1759799850.527178] [node2:933295:0]     ucp_context.c:2137 UCX  WARN  UCP API version is incompatible: required >= 1.19, actual 1.16.0 (loaded from /usr/lib/x86_64-linux-gnu/libucp.so.0)
+[1759799850.527634] [node2:933296:0]     ucp_context.c:2137 UCX  WARN  UCP API version is incompatible: required >= 1.19, actual 1.16.0 (loaded from /usr/lib/x86_64-linux-gnu/libucp.so.0)
+[1759799850.527965] [node2:933293:0]     ucp_context.c:1192 UCX  WARN  transports 'cuda_copy','gdr_copy','cuda_ipc' are not available, please use one or more of: cma, dc, dc_mlx5, dc_x, ib, mm, posix, rc, rc_mlx5, rc_v, rc_verbs, rc_x, self, shm, sm, sysv, tcp, ud, ud_mlx5, ud_v, ud_verbs, ud_x
+[1759799850.528049] [node2:933294:0]     ucp_context.c:1192 UCX  WARN  transports 'cuda_copy','gdr_copy','cuda_ipc' are not available, please use one or more of: cma, dc, dc_mlx5, dc_x, ib, mm, posix, rc, rc_mlx5, rc_v, rc_verbs, rc_x, self, shm, sm, sysv, tcp, ud, ud_mlx5, ud_v, ud_verbs, ud_x
+[1759799850.509915] [node3:890359:0]     ucp_context.c:1192 UCX  WARN  transports 'cuda_copy','gdr_copy','cuda_ipc' are not available, please use one or more of: cma, dc, dc_mlx5, dc_x, ib, mm, posix, rc, rc_mlx5, rc_v, rc_verbs, rc_x, self, shm, sm, sysv, tcp, ud, ud_mlx5, ud_v, ud_verbs, ud_x
+[1759799850.518223] [node1:1570217:0]     ucp_context.c:2137 UCX  WARN  UCP API version is incompatible: required >= 1.19, actual 1.16.0 (loaded from /usr/lib/x86_64-linux-gnu/libucp.so.0)
+[1759799850.520845] [node1:1570215:0]           ib_md.c:1103 UCX  WARN  mlx5_0: relaxed order memory access requested, but unsupported
+[1759799850.520873] [node1:1570216:0]           ib_md.c:1103 UCX  WARN  mlx5_0: relaxed order memory access requested, but unsupported
+[1759799850.522501] [node4:886972:0]           ib_md.c:1103 UCX  WARN  mlx5_0: relaxed order memory access requested, but unsupported
+[1759799850.522576] [node4:886973:0]           ib_md.c:1103 UCX  WARN  mlx5_0: relaxed order memory access requested, but unsupported
+[1759799850.522908] [node4:886974:0]     ucp_context.c:2137 UCX  WARN  UCP API version is incompatible: required >= 1.19, actual 1.16.0 (loaded from /usr/lib/x86_64-linux-gnu/libucp.so.0)
+[1759799850.521944] [node1:1570218:0]     ucp_context.c:2137 UCX  WARN  UCP API version is incompatible: required >= 1.19, actual 1.16.0 (loaded from /usr/lib/x86_64-linux-gnu/libucp.so.0)
+[1759799850.515509] [node3:890360:0]           ib_md.c:1103 UCX  WARN  mlx5_0: relaxed order memory access requested, but unsupported
+[1759799850.524522] [node4:886972:0]     ucp_context.c:1192 UCX  WARN  transports 'cuda_copy','gdr_copy','cuda_ipc' are not available, please use one or more of: cma, dc, dc_mlx5, dc_x, ib, mm, posix, rc, rc_mlx5, rc_v, rc_verbs, rc_x, self, shm, sm, sysv, tcp, ud, ud_mlx5, ud_v, ud_verbs, ud_x
+[1759799850.524624] [node4:886973:0]     ucp_context.c:1192 UCX  WARN  transports 'cuda_copy','gdr_copy','cuda_ipc' are not available, please use one or more of: cma, dc, dc_mlx5, dc_x, ib, mm, posix, rc, rc_mlx5, rc_v, rc_verbs, rc_x, self, shm, sm, sysv, tcp, ud, ud_mlx5, ud_v, ud_verbs, ud_x
+[1759799850.523294] [node1:1570215:0]     ucp_context.c:1192 UCX  WARN  transports 'cuda_copy','gdr_copy','cuda_ipc' are not available, please use one or more of: cma, dc, dc_mlx5, dc_x, ib, mm, posix, rc, rc_mlx5, rc_v, rc_verbs, rc_x, self, shm, sm, sysv, tcp, ud, ud_mlx5, ud_v, ud_verbs, ud_x
+[1759799850.523324] [node1:1570216:0]     ucp_context.c:1192 UCX  WARN  transports 'cuda_copy','gdr_copy','cuda_ipc' are not available, please use one or more of: cma, dc, dc_mlx5, dc_x, ib, mm, posix, rc, rc_mlx5, rc_v, rc_verbs, rc_x, self, shm, sm, sysv, tcp, ud, ud_mlx5, ud_v, ud_verbs, ud_x
+[1759799850.524993] [node4:886975:0]     ucp_context.c:2137 UCX  WARN  UCP API version is incompatible: required >= 1.19, actual 1.16.0 (loaded from /usr/lib/x86_64-linux-gnu/libucp.so.0)
+[1759799850.517424] [node3:890360:0]     ucp_context.c:1192 UCX  WARN  transports 'cuda_copy','gdr_copy','cuda_ipc' are not available, please use one or more of: cma, dc, dc_mlx5, dc_x, ib, mm, posix, rc, rc_mlx5, rc_v, rc_verbs, rc_x, self, shm, sm, sysv, tcp, ud, ud_mlx5, ud_v, ud_verbs, ud_x
+[1759799850.538074] [node2:933296:0]           ib_md.c:1103 UCX  WARN  mlx5_0: relaxed order memory access requested, but unsupported
+[1759799850.538260] [node2:933295:0]           ib_md.c:1103 UCX  WARN  mlx5_0: relaxed order memory access requested, but unsupported
+[1759799850.522058] [node3:890361:0]     ucp_context.c:2137 UCX  WARN  UCP API version is incompatible: required >= 1.19, actual 1.16.0 (loaded from /usr/lib/x86_64-linux-gnu/libucp.so.0)
+[1759799850.540596] [node2:933296:0]     ucp_context.c:1192 UCX  WARN  transports 'cuda_copy','gdr_copy','cuda_ipc' are not available, please use one or more of: cma, dc, dc_mlx5, dc_x, ib, mm, posix, rc, rc_mlx5, rc_v, rc_verbs, rc_x, self, shm, sm, sysv, tcp, ud, ud_mlx5, ud_v, ud_verbs, ud_x
+[1759799850.540625] [node2:933295:0]     ucp_context.c:1192 UCX  WARN  transports 'cuda_copy','gdr_copy','cuda_ipc' are not available, please use one or more of: cma, dc, dc_mlx5, dc_x, ib, mm, posix, rc, rc_mlx5, rc_v, rc_verbs, rc_x, self, shm, sm, sysv, tcp, ud, ud_mlx5, ud_v, ud_verbs, ud_x
+[1759799850.529624] [node1:1570217:0]           ib_md.c:1103 UCX  WARN  mlx5_0: relaxed order memory access requested, but unsupported
+[1759799850.524275] [node3:890362:0]     ucp_context.c:2137 UCX  WARN  UCP API version is incompatible: required >= 1.19, actual 1.16.0 (loaded from /usr/lib/x86_64-linux-gnu/libucp.so.0)
+[1759799850.531591] [node1:1570217:0]     ucp_context.c:1192 UCX  WARN  transports 'cuda_copy','gdr_copy','cuda_ipc' are not available, please use one or more of: cma, dc, dc_mlx5, dc_x, ib, mm, posix, rc, rc_mlx5, rc_v, rc_verbs, rc_x, self, shm, sm, sysv, tcp, ud, ud_mlx5, ud_v, ud_verbs, ud_x
+[1759799850.533455] [node4:886974:0]           ib_md.c:1103 UCX  WARN  mlx5_0: relaxed order memory access requested, but unsupported
+[1759799850.532856] [node1:1570218:0]           ib_md.c:1103 UCX  WARN  mlx5_0: relaxed order memory access requested, but unsupported
+[1759799850.535340] [node4:886975:0]           ib_md.c:1103 UCX  WARN  mlx5_0: relaxed order memory access requested, but unsupported
+[1759799850.535507] [node4:886974:0]     ucp_context.c:1192 UCX  WARN  transports 'cuda_copy','gdr_copy','cuda_ipc' are not available, please use one or more of: cma, dc, dc_mlx5, dc_x, ib, mm, posix, rc, rc_mlx5, rc_v, rc_verbs, rc_x, self, shm, sm, sysv, tcp, ud, ud_mlx5, ud_v, ud_verbs, ud_x
+[1759799850.534782] [node1:1570218:0]     ucp_context.c:1192 UCX  WARN  transports 'cuda_copy','gdr_copy','cuda_ipc' are not available, please use one or more of: cma, dc, dc_mlx5, dc_x, ib, mm, posix, rc, rc_mlx5, rc_v, rc_verbs, rc_x, self, shm, sm, sysv, tcp, ud, ud_mlx5, ud_v, ud_verbs, ud_x
+[1759799850.537773] [node4:886975:0]     ucp_context.c:1192 UCX  WARN  transports 'cuda_copy','gdr_copy','cuda_ipc' are not available, please use one or more of: cma, dc, dc_mlx5, dc_x, ib, mm, posix, rc, rc_mlx5, rc_v, rc_verbs, rc_x, self, shm, sm, sysv, tcp, ud, ud_mlx5, ud_v, ud_verbs, ud_x
+[1759799850.532785] [node3:890361:0]           ib_md.c:1103 UCX  WARN  mlx5_0: relaxed order memory access requested, but unsupported
+[1759799850.535269] [node3:890362:0]           ib_md.c:1103 UCX  WARN  mlx5_0: relaxed order memory access requested, but unsupported
+[1759799850.535335] [node3:890361:0]     ucp_context.c:1192 UCX  WARN  transports 'cuda_copy','gdr_copy','cuda_ipc' are not available, please use one or more of: cma, dc, dc_mlx5, dc_x, ib, mm, posix, rc, rc_mlx5, rc_v, rc_verbs, rc_x, self, shm, sm, sysv, tcp, ud, ud_mlx5, ud_v, ud_verbs, ud_x
+[1759799850.537116] [node3:890362:0]     ucp_context.c:1192 UCX  WARN  transports 'cuda_copy','gdr_copy','cuda_ipc' are not available, please use one or more of: cma, dc, dc_mlx5, dc_x, ib, mm, posix, rc, rc_mlx5, rc_v, rc_verbs, rc_x, self, shm, sm, sysv, tcp, ud, ud_mlx5, ud_v, ud_verbs, ud_x
+[1759799850.560876] [node1:1570217:0]     ucp_context.c:2137 UCX  WARN  UCP API version is incompatible: required >= 1.19, actual 1.16.0 (loaded from /usr/lib/x86_64-linux-gnu/libucp.so.0)
+[1759799850.560965] [node1:1570216:0]     ucp_context.c:2137 UCX  WARN  UCP API version is incompatible: required >= 1.19, actual 1.16.0 (loaded from /usr/lib/x86_64-linux-gnu/libucp.so.0)
+[1759799850.560971] [node1:1570215:0]     ucp_context.c:2137 UCX  WARN  UCP API version is incompatible: required >= 1.19, actual 1.16.0 (loaded from /usr/lib/x86_64-linux-gnu/libucp.so.0)
+[1759799850.560967] [node1:1570218:0]     ucp_context.c:2137 UCX  WARN  UCP API version is incompatible: required >= 1.19, actual 1.16.0 (loaded from /usr/lib/x86_64-linux-gnu/libucp.so.0)
+[1759799850.554553] [node3:890362:0]     ucp_context.c:2137 UCX  WARN  UCP API version is incompatible: required >= 1.19, actual 1.16.0 (loaded from /usr/lib/x86_64-linux-gnu/libucp.so.0)
+[1759799850.573097] [node2:933293:0]     ucp_context.c:2137 UCX  WARN  UCP API version is incompatible: required >= 1.19, actual 1.16.0 (loaded from /usr/lib/x86_64-linux-gnu/libucp.so.0)
+[1759799850.562709] [node4:886973:0]     ucp_context.c:2137 UCX  WARN  UCP API version is incompatible: required >= 1.19, actual 1.16.0 (loaded from /usr/lib/x86_64-linux-gnu/libucp.so.0)
+[1759799850.554657] [node3:890359:0]     ucp_context.c:2137 UCX  WARN  UCP API version is incompatible: required >= 1.19, actual 1.16.0 (loaded from /usr/lib/x86_64-linux-gnu/libucp.so.0)
+[1759799850.554660] [node3:890360:0]     ucp_context.c:2137 UCX  WARN  UCP API version is incompatible: required >= 1.19, actual 1.16.0 (loaded from /usr/lib/x86_64-linux-gnu/libucp.so.0)
+[1759799850.573094] [node2:933294:0]     ucp_context.c:2137 UCX  WARN  UCP API version is incompatible: required >= 1.19, actual 1.16.0 (loaded from /usr/lib/x86_64-linux-gnu/libucp.so.0)
+[1759799850.554666] [node3:890361:0]     ucp_context.c:2137 UCX  WARN  UCP API version is incompatible: required >= 1.19, actual 1.16.0 (loaded from /usr/lib/x86_64-linux-gnu/libucp.so.0)
+[1759799850.562779] [node4:886972:0]     ucp_context.c:2137 UCX  WARN  UCP API version is incompatible: required >= 1.19, actual 1.16.0 (loaded from /usr/lib/x86_64-linux-gnu/libucp.so.0)
+[1759799850.573172] [node2:933296:0]     ucp_context.c:2137 UCX  WARN  UCP API version is incompatible: required >= 1.19, actual 1.16.0 (loaded from /usr/lib/x86_64-linux-gnu/libucp.so.0)
+[1759799850.573241] [node2:933295:0]     ucp_context.c:2137 UCX  WARN  UCP API version is incompatible: required >= 1.19, actual 1.16.0 (loaded from /usr/lib/x86_64-linux-gnu/libucp.so.0)
+[1759799850.562792] [node4:886975:0]     ucp_context.c:2137 UCX  WARN  UCP API version is incompatible: required >= 1.19, actual 1.16.0 (loaded from /usr/lib/x86_64-linux-gnu/libucp.so.0)
+[1759799850.562866] [node4:886974:0]     ucp_context.c:2137 UCX  WARN  UCP API version is incompatible: required >= 1.19, actual 1.16.0 (loaded from /usr/lib/x86_64-linux-gnu/libucp.so.0)
+[1759799850.563141] [node3:890362:0]           ib_md.c:1103 UCX  WARN  mlx5_0: relaxed order memory access requested, but unsupported
+[1759799850.570167] [node1:1570217:0]           ib_md.c:1103 UCX  WARN  mlx5_0: relaxed order memory access requested, but unsupported
+[1759799850.570537] [node1:1570218:0]           ib_md.c:1103 UCX  WARN  mlx5_0: relaxed order memory access requested, but unsupported
+[1759799850.572181] [node4:886973:0]           ib_md.c:1103 UCX  WARN  mlx5_0: relaxed order memory access requested, but unsupported
+[1759799850.564148] [node3:890359:0]           ib_md.c:1103 UCX  WARN  mlx5_0: relaxed order memory access requested, but unsupported
+[1759799850.570823] [node1:1570216:0]           ib_md.c:1103 UCX  WARN  mlx5_0: relaxed order memory access requested, but unsupported
+[1759799850.564365] [node3:890361:0]           ib_md.c:1103 UCX  WARN  mlx5_0: relaxed order memory access requested, but unsupported
+[1759799850.571096] [node1:1570215:0]           ib_md.c:1103 UCX  WARN  mlx5_0: relaxed order memory access requested, but unsupported
+[1759799850.564698] [node3:890360:0]           ib_md.c:1103 UCX  WARN  mlx5_0: relaxed order memory access requested, but unsupported
+[1759799850.583326] [node2:933295:0]           ib_md.c:1103 UCX  WARN  mlx5_0: relaxed order memory access requested, but unsupported
+[1759799850.583500] [node2:933293:0]           ib_md.c:1103 UCX  WARN  mlx5_0: relaxed order memory access requested, but unsupported
+[1759799850.583649] [node2:933296:0]           ib_md.c:1103 UCX  WARN  mlx5_0: relaxed order memory access requested, but unsupported
+[1759799850.583846] [node2:933294:0]           ib_md.c:1103 UCX  WARN  mlx5_0: relaxed order memory access requested, but unsupported
+[1759799850.573516] [node4:886975:0]           ib_md.c:1103 UCX  WARN  mlx5_0: relaxed order memory access requested, but unsupported
+[1759799850.565503] [node3:890362:0]     ucp_context.c:1192 UCX  WARN  transports 'cuda_copy','gdr_copy','cuda_ipc' are not available, please use one or more of: cma, dc, dc_mlx5, dc_x, ib, mm, posix, rc, rc_mlx5, rc_v, rc_verbs, rc_x, self, shm, sm, sysv, tcp, ud, ud_mlx5, ud_v, ud_verbs, ud_x
+[1759799850.573617] [node4:886972:0]           ib_md.c:1103 UCX  WARN  mlx5_0: relaxed order memory access requested, but unsupported
+[1759799850.572246] [node1:1570217:0]     ucp_context.c:1192 UCX  WARN  transports 'cuda_copy','gdr_copy','cuda_ipc' are not available, please use one or more of: cma, dc, dc_mlx5, dc_x, ib, mm, posix, rc, rc_mlx5, rc_v, rc_verbs, rc_x, self, shm, sm, sysv, tcp, ud, ud_mlx5, ud_v, ud_verbs, ud_x
+[1759799850.573895] [node4:886974:0]           ib_md.c:1103 UCX  WARN  mlx5_0: relaxed order memory access requested, but unsupported
+[1759799850.572529] [node1:1570218:0]     ucp_context.c:1192 UCX  WARN  transports 'cuda_copy','gdr_copy','cuda_ipc' are not available, please use one or more of: cma, dc, dc_mlx5, dc_x, ib, mm, posix, rc, rc_mlx5, rc_v, rc_verbs, rc_x, self, shm, sm, sysv, tcp, ud, ud_mlx5, ud_v, ud_verbs, ud_x
+[1759799850.566116] [node3:890359:0]     ucp_context.c:1192 UCX  WARN  transports 'cuda_copy','gdr_copy','cuda_ipc' are not available, please use one or more of: cma, dc, dc_mlx5, dc_x, ib, mm, posix, rc, rc_mlx5, rc_v, rc_verbs, rc_x, self, shm, sm, sysv, tcp, ud, ud_mlx5, ud_v, ud_verbs, ud_x
+[1759799850.566235] [node3:890361:0]     ucp_context.c:1192 UCX  WARN  transports 'cuda_copy','gdr_copy','cuda_ipc' are not available, please use one or more of: cma, dc, dc_mlx5, dc_x, ib, mm, posix, rc, rc_mlx5, rc_v, rc_verbs, rc_x, self, shm, sm, sysv, tcp, ud, ud_mlx5, ud_v, ud_verbs, ud_x
+[1759799850.572825] [node1:1570216:0]     ucp_context.c:1192 UCX  WARN  transports 'cuda_copy','gdr_copy','cuda_ipc' are not available, please use one or more of: cma, dc, dc_mlx5, dc_x, ib, mm, posix, rc, rc_mlx5, rc_v, rc_verbs, rc_x, self, shm, sm, sysv, tcp, ud, ud_mlx5, ud_v, ud_verbs, ud_x
+[1759799850.566575] [node3:890360:0]     ucp_context.c:1192 UCX  WARN  transports 'cuda_copy','gdr_copy','cuda_ipc' are not available, please use one or more of: cma, dc, dc_mlx5, dc_x, ib, mm, posix, rc, rc_mlx5, rc_v, rc_verbs, rc_x, self, shm, sm, sysv, tcp, ud, ud_mlx5, ud_v, ud_verbs, ud_x
+[1759799850.573147] [node1:1570215:0]     ucp_context.c:1192 UCX  WARN  transports 'cuda_copy','gdr_copy','cuda_ipc' are not available, please use one or more of: cma, dc, dc_mlx5, dc_x, ib, mm, posix, rc, rc_mlx5, rc_v, rc_verbs, rc_x, self, shm, sm, sysv, tcp, ud, ud_mlx5, ud_v, ud_verbs, ud_x
+[1759799850.585242] [node2:933295:0]     ucp_context.c:1192 UCX  WARN  transports 'cuda_copy','gdr_copy','cuda_ipc' are not available, please use one or more of: cma, dc, dc_mlx5, dc_x, ib, mm, posix, rc, rc_mlx5, rc_v, rc_verbs, rc_x, self, shm, sm, sysv, tcp, ud, ud_mlx5, ud_v, ud_verbs, ud_x
+[1759799850.574931] [node4:886973:0]     ucp_context.c:1192 UCX  WARN  transports 'cuda_copy','gdr_copy','cuda_ipc' are not available, please use one or more of: cma, dc, dc_mlx5, dc_x, ib, mm, posix, rc, rc_mlx5, rc_v, rc_verbs, rc_x, self, shm, sm, sysv, tcp, ud, ud_mlx5, ud_v, ud_verbs, ud_x
+[1759799850.585422] [node2:933293:0]     ucp_context.c:1192 UCX  WARN  transports 'cuda_copy','gdr_copy','cuda_ipc' are not available, please use one or more of: cma, dc, dc_mlx5, dc_x, ib, mm, posix, rc, rc_mlx5, rc_v, rc_verbs, rc_x, self, shm, sm, sysv, tcp, ud, ud_mlx5, ud_v, ud_verbs, ud_x
+[1759799850.585550] [node2:933296:0]     ucp_context.c:1192 UCX  WARN  transports 'cuda_copy','gdr_copy','cuda_ipc' are not available, please use one or more of: cma, dc, dc_mlx5, dc_x, ib, mm, posix, rc, rc_mlx5, rc_v, rc_verbs, rc_x, self, shm, sm, sysv, tcp, ud, ud_mlx5, ud_v, ud_verbs, ud_x
+[1759799850.585737] [node2:933294:0]     ucp_context.c:1192 UCX  WARN  transports 'cuda_copy','gdr_copy','cuda_ipc' are not available, please use one or more of: cma, dc, dc_mlx5, dc_x, ib, mm, posix, rc, rc_mlx5, rc_v, rc_verbs, rc_x, self, shm, sm, sysv, tcp, ud, ud_mlx5, ud_v, ud_verbs, ud_x
+[1759799850.575576] [node4:886975:0]     ucp_context.c:1192 UCX  WARN  transports 'cuda_copy','gdr_copy','cuda_ipc' are not available, please use one or more of: cma, dc, dc_mlx5, dc_x, ib, mm, posix, rc, rc_mlx5, rc_v, rc_verbs, rc_x, self, shm, sm, sysv, tcp, ud, ud_mlx5, ud_v, ud_verbs, ud_x
+[1759799850.575621] [node4:886972:0]     ucp_context.c:1192 UCX  WARN  transports 'cuda_copy','gdr_copy','cuda_ipc' are not available, please use one or more of: cma, dc, dc_mlx5, dc_x, ib, mm, posix, rc, rc_mlx5, rc_v, rc_verbs, rc_x, self, shm, sm, sysv, tcp, ud, ud_mlx5, ud_v, ud_verbs, ud_x
+[1759799850.575800] [node4:886974:0]     ucp_context.c:1192 UCX  WARN  transports 'cuda_copy','gdr_copy','cuda_ipc' are not available, please use one or more of: cma, dc, dc_mlx5, dc_x, ib, mm, posix, rc, rc_mlx5, rc_v, rc_verbs, rc_x, self, shm, sm, sysv, tcp, ud, ud_mlx5, ud_v, ud_verbs, ud_x
+[1759799850.599167] [node1:1570215:0]     ucp_context.c:2137 UCX  WARN  UCP API version is incompatible: required >= 1.19, actual 1.16.0 (loaded from /usr/lib/x86_64-linux-gnu/libucp.so.0)
+[1759799850.599174] [node1:1570216:0]     ucp_context.c:2137 UCX  WARN  UCP API version is incompatible: required >= 1.19, actual 1.16.0 (loaded from /usr/lib/x86_64-linux-gnu/libucp.so.0)
+[1759799850.592692] [node3:890359:0]     ucp_context.c:2137 UCX  WARN  UCP API version is incompatible: required >= 1.19, actual 1.16.0 (loaded from /usr/lib/x86_64-linux-gnu/libucp.so.0)
+[1759799850.592753] [node3:890360:0]     ucp_context.c:2137 UCX  WARN  UCP API version is incompatible: required >= 1.19, actual 1.16.0 (loaded from /usr/lib/x86_64-linux-gnu/libucp.so.0)
+[1759799850.599403] [node1:1570218:0]     ucp_context.c:2137 UCX  WARN  UCP API version is incompatible: required >= 1.19, actual 1.16.0 (loaded from /usr/lib/x86_64-linux-gnu/libucp.so.0)
+[1759799850.592974] [node3:890361:0]     ucp_context.c:2137 UCX  WARN  UCP API version is incompatible: required >= 1.19, actual 1.16.0 (loaded from /usr/lib/x86_64-linux-gnu/libucp.so.0)
+[1759799850.592978] [node3:890362:0]     ucp_context.c:2137 UCX  WARN  UCP API version is incompatible: required >= 1.19, actual 1.16.0 (loaded from /usr/lib/x86_64-linux-gnu/libucp.so.0)
+[1759799850.611519] [node2:933294:0]     ucp_context.c:2137 UCX  WARN  UCP API version is incompatible: required >= 1.19, actual 1.16.0 (loaded from /usr/lib/x86_64-linux-gnu/libucp.so.0)
+[1759799850.601183] [node4:886972:0]     ucp_context.c:2137 UCX  WARN  UCP API version is incompatible: required >= 1.19, actual 1.16.0 (loaded from /usr/lib/x86_64-linux-gnu/libucp.so.0)
+[1759799850.601231] [node4:886973:0]     ucp_context.c:2137 UCX  WARN  UCP API version is incompatible: required >= 1.19, actual 1.16.0 (loaded from /usr/lib/x86_64-linux-gnu/libucp.so.0)
+[1759799850.611692] [node2:933293:0]     ucp_context.c:2137 UCX  WARN  UCP API version is incompatible: required >= 1.19, actual 1.16.0 (loaded from /usr/lib/x86_64-linux-gnu/libucp.so.0)
+[1759799850.611802] [node2:933295:0]     ucp_context.c:2137 UCX  WARN  UCP API version is incompatible: required >= 1.19, actual 1.16.0 (loaded from /usr/lib/x86_64-linux-gnu/libucp.so.0)
+[1759799850.611843] [node2:933296:0]     ucp_context.c:2137 UCX  WARN  UCP API version is incompatible: required >= 1.19, actual 1.16.0 (loaded from /usr/lib/x86_64-linux-gnu/libucp.so.0)
+[1759799850.601809] [node4:886975:0]     ucp_context.c:2137 UCX  WARN  UCP API version is incompatible: required >= 1.19, actual 1.16.0 (loaded from /usr/lib/x86_64-linux-gnu/libucp.so.0)
+[1759799850.601820] [node4:886974:0]     ucp_context.c:2137 UCX  WARN  UCP API version is incompatible: required >= 1.19, actual 1.16.0 (loaded from /usr/lib/x86_64-linux-gnu/libucp.so.0)
+[1759799850.601288] [node1:1570217:0]     ucp_context.c:2137 UCX  WARN  UCP API version is incompatible: required >= 1.19, actual 1.16.0 (loaded from /usr/lib/x86_64-linux-gnu/libucp.so.0)
+[1759799850.608516] [node1:1570216:0]           ib_md.c:1103 UCX  WARN  mlx5_0: relaxed order memory access requested, but unsupported
+[1759799850.608528] [node1:1570218:0]           ib_md.c:1103 UCX  WARN  mlx5_0: relaxed order memory access requested, but unsupported
+[1759799850.602049] [node3:890359:0]           ib_md.c:1103 UCX  WARN  mlx5_0: relaxed order memory access requested, but unsupported
+[1759799850.602096] [node3:890361:0]           ib_md.c:1103 UCX  WARN  mlx5_0: relaxed order memory access requested, but unsupported
+[1759799850.602130] [node3:890362:0]           ib_md.c:1103 UCX  WARN  mlx5_0: relaxed order memory access requested, but unsupported
+[1759799850.608696] [node1:1570215:0]           ib_md.c:1103 UCX  WARN  mlx5_0: relaxed order memory access requested, but unsupported
+[1759799850.620659] [node2:933294:0]           ib_md.c:1103 UCX  WARN  mlx5_0: relaxed order memory access requested, but unsupported
+[1759799850.610308] [node4:886973:0]           ib_md.c:1103 UCX  WARN  mlx5_0: relaxed order memory access requested, but unsupported
+[1759799850.620717] [node2:933296:0]           ib_md.c:1103 UCX  WARN  mlx5_0: relaxed order memory access requested, but unsupported
+[1759799850.620707] [node2:933293:0]           ib_md.c:1103 UCX  WARN  mlx5_0: relaxed order memory access requested, but unsupported
+[1759799850.610438] [node4:886972:0]           ib_md.c:1103 UCX  WARN  mlx5_0: relaxed order memory access requested, but unsupported
+[1759799850.620897] [node2:933295:0]           ib_md.c:1103 UCX  WARN  mlx5_0: relaxed order memory access requested, but unsupported
+[1759799850.610865] [node4:886974:0]           ib_md.c:1103 UCX  WARN  mlx5_0: relaxed order memory access requested, but unsupported
+[1759799850.611125] [node4:886975:0]           ib_md.c:1103 UCX  WARN  mlx5_0: relaxed order memory access requested, but unsupported
+[1759799850.603579] [node3:890360:0]           ib_md.c:1103 UCX  WARN  mlx5_0: relaxed order memory access requested, but unsupported
+[1759799850.612235] [node4:886973:0]     ucp_context.c:1192 UCX  WARN  transports 'cuda_copy','gdr_copy','cuda_ipc' are not available, please use one or more of: cma, dc, dc_mlx5, dc_x, ib, mm, posix, rc, rc_mlx5, rc_v, rc_verbs, rc_x, self, shm, sm, sysv, tcp, ud, ud_mlx5, ud_v, ud_verbs, ud_x
+[1759799850.612316] [node4:886972:0]     ucp_context.c:1192 UCX  WARN  transports 'cuda_copy','gdr_copy','cuda_ipc' are not available, please use one or more of: cma, dc, dc_mlx5, dc_x, ib, mm, posix, rc, rc_mlx5, rc_v, rc_verbs, rc_x, self, shm, sm, sysv, tcp, ud, ud_mlx5, ud_v, ud_verbs, ud_x
+[1759799850.622771] [node2:933294:0]     ucp_context.c:1192 UCX  WARN  transports 'cuda_copy','gdr_copy','cuda_ipc' are not available, please use one or more of: cma, dc, dc_mlx5, dc_x, ib, mm, posix, rc, rc_mlx5, rc_v, rc_verbs, rc_x, self, shm, sm, sysv, tcp, ud, ud_mlx5, ud_v, ud_verbs, ud_x
+[1759799850.622817] [node2:933296:0]     ucp_context.c:1192 UCX  WARN  transports 'cuda_copy','gdr_copy','cuda_ipc' are not available, please use one or more of: cma, dc, dc_mlx5, dc_x, ib, mm, posix, rc, rc_mlx5, rc_v, rc_verbs, rc_x, self, shm, sm, sysv, tcp, ud, ud_mlx5, ud_v, ud_verbs, ud_x
+[1759799850.622906] [node2:933293:0]     ucp_context.c:1192 UCX  WARN  transports 'cuda_copy','gdr_copy','cuda_ipc' are not available, please use one or more of: cma, dc, dc_mlx5, dc_x, ib, mm, posix, rc, rc_mlx5, rc_v, rc_verbs, rc_x, self, shm, sm, sysv, tcp, ud, ud_mlx5, ud_v, ud_verbs, ud_x
+[1759799850.623073] [node2:933295:0]     ucp_context.c:1192 UCX  WARN  transports 'cuda_copy','gdr_copy','cuda_ipc' are not available, please use one or more of: cma, dc, dc_mlx5, dc_x, ib, mm, posix, rc, rc_mlx5, rc_v, rc_verbs, rc_x, self, shm, sm, sysv, tcp, ud, ud_mlx5, ud_v, ud_verbs, ud_x
+[1759799850.611381] [node1:1570218:0]     ucp_context.c:1192 UCX  WARN  transports 'cuda_copy','gdr_copy','cuda_ipc' are not available, please use one or more of: cma, dc, dc_mlx5, dc_x, ib, mm, posix, rc, rc_mlx5, rc_v, rc_verbs, rc_x, self, shm, sm, sysv, tcp, ud, ud_mlx5, ud_v, ud_verbs, ud_x
+[1759799850.612881] [node4:886974:0]     ucp_context.c:1192 UCX  WARN  transports 'cuda_copy','gdr_copy','cuda_ipc' are not available, please use one or more of: cma, dc, dc_mlx5, dc_x, ib, mm, posix, rc, rc_mlx5, rc_v, rc_verbs, rc_x, self, shm, sm, sysv, tcp, ud, ud_mlx5, ud_v, ud_verbs, ud_x
+[1759799850.611509] [node1:1570216:0]     ucp_context.c:1192 UCX  WARN  transports 'cuda_copy','gdr_copy','cuda_ipc' are not available, please use one or more of: cma, dc, dc_mlx5, dc_x, ib, mm, posix, rc, rc_mlx5, rc_v, rc_verbs, rc_x, self, shm, sm, sysv, tcp, ud, ud_mlx5, ud_v, ud_verbs, ud_x
+[1759799850.613056] [node4:886975:0]     ucp_context.c:1192 UCX  WARN  transports 'cuda_copy','gdr_copy','cuda_ipc' are not available, please use one or more of: cma, dc, dc_mlx5, dc_x, ib, mm, posix, rc, rc_mlx5, rc_v, rc_verbs, rc_x, self, shm, sm, sysv, tcp, ud, ud_mlx5, ud_v, ud_verbs, ud_x
+[1759799850.605351] [node3:890359:0]     ucp_context.c:1192 UCX  WARN  transports 'cuda_copy','gdr_copy','cuda_ipc' are not available, please use one or more of: cma, dc, dc_mlx5, dc_x, ib, mm, posix, rc, rc_mlx5, rc_v, rc_verbs, rc_x, self, shm, sm, sysv, tcp, ud, ud_mlx5, ud_v, ud_verbs, ud_x
+[1759799850.605401] [node3:890361:0]     ucp_context.c:1192 UCX  WARN  transports 'cuda_copy','gdr_copy','cuda_ipc' are not available, please use one or more of: cma, dc, dc_mlx5, dc_x, ib, mm, posix, rc, rc_mlx5, rc_v, rc_verbs, rc_x, self, shm, sm, sysv, tcp, ud, ud_mlx5, ud_v, ud_verbs, ud_x
+[1759799850.612015] [node1:1570215:0]     ucp_context.c:1192 UCX  WARN  transports 'cuda_copy','gdr_copy','cuda_ipc' are not available, please use one or more of: cma, dc, dc_mlx5, dc_x, ib, mm, posix, rc, rc_mlx5, rc_v, rc_verbs, rc_x, self, shm, sm, sysv, tcp, ud, ud_mlx5, ud_v, ud_verbs, ud_x
+[1759799850.605473] [node3:890362:0]     ucp_context.c:1192 UCX  WARN  transports 'cuda_copy','gdr_copy','cuda_ipc' are not available, please use one or more of: cma, dc, dc_mlx5, dc_x, ib, mm, posix, rc, rc_mlx5, rc_v, rc_verbs, rc_x, self, shm, sm, sysv, tcp, ud, ud_mlx5, ud_v, ud_verbs, ud_x
+[1759799850.605578] [node3:890360:0]     ucp_context.c:1192 UCX  WARN  transports 'cuda_copy','gdr_copy','cuda_ipc' are not available, please use one or more of: cma, dc, dc_mlx5, dc_x, ib, mm, posix, rc, rc_mlx5, rc_v, rc_verbs, rc_x, self, shm, sm, sysv, tcp, ud, ud_mlx5, ud_v, ud_verbs, ud_x
+[1759799850.612615] [node1:1570217:0]           ib_md.c:1103 UCX  WARN  mlx5_0: relaxed order memory access requested, but unsupported
+[1759799850.614619] [node1:1570217:0]     ucp_context.c:1192 UCX  WARN  transports 'cuda_copy','gdr_copy','cuda_ipc' are not available, please use one or more of: cma, dc, dc_mlx5, dc_x, ib, mm, posix, rc, rc_mlx5, rc_v, rc_verbs, rc_x, self, shm, sm, sysv, tcp, ud, ud_mlx5, ud_v, ud_verbs, ud_x
+
+================================================================================
+HPL-NVIDIA 25.4.0  -- NVIDIA accelerated HPL benchmark -- NVIDIA
+================================================================================
+HPLinpack 2.1  --  High-Performance Linpack benchmark  --   October 26, 2012
+Written by A. Petitet and R. Clint Whaley,  Innovative Computing Laboratory, UTK
+Modified by Piotr Luszczek, Innovative Computing Laboratory, UTK
+Modified by Julien Langou, University of Colorado Denver
+================================================================================
+
+An explanation of the input/output parameters follows:
+T/V    : Wall time / encoded variant.
+N      : The order of the coefficient matrix A.
+NB     : The partitioning blocking factor.
+P      : The number of process rows.
+Q      : The number of process columns.
+Time   : Time in seconds to solve the linear system.
+Gflops : Rate of execution for solving the linear system.
+
+The following parameter values will be used:
+
+N      :  276480 
+NB     :     512 
+PMAP   : Column-major process mapping
+P      :       4 
+Q      :       4 
+PFACT  :    Left 
+NBMIN  :       2 
+NDIV   :       2 
+RFACT  :    Left 
+BCAST  :  2ringM 
+DEPTH  :       1 
+SWAP   : Spread-roll (long)
+L1     : no-transposed form
+U      : transposed form
+EQUIL  : no
+ALIGN  : 8 double precision words
+
+--------------------------------------------------------------------------------
+
+- The matrix A is randomly generated for each test.
+- The following scaled residual check will be computed:
+      ||Ax-b||_oo / ( eps * ( || x ||_oo * || A ||_oo + || b ||_oo ) * N )
+- The relative machine precision (eps) is taken to be               1.110223e-16
+- Computational tests pass if scaled residuals are less than                16.0
+
+
+HPL-NVIDIA ignores the following parameters from input file:
+	* Broadcast parameters
+	* Panel factorization parameters
+	* Look-ahead value
+	* L1 layout
+	* U layout
+	* Equilibration parameter
+	* Memory alignment parameter
+
+HPL-NVIDIA settings from environment variables:
+--- DEVICE INFO ---
+  Peak clock frequency: 1410 MHz
+  SM version          : 80
+  Number of SMs       : 108
+-------------------
+[HPL TRACE] cuda_nvshmem_init: max=1.1596 (12) min=1.1595 (6)
+[HPL TRACE] ncclCommInitRank: max=0.0897 (14) min=0.0887 (7)
+[HPL TRACE] cugetrfs_mp_init: max=0.1654 (0) min=0.1654 (7)
+--- MEMORY INFO ---
+DEVICE
+  System           =      2.76079 GiB (MIN)      2.76079 GiB (MAX)      2.76079 GiB (AVG)
+  HPL buffers      =     39.43075 GiB (MIN)     39.43075 GiB (MAX)     39.43075 GiB (AVG)
+  Used             =     42.19154 GiB (MIN)     42.19154 GiB (MAX)     42.19154 GiB (AVG)
+  Total            =     40.00000 GiB (MIN)     40.00000 GiB (MAX)     40.00000 GiB (AVG)
+HOST
+  HPL buffers      =      0.00055 GiB (MIN)      0.00055 GiB (MAX)      0.00055 GiB (AVG)
+-------------------
+
+ ... Testing HPL components ... 
+
+ **** Factorization, m = 69120, policy = 0 **** 
+avg time =    14.44 ms, avg =  1254.58. min =  1210.11 [rank 8, host node3, gpuID 0000:01:00.0], max =  1302.66 GFLOPS
+
+ **** Factorization, m = 69120, policy = 1 **** 
+avg time =    18.57 ms, avg =   975.62. min =   971.00 [rank 0, host node1, gpuID 0000:01:00.0], max =   981.98 GFLOPS
+
+ **** Factorization, m = 34304, policy = 0 **** 
+avg time =    10.82 ms, avg =   830.74. min =   824.70 [rank 8, host node3, gpuID 0000:01:00.0], max =   841.23 GFLOPS
+
+ **** Factorization, m = 34304, policy = 1 **** 
+avg time =    15.61 ms, avg =   576.13. min =   564.50 [rank 0, host node1, gpuID 0000:01:00.0], max =   588.12 GFLOPS
+
+ **** Factorization, m = 16896, policy = 0 **** 
+avg time =     9.37 ms, avg =   472.78. min =   466.44 [rank 8, host node3, gpuID 0000:01:00.0], max =   479.73 GFLOPS
+
+ **** Factorization, m = 16896, policy = 1 **** 
+avg time =    14.50 ms, avg =   305.43. min =   302.44 [rank 0, host node1, gpuID 0000:01:00.0], max =   311.53 GFLOPS
+
+ **** Factorization, m = 512, policy = 0 **** 
+avg time =     7.93 ms, avg =    16.92. min =    16.49 [rank 8, host node3, gpuID 0000:01:00.0], max =    17.33 GFLOPS
+
+ **** Factorization, m = 512, policy = 1 **** 
+avg time =    13.38 ms, avg =    10.03. min =     9.82 [rank 0, host node1, gpuID 0000:01:00.0], max =    10.27 GFLOPS
+
+ **** ncclBcast( Row ) **** 
+avg time =   195.95 ms, avg =     1.44. min =     1.43 [rank 15, host node4, gpuID 0000:C1:00.0], max =     1.47 GBS
+
+ **** ncclAllGather( Col ) **** 
+avg time =     0.18 ms, avg =   187.58. min =   174.04 [rank 0, host node1, gpuID 0000:01:00.0], max =   195.75 GBS
+
+ **** Latency ncclAllGather, m = 1 **** 
+avg time =     5.36 ms, avg =     0.00. min =     0.00 [rank 1, host node1, gpuID 0000:41:00.0], max =     0.00 GBS
+
+ **** Latency ncclAllGather, m = 2 **** 
+avg time =     5.39 ms, avg =     0.01. min =     0.01 [rank 8, host node3, gpuID 0000:01:00.0], max =     0.01 GBS
+
+ **** Latency ncclAllGather, m = 32 **** 
+avg time =     5.37 ms, avg =     0.10. min =     0.10 [rank 3, host node1, gpuID 0000:C1:00.0], max =     0.10 GBS
+
+ **** Latency ncclAllGather, m = 512 **** 
+avg time =     6.86 ms, avg =     1.22. min =     1.22 [rank 2, host node1, gpuID 0000:81:00.0], max =     1.23 GBS
+
+ **** Latency ncclAllGather, m = 1024 **** 
+avg time =     7.36 ms, avg =     2.28. min =     2.27 [rank 12, host node4, gpuID 0000:01:00.0], max =     2.29 GBS
+
+ **** Latency Host MPI_Allgather, m = 1 **** 
+avg time =     1.29 ms, avg =     0.01. min =     0.01 [rank 8, host node3, gpuID 0000:01:00.0], max =     0.01 GBS
+
+ **** Latency Host MPI_Allgather, m = 2 **** 
+avg time =     1.31 ms, avg =     0.02. min =     0.02 [rank 4, host node2, gpuID 0000:01:00.0], max =     0.03 GBS
+
+ **** Latency Host MPI_Allgather, m = 32 **** 
+avg time =     1.49 ms, avg =     0.35. min =     0.35 [rank 4, host node2, gpuID 0000:01:00.0], max =     0.36 GBS
+
+ **** Latency Host MPI_Allgather, m = 512 **** 
+avg time =     3.12 ms, avg =     2.69. min =     2.51 [rank 9, host node3, gpuID 0000:41:00.0], max =     2.80 GBS
+
+ **** Latency Host MPI_Allgather, m = 1024 **** 
+avg time =     5.12 ms, avg =     3.28. min =     3.21 [rank 9, host node3, gpuID 0000:41:00.0], max =     3.30 GBS
+
+ **** Latency ncclBcast, m = 1 **** 
+avg time =     4.22 ms, avg =     0.00. min =     0.00 [rank 3, host node1, gpuID 0000:C1:00.0], max =     0.00 GBS
+
+ **** Latency ncclBcast, m = 32 **** 
+avg time =     4.20 ms, avg =     0.03. min =     0.03 [rank 11, host node3, gpuID 0000:C1:00.0], max =     0.03 GBS
+
+ **** Latency ncclBcast, m = 512 **** 
+avg time =     4.80 ms, avg =     0.44. min =     0.42 [rank 3, host node1, gpuID 0000:C1:00.0], max =     0.45 GBS
+
+ **** Latency Host MPI_Bcast, m = 1 **** 
+avg time =     0.41 ms, avg =     0.01. min =     0.01 [rank 6, host node2, gpuID 0000:81:00.0], max =     0.01 GBS
+
+ **** Latency Host MPI_Bcast, m = 32 **** 
+avg time =     0.46 ms, avg =     0.29. min =     0.29 [rank 10, host node3, gpuID 0000:81:00.0], max =     0.29 GBS
+
+ **** Latency Host MPI_Bcast, m = 512 **** 
+avg time =     1.77 ms, avg =     1.19. min =     1.16 [rank 3, host node1, gpuID 0000:C1:00.0], max =     1.21 GBS
+
+ **** GEMM **** 
+avg time =    32.27 ms, avg = 17966.17. min = 17726.00 [rank 13, host node4, gpuID 0000:41:00.0], max = 18197.33 GFLOPS
+
+ ... End of Testing HPL components ... 
+
+[HPL TRACE] HPL_pdmatgen_gpu: max=0.0276 (2) min=0.0275 (9)
+[0;31m Prog= 1.66%	N_left=   274944	Time=   1.44	Time_left=  85.62	iGF= 161825.94	GF= 161825.94	iGF_per= 10114.12 	GF_per= 10114.12[0m
+[0;31m Prog= 3.30%	N_left=   273408	Time=   2.48	Time_left=  72.81	iGF= 222255.99	GF= 187122.57	iGF_per= 13891.00 	GF_per= 11695.16[0m
+[0;31m Prog= 4.92%	N_left=   271872	Time=   3.33	Time_left=  64.30	iGF= 270868.00	GF= 208354.87	iGF_per= 16929.25 	GF_per= 13022.18[0m
+[0;31m Prog= 5.99%	N_left=   270848	Time=   3.86	Time_left=  60.58	iGF= 282831.55	GF= 218647.23	iGF_per= 17676.97 	GF_per= 13665.45[0m
+[0;31m Prog= 7.58%	N_left=   269312	Time=   4.67	Time_left=  56.92	iGF= 277211.44	GF= 228791.51	iGF_per= 17325.71 	GF_per= 14299.47[0m
+[0;31m Prog= 9.15%	N_left=   267776	Time=   5.47	Time_left=  54.35	iGF= 274280.36	GF= 235503.14	iGF_per= 17142.52 	GF_per= 14718.95[0m
+[0;31m Prog= 10.19%	N_left=   266752	Time=   6.01	Time_left=  52.94	iGF= 275182.22	GF= 239015.24	iGF_per= 17198.89 	GF_per= 14938.45[0m
+[0;31m Prog= 11.73%	N_left=   265216	Time=   6.80	Time_left=  51.14	iGF= 274702.83	GF= 243169.18	iGF_per= 17168.93 	GF_per= 15198.07[0m
+[0;31m Prog= 13.26%	N_left=   263680	Time=   7.59	Time_left=  49.64	iGF= 272620.66	GF= 246228.91	iGF_per= 17038.79 	GF_per= 15389.31[0m
+[0;31m Prog= 14.26%	N_left=   262656	Time=   8.11	Time_left=  48.74	iGF= 271485.15	GF= 247856.43	iGF_per= 16967.82 	GF_per= 15491.03[0m
+[0;31m Prog= 15.76%	N_left=   261120	Time=   8.87	Time_left=  47.42	iGF= 276352.80	GF= 250305.78	iGF_per= 17272.05 	GF_per= 15644.11[0m
+[0;31m Prog= 17.24%	N_left=   259584	Time=   9.65	Time_left=  46.36	iGF= 265335.70	GF= 251527.47	iGF_per= 16583.48 	GF_per= 15720.47[0m
+[0;31m Prog= 18.70%	N_left=   258048	Time=  10.42	Time_left=  45.33	iGF= 267918.46	GF= 252735.33	iGF_per= 16744.90 	GF_per= 15795.96[0m
+[0;31m Prog= 19.66%	N_left=   257024	Time=  10.89	Time_left=  44.52	iGF= 287838.50	GF= 254255.82	iGF_per= 17989.91 	GF_per= 15890.99[0m
+[0;31m Prog= 21.09%	N_left=   255488	Time=  11.64	Time_left=  43.54	iGF= 271416.15	GF= 255351.74	iGF_per= 16963.51 	GF_per= 15959.48[0m
+[0;31m Prog= 22.51%	N_left=   253952	Time=  12.39	Time_left=  42.67	iGF= 263926.60	GF= 255874.27	iGF_per= 16495.41 	GF_per= 15992.14[0m
+[0;31m Prog= 23.44%	N_left=   252928	Time=  12.86	Time_left=  41.99	iGF= 284463.13	GF= 256902.65	iGF_per= 17778.95 	GF_per= 16056.42[0m
+[0;31m Prog= 24.83%	N_left=   251392	Time=  13.58	Time_left=  41.12	iGF= 269803.46	GF= 257590.44	iGF_per= 16862.72 	GF_per= 16099.40[0m
+[0;31m Prog= 26.20%	N_left=   249856	Time=  14.29	Time_left=  40.26	iGF= 271262.00	GF= 258270.94	iGF_per= 16953.88 	GF_per= 16141.93[0m
+[0;31m Prog= 27.55%	N_left=   248320	Time=  15.25	Time_left=  40.12	iGF= 197804.22	GF= 254451.44	iGF_per= 12362.76 	GF_per= 15903.21[0m
+[0;31m Prog= 28.44%	N_left=   247296	Time=  16.01	Time_left=  40.27	iGF= 167030.40	GF= 250339.41	iGF_per= 10439.40 	GF_per= 15646.21[0m
+[0;31m Prog= 29.77%	N_left=   245760	Time=  16.84	Time_left=  39.73	iGF= 224687.07	GF= 249073.51	iGF_per= 14042.94 	GF_per= 15567.09[0m
+[0;31m Prog= 31.08%	N_left=   244224	Time=  17.51	Time_left=  38.83	iGF= 275355.35	GF= 250078.70	iGF_per= 17209.71 	GF_per= 15629.92[0m
+[0;31m Prog= 31.94%	N_left=   243200	Time=  17.97	Time_left=  38.30	iGF= 261484.19	GF= 250373.91	iGF_per= 16342.76 	GF_per= 15648.37[0m
+[0;31m Prog= 33.22%	N_left=   241664	Time=  18.65	Time_left=  37.50	iGF= 265705.54	GF= 250932.44	iGF_per= 16606.60 	GF_per= 15683.28[0m
+[0;31m Prog= 34.49%	N_left=   240128	Time=  19.31	Time_left=  36.69	iGF= 269771.40	GF= 251577.02	iGF_per= 16860.71 	GF_per= 15723.56[0m
+[0;31m Prog= 35.32%	N_left=   239104	Time=  19.75	Time_left=  36.18	iGF= 266613.01	GF= 251912.71	iGF_per= 16663.31 	GF_per= 15744.54[0m
+[0;31m Prog= 36.56%	N_left=   237568	Time=  20.44	Time_left=  35.46	iGF= 256080.92	GF= 252051.70	iGF_per= 16005.06 	GF_per= 15753.23[0m
+[0;31m Prog= 37.78%	N_left=   236032	Time=  21.08	Time_left=  34.71	iGF= 269157.30	GF= 252571.12	iGF_per= 16822.33 	GF_per= 15785.70[0m
+[0;31m Prog= 38.99%	N_left=   234496	Time=  21.74	Time_left=  34.02	iGF= 256510.95	GF= 252691.26	iGF_per= 16031.93 	GF_per= 15793.20[0m
+[0;31m Prog= 39.78%	N_left=   233472	Time=  22.19	Time_left=  33.59	iGF= 247608.66	GF= 252587.55	iGF_per= 15475.54 	GF_per= 15786.72[0m
+[0;31m Prog= 40.96%	N_left=   231936	Time=  22.82	Time_left=  32.89	iGF= 264159.57	GF= 252906.87	iGF_per= 16509.97 	GF_per= 15806.68[0m
+[0;31m Prog= 42.13%	N_left=   230400	Time=  23.47	Time_left=  32.24	iGF= 252210.06	GF= 252887.54	iGF_per= 15763.13 	GF_per= 15805.47[0m
+[0;31m Prog= 42.90%	N_left=   229376	Time=  23.91	Time_left=  31.83	iGF= 246742.95	GF= 252774.82	iGF_per= 15421.43 	GF_per= 15798.43[0m
+[0;31m Prog= 44.04%	N_left=   227840	Time=  24.53	Time_left=  31.18	iGF= 257590.47	GF= 252897.16	iGF_per= 16099.40 	GF_per= 15806.07[0m
+[0;31m Prog= 45.16%	N_left=   226304	Time=  25.18	Time_left=  30.57	iGF= 247151.63	GF= 252750.89	iGF_per= 15446.98 	GF_per= 15796.93[0m
+[0;31m Prog= 45.90%	N_left=   225280	Time=  25.61	Time_left=  30.18	iGF= 242629.79	GF= 252580.80	iGF_per= 15164.36 	GF_per= 15786.30[0m
+[0;31m Prog= 47.00%	N_left=   223744	Time=  26.22	Time_left=  29.57	iGF= 251788.89	GF= 252562.22	iGF_per= 15736.81 	GF_per= 15785.14[0m
+[0;31m Prog= 48.09%	N_left=   222208	Time=  26.85	Time_left=  28.99	iGF= 242635.43	GF= 252329.49	iGF_per= 15164.71 	GF_per= 15770.59[0m
+[0;31m Prog= 49.15%	N_left=   220672	Time=  27.45	Time_left=  28.40	iGF= 250105.41	GF= 252280.70	iGF_per= 15631.59 	GF_per= 15767.54[0m
+[0;31m Prog= 49.86%	N_left=   219648	Time=  27.87	Time_left=  28.03	iGF= 236524.14	GF= 252043.44	iGF_per= 14782.76 	GF_per= 15752.71[0m
+[0;31m Prog= 50.90%	N_left=   218112	Time=  28.49	Time_left=  27.48	iGF= 237363.94	GF= 251723.99	iGF_per= 14835.25 	GF_per= 15732.75[0m
+[0;31m Prog= 51.93%	N_left=   216576	Time=  29.08	Time_left=  26.92	iGF= 244981.37	GF= 251586.66	iGF_per= 15311.34 	GF_per= 15724.17[0m
+[0;31m Prog= 52.61%	N_left=   215552	Time=  29.50	Time_left=  26.57	iGF= 230513.80	GF= 251290.38	iGF_per= 14407.11 	GF_per= 15705.65[0m
+[0;31m Prog= 53.62%	N_left=   214016	Time=  30.11	Time_left=  26.04	iGF= 233916.41	GF= 250940.73	iGF_per= 14619.78 	GF_per= 15683.80[0m
+[0;31m Prog= 54.61%	N_left=   212480	Time=  30.68	Time_left=  25.50	iGF= 241973.26	GF= 250772.00	iGF_per= 15123.33 	GF_per= 15673.25[0m
+[0;31m Prog= 55.26%	N_left=   211456	Time=  31.09	Time_left=  25.16	iGF= 228415.91	GF= 250482.27	iGF_per= 14275.99 	GF_per= 15655.14[0m
+[0;31m Prog= 56.23%	N_left=   209920	Time=  31.68	Time_left=  24.66	iGF= 230446.55	GF= 250108.00	iGF_per= 14402.91 	GF_per= 15631.75[0m
+[0;31m Prog= 57.18%	N_left=   208384	Time=  32.24	Time_left=  24.14	iGF= 237057.62	GF= 249878.56	iGF_per= 14816.10 	GF_per= 15617.41[0m
+[0;31m Prog= 58.12%	N_left=   206848	Time=  32.84	Time_left=  23.66	iGF= 220420.03	GF= 249339.74	iGF_per= 13776.25 	GF_per= 15583.73[0m
+[0;31m Prog= 58.74%	N_left=   205824	Time=  33.22	Time_left=  23.33	iGF= 231681.65	GF= 249139.70	iGF_per= 14480.10 	GF_per= 15571.23[0m
+[0;31m Prog= 59.66%	N_left=   204288	Time=  33.78	Time_left=  22.84	iGF= 232965.24	GF= 248874.18	iGF_per= 14560.33 	GF_per= 15554.64[0m
+[0;31m Prog= 60.56%	N_left=   202752	Time=  34.37	Time_left=  22.38	iGF= 215703.57	GF= 248304.79	iGF_per= 13481.47 	GF_per= 15519.05[0m
+[0;31m Prog= 61.16%	N_left=   201728	Time=  34.74	Time_left=  22.06	iGF= 224537.01	GF= 248049.54	iGF_per= 14033.56 	GF_per= 15503.10[0m
+[0;31m Prog= 62.04%	N_left=   200192	Time=  35.29	Time_left=  21.59	iGF= 226906.83	GF= 247721.93	iGF_per= 14181.68 	GF_per= 15482.62[0m
+[0;31m Prog= 62.91%	N_left=   198656	Time=  35.87	Time_left=  21.15	iGF= 210051.79	GF= 247111.05	iGF_per= 13128.24 	GF_per= 15444.44[0m
+[0;31m Prog= 63.48%	N_left=   197632	Time=  36.23	Time_left=  20.84	iGF= 224040.19	GF= 246882.48	iGF_per= 14002.51 	GF_per= 15430.16[0m
+[0;31m Prog= 64.32%	N_left=   196096	Time=  36.77	Time_left=  20.39	iGF= 220054.64	GF= 246487.70	iGF_per= 13753.42 	GF_per= 15405.48[0m
+[0;31m Prog= 65.15%	N_left=   194560	Time=  37.34	Time_left=  19.97	iGF= 205867.05	GF= 245868.29	iGF_per= 12866.69 	GF_per= 15366.77[0m
+[0;31m Prog= 65.97%	N_left=   193024	Time=  37.87	Time_left=  19.53	iGF= 215318.99	GF= 245436.08	iGF_per= 13457.44 	GF_per= 15339.75[0m
+[0;31m Prog= 66.51%	N_left=   192000	Time=  38.22	Time_left=  19.25	iGF= 217714.85	GF= 245183.22	iGF_per= 13607.18 	GF_per= 15323.95[0m
+[0;31m Prog= 67.31%	N_left=   190464	Time=  38.78	Time_left=  18.84	iGF= 200208.28	GF= 244532.48	iGF_per= 12513.02 	GF_per= 15283.28[0m
+[0;31m Prog= 68.09%	N_left=   188928	Time=  39.31	Time_left=  18.42	iGF= 208729.71	GF= 244050.14	iGF_per= 13045.61 	GF_per= 15253.13[0m
+[0;31m Prog= 68.61%	N_left=   187904	Time=  39.65	Time_left=  18.14	iGF= 212043.91	GF= 243773.39	iGF_per= 13252.74 	GF_per= 15235.84[0m
+[0;31m Prog= 69.37%	N_left=   186368	Time=  40.21	Time_left=  17.75	iGF= 194519.94	GF= 243095.90	iGF_per= 12157.50 	GF_per= 15193.49[0m
+[0;31m Prog= 70.12%	N_left=   184832	Time=  40.73	Time_left=  17.35	iGF= 204295.92	GF= 242602.40	iGF_per= 12768.50 	GF_per= 15162.65[0m
+[0;31m Prog= 70.62%	N_left=   183808	Time=  41.06	Time_left=  17.08	iGF= 209870.56	GF= 242338.09	iGF_per= 13116.91 	GF_per= 15146.13[0m
+[0;31m Prog= 71.35%	N_left=   182272	Time=  41.60	Time_left=  16.71	iGF= 190653.40	GF= 241667.32	iGF_per= 11915.84 	GF_per= 15104.21[0m
+[0;31m Prog= 72.07%	N_left=   180736	Time=  42.10	Time_left=  16.32	iGF= 201948.20	GF= 241194.49	iGF_per= 12621.76 	GF_per= 15074.66[0m
+[0;31m Prog= 72.77%	N_left=   179200	Time=  42.61	Time_left=  15.94	iGF= 194031.56	GF= 240626.92	iGF_per= 12126.97 	GF_per= 15039.18[0m
+[0;31m Prog= 73.24%	N_left=   178176	Time=  42.95	Time_left=  15.70	iGF= 191709.30	GF= 240238.44	iGF_per= 11981.83 	GF_per= 15014.90[0m
+[0;31m Prog= 73.92%	N_left=   176640	Time=  43.44	Time_left=  15.33	iGF= 197422.15	GF= 239755.74	iGF_per= 12338.88 	GF_per= 14984.73[0m
+[0;31m Prog= 74.60%	N_left=   175104	Time=  43.96	Time_left=  14.97	iGF= 183843.49	GF= 239098.33	iGF_per= 11490.22 	GF_per= 14943.65[0m
+[0;31m Prog= 75.04%	N_left=   174080	Time=  44.42	Time_left=  14.78	iGF= 134965.92	GF= 238014.02	iGF_per=  8435.37 	GF_per= 14875.88[0m
+[0;31m Prog= 75.69%	N_left=   172544	Time=  44.94	Time_left=  14.43	iGF= 176525.22	GF= 237298.86	iGF_per= 11032.83 	GF_per= 14831.18[0m
+[0;31m Prog= 76.34%	N_left=   171008	Time=  45.45	Time_left=  14.09	iGF= 179297.50	GF= 236653.67	iGF_per= 11206.09 	GF_per= 14790.85[0m
+[0;31m Prog= 76.76%	N_left=   169984	Time=  45.91	Time_left=  13.90	iGF= 129472.90	GF= 235580.17	iGF_per=  8092.06 	GF_per= 14723.76[0m
+[0;31m Prog= 77.38%	N_left=   168448	Time=  46.40	Time_left=  13.56	iGF= 179244.87	GF= 234984.33	iGF_per= 11202.80 	GF_per= 14686.52[0m
+[0;31m Prog= 78.00%	N_left=   166912	Time=  46.88	Time_left=  13.22	iGF= 179992.79	GF= 234421.42	iGF_per= 11249.55 	GF_per= 14651.34[0m
+[0;31m Prog= 78.60%	N_left=   165376	Time=  47.33	Time_left=  12.89	iGF= 188409.13	GF= 233983.86	iGF_per= 11775.57 	GF_per= 14623.99[0m
+[0;31m Prog= 78.99%	N_left=   164352	Time=  47.65	Time_left=  12.67	iGF= 174445.35	GF= 233585.14	iGF_per= 10902.83 	GF_per= 14599.07[0m
+[0;31m Prog= 79.58%	N_left=   162816	Time=  48.11	Time_left=  12.35	iGF= 177105.02	GF= 233040.25	iGF_per= 11069.06 	GF_per= 14565.02[0m
+[0;31m Prog= 80.15%	N_left=   161280	Time=  48.55	Time_left=  12.02	iGF= 182574.14	GF= 232581.01	iGF_per= 11410.88 	GF_per= 14536.31[0m
+[0;31m Prog= 80.53%	N_left=   160256	Time=  48.87	Time_left=  11.82	iGF= 170422.53	GF= 232185.91	iGF_per= 10651.41 	GF_per= 14511.62[0m
+[0;31m Prog= 81.08%	N_left=   158720	Time=  49.32	Time_left=  11.51	iGF= 170431.02	GF= 231611.87	iGF_per= 10651.94 	GF_per= 14475.74[0m
+[0;31m Prog= 81.62%	N_left=   157184	Time=  49.75	Time_left=  11.20	iGF= 178352.31	GF= 231151.86	iGF_per= 11147.02 	GF_per= 14446.99[0m
+[0;31m Prog= 81.98%	N_left=   156160	Time=  50.06	Time_left=  11.00	iGF= 163535.72	GF= 230736.66	iGF_per= 10220.98 	GF_per= 14421.04[0m
+[0;31m Prog= 82.51%	N_left=   154624	Time=  50.51	Time_left=  10.71	iGF= 166131.89	GF= 230165.53	iGF_per= 10383.24 	GF_per= 14385.35[0m
+[0;31m Prog= 83.02%	N_left=   153088	Time=  50.93	Time_left=  10.41	iGF= 173328.17	GF= 229697.28	iGF_per= 10833.01 	GF_per= 14356.08[0m
+[0;31m Prog= 83.53%	N_left=   151552	Time=  51.38	Time_left=  10.13	iGF= 157822.27	GF= 229065.50	iGF_per=  9863.89 	GF_per= 14316.59[0m
+[0;31m Prog= 83.86%	N_left=   150528	Time=  51.66	Time_left=   9.94	iGF= 163430.63	GF= 228702.32	iGF_per= 10214.41 	GF_per= 14293.90[0m
+[0;31m Prog= 84.35%	N_left=   148992	Time=  52.07	Time_left=   9.66	iGF= 168979.96	GF= 228234.68	iGF_per= 10561.25 	GF_per= 14264.67[0m
+[0;31m Prog= 84.83%	N_left=   147456	Time=  52.51	Time_left=   9.39	iGF= 154624.36	GF= 227622.77	iGF_per=  9664.02 	GF_per= 14226.42[0m
+[0;31m Prog= 85.14%	N_left=   146432	Time=  52.79	Time_left=   9.21	iGF= 158919.02	GF= 227260.60	iGF_per=  9932.44 	GF_per= 14203.79[0m
+[0;31m Prog= 85.61%	N_left=   144896	Time=  53.18	Time_left=   8.94	iGF= 166546.92	GF= 226813.76	iGF_per= 10409.18 	GF_per= 14175.86[0m
+[0;31m Prog= 86.06%	N_left=   143360	Time=  53.60	Time_left=   8.68	iGF= 149798.84	GF= 226201.71	iGF_per=  9362.43 	GF_per= 14137.61[0m
+[0;31m Prog= 86.36%	N_left=   142336	Time=  53.87	Time_left=   8.51	iGF= 154760.40	GF= 225843.63	iGF_per=  9672.52 	GF_per= 14115.23[0m
+[0;31m Prog= 86.79%	N_left=   140800	Time=  54.26	Time_left=   8.26	iGF= 160025.89	GF= 225376.93	iGF_per= 10001.62 	GF_per= 14086.06[0m
+[0;31m Prog= 87.22%	N_left=   139264	Time=  54.68	Time_left=   8.01	iGF= 144306.08	GF= 224757.98	iGF_per=  9019.13 	GF_per= 14047.37[0m
+[0;31m Prog= 88.71%	N_left=   133632	Time=  56.09	Time_left=   7.14	iGF= 147984.78	GF= 222818.14	iGF_per=  9249.05 	GF_per= 13926.13[0m
+[0;31m Prog= 89.96%	N_left=   128512	Time=  57.34	Time_left=   6.40	iGF= 141134.24	GF= 221042.25	iGF_per=  8820.89 	GF_per= 13815.14[0m
+[0;31m Prog= 91.22%	N_left=   122880	Time=  58.69	Time_left=   5.65	iGF= 131804.41	GF= 218988.93	iGF_per=  8237.78 	GF_per= 13686.81[0m
+[0;31m Prog= 92.37%	N_left=   117248	Time=  59.97	Time_left=   4.95	iGF= 127108.88	GF= 217031.36	iGF_per=  7944.31 	GF_per= 13564.46[0m
+[0;31m Prog= 93.42%	N_left=   111616	Time=  61.17	Time_left=   4.31	iGF= 122417.41	GF= 215167.46	iGF_per=  7651.09 	GF_per= 13447.97[0m
+[0;31m Prog= 94.37%	N_left=   105984	Time=  62.30	Time_left=   3.72	iGF= 118882.95	GF= 213433.55	iGF_per=  7430.18 	GF_per= 13339.60[0m
+[0;31m Prog= 95.14%	N_left=   100864	Time=  63.29	Time_left=   3.23	iGF= 110059.93	GF= 211807.74	iGF_per=  6878.75 	GF_per= 13237.98[0m
+[0;31m Prog= 95.91%	N_left=    95232	Time=  64.33	Time_left=   2.74	iGF= 104108.59	GF= 210065.97	iGF_per=  6506.79 	GF_per= 13129.12[0m
+[0;31m Prog= 96.60%	N_left=    89600	Time=  65.31	Time_left=   2.30	iGF= 97928.17	GF= 208378.80	iGF_per=  6120.51 	GF_per= 13023.68[0m
+[0;31m Prog= 97.20%	N_left=    83968	Time=  66.26	Time_left=   1.91	iGF= 89968.85	GF= 206693.08	iGF_per=  5623.05 	GF_per= 12918.32[0m
+[0;31m Prog= 99.15%	N_left=    56320	Time=  69.97	Time_left=   0.60	iGF= 74227.50	GF= 199664.20	iGF_per=  4639.22 	GF_per= 12479.01[0m
+[0;31m Prog= 99.89%	N_left=    28672	Time=  72.33	Time_left=   0.08	iGF= 43779.13	GF= 194574.94	iGF_per=  2736.20 	GF_per= 12160.93[0m
+[0;31m Prog= 100.00%	N_left=     1024	Time=  73.44	Time_left=   0.00	iGF= 14231.50	GF= 191863.47	iGF_per=   889.47 	GF_per= 11991.47[0m
+================================================================================
+T/V                N    NB     P     Q         Time          Gflops (   per GPU)
+--------------------------------------------------------------------------------
+WC0           276480   512     4     4        73.87       1.907e+05 ( 1.192e+04)
+
+HPL_pdgesv() start time Tue Oct  7 01:17:42 2025
+HPL_pdgesv() end time   Tue Oct  7 01:18:56 2025
+
+--------------------------------------------------------------------------------
+||Ax-b||_oo/(eps*(||A||_oo*||x||_oo+||b||_oo)*N)=   0.000359731367 ...... PASSED
+||Ax-b||_oo  . . . . . . . . . . . . . . . . . = 0.0000000112815634
+||A||_oo . . . . . . . . . . . . . . . . . . . = 69482.8853032285405789
+||x||_oo . . . . . . . . . . . . . . . . . . . = 14.7041177126461733
+||b||_oo . . . . . . . . . . . . . . . . . . . = 0.4999983652034607
+================================================================================
+
+Finished      1 tests with the following results:
+              1 tests completed and passed residual checks,
+              0 tests completed and failed residual checks,
+              0 tests skipped because of illegal input values.
+--------------------------------------------------------------------------------
+
+End of Tests.
+================================================================================
