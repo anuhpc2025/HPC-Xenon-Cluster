@@ -1,0 +1,9 @@
+ CUDART (0->node1): cudaMalloc(&_device_tmp_buffer, device_tmp_buffer_bytes) = 2 (out of memory) at (src/matrix.cpp:317), process will now exit
+--------------------------------------------------------------------------
+MPI_ABORT was invoked on rank 0 in communicator MPI_COMM_WORLD
+with errorcode 102.
+
+NOTE: invoking MPI_ABORT causes Open MPI to kill all MPI processes.
+You may or may not see output from other processes, depending on
+exactly when Open MPI kills them.
+--------------------------------------------------------------------------
