@@ -3,7 +3,7 @@ import { useNavigate, useParams } from 'react-router';
 import { RunDetailsModal } from './RunDetailsModal';
 
 export function RunDetailsOverlay() {
-    const { suiteId, group, runId } = useParams();
+    const { suiteId, group, "*": runPath } = useParams();
     const navigate = useNavigate();
 
     const [loading, setLoading] = useState(true);
@@ -11,13 +11,13 @@ export function RunDetailsOverlay() {
     const [error, setError] = useState<string | null>(null);
 
     useEffect(() => {
-        if (!suiteId || !group || !runId) return;
+        if (!suiteId || !group || !runPath) return;
 
         const fetchRun = async () => {
             setLoading(true);
             try {
                 const res = await fetch(
-                    `${import.meta.env.BASE_URL}data/runs/${suiteId}/${group}/${runId}/run.json`
+                    `${import.meta.env.BASE_URL}data/runs/${suiteId}/${group}/${runPath}/run.json`
                 );
                 if (!res.ok) throw new Error(`HTTP ${res.status}`);
                 setRunData(await res.json());
@@ -29,11 +29,11 @@ export function RunDetailsOverlay() {
         };
 
         fetchRun();
-    }, [suiteId, group, runId]);
+    }, [suiteId, group, runPath]);
 
     const handleClose = () => {
         // go back to suite root
-        navigate(`/${suiteId}`);
+        if (suiteId) navigate(`/${suiteId}`);
     };
 
     return (
