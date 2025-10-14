@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2025-10-11T11:34:35.277Z",
+  "generatedAt": "2025-10-14T00:14:05.774Z",
   "runs": [
     {
       "id": "HPL/Ayush/hpl_test",
@@ -42,6 +42,25 @@
         "testsSkipped": null
       },
       "hasErr": true
+    },
+    {
+      "id": "HPL/Daniel/14-10-1",
+      "suite": "HPL",
+      "group": "Daniel",
+      "run": "14-10-1",
+      "best": {
+        "gflops": 3381.1,
+        "N": 60000,
+        "NB": 256,
+        "timeSec": 42.59
+      },
+      "outSummary": {
+        "testsTotal": 1,
+        "testsPassed": 1,
+        "testsFailed": 0,
+        "testsSkipped": 0
+      },
+      "hasErr": false
     },
     {
       "id": "HPL/Daniel/3-10",
