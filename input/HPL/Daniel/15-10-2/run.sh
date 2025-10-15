@@ -2,9 +2,9 @@
 #SBATCH --job-name=hpl-test       # Job name
 #SBATCH --nodes=4
 #SBATCH --nodelist=node1,node2,node3,node4    
-#SBATCH --ntasks=16                # 4 ranks per node × 4 nodes = 16 total
+#SBATCH --ntasks=8                # 4 ranks per node × 4 nodes = 16 total
 #SBATCH --ntasks-per-node=4
-#SBATCH --cpus-per-task=16         # CPU cores per MPI task
+#SBATCH --cpus-per-task=32         # CPU cores per MPI task
 #SBATCH --time=10:00:00           # Time limit hh:mm:ss
 
 # Load MPI module (adjust for your system)
