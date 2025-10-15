@@ -8,7 +8,7 @@
 #SBATCH --cpus-per-task=16
 #SBATCH --distribution=block:block
 #SBATCH --hint=nomultithread
-#SBATCH --cpu-bind=map_cpu:0-15,32-47,16-31,48-63
+#SBATCH --cpu-bind=cores
 #SBATCH --time=10:00:00           # Time limit hh:mm:ss
 
 # Load MPI module (adjust for your system)
