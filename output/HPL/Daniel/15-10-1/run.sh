@@ -2,9 +2,9 @@
 #SBATCH --job-name=hpl-test       # Job name
 #SBATCH --nodes=4
 #SBATCH --nodelist=node1,node2,node3,node4    
-#SBATCH --ntasks=16                # 4 ranks per node × 4 nodes = 16 total
-#SBATCH --ntasks-per-node=4
-#SBATCH --cpus-per-task=16         # CPU cores per MPI task
+#SBATCH --ntasks=8                # 4 ranks per node × 4 nodes = 16 total
+#SBATCH --ntasks-per-node=2
+#SBATCH --cpus-per-task=32         # CPU cores per MPI task
 #SBATCH --time=10:00:00           # Time limit hh:mm:ss
 
 # Load MPI module (adjust for your system)
@@ -28,7 +28,7 @@ export LD_LIBRARY_PATH=/usr/local/cuda-12.6/lib64:/opt/nvidia/nvidia_hpc_benchma
 export LD_LIBRARY_PATH=/usr/lib/x86_64-linux-gnu/nvshmem/12:$LD_LIBRARY_PATH
 
 # OMPI / UCX tuning
-export UCX_TLS=rc_x,sm,self,cuda_copy,gdr_copy,cuda_ipc
+export UCX_TLS=rc_x,sm,self
 export UCX_IB_GPU_DIRECT_RDMA=y
 export UCX_MEMTYPE_CACHE=y
 export UCX_RNDV_SCHEME=put_zcopy
@@ -39,4 +39,4 @@ ulimit -l unlimited
 ulimit -n 65536
 
 # Run the MPI program
-mpirun --bind-to socket --map-by ppr:2:node ./xhpl
+mpirun --bind-to numa --map-by ppr:2:node ./xhpl
