@@ -6,7 +6,6 @@
 #SBATCH --ntasks=16                # 4 ranks per node × 4 nodes = 16 total
 #SBATCH --ntasks-per-node=4
 #SBATCH --cpus-per-task=16
-#SBATCH --distribution=block:block
 #SBATCH --hint=nomultithread
 #SBATCH --time=10:00:00           # Time limit hh:mm:ss
 
