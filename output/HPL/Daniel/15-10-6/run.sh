@@ -1,12 +1,10 @@
 #!/bin/bash
 #SBATCH --job-name=hpl-test       # Job name
-
 #SBATCH --nodes=4
 #SBATCH --nodelist=node1,node2,node3,node4    
 #SBATCH --ntasks=16                # 4 ranks per node × 4 nodes = 16 total
 #SBATCH --ntasks-per-node=4
-#SBATCH --cpus-per-task=16
-#SBATCH --hint=nomultithread
+#SBATCH --cpus-per-task=16         # CPU cores per MPI task
 #SBATCH --time=10:00:00           # Time limit hh:mm:ss
 
 # Load MPI module (adjust for your system)
@@ -41,4 +39,4 @@ ulimit -l unlimited
 ulimit -n 65536
 
 # Run the MPI program
-mpirun --map-by numa:PE=16 --bind-to numa ./xhpl
+mpirun --bind-to numa --map-by ppr:4:node ./xhpl
