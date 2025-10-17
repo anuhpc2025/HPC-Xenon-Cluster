@@ -1,0 +1,198 @@
+{
+  "id": "HPL/Daniel/17-10-7",
+  "suite": "HPL",
+  "group": "Daniel",
+  "run": "17-10-7",
+  "dat": {
+    "raw": "HPLinpack benchmark input file\nCustom quick test\nHPL.out      output file name (if any)\n6            device out (6=stdout,7=stderr,file)\n1            # of problems sizes (N)\n65536        Ns\n1            # of NBs\n1024         NBs\n0            PMAP process mapping (0=Row-,1=Column-major)\n1            # of process grids (P x Q)\n2            Ps\n4            Qs\n16.0         threshold\n1            # of panel fact\n0            PFACTs (0=left, 1=Crout, 2=Right)\n1            # of recursive stopping criterium\n2            NBMINs (>= 1)\n1            # of panels in recursion\n2            NDIVs\n1            # of recursive panel fact.\n0            RFACTs (0=left, 1=Crout, 2=Right)\n6            # of broadcast\n0 1 2 3 4 5  BCASTs (0=1rg,1=1rM,2=2rg,3=2rM,4=Lng,5=LnM)\n1            # of lookahead depth\n1            DEPTHs (>=0)\n2            SWAP (0=bin-exch,1=long,2=mix)\n64           swapping threshold\n1            L1 in (0=transposed,1=no-transposed) form\n0            U  in (0=transposed,1=no-transposed) form\n1            Equilibration (0=no,1=yes)\n8            memory alignment in double (> 0)",
+    "parsed": {
+      "header": [
+        "HPLinpack benchmark input file",
+        "Custom quick test"
+      ],
+      "outputFilename": "HPL.out",
+      "deviceOut": 6,
+      "numProblemSizes": 1,
+      "Ns": [
+        65536
+      ],
+      "numNBs": 1,
+      "NBs": [
+        1024
+      ],
+      "pmap": 0,
+      "numGrids": 1,
+      "Ps": [
+        2
+      ],
+      "Qs": [
+        4
+      ],
+      "threshold": 16,
+      "numPFACT": 1,
+      "PFACTs": [
+        0,
+        0,
+        1,
+        2
+      ],
+      "numNBMIN": 1,
+      "NBMINs": [
+        2,
+        1
+      ],
+      "numPanelsInRecursion": 1,
+      "NDIVs": [
+        2
+      ],
+      "numRFACT": 1,
+      "RFACTs": [
+        0,
+        0,
+        1,
+        2
+      ],
+      "numBCAST": 6,
+      "BCASTs": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        0,
+        1,
+        1,
+        1,
+        2,
+        2,
+        3,
+        2,
+        4,
+        5
+      ],
+      "numDEPTH": 1,
+      "DEPTHs": [
+        1,
+        0
+      ],
+      "swapMode": 2,
+      "swapThreshold": 64,
+      "L1": 1,
+      "U": 0,
+      "equilibration": 1,
+      "memoryAlignment": 8
+    },
+    "path": "/raw/HPL/Daniel/17-10-7/HPL.dat"
+  },
+  "job": {
+    "filename": "run.sh",
+    "raw": "#!/bin/bash\n#SBATCH --job-name=hpl-test       # Job name\n#SBATCH --nodes=4\n#SBATCH --nodelist=node1,node2,node3,node4    # nodes 1 and 2 are the only ones with hpcx for now\n#SBATCH --ntasks=8                # 2 ranks per node × 4 nodes = 8 total\n#SBATCH --ntasks-per-node=2\n#SBATCH --cpus-per-task=32         # CPU cores per MPI task\n#SBATCH --time=10:00:00           # Time limit hh:mm:ss\n\n# Load MPI module (adjust for your system)\n# module load openmpi\n\n# Load HPCX\nsource ~/.bashrc\nexport HPCX_HOME=/home/hpc/hpcx/hpcx-v2.24-gcc-doca_ofed-ubuntu24.04-cuda13-x86_64\nexport LD_LIBRARY_PATH=$HPCX_HOME/ucx/lib:$HPCX_HOME/ompi/lib:$LD_LIBRARY_PATH\nexport PATH=$HPCX_HOME/ompi/bin:$PATH\nsource $HPCX_HOME/hpcx-init.sh\nhpcx_load\n\n# ---- NCCL choice: use system 2.27.7 ----\nunset LD_PRELOAD\nexport LD_LIBRARY_PATH=/usr/lib/x86_64-linux-gnu:$LD_LIBRARY_PATH\n\n# Optional: add CUDA & other NVIDIA libs, but *not* /opt/.../lib/nccl\nexport LD_LIBRARY_PATH=/opt/nvidia/nvidia_hpc_benchmarks_openmpi/lib/omp:$LD_LIBRARY_PATH\nexport LD_LIBRARY_PATH=/usr/local/cuda-12.6/lib64:/opt/nvidia/nvidia_hpc_benchmarks_openmpi/lib:$LD_LIBRARY_PATH\nexport LD_LIBRARY_PATH=/usr/lib/x86_64-linux-gnu/nvshmem/12:$LD_LIBRARY_PATH\n\n# OMPI / UCX tuning\nexport UCX_TLS=rc_x,sm,self,gdr_copy\nexport UCX_IB_GPU_DIRECT_RDMA=y\nexport UCX_MEMTYPE_CACHE=y\nexport UCX_RNDV_SCHEME=put_zcopy\nexport OMPI_MCA_btl_openib_allow_ib=1\nexport UCX_IB_PCI_RELAXED_ORDERING=on\n\n# Ulimits\nulimit -l unlimited\nulimit -n 65536\n\n# Run the MPI program\nmpirun --bind-to socket --map-by ppr:2:node ./xhpl",
+    "sbatch": {
+      "job-name": "hpl-test       # Job name",
+      "nodes": 4,
+      "nodelist": "node1,node2,node3,node4    # nodes 1 and 2 are the only ones with hpcx for now",
+      "ntasks": null,
+      "ntasks-per-node": 2,
+      "cpus-per-task": null,
+      "time": "10:00:00           # Time limit hh:mm:ss"
+    },
+    "path": "/raw/HPL/Daniel/17-10-7/run.sh"
+  },
+  "out": {
+    "path": "/raw/HPL/Daniel/17-10-7/run.sh-1231.out",
+    "runs": [
+      {
+        "tv": "WR10L2L2",
+        "N": 65536,
+        "NB": 1024,
+        "P": 2,
+        "Q": 4,
+        "timeSec": 70.96,
+        "gflops": 2644.4,
+        "startTime": "Fri Oct 17 03:38:19 2025",
+        "endTime": "Fri Oct 17 03:39:30 2025",
+        "residual": 0.0016295169,
+        "residualPassed": true
+      },
+      {
+        "tv": "WR11L2L2",
+        "N": 65536,
+        "NB": 1024,
+        "P": 2,
+        "Q": 4,
+        "timeSec": 68.95,
+        "gflops": 2721.6,
+        "startTime": "Fri Oct 17 03:40:07 2025",
+        "endTime": "Fri Oct 17 03:41:16 2025",
+        "residual": 0.00169285725,
+        "residualPassed": true
+      },
+      {
+        "tv": "WR12L2L2",
+        "N": 65536,
+        "NB": 1024,
+        "P": 2,
+        "Q": 4,
+        "timeSec": 68.85,
+        "gflops": 2725.6,
+        "startTime": "Fri Oct 17 03:41:52 2025",
+        "endTime": "Fri Oct 17 03:43:01 2025",
+        "residual": 0.0016080517,
+        "residualPassed": true
+      },
+      {
+        "tv": "WR13L2L2",
+        "N": 65536,
+        "NB": 1024,
+        "P": 2,
+        "Q": 4,
+        "timeSec": 69.2,
+        "gflops": 2711.9,
+        "startTime": "Fri Oct 17 03:43:37 2025",
+        "endTime": "Fri Oct 17 03:44:46 2025",
+        "residual": 0.00158698622,
+        "residualPassed": true
+      },
+      {
+        "tv": "WR14L2L2",
+        "N": 65536,
+        "NB": 1024,
+        "P": 2,
+        "Q": 4,
+        "timeSec": 79.24,
+        "gflops": 2368.2,
+        "startTime": "Fri Oct 17 03:45:23 2025",
+        "endTime": "Fri Oct 17 03:46:42 2025",
+        "residual": 0.00156375423,
+        "residualPassed": true
+      },
+      {
+        "tv": "WR15L2L2",
+        "N": 65536,
+        "NB": 1024,
+        "P": 2,
+        "Q": 4,
+        "timeSec": 74.63,
+        "gflops": 2514.5,
+        "startTime": "Fri Oct 17 03:47:18 2025",
+        "endTime": "Fri Oct 17 03:48:33 2025",
+        "residual": 0.00156375423,
+        "residualPassed": true
+      }
+    ],
+    "summary": {
+      "testsTotal": 6,
+      "testsPassed": 6,
+      "testsFailed": 0,
+      "testsSkipped": 0
+    }
+  },
+  "err": null,
+  "best": {
+    "gflops": 2725.6,
+    "N": 65536,
+    "NB": 1024,
+    "timeSec": 68.85
+  }
+}
