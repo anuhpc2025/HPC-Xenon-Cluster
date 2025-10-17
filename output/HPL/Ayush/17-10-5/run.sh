@@ -1,52 +1,35 @@
 #!/bin/bash
-#SBATCH --job-name=hpl-test       # Job name
-#SBATCH --nodes=4
-#SBATCH --nodelist=node1,node2,node3,node4    # nodes 1 and 2 are the only ones with hpcx for now
-#SBATCH --ntasks=8                # 2 ranks per node × 4 nodes = 8 total
-#SBATCH --ntasks-per-node=2
-#SBATCH --cpus-per-task=32         # CPU cores per MPI task
-#SBATCH --time=10:00:00           # Time limit hh:mm:ss
+#SBATCH --job-name=hpl-test
+#SBATCH --nodes=2
+#SBATCH --nodelist=node1,node2           # only nodes with HPC-X installed
+#SBATCH --ntasks-per-node=2              # 2 ranks per node
+#SBATCH --cpus-per-task=32               # threads per rank
+#SBATCH --time=10:00:00
 
-# Load MPI module (adjust for your system)
-# module load openmpi
+# 0) Define HPC-X explicitly (don’t rely on ~/.bashrc)
+export HPCX_HOME=/home/hpc/hpcx/hpcx-v2.24-gcc-doca_ofed-ubuntu24.04-cuda13-x86_64
 
-# Load HPCX
-source $HPCX_HOME/hpcx-init.sh
-hpcx_load
-source ~/.bashrc
+# 1) Load HPC-X LAST so its UCX/OMPI are first in PATH/LD_LIBRARY_PATH
+source "$HPCX_HOME/hpcx-init.sh"
+hpcx_load    # sets PATH/LD_LIBRARY_PATH to HPC-X stacks
+
+# 2) UCX (CPU transports only) + UCX PML
 export UCX_TLS=rc_x,sm,self
 export UCX_NET_DEVICES=mlx5_0:1
 export UCX_IB_PCI_RELAXED_ORDERING=auto
 MPIRUN_FLAGS="--mca pml ucx --mca btl ^vader,tcp,openib,uct"
 
-# Match Slurm CPUs per task
-export OMP_NUM_THREADS=${SLURM_CPUS_PER_TASK:-16}
+# 3) Threaded BLAS/OpenMP
+export OMP_NUM_THREADS=${SLURM_CPUS_PER_TASK:-32}
 export OMP_PROC_BIND=close
 export OMP_PLACES=cores
-# If using MKL:
 export MKL_NUM_THREADS=$OMP_NUM_THREADS
-# If using OpenBLAS:
 export OPENBLAS_NUM_THREADS=$OMP_NUM_THREADS
 
-# ---- NCCL choice: use system 2.27.7 ----
-unset LD_PRELOAD
-export LD_LIBRARY_PATH=/usr/lib/x86_64-linux-gnu:$LD_LIBRARY_PATH
+# 4) (No extra /usr/lib injections; no NCCL/CUDA paths for CPU HPL)
 
-# Optional: add CUDA & other NVIDIA libs, but *not* /opt/.../lib/nccl
-export LD_LIBRARY_PATH=/opt/nvidia/nvidia_hpc_benchmarks_openmpi/lib/omp:$LD_LIBRARY_PATH
-export LD_LIBRARY_PATH=/usr/local/cuda-12.6/lib64:/opt/nvidia/nvidia_hpc_benchmarks_openmpi/lib:$LD_LIBRARY_PATH
-export LD_LIBRARY_PATH=/usr/lib/x86_64-linux-gnu/nvshmem/12:$LD_LIBRARY_PATH
-
-# OMPI / UCX tuning
-export UCX_TLS=rc_x,sm,self,cuda_copy,gdr_copy,cuda_ipc
-export UCX_IB_GPU_DIRECT_RDMA=y
-export UCX_MEMTYPE_CACHE=y
-export UCX_RNDV_SCHEME=put_zcopy
-export UCX_IB_PCI_RELAXED_ORDERING=on
-
-# Ulimits
-ulimit -l unlimited
-ulimit -n 65536
-
-# Run the MPI program
-mpirun --bind-to numa --map-by ppr:2:node ./xhpl
+# 5) Run: one rank per socket, pin its 32 threads
+mpirun $MPIRUN_FLAGS \
+  --map-by socket:PE=${SLURM_CPUS_PER_TASK:-32} --bind-to core \
+  --report-bindings \
+  ./xhpl

@@ -1,0 +1,12 @@
+--------------------------------------------------------------------------
+A request for multiple cpus-per-proc was given, but a directive
+was also given to map to an object level that has less cpus than
+requested ones:
+
+  #cpus-per-proc:  32
+  number of cpus:  16
+  map-by:          BYSOCKET
+
+Please specify a mapping level that has more cpus, or else let us
+define a default mapping that will allow multiple cpus-per-proc.
+--------------------------------------------------------------------------
