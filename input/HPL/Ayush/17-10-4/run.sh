@@ -39,4 +39,4 @@ ulimit -l unlimited
 ulimit -n 65536
 
 # Run the MPI program
-mpirun --bind-to socket --map-by ppr:2:node ./xhpl
+mpirun --bind-to socket ./xhpl
