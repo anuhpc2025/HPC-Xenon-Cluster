@@ -1,0 +1,131 @@
+{
+  "id": "HPL/Ayush/17-10-10",
+  "suite": "HPL",
+  "group": "Ayush",
+  "run": "17-10-10",
+  "dat": {
+    "raw": "HPLinpack benchmark input file\nCustom quick test\nHPL.out      output file name (if any)\n6            device out (6=stdout,7=stderr,file)\n1            # of problems sizes (N)\n65536        Ns\n1            # of NBs\n256          NBs\n0            PMAP process mapping (0=Row-,1=Column-major)\n1            # of process grids (P x Q)\n2            Ps\n2           Qs\n16.0         threshold\n1            # of panel fact\n0            PFACTs (0=left, 1=Crout, 2=Right)\n1            # of recursive stopping criterium\n2            NBMINs (>= 1)\n1            # of panels in recursion\n2            NDIVs\n1            # of recursive panel fact.\n0            RFACTs (0=left, 1=Crout, 2=Right)\n1            # of broadcast\n2            BCASTs (0=1rg,1=1rM,2=2rg,3=2rM,4=Lng,5=LnM)\n1            # of lookahead depth\n1            DEPTHs (>=0)\n2            SWAP (0=bin-exch,1=long,2=mix)\n64           swapping threshold\n1            L1 in (0=transposed,1=no-transposed) form\n1            U  in (0=transposed,1=no-transposed) form\n1            Equilibration (0=no,1=yes)\n8            memory alignment in double (> 0)",
+    "parsed": {
+      "header": [
+        "HPLinpack benchmark input file",
+        "Custom quick test"
+      ],
+      "outputFilename": "HPL.out",
+      "deviceOut": 6,
+      "numProblemSizes": 1,
+      "Ns": [
+        65536
+      ],
+      "numNBs": 1,
+      "NBs": [
+        256
+      ],
+      "pmap": 0,
+      "numGrids": 1,
+      "Ps": [
+        2
+      ],
+      "Qs": [
+        2
+      ],
+      "threshold": 16,
+      "numPFACT": 1,
+      "PFACTs": [
+        0,
+        0,
+        1,
+        2
+      ],
+      "numNBMIN": 1,
+      "NBMINs": [
+        2,
+        1
+      ],
+      "numPanelsInRecursion": 1,
+      "NDIVs": [
+        2
+      ],
+      "numRFACT": 1,
+      "RFACTs": [
+        0,
+        0,
+        1,
+        2
+      ],
+      "numBCAST": 1,
+      "BCASTs": [
+        2,
+        0,
+        1,
+        1,
+        1,
+        2,
+        2,
+        3,
+        2,
+        4,
+        5
+      ],
+      "numDEPTH": 1,
+      "DEPTHs": [
+        1,
+        0
+      ],
+      "swapMode": 2,
+      "swapThreshold": 64,
+      "L1": 1,
+      "U": 1,
+      "equilibration": 1,
+      "memoryAlignment": 8
+    },
+    "path": "/raw/HPL/Ayush/17-10-10/HPL.dat"
+  },
+  "job": {
+    "filename": "run.sh",
+    "raw": "#!/bin/bash\n#SBATCH --job-name=hpl-test       # Job name\n#SBATCH --nodes=2\n#SBATCH --nodelist=node1,node2    # only nodes with HPC-X installed\n#SBATCH --ntasks=8                # 2 ranks per node × 2 nodes = 4 total\n#SBATCH --ntasks-per-node=4\n#SBATCH --cpus-per-task=8        # CPU cores (threads) per MPI task\n#SBATCH --time=10:00:00           # Time limit hh:mm:ss\n\n# Load MPI module (adjust for your system)\n# module load openmpi\n\n# Load HPCX (define explicitly; don't rely on ~/.bashrc order)\nexport HPCX_HOME=/home/hpc/hpcx/hpcx-v2.24-gcc-doca_ofed-ubuntu24.04-cuda13-x86_64\nsource \"$HPCX_HOME/hpcx-init.sh\"\nhpcx_load   # ensures HPC-X Open MPI/UCX are first in PATH/LD_LIBRARY_PATH\n\n# ---- GPU/NCCL section (not used for CPU HPL) ----\nunset LD_PRELOAD\n# Do NOT prepend /usr/lib or CUDA/NCCL paths; keep HPC-X UCX first\n\n# OMPI / UCX tuning (CPU transports only)\nexport UCX_TLS=rc_x,sm,self\nexport UCX_NET_DEVICES=mlx5_0:1\nexport UCX_IB_PCI_RELAXED_ORDERING=auto\nMPIRUN_FLAGS=\"--mca pml ucx --mca btl ^vader,tcp,openib,uct\"\n\n# Threaded BLAS / OpenMP (match Slurm)\nexport OMP_NUM_THREADS=${SLURM_CPUS_PER_TASK:-8}\nexport OMP_PROC_BIND=close\nexport OMP_PLACES=cores\nexport MKL_NUM_THREADS=$OMP_NUM_THREADS\nexport OPENBLAS_NUM_THREADS=$OMP_NUM_THREADS\n\n# Ulimits\nulimit -l unlimited\nulimit -n 65536\n\n# Run the MPI program\n# Map 2 ranks per node; give each rank 16 cores; pin threads to cores\nmpirun $MPIRUN_FLAGS \\\n  --map-by ppr:4:node:PE=${SLURM_CPUS_PER_TASK:-8} \\\n  --bind-to core --report-bindings \\\n  ./xhpl",
+    "sbatch": {
+      "job-name": "hpl-test       # Job name",
+      "nodes": 2,
+      "nodelist": "node1,node2    # only nodes with HPC-X installed",
+      "ntasks": null,
+      "ntasks-per-node": 4,
+      "cpus-per-task": null,
+      "time": "10:00:00           # Time limit hh:mm:ss"
+    },
+    "path": "/raw/HPL/Ayush/17-10-10/run.sh"
+  },
+  "out": {
+    "path": "/raw/HPL/Ayush/17-10-10/run.sh-1241.out",
+    "runs": [
+      {
+        "tv": "WR12L2L2",
+        "N": 65536,
+        "NB": 256,
+        "P": 2,
+        "Q": 2,
+        "timeSec": 184.58,
+        "gflops": 1016.7,
+        "startTime": "Fri Oct 17 04:55:34 2025",
+        "endTime": "Fri Oct 17 04:58:39 2025",
+        "residual": 0.00234104251,
+        "residualPassed": true
+      }
+    ],
+    "summary": {
+      "testsTotal": 1,
+      "testsPassed": 1,
+      "testsFailed": 0,
+      "testsSkipped": 0
+    }
+  },
+  "err": {
+    "path": "/raw/HPL/Ayush/17-10-10/run.sh-1241.err",
+    "size": 2848
+  },
+  "best": {
+    "gflops": 1016.7,
+    "N": 65536,
+    "NB": 256,
+    "timeSec": 184.58
+  }
+}
