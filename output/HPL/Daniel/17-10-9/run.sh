@@ -1,11 +1,11 @@
 #!/bin/bash
 #SBATCH --job-name=hpl-test       # Job name
-#SBATCH --nodes=4
-#SBATCH --nodelist=node1,node2,node3,node4    # nodes 1 and 2 are the only ones with hpcx for now
-#SBATCH --ntasks=8                # 2 ranks per node × 4 nodes = 8 total
-#SBATCH --ntasks-per-node=2
-#SBATCH --cpus-per-task=32         # CPU cores per MPI task
+#SBATCH --ntasks=128              # Total MPI tasks
+#SBATCH --ntasks-per-node=32       # MPI tasks per node
+#SBATCH --cpus-per-task=1         # CPU cores per MPI task
 #SBATCH --time=10:00:00           # Time limit hh:mm:ss
+#SBATCH --nodes=4                 # Number of nodes
+#SBATCH --nodelist=node1,node2,node3,node4    # nodes 1 and 2 are the only ones with hpcx for now
 
 # Load MPI module (adjust for your system)
 # module load openmpi
@@ -39,4 +39,4 @@ ulimit -l unlimited
 ulimit -n 65536
 
 # Run the MPI program
-mpirun --bind-to numa --map-by ppr:2:node ./xhpl
+mpirun ./xhpl
