@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2025-10-17T00:18:02.496Z",
+  "generatedAt": "2025-10-17T03:08:58.395Z",
   "runs": [
     {
       "id": "HPL/Ayush/17-10-1",
@@ -48,8 +48,18 @@
       "suite": "HPL",
       "group": "Ayush",
       "run": "17-10-4",
-      "best": null,
-      "outSummary": null,
+      "best": {
+        "gflops": 941.79,
+        "N": 234240,
+        "NB": 256,
+        "timeSec": 9097.89
+      },
+      "outSummary": {
+        "testsTotal": 1,
+        "testsPassed": 1,
+        "testsFailed": 0,
+        "testsSkipped": 0
+      },
       "hasErr": false
     },
     {
