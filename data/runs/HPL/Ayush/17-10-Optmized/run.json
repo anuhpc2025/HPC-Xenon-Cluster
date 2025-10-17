@@ -1,0 +1,64 @@
+{
+  "id": "HPL/Ayush/17-10-Optmized",
+  "suite": "HPL",
+  "group": "Ayush",
+  "run": "17-10-Optmized",
+  "dat": {
+    "raw": "HPLinpack benchmark input file\nXenon-4node\nHPL.out\n6\n1\n493312\n1\n256\n0\n1\n4\n4\n16.0\n1\n2\n1\n2\n1\n2\n64\n1\n1\n1\n8\n",
+    "parsed": {
+      "header": [
+        "HPLinpack benchmark input file",
+        "Xenon-4node"
+      ],
+      "outputFilename": null,
+      "deviceOut": null,
+      "numProblemSizes": null,
+      "Ns": [],
+      "numNBs": null,
+      "NBs": [],
+      "pmap": null,
+      "numGrids": null,
+      "Ps": [],
+      "Qs": [],
+      "threshold": null,
+      "numPFACT": null,
+      "PFACTs": [],
+      "numNBMIN": null,
+      "NBMINs": [],
+      "numPanelsInRecursion": null,
+      "NDIVs": [],
+      "numRFACT": null,
+      "RFACTs": [],
+      "numBCAST": null,
+      "BCASTs": [],
+      "numDEPTH": null,
+      "DEPTHs": [],
+      "swapMode": null,
+      "swapThreshold": null,
+      "L1": null,
+      "U": null,
+      "equilibration": null,
+      "memoryAlignment": null
+    },
+    "path": "/raw/HPL/Ayush/17-10-Optmized/HPL.dat"
+  },
+  "job": {
+    "filename": "run.sh",
+    "raw": "#!/bin/bash\n#SBATCH --job-name=hpl-cpu\n#SBATCH --nodes=4\n#SBATCH --ntasks-per-node=4          # 4 MPI ranks/node\n#SBATCH --cpus-per-task=8            # 8 threads per rank ⇒ 32 cores/node\n#SBATCH --time=08:00:00\n#SBATCH --exclusive\n\nmodule purge 2>/dev/null || true\nunset LD_PRELOAD\nexport HPCX_HOME=/home/hpc/hpcx/hpcx-v2.24-gcc-doca_ofed-ubuntu24.04-cuda13-x86_64\nsource \"$HPCX_HOME/hpcx-init.sh\"\nhpcx_load ompi ucx\n\n# UCX (IB + SHM only)\nexport UCX_TLS=rc_x,sm,self\nexport UCX_MEMTYPE_CACHE=n\nexport UCX_IB_PCI_RELAXED_ORDERING=off\nexport OMPI_MCA_pml=ucx\nexport OMPI_MCA_btl=^openib\n\n# Threading\nexport OMP_NUM_THREADS=8\nexport OMP_PROC_BIND=close\nexport OMP_PLACES=cores\n\nulimit -l unlimited\nulimit -n 65536\n\n# Run\nmpirun --map-by ppr:4:node:pe=8 --bind-to core ./xhpl\n",
+    "sbatch": {
+      "job-name": "hpl-cpu",
+      "nodes": 4,
+      "ntasks-per-node": null,
+      "cpus-per-task": null,
+      "time": "08:00:00",
+      "exclusive": true
+    },
+    "path": "/raw/HPL/Ayush/17-10-Optmized/run.sh"
+  },
+  "out": null,
+  "err": {
+    "path": "/raw/HPL/Ayush/17-10-Optmized/run.sh-1249.err",
+    "size": 102
+  },
+  "best": null
+}
