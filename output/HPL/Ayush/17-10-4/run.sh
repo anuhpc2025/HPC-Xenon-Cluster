@@ -1,7 +1,8 @@
 #!/bin/bash
 #SBATCH --job-name=hpl-test       # Job name
 #SBATCH --nodes=2
-#SBATCH --ntasks=8                # 4 ranks per node × 4 nodes = 16 total
+#SBATCH --nodelist=node1,node2
+#SBATCH --ntasks=4                # 4 ranks per node × 4 nodes = 16 total
 #SBATCH --ntasks-per-node=2
 #SBATCH --cpus-per-task=16         # CPU cores per MPI task
 #SBATCH --time=10:00:00           # Time limit hh:mm:ss
