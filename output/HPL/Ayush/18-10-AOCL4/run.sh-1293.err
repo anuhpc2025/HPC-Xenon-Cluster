@@ -1,0 +1,118 @@
+ar: `u' modifier ignored since `D' is the default (see `U')
+ptest/HPL_pdinfo.c: In function ‘HPL_pdinfo’:
+ptest/HPL_pdinfo.c:304:14: warning: ignoring return value of ‘fgets’ declared with attribute ‘warn_unused_result’ [-Wunused-result]
+  304 |       (void) fgets( line, HPL_LINE_MAX - 2, infp );
+      |              ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ptest/HPL_pdinfo.c:305:14: warning: ignoring return value of ‘fgets’ declared with attribute ‘warn_unused_result’ [-Wunused-result]
+  305 |       (void) fgets( auth, HPL_LINE_MAX - 2, infp );
+      |              ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ptest/HPL_pdinfo.c:309:14: warning: ignoring return value of ‘fgets’ declared with attribute ‘warn_unused_result’ [-Wunused-result]
+  309 |       (void) fgets( line, HPL_LINE_MAX - 2, infp );
+      |              ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ptest/HPL_pdinfo.c:311:14: warning: ignoring return value of ‘fgets’ declared with attribute ‘warn_unused_result’ [-Wunused-result]
+  311 |       (void) fgets( line, HPL_LINE_MAX - 2, infp );
+      |              ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ptest/HPL_pdinfo.c:327:14: warning: ignoring return value of ‘fgets’ declared with attribute ‘warn_unused_result’ [-Wunused-result]
+  327 |       (void) fgets( line, HPL_LINE_MAX - 2, infp );
+      |              ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ptest/HPL_pdinfo.c:337:14: warning: ignoring return value of ‘fgets’ declared with attribute ‘warn_unused_result’ [-Wunused-result]
+  337 |       (void) fgets( line, HPL_LINE_MAX - 2, infp ); lineptr = line;
+      |              ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ptest/HPL_pdinfo.c:351:14: warning: ignoring return value of ‘fgets’ declared with attribute ‘warn_unused_result’ [-Wunused-result]
+  351 |       (void) fgets( line, HPL_LINE_MAX - 2, infp );
+      |              ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ptest/HPL_pdinfo.c:361:14: warning: ignoring return value of ‘fgets’ declared with attribute ‘warn_unused_result’ [-Wunused-result]
+  361 |       (void) fgets( line, HPL_LINE_MAX - 2, infp ); lineptr = line;
+      |              ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ptest/HPL_pdinfo.c:375:14: warning: ignoring return value of ‘fgets’ declared with attribute ‘warn_unused_result’ [-Wunused-result]
+  375 |       (void) fgets( line, HPL_LINE_MAX - 2, infp );
+      |              ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ptest/HPL_pdinfo.c:379:14: warning: ignoring return value of ‘fgets’ declared with attribute ‘warn_unused_result’ [-Wunused-result]
+  379 |       (void) fgets( line, HPL_LINE_MAX - 2, infp );
+      |              ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ptest/HPL_pdinfo.c:389:14: warning: ignoring return value of ‘fgets’ declared with attribute ‘warn_unused_result’ [-Wunused-result]
+  389 |       (void) fgets( line, HPL_LINE_MAX - 2, infp ); lineptr = line;
+      |              ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ptest/HPL_pdinfo.c:400:14: warning: ignoring return value of ‘fgets’ declared with attribute ‘warn_unused_result’ [-Wunused-result]
+  400 |       (void) fgets( line, HPL_LINE_MAX - 2, infp ); lineptr = line;
+      |              ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ptest/HPL_pdinfo.c:426:14: warning: ignoring return value of ‘fgets’ declared with attribute ‘warn_unused_result’ [-Wunused-result]
+  426 |       (void) fgets( line, HPL_LINE_MAX - 2, infp );
+      |              ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ptest/HPL_pdinfo.c:431:14: warning: ignoring return value of ‘fgets’ declared with attribute ‘warn_unused_result’ [-Wunused-result]
+  431 |       (void) fgets( line, HPL_LINE_MAX - 2, infp );
+      |              ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ptest/HPL_pdinfo.c:440:14: warning: ignoring return value of ‘fgets’ declared with attribute ‘warn_unused_result’ [-Wunused-result]
+  440 |       (void) fgets( line, HPL_LINE_MAX - 2, infp ); lineptr = line;
+      |              ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ptest/HPL_pdinfo.c:453:14: warning: ignoring return value of ‘fgets’ declared with attribute ‘warn_unused_result’ [-Wunused-result]
+  453 |       (void) fgets( line, HPL_LINE_MAX - 2, infp );
+      |              ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ptest/HPL_pdinfo.c:462:14: warning: ignoring return value of ‘fgets’ declared with attribute ‘warn_unused_result’ [-Wunused-result]
+  462 |       (void) fgets( line, HPL_LINE_MAX - 2, infp ); lineptr = line;
+      |              ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ptest/HPL_pdinfo.c:476:14: warning: ignoring return value of ‘fgets’ declared with attribute ‘warn_unused_result’ [-Wunused-result]
+  476 |       (void) fgets( line, HPL_LINE_MAX - 2, infp );
+      |              ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ptest/HPL_pdinfo.c:485:14: warning: ignoring return value of ‘fgets’ declared with attribute ‘warn_unused_result’ [-Wunused-result]
+  485 |       (void) fgets( line, HPL_LINE_MAX - 2, infp ); lineptr = line;
+      |              ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ptest/HPL_pdinfo.c:499:14: warning: ignoring return value of ‘fgets’ declared with attribute ‘warn_unused_result’ [-Wunused-result]
+  499 |       (void) fgets( line, HPL_LINE_MAX - 2, infp );
+      |              ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ptest/HPL_pdinfo.c:508:14: warning: ignoring return value of ‘fgets’ declared with attribute ‘warn_unused_result’ [-Wunused-result]
+  508 |       (void) fgets( line, HPL_LINE_MAX - 2, infp ); lineptr = line;
+      |              ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ptest/HPL_pdinfo.c:521:14: warning: ignoring return value of ‘fgets’ declared with attribute ‘warn_unused_result’ [-Wunused-result]
+  521 |       (void) fgets( line, HPL_LINE_MAX - 2, infp );
+      |              ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ptest/HPL_pdinfo.c:530:14: warning: ignoring return value of ‘fgets’ declared with attribute ‘warn_unused_result’ [-Wunused-result]
+  530 |       (void) fgets( line, HPL_LINE_MAX - 2, infp ); lineptr = line;
+      |              ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ptest/HPL_pdinfo.c:546:14: warning: ignoring return value of ‘fgets’ declared with attribute ‘warn_unused_result’ [-Wunused-result]
+  546 |       (void) fgets( line, HPL_LINE_MAX - 2, infp );
+      |              ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ptest/HPL_pdinfo.c:555:14: warning: ignoring return value of ‘fgets’ declared with attribute ‘warn_unused_result’ [-Wunused-result]
+  555 |       (void) fgets( line, HPL_LINE_MAX - 2, infp ); lineptr = line;
+      |              ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ptest/HPL_pdinfo.c:570:14: warning: ignoring return value of ‘fgets’ declared with attribute ‘warn_unused_result’ [-Wunused-result]
+  570 |       (void) fgets( line, HPL_LINE_MAX - 2, infp );
+      |              ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ptest/HPL_pdinfo.c:579:14: warning: ignoring return value of ‘fgets’ declared with attribute ‘warn_unused_result’ [-Wunused-result]
+  579 |       (void) fgets( line, HPL_LINE_MAX - 2, infp );
+      |              ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ptest/HPL_pdinfo.c:585:14: warning: ignoring return value of ‘fgets’ declared with attribute ‘warn_unused_result’ [-Wunused-result]
+  585 |       (void) fgets( line, HPL_LINE_MAX - 2, infp );
+      |              ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ptest/HPL_pdinfo.c:591:14: warning: ignoring return value of ‘fgets’ declared with attribute ‘warn_unused_result’ [-Wunused-result]
+  591 |       (void) fgets( line, HPL_LINE_MAX - 2, infp );
+      |              ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ptest/HPL_pdinfo.c:597:14: warning: ignoring return value of ‘fgets’ declared with attribute ‘warn_unused_result’ [-Wunused-result]
+  597 |       (void) fgets( line, HPL_LINE_MAX - 2, infp );
+      |              ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ptest/HPL_pdinfo.c:603:14: warning: ignoring return value of ‘fgets’ declared with attribute ‘warn_unused_result’ [-Wunused-result]
+  603 |       (void) fgets( line, HPL_LINE_MAX - 2, infp );
+      |              ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/usr/bin/ld: ../src/libhpl.a(HPL_idamax.o): in function `HPL_idamax':
+HPL_idamax.c:(.text+0x21): undefined reference to `idamax_'
+/usr/bin/ld: ../src/libhpl.a(HPL_dgemv.o): in function `HPL_dgemv':
+HPL_dgemv.c:(.text+0x8b): undefined reference to `dgemv_'
+/usr/bin/ld: ../src/libhpl.a(HPL_dscal.o): in function `HPL_dscal':
+HPL_dscal.c:(.text+0x3c): undefined reference to `dscal_'
+/usr/bin/ld: ../src/libhpl.a(HPL_dtrsm.o): in function `HPL_dtrsm':
+HPL_dtrsm.c:(.text+0xdd): undefined reference to `dtrsm_'
+/usr/bin/ld: HPL_dtrsm.c:(.text+0x16f): undefined reference to `dtrsm_'
+/usr/bin/ld: ../src/libhpl.a(HPL_dtrsv.o): in function `HPL_dtrsv':
+HPL_dtrsv.c:(.text+0x93): undefined reference to `dtrsv_'
+/usr/bin/ld: ../src/libhpl.a(HPL_daxpy.o): in function `HPL_daxpy':
+HPL_daxpy.c:(.text+0x4c): undefined reference to `daxpy_'
+/usr/bin/ld: ../src/libhpl.a(HPL_dcopy.o): in function `HPL_dcopy':
+HPL_dcopy.c:(.text+0x25): undefined reference to `dcopy_'
+/usr/bin/ld: ../src/libhpl.a(HPL_dgemm.o): in function `HPL_dgemm':
+HPL_dgemm.c:(.text+0xd5): undefined reference to `dgemm_'
+/usr/bin/ld: ../src/libhpl.a(HPL_dger.o): in function `HPL_dger':
+HPL_dger.c:(.text+0x68): undefined reference to `dger_'
+/usr/bin/ld: HPL_dger.c:(.text+0xb8): undefined reference to `dger_'
+collect2: error: ld returned 1 exit status
+make[1]: *** [Makefile:406: xhpl] Error 1
+make: *** [Makefile:355: all-recursive] Error 1
