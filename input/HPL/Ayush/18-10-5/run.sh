@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH --job-name=hpl-128ranks
+#SBATCH --job-name=hpl-test  
 #SBATCH --nodes=4
 #SBATCH --nodelist=node1,node2,node3,node4
 #SBATCH --ntasks-per-node=32        # 32 ranks per node
@@ -7,13 +7,13 @@
 #SBATCH --cpus-per-task=1           # pure MPI
 #SBATCH --time=02:00:00
 #SBATCH --exclusive
-#SBATCH --hint=nomultithread
-#SBATCH --output=hpl-%j.out
+
 
 set -euo pipefail
 
 # === HPC-X (Open MPI + UCX) ===
 export HPCX_HOME=/home/hpc/hpcx/hpcx-v2.24-gcc-doca_ofed-ubuntu24.04-cuda13-x86_64
+export HPCX_ENABLE_NCCLNET_PLUGIN=0 
 source "$HPCX_HOME/hpcx-init.sh"; hpcx_load
 export PATH=$HPCX_HOME/ompi/bin:$PATH
 export LD_LIBRARY_PATH=$HPCX_HOME/ucx/lib:$HPCX_HOME/ompi/lib:$LD_LIBRARY_PATH
@@ -34,5 +34,3 @@ export UCX_RNDV_SCHEME=put_zcopy
 
 ulimit -l unlimited
 ulimit -n 65536
-
-cd $HOME/hpl-2.3/testing
