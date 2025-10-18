@@ -1,0 +1,112 @@
+{
+  "id": "HPL/Ayush/18-10-AOCL",
+  "suite": "HPL",
+  "group": "Ayush",
+  "run": "18-10-AOCL",
+  "dat": {
+    "raw": "HPLinpack benchmark input file\nCustom quick test\nHPL.out      output file name (if any)\n6            device out (6=stdout,7=stderr,file)\n1            # of problems sizes (N)\n128000       Ns\n1            # of NBs\n512          NBs\n0            PMAP process mapping (0=Row-,1=Column-major)\n1            # of process grids (P x Q)\n4            Ps\n32           Qs\n16.0         threshold\n1            # of panel fact\n0            PFACTs (0=left, 1=Crout, 2=Right)\n1            # of recursive stopping criterium\n2            NBMINs (>= 1)\n1            # of panels in recursion\n2            NDIVs\n1            # of recursive panel fact.\n0            RFACTs (0=left, 1=Crout, 2=Right)\n1            # of broadcast\n2            BCASTs (0=1rg,1=1rM,2=2rg,3=2rM,4=Lng,5=LnM)\n1            # of lookahead depth\n1            DEPTHs (>=0)\n2            SWAP (0=bin-exch,1=long,2=mix)\n64           swapping threshold\n0            L1 in (0=transposed,1=no-transposed) form\n0            U  in (0=transposed,1=no-transposed) form\n1            Equilibration (0=no,1=yes)\n8            memory alignment in double (> 0)",
+    "parsed": {
+      "header": [
+        "HPLinpack benchmark input file",
+        "Custom quick test"
+      ],
+      "outputFilename": "HPL.out",
+      "deviceOut": 6,
+      "numProblemSizes": 1,
+      "Ns": [
+        128000
+      ],
+      "numNBs": 1,
+      "NBs": [
+        512
+      ],
+      "pmap": 0,
+      "numGrids": 1,
+      "Ps": [
+        4
+      ],
+      "Qs": [
+        32
+      ],
+      "threshold": 16,
+      "numPFACT": 1,
+      "PFACTs": [
+        0,
+        0,
+        1,
+        2
+      ],
+      "numNBMIN": 1,
+      "NBMINs": [
+        2,
+        1
+      ],
+      "numPanelsInRecursion": 1,
+      "NDIVs": [
+        2
+      ],
+      "numRFACT": 1,
+      "RFACTs": [
+        0,
+        0,
+        1,
+        2
+      ],
+      "numBCAST": 1,
+      "BCASTs": [
+        2,
+        0,
+        1,
+        1,
+        1,
+        2,
+        2,
+        3,
+        2,
+        4,
+        5
+      ],
+      "numDEPTH": 1,
+      "DEPTHs": [
+        1,
+        0
+      ],
+      "swapMode": 2,
+      "swapThreshold": 64,
+      "L1": 0,
+      "U": 0,
+      "equilibration": 1,
+      "memoryAlignment": 8
+    },
+    "path": "/raw/HPL/Ayush/18-10-AOCL/HPL.dat"
+  },
+  "job": {
+    "filename": "run.sh",
+    "raw": "#!/bin/bash\n#SBATCH --job-name=hpl-aocl\n#SBATCH --nodes=4\n#SBATCH --nodelist=node1,node2,node3,node4\n#SBATCH --ntasks-per-node=32          # 32 MPI ranks per node\n#SBATCH --cpus-per-task=1             # pure-MPI; BLIS threads = 1\n#SBATCH --time=10:00:00\n#SBATCH --output=hpl_out.%j\n\n########## User-adjustable paths ##########\n# HPL build dir and binary (from your build)\nexport HPL_DIR=\"$HOME/hpl-2.3\"\nexport HPL_BIN=\"$HPL_DIR/testing/xhpl\"   # HPL.dat should be in $HPL_DIR\n\n# HPC-X root (you already have this)\nexport HPCX_HOME=\"/home/hpc/hpcx/hpcx-v2.24-gcc-doca_ofed-ubuntu24.04-cuda13-x86_64\"\n\n# AOCL/BLIS path (you copied this to all nodes under $HOME)\nexport AOCL_BLIS=\"$HOME/aocl/5.1.0/gcc\"\n\n########## Environment: MPI / UCX / BLIS ##########\n# Load HPC-X (Open MPI + UCX) into env\nsource \"$HPCX_HOME/hpcx-init.sh\"\nhpcx_load\n\n# Make sure HPC-X binaries and libs are preferred\nexport PATH=\"$HPCX_HOME/ompi/bin:$PATH\"\nexport LD_LIBRARY_PATH=\"$HPCX_HOME/ompi/lib:$HPCX_HOME/ucx/lib:$LD_LIBRARY_PATH\"\n\n# Add AOCL/BLIS to runtime path\nexport LD_LIBRARY_PATH=\"$AOCL_BLIS/lib:$LD_LIBRARY_PATH\"\n\n# UCX knobs for IB (tweak to taste)\nexport UCX_TLS=\"rc_x,sm,self\"\nexport UCX_MEMTYPE_CACHE=y\nexport UCX_RNDV_SCHEME=put_zcopy\n\n# Pure-MPI: keep BLIS single-threaded\nexport OMP_NUM_THREADS=1\nexport OMP_PROC_BIND=close\nexport OMP_PLACES=cores\n\n# Lockable memory / fds\nulimit -l unlimited\nulimit -n 65536\n\n########## Sanity checks (helpful in logs) ##########\necho \"== Nodes:          $SLURM_NODELIST\"\necho \"== Ranks/node:     $SLURM_NTASKS_PER_NODE\"\necho \"== Total ranks:    $SLURM_NTASKS\"\necho \"== HPL dir:        $HPL_DIR\"\necho \"== HPL binary:     $HPL_BIN\"\necho \"== Using BLIS at:  $AOCL_BLIS\"\necho \"== UCX_TLS:        $UCX_TLS\"\necho\necho \"== ldd on xhpl (expect libblis*, not openblas/mkl):\"\nsrun -N1 -n1 bash -lc \"ldd '$HPL_BIN' | egrep 'blis|openblas|mkl|flame' || true\"\necho\n\n########## Run ##########\n# HPL reads HPL.dat from CWD; run inside the HPL dir.\ncd \"$HPL_DIR\"\n\n# Launch with Slurm PMI via PMIx (HPC-X uses pmix_v4)\nsrun --mpi=pmix_v4 \"$HPL_BIN\"\n",
+    "sbatch": {
+      "job-name": "hpl-aocl",
+      "nodes": 4,
+      "nodelist": "node1,node2,node3,node4",
+      "ntasks-per-node": null,
+      "cpus-per-task": null,
+      "time": "10:00:00",
+      "output": "hpl_out.%j"
+    },
+    "path": "/raw/HPL/Ayush/18-10-AOCL/run.sh"
+  },
+  "out": {
+    "path": "/raw/HPL/Ayush/18-10-AOCL/run.sh-1277.out",
+    "runs": [],
+    "summary": {
+      "testsTotal": null,
+      "testsPassed": null,
+      "testsFailed": null,
+      "testsSkipped": null
+    }
+  },
+  "err": {
+    "path": "/raw/HPL/Ayush/18-10-AOCL/run.sh-1277.err",
+    "size": 315
+  },
+  "best": null
+}
