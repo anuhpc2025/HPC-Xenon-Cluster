@@ -1,0 +1,31 @@
+HPLinpack benchmark input file
+AOCL + Milan hybrid (1 rank/L3, 8 OMP)
+HPL.out
+6
+1
+128000         Ns    # for a real run, set N to ~80–90% of RAM
+1
+240            NBs   # good starting point (try 192–256)
+0
+1
+4              Ps
+4              Qs    # 16 ranks total
+16.0
+1
+1              PFACTs (Crout)
+1
+4              NBMINs
+1
+2              NDIVs
+1
+1              RFACTs (Crout)
+1
+2              BCASTs (2-ring)
+1
+1              DEPTHs
+2
+64
+0
+0
+1
+8
