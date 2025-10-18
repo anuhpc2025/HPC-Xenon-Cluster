@@ -1,8 +1,8 @@
 {
-  "id": "HPL/Ayush/18-10-5",
+  "id": "HPL/Ayush/18-10-6",
   "suite": "HPL",
   "group": "Ayush",
-  "run": "18-10-5",
+  "run": "18-10-6",
   "dat": {
     "raw": "HPLinpack benchmark input file\nCustom quick test\nHPL.out      output file name (if any)\n6            device out (6=stdout,7=stderr,file)\n1            # of problems sizes (N)\n128000       Ns\n1            # of NBs\n384          NBs\n0            PMAP process mapping (0=Row-,1=Column-major)\n1            # of process grids (P x Q)\n4            Ps\n32           Qs\n16.0         threshold\n1            # of panel fact\n0            PFACTs (0=left, 1=Crout, 2=Right)\n1            # of recursive stopping criterium\n2            NBMINs (>= 1)\n1            # of panels in recursion\n2            NDIVs\n1            # of recursive panel fact.\n0            RFACTs (0=left, 1=Crout, 2=Right)\n1            # of broadcast\n2            BCASTs (0=1rg,1=1rM,2=2rg,3=2rM,4=Lng,5=LnM)\n1            # of lookahead depth\n1            DEPTHs (>=0)\n2            SWAP (0=bin-exch,1=long,2=mix)\n64           swapping threshold\n0            L1 in (0=transposed,1=no-transposed) form\n0            U  in (0=transposed,1=no-transposed) form\n1            Equilibration (0=no,1=yes)\n8            memory alignment in double (> 0)",
     "parsed": {
@@ -78,11 +78,11 @@
       "equilibration": 1,
       "memoryAlignment": 8
     },
-    "path": "/raw/HPL/Ayush/18-10-5/HPL.dat"
+    "path": "/raw/HPL/Ayush/18-10-6/HPL.dat"
   },
   "job": {
     "filename": "run.sh",
-    "raw": "#!/bin/bash\n#SBATCH --job-name=hpl-test  \n#SBATCH --nodes=4\n#SBATCH --nodelist=node1,node2,node3,node4\n#SBATCH --ntasks-per-node=32        # 32 ranks per node\n#SBATCH --ntasks=128                # total ranks = 128 (= 4*32)\n#SBATCH --cpus-per-task=1           # pure MPI\n#SBATCH --time=02:00:00\n#SBATCH --exclusive\n\n\nset -euo pipefail\n\n# === HPC-X (Open MPI + UCX) ===\nexport HPCX_HOME=/home/hpc/hpcx/hpcx-v2.24-gcc-doca_ofed-ubuntu24.04-cuda13-x86_64\nexport HPCX_ENABLE_NCCLNET_PLUGIN=0 \nsource \"$HPCX_HOME/hpcx-init.sh\"; hpcx_load\nexport PATH=$HPCX_HOME/ompi/bin:$PATH\nexport LD_LIBRARY_PATH=$HPCX_HOME/ucx/lib:$HPCX_HOME/ompi/lib:$LD_LIBRARY_PATH\n\n# === AOCL BLIS (OK with threads=1) ===\nexport AOCL_DIR=$HOME/aocl\nexport LD_LIBRARY_PATH=$AOCL_DIR/5.1.0/gcc/lib:$LD_LIBRARY_PATH\n\n# === OpenMP (disable threading) ===\nexport OMP_NUM_THREADS=1\nexport BLIS_NUM_THREADS=1\nexport OMP_PROC_BIND=true\nexport OMP_PLACES=cores\n\n# === UCX (CPU-only) ===\nexport UCX_TLS=rc_x,sm,self\nexport UCX_RNDV_SCHEME=put_zcopy\n\nulimit -l unlimited\nulimit -n 65536\n",
+    "raw": "#!/bin/bash\n#SBATCH --job-name=hpl-test  \n#SBATCH --nodes=4\n#SBATCH --nodelist=node1,node2,node3,node4\n#SBATCH --ntasks-per-node=32        # 32 ranks per node\n#SBATCH --ntasks=128                # total ranks = 128 (= 4*32)\n#SBATCH --cpus-per-task=1           # pure MPI\n#SBATCH --time=02:00:00\n#SBATCH --exclusive\n\n\n# === HPC-X (Open MPI + UCX) ===\nexport HPCX_HOME=/home/hpc/hpcx/hpcx-v2.24-gcc-doca_ofed-ubuntu24.04-cuda13-x86_64\nexport HPCX_ENABLE_NCCLNET_PLUGIN=0 \nsource \"$HPCX_HOME/hpcx-init.sh\"; hpcx_load\nexport PATH=$HPCX_HOME/ompi/bin:$PATH\nexport LD_LIBRARY_PATH=$HPCX_HOME/ucx/lib:$HPCX_HOME/ompi/lib:$LD_LIBRARY_PATH\n\n# === AOCL BLIS (OK with threads=1) ===\nexport AOCL_DIR=$HOME/aocl\nexport LD_LIBRARY_PATH=$AOCL_DIR/5.1.0/gcc/lib:$LD_LIBRARY_PATH\n\n# === OpenMP (disable threading) ===\nexport OMP_NUM_THREADS=1\nexport BLIS_NUM_THREADS=1\nexport OMP_PROC_BIND=true\nexport OMP_PLACES=cores\n\n# === UCX (CPU-only) ===\nexport UCX_TLS=rc_x,sm,self\nexport UCX_RNDV_SCHEME=put_zcopy\n\nulimit -l unlimited\nulimit -n 65536",
     "sbatch": {
       "job-name": "hpl-test",
       "nodes": 4,
@@ -93,12 +93,9 @@
       "time": "02:00:00",
       "exclusive": true
     },
-    "path": "/raw/HPL/Ayush/18-10-5/run.sh"
+    "path": "/raw/HPL/Ayush/18-10-6/run.sh"
   },
   "out": null,
-  "err": {
-    "path": "/raw/HPL/Ayush/18-10-5/run.sh-1268.err",
-    "size": 134
-  },
+  "err": null,
   "best": null
 }
