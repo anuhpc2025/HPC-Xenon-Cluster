@@ -1,0 +1,108 @@
+{
+  "id": "HPL/Ayush/18-10-7",
+  "suite": "HPL",
+  "group": "Ayush",
+  "run": "18-10-7",
+  "dat": {
+    "raw": "HPLinpack benchmark input file\nCustom quick test\nHPL.out      output file name (if any)\n6            device out (6=stdout,7=stderr,file)\n1            # of problems sizes (N)\n65536        Ns\n1            # of NBs\n128          NBs\n0            PMAP process mapping (0=Row-,1=Column-major)\n2            # of process grids (P x Q)\n2 4          Ps\n4 2          Qs\n16.0         threshold\n1            # of panel fact\n0            PFACTs (0=left, 1=Crout, 2=Right)\n1            # of recursive stopping criterium\n2            NBMINs (>= 1)\n1            # of panels in recursion\n2            NDIVs\n1            # of recursive panel fact.\n0            RFACTs (0=left, 1=Crout, 2=Right)\n1            # of broadcast\n2            BCASTs (0=1rg,1=1rM,2=2rg,3=2rM,4=Lng,5=LnM)\n1            # of lookahead depth\n1            DEPTHs (>=0)\n2            SWAP (0=bin-exch,1=long,2=mix)\n64           swapping threshold\n1            L1 in (0=transposed,1=no-transposed) form\n0            U  in (0=transposed,1=no-transposed) form\n1            Equilibration (0=no,1=yes)\n8            memory alignment in double (> 0)",
+    "parsed": {
+      "header": [
+        "HPLinpack benchmark input file",
+        "Custom quick test"
+      ],
+      "outputFilename": "HPL.out",
+      "deviceOut": 6,
+      "numProblemSizes": 1,
+      "Ns": [
+        65536
+      ],
+      "numNBs": 1,
+      "NBs": [
+        128
+      ],
+      "pmap": 0,
+      "numGrids": 2,
+      "Ps": [
+        2,
+        4
+      ],
+      "Qs": [
+        4,
+        2
+      ],
+      "threshold": 16,
+      "numPFACT": 1,
+      "PFACTs": [
+        0,
+        0,
+        1,
+        2
+      ],
+      "numNBMIN": 1,
+      "NBMINs": [
+        2,
+        1
+      ],
+      "numPanelsInRecursion": 1,
+      "NDIVs": [
+        2
+      ],
+      "numRFACT": 1,
+      "RFACTs": [
+        0,
+        0,
+        1,
+        2
+      ],
+      "numBCAST": 1,
+      "BCASTs": [
+        2,
+        0,
+        1,
+        1,
+        1,
+        2,
+        2,
+        3,
+        2,
+        4,
+        5
+      ],
+      "numDEPTH": 1,
+      "DEPTHs": [
+        1,
+        0
+      ],
+      "swapMode": 2,
+      "swapThreshold": 64,
+      "L1": 1,
+      "U": 0,
+      "equilibration": 1,
+      "memoryAlignment": 8
+    },
+    "path": "/raw/HPL/Ayush/18-10-7/HPL.dat"
+  },
+  "job": {
+    "filename": "run.sh",
+    "raw": "#!/bin/bash\n#SBATCH --job-name=hpl-test       # Job name\n#SBATCH --nodes=4\n#SBATCH --nodelist=node1,node2,node3,node4    \n#SBATCH --ntasks=8                # 4 ranks per node × 4 nodes = 16 total\n#SBATCH --ntasks-per-node=2\n#SBATCH --cpus-per-task=16         # CPU cores per MPI task\n#SBATCH --time=10:00:00           # Time limit hh:mm:ss\n#SBATCH --exclusive\n#SBATCH --hint=nomultithread\n#SBATCH --output=hpl-%j.out\n\n# Load MPI module (adjust for your system)\n# module load openmpi\nset -euo pipefail\n\n# === HPC-X (Open MPI + UCX) ===\nexport HPCX_HOME=/home/hpc/hpcx/hpcx-v2.24-gcc-doca_ofed-ubuntu24.04-cuda13-x86_64\nsource \"$HPCX_HOME/hpcx-init.sh\"\nhpcx_load\n\n# Keep HPC-X first\nexport PATH=\"$HPCX_HOME/ompi/bin:$PATH\"\n\n# === AOCL BLIS (dynamic) ===\n# Adjust AOCL_DIR if installed elsewhere (e.g., /opt/AMD/aocl)\nexport AOCL_DIR=\"$HOME/aocl\"\nexport LD_LIBRARY_PATH=\"$AOCL_DIR/5.1.0/gcc/lib:$LD_LIBRARY_PATH\"\n\n# (Optional) If you linked against libflame as well:\n# export LD_LIBRARY_PATH=\"$AOCL_DIR/5.1.0/gcc/libflame/lib:$LD_LIBRARY_PATH\"\n\n# === UCX (CPU only; no CUDA lanes) ===\nexport UCX_TLS=rc_x,sm,self           # IB RC + shared memory + self\nexport UCX_IB_PCI_RELAXED_ORDERING=on\nexport UCX_RNDV_SCHEME=put_zcopy\nexport UCX_MEMTYPE_CACHE=n            # avoid memtype probing for CPU-only\n\n# Make sure we don't accidentally preload NCCL/NVSHMEM etc.\nunset LD_PRELOAD\n\n# DO NOT append CUDA/NCCL/NVSHMEM paths for CPU HPL\n# (removes nccl/nvshmem from LD_LIBRARY_PATH to avoid UCX GPU transports)\n\n# === OpenMP/Threading for AOCL BLIS ===\nexport OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK   # 16\nexport OMP_PROC_BIND=close\nexport OMP_PLACES=cores\n# BLIS respects OMP_NUM_THREADS; BLIS_NUM_THREADS is optional:\n# export BLIS_NUM_THREADS=$OMP_NUM_THREADS\n\n# === Ulimits ===\nulimit -l unlimited\nulimit -n 65536\n\n# === Sanity checks (uncomment if you want to verify once) ===\n# echo \"AOCL libs:\"; ls -1 \"$AOCL_DIR/5.1.0/gcc/lib\" | head\n# echo \"xhpl links:\"; ldd ./xhpl | egrep 'blis|flame|omp|ucx|mpi'\n\n# === Run HPL ===\n# Map 2 ranks per node, each rank gets PE=16 cores; bind ranks to cores.\n# --report-bindings helps confirm the placement.\nmpirun --mca pml ucx \\\n       --bind-to core \\\n       --map-by ppr:2:node:PE=${SLURM_CPUS_PER_TASK} \\\n       --report-bindings \\\n       ./xhpl",
+    "sbatch": {
+      "job-name": "hpl-test       # Job name",
+      "nodes": 4,
+      "nodelist": "node1,node2,node3,node4",
+      "ntasks": null,
+      "ntasks-per-node": 2,
+      "cpus-per-task": null,
+      "time": "10:00:00           # Time limit hh:mm:ss",
+      "exclusive": true,
+      "hint": "nomultithread",
+      "output": "hpl-%j.out"
+    },
+    "path": "/raw/HPL/Ayush/18-10-7/run.sh"
+  },
+  "out": null,
+  "err": {
+    "path": "/raw/HPL/Ayush/18-10-7/run.sh-1270.err",
+    "size": 134
+  },
+  "best": null
+}
