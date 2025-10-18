@@ -1,0 +1,14 @@
+--------------------------------------------------------------------------
+An invalid value was given for the number of processes
+per resource (ppr) to be mapped on each node:
+
+  PPR:  1:l3cache,pe=8
+
+The specification must be a comma-separated list containing
+combinations of number, followed by a colon, followed
+by the resource type. For example, a value of "1:socket" indicates that
+one process is to be mapped onto each socket. Values are supported
+for hwthread, core, L1-3 caches, socket, numa, and node. Note that
+enough characters must be provided to clearly specify the desired
+resource (e.g., "nu" for "numa").
+--------------------------------------------------------------------------
