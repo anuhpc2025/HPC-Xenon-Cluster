@@ -1,0 +1,8 @@
+== Nodes:          node[1-4]
+== Tasks total:    128 (per node: 32)
+== HPL dir/bin:    /home/hpc/hpl-2.3 / /home/hpc/hpl-2.3/testing/xhpl
+== UCX_TLS:        rc_x,sm,self
+
+== ldd on xhpl (expect **libblis**, not openblas/mkl):
+	libopenblas.so.0 => /lib/x86_64-linux-gnu/libopenblas.so.0 (0x000072005b8c8000)
+
