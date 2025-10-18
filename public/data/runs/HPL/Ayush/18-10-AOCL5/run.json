@@ -1,0 +1,69 @@
+{
+  "id": "HPL/Ayush/18-10-AOCL5",
+  "suite": "HPL",
+  "group": "Ayush",
+  "run": "18-10-AOCL5",
+  "dat": {
+    "raw": "HPLinpack benchmark input file\nAOCL + CPU HPL (pure MPI)\nHPL.out\n6\n1\n128000        Ns      # quick test; for full runs, size N ~ 80–90% of RAM\n1\n240           NBs     # try 192–256; 240 is a good start\n0\n1\n8             Ps\n16            Qs      # near-square, Q ≥ P for 128 ranks\n16.0\n1\n1             PFACTs  # Crout\n1\n4             NBMINs\n1\n2             NDIVs\n1\n1             RFACTs  # Crout\n1\n2             BCASTs  # 2-ring\n1\n1             DEPTHs\n2\n64\n0\n0\n1\n8\n",
+    "parsed": {
+      "header": [
+        "HPLinpack benchmark input file",
+        "AOCL + CPU HPL (pure MPI)"
+      ],
+      "outputFilename": null,
+      "deviceOut": null,
+      "numProblemSizes": null,
+      "Ns": [],
+      "numNBs": null,
+      "NBs": [],
+      "pmap": null,
+      "numGrids": null,
+      "Ps": [],
+      "Qs": [],
+      "threshold": null,
+      "numPFACT": null,
+      "PFACTs": [],
+      "numNBMIN": null,
+      "NBMINs": [],
+      "numPanelsInRecursion": null,
+      "NDIVs": [
+        2
+      ],
+      "numRFACT": null,
+      "RFACTs": [],
+      "numBCAST": null,
+      "BCASTs": [],
+      "numDEPTH": null,
+      "DEPTHs": [],
+      "swapMode": null,
+      "swapThreshold": null,
+      "L1": null,
+      "U": null,
+      "equilibration": null,
+      "memoryAlignment": null
+    },
+    "path": "/raw/HPL/Ayush/18-10-AOCL5/HPL.dat"
+  },
+  "job": {
+    "filename": "run.sh",
+    "raw": "#!/bin/bash\n#SBATCH --job-name=hpl-128mpi\n#SBATCH --nodes=4\n#SBATCH --nodelist=node1,node2,node3,node4\n#SBATCH --ntasks-per-node=32\n#SBATCH --cpus-per-task=1\n#SBATCH --time=02:00:00\n#SBATCH --exclusive\n#SBATCH --hint=nomultithread\n#SBATCH --output=hpl-128mpi-%j.out\nset -euo pipefail\n\n# ===== AOCL =====\nexport AOCL_DIR=\"$HOME/aocl/5.1.0/gcc\"\nexport LD_LIBRARY_PATH=\"$AOCL_DIR/lib:${LD_LIBRARY_PATH:-}\"\n\n# ===== HPC-X (Open MPI + UCX) =====\nexport HPCX_HOME=\"/home/hpc/hpcx/hpcx-v2.24-gcc-doca_ofed-ubuntu24.04-cuda13-x86_64\"\nexport HPCX_ENABLE_NCCLNET_PLUGIN=0\nsource \"$HPCX_HOME/hpcx-init.sh\"; hpcx_load\nexport PATH=\"$HPCX_HOME/ompi/bin:$PATH\"\nexport LD_LIBRARY_PATH=\"$HPCX_HOME/ompi/lib:$HPCX_HOME/ucx/lib:$LD_LIBRARY_PATH\"\n\n# ===== UCX over IB (CPU only) =====\nexport UCX_TLS=\"rc_x,sm,self\"\nexport UCX_MEMTYPE_CACHE=y\nexport UCX_RNDV_SCHEME=put_zcopy\nunset UCX_IB_GPU_DIRECT_RDMA   # GPU-only feature\n\n# ===== Pure MPI (no BLIS threads) =====\nexport OMP_NUM_THREADS=1\nexport OMP_PROC_BIND=close\nexport OMP_PLACES=cores\n\nulimit -l unlimited\nulimit -n 65536\n\nmpirun \\\n  --mca pml ucx --mca btl ^vader,tcp,openib,uct \\\n  --map-by ppr:32:node:pe=1 --bind-to core --report-bindings \\\n  -x LD_LIBRARY_PATH -x OMP_NUM_THREADS -x OMP_PROC_BIND -x OMP_PLACES \\\n  -x UCX_TLS -x UCX_MEMTYPE_CACHE -x UCX_RNDV_SCHEME \\\n  ./xhpl\n",
+    "sbatch": {
+      "job-name": "hpl-128mpi",
+      "nodes": 4,
+      "nodelist": "node1,node2,node3,node4",
+      "ntasks-per-node": 32,
+      "cpus-per-task": 1,
+      "time": "02:00:00",
+      "exclusive": true,
+      "hint": "nomultithread",
+      "output": "hpl-128mpi-%j.out"
+    },
+    "path": "/raw/HPL/Ayush/18-10-AOCL5/run.sh"
+  },
+  "out": null,
+  "err": {
+    "path": "/raw/HPL/Ayush/18-10-AOCL5/run.sh-1297.err",
+    "size": 20906
+  },
+  "best": null
+}
