@@ -1,0 +1,390 @@
+== Nodes:          node[1-4]
+== Tasks total:    128 (per node: 32)
+== HPL dir/bin:    /home/hpc/hpl-2.3 / /home/hpc/hpl-2.3/testing/xhpl
+== UCX_TLS:        rc_x,sm,self
+
+== Rebuilding HPL with AOCL BLIS (overriding BLASLIBS)...
+make: Entering directory '/home/hpc/hpl-2.3'
+Making clean in src
+make[1]: Entering directory '/home/hpc/hpl-2.3/src'
+test -z "libhpl.a" || rm -f libhpl.a
+rm -f *.o
+rm -f auxil/*.o
+rm -f blas/*.o
+rm -f comm/*.o
+rm -f grid/*.o
+rm -f panel/*.o
+rm -f pauxil/*.o
+rm -f pfact/*.o
+rm -f pgesv/*.o
+make[1]: Leaving directory '/home/hpc/hpl-2.3/src'
+Making clean in testing
+make[1]: Entering directory '/home/hpc/hpl-2.3/testing'
+test -z "xhpl" || rm -f xhpl
+rm -f *.o
+rm -f matgen/*.o
+rm -f pmatgen/*.o
+rm -f ptest/*.o
+rm -f ptimer/*.o
+make[1]: Leaving directory '/home/hpc/hpl-2.3/testing'
+make[1]: Entering directory '/home/hpc/hpl-2.3'
+make[1]: Nothing to be done for 'clean-am'.
+make[1]: Leaving directory '/home/hpc/hpl-2.3'
+make: Leaving directory '/home/hpc/hpl-2.3'
+make: Entering directory '/home/hpc/hpl-2.3'
+Making all in src
+make[1]: Entering directory '/home/hpc/hpl-2.3/src'
+depbase=`echo auxil/HPL_dlatcpy.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+mpicc -DHAVE_CONFIG_H -I. -I../include  -I../../include   -O3 -fopenmp -march=znver3 -mtune=znver3 -I/home/hpc/aocl/5.1.0/gcc/include/blis -MT auxil/HPL_dlatcpy.o -MD -MP -MF $depbase.Tpo -c -o auxil/HPL_dlatcpy.o auxil/HPL_dlatcpy.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo auxil/HPL_fprintf.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+mpicc -DHAVE_CONFIG_H -I. -I../include  -I../../include   -O3 -fopenmp -march=znver3 -mtune=znver3 -I/home/hpc/aocl/5.1.0/gcc/include/blis -MT auxil/HPL_fprintf.o -MD -MP -MF $depbase.Tpo -c -o auxil/HPL_fprintf.o auxil/HPL_fprintf.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo auxil/HPL_dlacpy.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+mpicc -DHAVE_CONFIG_H -I. -I../include  -I../../include   -O3 -fopenmp -march=znver3 -mtune=znver3 -I/home/hpc/aocl/5.1.0/gcc/include/blis -MT auxil/HPL_dlacpy.o -MD -MP -MF $depbase.Tpo -c -o auxil/HPL_dlacpy.o auxil/HPL_dlacpy.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo auxil/HPL_dlamch.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+mpicc -DHAVE_CONFIG_H -I. -I../include  -I../../include   -O3 -fopenmp -march=znver3 -mtune=znver3 -I/home/hpc/aocl/5.1.0/gcc/include/blis -MT auxil/HPL_dlamch.o -MD -MP -MF $depbase.Tpo -c -o auxil/HPL_dlamch.o auxil/HPL_dlamch.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo blas/HPL_dscal.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+mpicc -DHAVE_CONFIG_H -I. -I../include  -I../../include   -O3 -fopenmp -march=znver3 -mtune=znver3 -I/home/hpc/aocl/5.1.0/gcc/include/blis -MT blas/HPL_dscal.o -MD -MP -MF $depbase.Tpo -c -o blas/HPL_dscal.o blas/HPL_dscal.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo blas/HPL_dtrsm.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+mpicc -DHAVE_CONFIG_H -I. -I../include  -I../../include   -O3 -fopenmp -march=znver3 -mtune=znver3 -I/home/hpc/aocl/5.1.0/gcc/include/blis -MT blas/HPL_dtrsm.o -MD -MP -MF $depbase.Tpo -c -o blas/HPL_dtrsm.o blas/HPL_dtrsm.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo blas/HPL_dtrsv.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+mpicc -DHAVE_CONFIG_H -I. -I../include  -I../../include   -O3 -fopenmp -march=znver3 -mtune=znver3 -I/home/hpc/aocl/5.1.0/gcc/include/blis -MT blas/HPL_dtrsv.o -MD -MP -MF $depbase.Tpo -c -o blas/HPL_dtrsv.o blas/HPL_dtrsv.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo blas/HPL_idamax.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+mpicc -DHAVE_CONFIG_H -I. -I../include  -I../../include   -O3 -fopenmp -march=znver3 -mtune=znver3 -I/home/hpc/aocl/5.1.0/gcc/include/blis -MT blas/HPL_idamax.o -MD -MP -MF $depbase.Tpo -c -o blas/HPL_idamax.o blas/HPL_idamax.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo blas/HPL_dgemv.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+mpicc -DHAVE_CONFIG_H -I. -I../include  -I../../include   -O3 -fopenmp -march=znver3 -mtune=znver3 -I/home/hpc/aocl/5.1.0/gcc/include/blis -MT blas/HPL_dgemv.o -MD -MP -MF $depbase.Tpo -c -o blas/HPL_dgemv.o blas/HPL_dgemv.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo blas/HPL_daxpy.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+mpicc -DHAVE_CONFIG_H -I. -I../include  -I../../include   -O3 -fopenmp -march=znver3 -mtune=znver3 -I/home/hpc/aocl/5.1.0/gcc/include/blis -MT blas/HPL_daxpy.o -MD -MP -MF $depbase.Tpo -c -o blas/HPL_daxpy.o blas/HPL_daxpy.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo blas/HPL_dcopy.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+mpicc -DHAVE_CONFIG_H -I. -I../include  -I../../include   -O3 -fopenmp -march=znver3 -mtune=znver3 -I/home/hpc/aocl/5.1.0/gcc/include/blis -MT blas/HPL_dcopy.o -MD -MP -MF $depbase.Tpo -c -o blas/HPL_dcopy.o blas/HPL_dcopy.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo blas/HPL_dgemm.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+mpicc -DHAVE_CONFIG_H -I. -I../include  -I../../include   -O3 -fopenmp -march=znver3 -mtune=znver3 -I/home/hpc/aocl/5.1.0/gcc/include/blis -MT blas/HPL_dgemm.o -MD -MP -MF $depbase.Tpo -c -o blas/HPL_dgemm.o blas/HPL_dgemm.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo blas/HPL_dger.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+mpicc -DHAVE_CONFIG_H -I. -I../include  -I../../include   -O3 -fopenmp -march=znver3 -mtune=znver3 -I/home/hpc/aocl/5.1.0/gcc/include/blis -MT blas/HPL_dger.o -MD -MP -MF $depbase.Tpo -c -o blas/HPL_dger.o blas/HPL_dger.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo comm/HPL_sdrv.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+mpicc -DHAVE_CONFIG_H -I. -I../include  -I../../include   -O3 -fopenmp -march=znver3 -mtune=znver3 -I/home/hpc/aocl/5.1.0/gcc/include/blis -MT comm/HPL_sdrv.o -MD -MP -MF $depbase.Tpo -c -o comm/HPL_sdrv.o comm/HPL_sdrv.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo comm/HPL_send.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+mpicc -DHAVE_CONFIG_H -I. -I../include  -I../../include   -O3 -fopenmp -march=znver3 -mtune=znver3 -I/home/hpc/aocl/5.1.0/gcc/include/blis -MT comm/HPL_send.o -MD -MP -MF $depbase.Tpo -c -o comm/HPL_send.o comm/HPL_send.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo comm/HPL_recv.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+mpicc -DHAVE_CONFIG_H -I. -I../include  -I../../include   -O3 -fopenmp -march=znver3 -mtune=znver3 -I/home/hpc/aocl/5.1.0/gcc/include/blis -MT comm/HPL_recv.o -MD -MP -MF $depbase.Tpo -c -o comm/HPL_recv.o comm/HPL_recv.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo comm/HPL_bcast.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+mpicc -DHAVE_CONFIG_H -I. -I../include  -I../../include   -O3 -fopenmp -march=znver3 -mtune=znver3 -I/home/hpc/aocl/5.1.0/gcc/include/blis -MT comm/HPL_bcast.o -MD -MP -MF $depbase.Tpo -c -o comm/HPL_bcast.o comm/HPL_bcast.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo comm/HPL_binit.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+mpicc -DHAVE_CONFIG_H -I. -I../include  -I../../include   -O3 -fopenmp -march=znver3 -mtune=znver3 -I/home/hpc/aocl/5.1.0/gcc/include/blis -MT comm/HPL_binit.o -MD -MP -MF $depbase.Tpo -c -o comm/HPL_binit.o comm/HPL_binit.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo comm/HPL_bwait.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+mpicc -DHAVE_CONFIG_H -I. -I../include  -I../../include   -O3 -fopenmp -march=znver3 -mtune=znver3 -I/home/hpc/aocl/5.1.0/gcc/include/blis -MT comm/HPL_bwait.o -MD -MP -MF $depbase.Tpo -c -o comm/HPL_bwait.o comm/HPL_bwait.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo comm/HPL_blong.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+mpicc -DHAVE_CONFIG_H -I. -I../include  -I../../include   -O3 -fopenmp -march=znver3 -mtune=znver3 -I/home/hpc/aocl/5.1.0/gcc/include/blis -MT comm/HPL_blong.o -MD -MP -MF $depbase.Tpo -c -o comm/HPL_blong.o comm/HPL_blong.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo comm/HPL_1ring.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+mpicc -DHAVE_CONFIG_H -I. -I../include  -I../../include   -O3 -fopenmp -march=znver3 -mtune=znver3 -I/home/hpc/aocl/5.1.0/gcc/include/blis -MT comm/HPL_1ring.o -MD -MP -MF $depbase.Tpo -c -o comm/HPL_1ring.o comm/HPL_1ring.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo comm/HPL_1rinM.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+mpicc -DHAVE_CONFIG_H -I. -I../include  -I../../include   -O3 -fopenmp -march=znver3 -mtune=znver3 -I/home/hpc/aocl/5.1.0/gcc/include/blis -MT comm/HPL_1rinM.o -MD -MP -MF $depbase.Tpo -c -o comm/HPL_1rinM.o comm/HPL_1rinM.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo comm/HPL_2rinM.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+mpicc -DHAVE_CONFIG_H -I. -I../include  -I../../include   -O3 -fopenmp -march=znver3 -mtune=znver3 -I/home/hpc/aocl/5.1.0/gcc/include/blis -MT comm/HPL_2rinM.o -MD -MP -MF $depbase.Tpo -c -o comm/HPL_2rinM.o comm/HPL_2rinM.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo comm/HPL_2ring.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+mpicc -DHAVE_CONFIG_H -I. -I../include  -I../../include   -O3 -fopenmp -march=znver3 -mtune=znver3 -I/home/hpc/aocl/5.1.0/gcc/include/blis -MT comm/HPL_2ring.o -MD -MP -MF $depbase.Tpo -c -o comm/HPL_2ring.o comm/HPL_2ring.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo comm/HPL_blonM.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+mpicc -DHAVE_CONFIG_H -I. -I../include  -I../../include   -O3 -fopenmp -march=znver3 -mtune=znver3 -I/home/hpc/aocl/5.1.0/gcc/include/blis -MT comm/HPL_blonM.o -MD -MP -MF $depbase.Tpo -c -o comm/HPL_blonM.o comm/HPL_blonM.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo comm/HPL_packL.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+mpicc -DHAVE_CONFIG_H -I. -I../include  -I../../include   -O3 -fopenmp -march=znver3 -mtune=znver3 -I/home/hpc/aocl/5.1.0/gcc/include/blis -MT comm/HPL_packL.o -MD -MP -MF $depbase.Tpo -c -o comm/HPL_packL.o comm/HPL_packL.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo grid/HPL_reduce.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+mpicc -DHAVE_CONFIG_H -I. -I../include  -I../../include   -O3 -fopenmp -march=znver3 -mtune=znver3 -I/home/hpc/aocl/5.1.0/gcc/include/blis -MT grid/HPL_reduce.o -MD -MP -MF $depbase.Tpo -c -o grid/HPL_reduce.o grid/HPL_reduce.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo grid/HPL_sum.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+mpicc -DHAVE_CONFIG_H -I. -I../include  -I../../include   -O3 -fopenmp -march=znver3 -mtune=znver3 -I/home/hpc/aocl/5.1.0/gcc/include/blis -MT grid/HPL_sum.o -MD -MP -MF $depbase.Tpo -c -o grid/HPL_sum.o grid/HPL_sum.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo grid/HPL_grid_info.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+mpicc -DHAVE_CONFIG_H -I. -I../include  -I../../include   -O3 -fopenmp -march=znver3 -mtune=znver3 -I/home/hpc/aocl/5.1.0/gcc/include/blis -MT grid/HPL_grid_info.o -MD -MP -MF $depbase.Tpo -c -o grid/HPL_grid_info.o grid/HPL_grid_info.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo grid/HPL_grid_init.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+mpicc -DHAVE_CONFIG_H -I. -I../include  -I../../include   -O3 -fopenmp -march=znver3 -mtune=znver3 -I/home/hpc/aocl/5.1.0/gcc/include/blis -MT grid/HPL_grid_init.o -MD -MP -MF $depbase.Tpo -c -o grid/HPL_grid_init.o grid/HPL_grid_init.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo grid/HPL_all_reduce.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+mpicc -DHAVE_CONFIG_H -I. -I../include  -I../../include   -O3 -fopenmp -march=znver3 -mtune=znver3 -I/home/hpc/aocl/5.1.0/gcc/include/blis -MT grid/HPL_all_reduce.o -MD -MP -MF $depbase.Tpo -c -o grid/HPL_all_reduce.o grid/HPL_all_reduce.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo grid/HPL_broadcast.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+mpicc -DHAVE_CONFIG_H -I. -I../include  -I../../include   -O3 -fopenmp -march=znver3 -mtune=znver3 -I/home/hpc/aocl/5.1.0/gcc/include/blis -MT grid/HPL_broadcast.o -MD -MP -MF $depbase.Tpo -c -o grid/HPL_broadcast.o grid/HPL_broadcast.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo grid/HPL_grid_exit.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+mpicc -DHAVE_CONFIG_H -I. -I../include  -I../../include   -O3 -fopenmp -march=znver3 -mtune=znver3 -I/home/hpc/aocl/5.1.0/gcc/include/blis -MT grid/HPL_grid_exit.o -MD -MP -MF $depbase.Tpo -c -o grid/HPL_grid_exit.o grid/HPL_grid_exit.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo grid/HPL_max.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+mpicc -DHAVE_CONFIG_H -I. -I../include  -I../../include   -O3 -fopenmp -march=znver3 -mtune=znver3 -I/home/hpc/aocl/5.1.0/gcc/include/blis -MT grid/HPL_max.o -MD -MP -MF $depbase.Tpo -c -o grid/HPL_max.o grid/HPL_max.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo grid/HPL_min.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+mpicc -DHAVE_CONFIG_H -I. -I../include  -I../../include   -O3 -fopenmp -march=znver3 -mtune=znver3 -I/home/hpc/aocl/5.1.0/gcc/include/blis -MT grid/HPL_min.o -MD -MP -MF $depbase.Tpo -c -o grid/HPL_min.o grid/HPL_min.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo grid/HPL_barrier.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+mpicc -DHAVE_CONFIG_H -I. -I../include  -I../../include   -O3 -fopenmp -march=znver3 -mtune=znver3 -I/home/hpc/aocl/5.1.0/gcc/include/blis -MT grid/HPL_barrier.o -MD -MP -MF $depbase.Tpo -c -o grid/HPL_barrier.o grid/HPL_barrier.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo panel/HPL_pdpanel_disp.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+mpicc -DHAVE_CONFIG_H -I. -I../include  -I../../include   -O3 -fopenmp -march=znver3 -mtune=znver3 -I/home/hpc/aocl/5.1.0/gcc/include/blis -MT panel/HPL_pdpanel_disp.o -MD -MP -MF $depbase.Tpo -c -o panel/HPL_pdpanel_disp.o panel/HPL_pdpanel_disp.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo panel/HPL_pdpanel_free.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+mpicc -DHAVE_CONFIG_H -I. -I../include  -I../../include   -O3 -fopenmp -march=znver3 -mtune=znver3 -I/home/hpc/aocl/5.1.0/gcc/include/blis -MT panel/HPL_pdpanel_free.o -MD -MP -MF $depbase.Tpo -c -o panel/HPL_pdpanel_free.o panel/HPL_pdpanel_free.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo panel/HPL_pdpanel_init.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+mpicc -DHAVE_CONFIG_H -I. -I../include  -I../../include   -O3 -fopenmp -march=znver3 -mtune=znver3 -I/home/hpc/aocl/5.1.0/gcc/include/blis -MT panel/HPL_pdpanel_init.o -MD -MP -MF $depbase.Tpo -c -o panel/HPL_pdpanel_init.o panel/HPL_pdpanel_init.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo panel/HPL_pdpanel_new.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+mpicc -DHAVE_CONFIG_H -I. -I../include  -I../../include   -O3 -fopenmp -march=znver3 -mtune=znver3 -I/home/hpc/aocl/5.1.0/gcc/include/blis -MT panel/HPL_pdpanel_new.o -MD -MP -MF $depbase.Tpo -c -o panel/HPL_pdpanel_new.o panel/HPL_pdpanel_new.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo pauxil/HPL_pdlamch.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+mpicc -DHAVE_CONFIG_H -I. -I../include  -I../../include   -O3 -fopenmp -march=znver3 -mtune=znver3 -I/home/hpc/aocl/5.1.0/gcc/include/blis -MT pauxil/HPL_pdlamch.o -MD -MP -MF $depbase.Tpo -c -o pauxil/HPL_pdlamch.o pauxil/HPL_pdlamch.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo pauxil/HPL_pdlange.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+mpicc -DHAVE_CONFIG_H -I. -I../include  -I../../include   -O3 -fopenmp -march=znver3 -mtune=znver3 -I/home/hpc/aocl/5.1.0/gcc/include/blis -MT pauxil/HPL_pdlange.o -MD -MP -MF $depbase.Tpo -c -o pauxil/HPL_pdlange.o pauxil/HPL_pdlange.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo pauxil/HPL_indxg2p.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+mpicc -DHAVE_CONFIG_H -I. -I../include  -I../../include   -O3 -fopenmp -march=znver3 -mtune=znver3 -I/home/hpc/aocl/5.1.0/gcc/include/blis -MT pauxil/HPL_indxg2p.o -MD -MP -MF $depbase.Tpo -c -o pauxil/HPL_indxg2p.o pauxil/HPL_indxg2p.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo pauxil/HPL_numroc.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+mpicc -DHAVE_CONFIG_H -I. -I../include  -I../../include   -O3 -fopenmp -march=znver3 -mtune=znver3 -I/home/hpc/aocl/5.1.0/gcc/include/blis -MT pauxil/HPL_numroc.o -MD -MP -MF $depbase.Tpo -c -o pauxil/HPL_numroc.o pauxil/HPL_numroc.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo pauxil/HPL_numrocI.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+mpicc -DHAVE_CONFIG_H -I. -I../include  -I../../include   -O3 -fopenmp -march=znver3 -mtune=znver3 -I/home/hpc/aocl/5.1.0/gcc/include/blis -MT pauxil/HPL_numrocI.o -MD -MP -MF $depbase.Tpo -c -o pauxil/HPL_numrocI.o pauxil/HPL_numrocI.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo pauxil/HPL_dlaswp00N.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+mpicc -DHAVE_CONFIG_H -I. -I../include  -I../../include   -O3 -fopenmp -march=znver3 -mtune=znver3 -I/home/hpc/aocl/5.1.0/gcc/include/blis -MT pauxil/HPL_dlaswp00N.o -MD -MP -MF $depbase.Tpo -c -o pauxil/HPL_dlaswp00N.o pauxil/HPL_dlaswp00N.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo pauxil/HPL_dlaswp01N.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+mpicc -DHAVE_CONFIG_H -I. -I../include  -I../../include   -O3 -fopenmp -march=znver3 -mtune=znver3 -I/home/hpc/aocl/5.1.0/gcc/include/blis -MT pauxil/HPL_dlaswp01N.o -MD -MP -MF $depbase.Tpo -c -o pauxil/HPL_dlaswp01N.o pauxil/HPL_dlaswp01N.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo pauxil/HPL_dlaswp01T.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+mpicc -DHAVE_CONFIG_H -I. -I../include  -I../../include   -O3 -fopenmp -march=znver3 -mtune=znver3 -I/home/hpc/aocl/5.1.0/gcc/include/blis -MT pauxil/HPL_dlaswp01T.o -MD -MP -MF $depbase.Tpo -c -o pauxil/HPL_dlaswp01T.o pauxil/HPL_dlaswp01T.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo pauxil/HPL_dlaswp02N.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+mpicc -DHAVE_CONFIG_H -I. -I../include  -I../../include   -O3 -fopenmp -march=znver3 -mtune=znver3 -I/home/hpc/aocl/5.1.0/gcc/include/blis -MT pauxil/HPL_dlaswp02N.o -MD -MP -MF $depbase.Tpo -c -o pauxil/HPL_dlaswp02N.o pauxil/HPL_dlaswp02N.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo pauxil/HPL_dlaswp03N.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+mpicc -DHAVE_CONFIG_H -I. -I../include  -I../../include   -O3 -fopenmp -march=znver3 -mtune=znver3 -I/home/hpc/aocl/5.1.0/gcc/include/blis -MT pauxil/HPL_dlaswp03N.o -MD -MP -MF $depbase.Tpo -c -o pauxil/HPL_dlaswp03N.o pauxil/HPL_dlaswp03N.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo pauxil/HPL_dlaswp03T.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+mpicc -DHAVE_CONFIG_H -I. -I../include  -I../../include   -O3 -fopenmp -march=znver3 -mtune=znver3 -I/home/hpc/aocl/5.1.0/gcc/include/blis -MT pauxil/HPL_dlaswp03T.o -MD -MP -MF $depbase.Tpo -c -o pauxil/HPL_dlaswp03T.o pauxil/HPL_dlaswp03T.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo pauxil/HPL_dlaswp04N.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+mpicc -DHAVE_CONFIG_H -I. -I../include  -I../../include   -O3 -fopenmp -march=znver3 -mtune=znver3 -I/home/hpc/aocl/5.1.0/gcc/include/blis -MT pauxil/HPL_dlaswp04N.o -MD -MP -MF $depbase.Tpo -c -o pauxil/HPL_dlaswp04N.o pauxil/HPL_dlaswp04N.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo pauxil/HPL_dlaswp04T.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+mpicc -DHAVE_CONFIG_H -I. -I../include  -I../../include   -O3 -fopenmp -march=znver3 -mtune=znver3 -I/home/hpc/aocl/5.1.0/gcc/include/blis -MT pauxil/HPL_dlaswp04T.o -MD -MP -MF $depbase.Tpo -c -o pauxil/HPL_dlaswp04T.o pauxil/HPL_dlaswp04T.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo pauxil/HPL_dlaswp05N.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+mpicc -DHAVE_CONFIG_H -I. -I../include  -I../../include   -O3 -fopenmp -march=znver3 -mtune=znver3 -I/home/hpc/aocl/5.1.0/gcc/include/blis -MT pauxil/HPL_dlaswp05N.o -MD -MP -MF $depbase.Tpo -c -o pauxil/HPL_dlaswp05N.o pauxil/HPL_dlaswp05N.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo pauxil/HPL_dlaswp05T.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+mpicc -DHAVE_CONFIG_H -I. -I../include  -I../../include   -O3 -fopenmp -march=znver3 -mtune=znver3 -I/home/hpc/aocl/5.1.0/gcc/include/blis -MT pauxil/HPL_dlaswp05T.o -MD -MP -MF $depbase.Tpo -c -o pauxil/HPL_dlaswp05T.o pauxil/HPL_dlaswp05T.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo pauxil/HPL_dlaswp06N.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+mpicc -DHAVE_CONFIG_H -I. -I../include  -I../../include   -O3 -fopenmp -march=znver3 -mtune=znver3 -I/home/hpc/aocl/5.1.0/gcc/include/blis -MT pauxil/HPL_dlaswp06N.o -MD -MP -MF $depbase.Tpo -c -o pauxil/HPL_dlaswp06N.o pauxil/HPL_dlaswp06N.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo pauxil/HPL_dlaswp06T.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+mpicc -DHAVE_CONFIG_H -I. -I../include  -I../../include   -O3 -fopenmp -march=znver3 -mtune=znver3 -I/home/hpc/aocl/5.1.0/gcc/include/blis -MT pauxil/HPL_dlaswp06T.o -MD -MP -MF $depbase.Tpo -c -o pauxil/HPL_dlaswp06T.o pauxil/HPL_dlaswp06T.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo pauxil/HPL_infog2l.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+mpicc -DHAVE_CONFIG_H -I. -I../include  -I../../include   -O3 -fopenmp -march=znver3 -mtune=znver3 -I/home/hpc/aocl/5.1.0/gcc/include/blis -MT pauxil/HPL_infog2l.o -MD -MP -MF $depbase.Tpo -c -o pauxil/HPL_infog2l.o pauxil/HPL_infog2l.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo pauxil/HPL_dlaswp10N.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+mpicc -DHAVE_CONFIG_H -I. -I../include  -I../../include   -O3 -fopenmp -march=znver3 -mtune=znver3 -I/home/hpc/aocl/5.1.0/gcc/include/blis -MT pauxil/HPL_dlaswp10N.o -MD -MP -MF $depbase.Tpo -c -o pauxil/HPL_dlaswp10N.o pauxil/HPL_dlaswp10N.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo pauxil/HPL_pwarn.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+mpicc -DHAVE_CONFIG_H -I. -I../include  -I../../include   -O3 -fopenmp -march=znver3 -mtune=znver3 -I/home/hpc/aocl/5.1.0/gcc/include/blis -MT pauxil/HPL_pwarn.o -MD -MP -MF $depbase.Tpo -c -o pauxil/HPL_pwarn.o pauxil/HPL_pwarn.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo pfact/HPL_pdpanllN.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+mpicc -DHAVE_CONFIG_H -I. -I../include  -I../../include   -O3 -fopenmp -march=znver3 -mtune=znver3 -I/home/hpc/aocl/5.1.0/gcc/include/blis -MT pfact/HPL_pdpanllN.o -MD -MP -MF $depbase.Tpo -c -o pfact/HPL_pdpanllN.o pfact/HPL_pdpanllN.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo pfact/HPL_pdpanllT.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+mpicc -DHAVE_CONFIG_H -I. -I../include  -I../../include   -O3 -fopenmp -march=znver3 -mtune=znver3 -I/home/hpc/aocl/5.1.0/gcc/include/blis -MT pfact/HPL_pdpanllT.o -MD -MP -MF $depbase.Tpo -c -o pfact/HPL_pdpanllT.o pfact/HPL_pdpanllT.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo pfact/HPL_pdpanrlN.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+mpicc -DHAVE_CONFIG_H -I. -I../include  -I../../include   -O3 -fopenmp -march=znver3 -mtune=znver3 -I/home/hpc/aocl/5.1.0/gcc/include/blis -MT pfact/HPL_pdpanrlN.o -MD -MP -MF $depbase.Tpo -c -o pfact/HPL_pdpanrlN.o pfact/HPL_pdpanrlN.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo pfact/HPL_pdpanrlT.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+mpicc -DHAVE_CONFIG_H -I. -I../include  -I../../include   -O3 -fopenmp -march=znver3 -mtune=znver3 -I/home/hpc/aocl/5.1.0/gcc/include/blis -MT pfact/HPL_pdpanrlT.o -MD -MP -MF $depbase.Tpo -c -o pfact/HPL_pdpanrlT.o pfact/HPL_pdpanrlT.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo pfact/HPL_pdrpancrN.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+mpicc -DHAVE_CONFIG_H -I. -I../include  -I../../include   -O3 -fopenmp -march=znver3 -mtune=znver3 -I/home/hpc/aocl/5.1.0/gcc/include/blis -MT pfact/HPL_pdrpancrN.o -MD -MP -MF $depbase.Tpo -c -o pfact/HPL_pdrpancrN.o pfact/HPL_pdrpancrN.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo pfact/HPL_pdrpancrT.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+mpicc -DHAVE_CONFIG_H -I. -I../include  -I../../include   -O3 -fopenmp -march=znver3 -mtune=znver3 -I/home/hpc/aocl/5.1.0/gcc/include/blis -MT pfact/HPL_pdrpancrT.o -MD -MP -MF $depbase.Tpo -c -o pfact/HPL_pdrpancrT.o pfact/HPL_pdrpancrT.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo pfact/HPL_pdrpanllN.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+mpicc -DHAVE_CONFIG_H -I. -I../include  -I../../include   -O3 -fopenmp -march=znver3 -mtune=znver3 -I/home/hpc/aocl/5.1.0/gcc/include/blis -MT pfact/HPL_pdrpanllN.o -MD -MP -MF $depbase.Tpo -c -o pfact/HPL_pdrpanllN.o pfact/HPL_pdrpanllN.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo pfact/HPL_pdrpanllT.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+mpicc -DHAVE_CONFIG_H -I. -I../include  -I../../include   -O3 -fopenmp -march=znver3 -mtune=znver3 -I/home/hpc/aocl/5.1.0/gcc/include/blis -MT pfact/HPL_pdrpanllT.o -MD -MP -MF $depbase.Tpo -c -o pfact/HPL_pdrpanllT.o pfact/HPL_pdrpanllT.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo pfact/HPL_pdrpanrlN.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+mpicc -DHAVE_CONFIG_H -I. -I../include  -I../../include   -O3 -fopenmp -march=znver3 -mtune=znver3 -I/home/hpc/aocl/5.1.0/gcc/include/blis -MT pfact/HPL_pdrpanrlN.o -MD -MP -MF $depbase.Tpo -c -o pfact/HPL_pdrpanrlN.o pfact/HPL_pdrpanrlN.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo pfact/HPL_pdrpanrlT.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+mpicc -DHAVE_CONFIG_H -I. -I../include  -I../../include   -O3 -fopenmp -march=znver3 -mtune=znver3 -I/home/hpc/aocl/5.1.0/gcc/include/blis -MT pfact/HPL_pdrpanrlT.o -MD -MP -MF $depbase.Tpo -c -o pfact/HPL_pdrpanrlT.o pfact/HPL_pdrpanrlT.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo pfact/HPL_pdmxswp.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+mpicc -DHAVE_CONFIG_H -I. -I../include  -I../../include   -O3 -fopenmp -march=znver3 -mtune=znver3 -I/home/hpc/aocl/5.1.0/gcc/include/blis -MT pfact/HPL_pdmxswp.o -MD -MP -MF $depbase.Tpo -c -o pfact/HPL_pdmxswp.o pfact/HPL_pdmxswp.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo pfact/HPL_pdfact.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+mpicc -DHAVE_CONFIG_H -I. -I../include  -I../../include   -O3 -fopenmp -march=znver3 -mtune=znver3 -I/home/hpc/aocl/5.1.0/gcc/include/blis -MT pfact/HPL_pdfact.o -MD -MP -MF $depbase.Tpo -c -o pfact/HPL_pdfact.o pfact/HPL_pdfact.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo pfact/HPL_dlocmax.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+mpicc -DHAVE_CONFIG_H -I. -I../include  -I../../include   -O3 -fopenmp -march=znver3 -mtune=znver3 -I/home/hpc/aocl/5.1.0/gcc/include/blis -MT pfact/HPL_dlocmax.o -MD -MP -MF $depbase.Tpo -c -o pfact/HPL_dlocmax.o pfact/HPL_dlocmax.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo pfact/HPL_pdpancrT.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+mpicc -DHAVE_CONFIG_H -I. -I../include  -I../../include   -O3 -fopenmp -march=znver3 -mtune=znver3 -I/home/hpc/aocl/5.1.0/gcc/include/blis -MT pfact/HPL_pdpancrT.o -MD -MP -MF $depbase.Tpo -c -o pfact/HPL_pdpancrT.o pfact/HPL_pdpancrT.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo pfact/HPL_pdpancrN.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+mpicc -DHAVE_CONFIG_H -I. -I../include  -I../../include   -O3 -fopenmp -march=znver3 -mtune=znver3 -I/home/hpc/aocl/5.1.0/gcc/include/blis -MT pfact/HPL_pdpancrN.o -MD -MP -MF $depbase.Tpo -c -o pfact/HPL_pdpancrN.o pfact/HPL_pdpancrN.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo pfact/HPL_dlocswpN.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+mpicc -DHAVE_CONFIG_H -I. -I../include  -I../../include   -O3 -fopenmp -march=znver3 -mtune=znver3 -I/home/hpc/aocl/5.1.0/gcc/include/blis -MT pfact/HPL_dlocswpN.o -MD -MP -MF $depbase.Tpo -c -o pfact/HPL_dlocswpN.o pfact/HPL_dlocswpN.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo pfact/HPL_dlocswpT.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+mpicc -DHAVE_CONFIG_H -I. -I../include  -I../../include   -O3 -fopenmp -march=znver3 -mtune=znver3 -I/home/hpc/aocl/5.1.0/gcc/include/blis -MT pfact/HPL_dlocswpT.o -MD -MP -MF $depbase.Tpo -c -o pfact/HPL_dlocswpT.o pfact/HPL_dlocswpT.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo pauxil/HPL_pabort.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+mpicc -DHAVE_CONFIG_H -I. -I../include  -I../../include   -O3 -fopenmp -march=znver3 -mtune=znver3 -I/home/hpc/aocl/5.1.0/gcc/include/blis -MT pauxil/HPL_pabort.o -MD -MP -MF $depbase.Tpo -c -o pauxil/HPL_pabort.o pauxil/HPL_pabort.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo pgesv/HPL_pdgesv0.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+mpicc -DHAVE_CONFIG_H -I. -I../include  -I../../include   -O3 -fopenmp -march=znver3 -mtune=znver3 -I/home/hpc/aocl/5.1.0/gcc/include/blis -MT pgesv/HPL_pdgesv0.o -MD -MP -MF $depbase.Tpo -c -o pgesv/HPL_pdgesv0.o pgesv/HPL_pdgesv0.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo pgesv/HPL_pdgesv.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+mpicc -DHAVE_CONFIG_H -I. -I../include  -I../../include   -O3 -fopenmp -march=znver3 -mtune=znver3 -I/home/hpc/aocl/5.1.0/gcc/include/blis -MT pgesv/HPL_pdgesv.o -MD -MP -MF $depbase.Tpo -c -o pgesv/HPL_pdgesv.o pgesv/HPL_pdgesv.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo pgesv/HPL_pdgesvK1.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+mpicc -DHAVE_CONFIG_H -I. -I../include  -I../../include   -O3 -fopenmp -march=znver3 -mtune=znver3 -I/home/hpc/aocl/5.1.0/gcc/include/blis -MT pgesv/HPL_pdgesvK1.o -MD -MP -MF $depbase.Tpo -c -o pgesv/HPL_pdgesvK1.o pgesv/HPL_pdgesvK1.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo pgesv/HPL_pdgesvK2.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+mpicc -DHAVE_CONFIG_H -I. -I../include  -I../../include   -O3 -fopenmp -march=znver3 -mtune=znver3 -I/home/hpc/aocl/5.1.0/gcc/include/blis -MT pgesv/HPL_pdgesvK2.o -MD -MP -MF $depbase.Tpo -c -o pgesv/HPL_pdgesvK2.o pgesv/HPL_pdgesvK2.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo pgesv/HPL_pdupdateNN.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+mpicc -DHAVE_CONFIG_H -I. -I../include  -I../../include   -O3 -fopenmp -march=znver3 -mtune=znver3 -I/home/hpc/aocl/5.1.0/gcc/include/blis -MT pgesv/HPL_pdupdateNN.o -MD -MP -MF $depbase.Tpo -c -o pgesv/HPL_pdupdateNN.o pgesv/HPL_pdupdateNN.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo pgesv/HPL_pdupdateNT.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+mpicc -DHAVE_CONFIG_H -I. -I../include  -I../../include   -O3 -fopenmp -march=znver3 -mtune=znver3 -I/home/hpc/aocl/5.1.0/gcc/include/blis -MT pgesv/HPL_pdupdateNT.o -MD -MP -MF $depbase.Tpo -c -o pgesv/HPL_pdupdateNT.o pgesv/HPL_pdupdateNT.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo pgesv/HPL_pdupdateTN.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+mpicc -DHAVE_CONFIG_H -I. -I../include  -I../../include   -O3 -fopenmp -march=znver3 -mtune=znver3 -I/home/hpc/aocl/5.1.0/gcc/include/blis -MT pgesv/HPL_pdupdateTN.o -MD -MP -MF $depbase.Tpo -c -o pgesv/HPL_pdupdateTN.o pgesv/HPL_pdupdateTN.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo pgesv/HPL_pdupdateTT.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+mpicc -DHAVE_CONFIG_H -I. -I../include  -I../../include   -O3 -fopenmp -march=znver3 -mtune=znver3 -I/home/hpc/aocl/5.1.0/gcc/include/blis -MT pgesv/HPL_pdupdateTT.o -MD -MP -MF $depbase.Tpo -c -o pgesv/HPL_pdupdateTT.o pgesv/HPL_pdupdateTT.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo pgesv/HPL_equil.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+mpicc -DHAVE_CONFIG_H -I. -I../include  -I../../include   -O3 -fopenmp -march=znver3 -mtune=znver3 -I/home/hpc/aocl/5.1.0/gcc/include/blis -MT pgesv/HPL_equil.o -MD -MP -MF $depbase.Tpo -c -o pgesv/HPL_equil.o pgesv/HPL_equil.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo pgesv/HPL_pipid.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+mpicc -DHAVE_CONFIG_H -I. -I../include  -I../../include   -O3 -fopenmp -march=znver3 -mtune=znver3 -I/home/hpc/aocl/5.1.0/gcc/include/blis -MT pgesv/HPL_pipid.o -MD -MP -MF $depbase.Tpo -c -o pgesv/HPL_pipid.o pgesv/HPL_pipid.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo pgesv/HPL_plindx0.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+mpicc -DHAVE_CONFIG_H -I. -I../include  -I../../include   -O3 -fopenmp -march=znver3 -mtune=znver3 -I/home/hpc/aocl/5.1.0/gcc/include/blis -MT pgesv/HPL_plindx0.o -MD -MP -MF $depbase.Tpo -c -o pgesv/HPL_plindx0.o pgesv/HPL_plindx0.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo pgesv/HPL_plindx10.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+mpicc -DHAVE_CONFIG_H -I. -I../include  -I../../include   -O3 -fopenmp -march=znver3 -mtune=znver3 -I/home/hpc/aocl/5.1.0/gcc/include/blis -MT pgesv/HPL_plindx10.o -MD -MP -MF $depbase.Tpo -c -o pgesv/HPL_plindx10.o pgesv/HPL_plindx10.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo pgesv/HPL_plindx1.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+mpicc -DHAVE_CONFIG_H -I. -I../include  -I../../include   -O3 -fopenmp -march=znver3 -mtune=znver3 -I/home/hpc/aocl/5.1.0/gcc/include/blis -MT pgesv/HPL_plindx1.o -MD -MP -MF $depbase.Tpo -c -o pgesv/HPL_plindx1.o pgesv/HPL_plindx1.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo pgesv/HPL_rollN.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+mpicc -DHAVE_CONFIG_H -I. -I../include  -I../../include   -O3 -fopenmp -march=znver3 -mtune=znver3 -I/home/hpc/aocl/5.1.0/gcc/include/blis -MT pgesv/HPL_rollN.o -MD -MP -MF $depbase.Tpo -c -o pgesv/HPL_rollN.o pgesv/HPL_rollN.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo pgesv/HPL_rollT.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+mpicc -DHAVE_CONFIG_H -I. -I../include  -I../../include   -O3 -fopenmp -march=znver3 -mtune=znver3 -I/home/hpc/aocl/5.1.0/gcc/include/blis -MT pgesv/HPL_rollT.o -MD -MP -MF $depbase.Tpo -c -o pgesv/HPL_rollT.o pgesv/HPL_rollT.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo pgesv/HPL_spreadN.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+mpicc -DHAVE_CONFIG_H -I. -I../include  -I../../include   -O3 -fopenmp -march=znver3 -mtune=znver3 -I/home/hpc/aocl/5.1.0/gcc/include/blis -MT pgesv/HPL_spreadN.o -MD -MP -MF $depbase.Tpo -c -o pgesv/HPL_spreadN.o pgesv/HPL_spreadN.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo pgesv/HPL_spreadT.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+mpicc -DHAVE_CONFIG_H -I. -I../include  -I../../include   -O3 -fopenmp -march=znver3 -mtune=znver3 -I/home/hpc/aocl/5.1.0/gcc/include/blis -MT pgesv/HPL_spreadT.o -MD -MP -MF $depbase.Tpo -c -o pgesv/HPL_spreadT.o pgesv/HPL_spreadT.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo pgesv/HPL_pdlaswp00N.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+mpicc -DHAVE_CONFIG_H -I. -I../include  -I../../include   -O3 -fopenmp -march=znver3 -mtune=znver3 -I/home/hpc/aocl/5.1.0/gcc/include/blis -MT pgesv/HPL_pdlaswp00N.o -MD -MP -MF $depbase.Tpo -c -o pgesv/HPL_pdlaswp00N.o pgesv/HPL_pdlaswp00N.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo pgesv/HPL_pdlaswp00T.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+mpicc -DHAVE_CONFIG_H -I. -I../include  -I../../include   -O3 -fopenmp -march=znver3 -mtune=znver3 -I/home/hpc/aocl/5.1.0/gcc/include/blis -MT pgesv/HPL_pdlaswp00T.o -MD -MP -MF $depbase.Tpo -c -o pgesv/HPL_pdlaswp00T.o pgesv/HPL_pdlaswp00T.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo pgesv/HPL_pdlaswp01N.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+mpicc -DHAVE_CONFIG_H -I. -I../include  -I../../include   -O3 -fopenmp -march=znver3 -mtune=znver3 -I/home/hpc/aocl/5.1.0/gcc/include/blis -MT pgesv/HPL_pdlaswp01N.o -MD -MP -MF $depbase.Tpo -c -o pgesv/HPL_pdlaswp01N.o pgesv/HPL_pdlaswp01N.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo pgesv/HPL_pdlaswp01T.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+mpicc -DHAVE_CONFIG_H -I. -I../include  -I../../include   -O3 -fopenmp -march=znver3 -mtune=znver3 -I/home/hpc/aocl/5.1.0/gcc/include/blis -MT pgesv/HPL_pdlaswp01T.o -MD -MP -MF $depbase.Tpo -c -o pgesv/HPL_pdlaswp01T.o pgesv/HPL_pdlaswp01T.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo pgesv/HPL_pdtrsv.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+mpicc -DHAVE_CONFIG_H -I. -I../include  -I../../include   -O3 -fopenmp -march=znver3 -mtune=znver3 -I/home/hpc/aocl/5.1.0/gcc/include/blis -MT pgesv/HPL_pdtrsv.o -MD -MP -MF $depbase.Tpo -c -o pgesv/HPL_pdtrsv.o pgesv/HPL_pdtrsv.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo pgesv/HPL_logsort.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+mpicc -DHAVE_CONFIG_H -I. -I../include  -I../../include   -O3 -fopenmp -march=znver3 -mtune=znver3 -I/home/hpc/aocl/5.1.0/gcc/include/blis -MT pgesv/HPL_logsort.o -MD -MP -MF $depbase.Tpo -c -o pgesv/HPL_logsort.o pgesv/HPL_logsort.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo pgesv/HPL_perm.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+mpicc -DHAVE_CONFIG_H -I. -I../include  -I../../include   -O3 -fopenmp -march=znver3 -mtune=znver3 -I/home/hpc/aocl/5.1.0/gcc/include/blis -MT pgesv/HPL_perm.o -MD -MP -MF $depbase.Tpo -c -o pgesv/HPL_perm.o pgesv/HPL_perm.c &&\
+mv -f $depbase.Tpo $depbase.Po
+rm -f libhpl.a
+ar cru libhpl.a auxil/HPL_dlatcpy.o auxil/HPL_fprintf.o auxil/HPL_dlacpy.o auxil/HPL_dlamch.o blas/HPL_dscal.o blas/HPL_dtrsm.o blas/HPL_dtrsv.o blas/HPL_idamax.o blas/HPL_dgemv.o blas/HPL_dscal.o blas/HPL_daxpy.o blas/HPL_dcopy.o blas/HPL_dgemm.o blas/HPL_dgemv.o blas/HPL_dger.o comm/HPL_sdrv.o comm/HPL_send.o comm/HPL_recv.o comm/HPL_bcast.o comm/HPL_binit.o comm/HPL_bwait.o comm/HPL_blong.o comm/HPL_1ring.o comm/HPL_1rinM.o comm/HPL_2rinM.o comm/HPL_2ring.o comm/HPL_blonM.o comm/HPL_packL.o grid/HPL_reduce.o grid/HPL_sum.o grid/HPL_grid_info.o grid/HPL_grid_init.o grid/HPL_all_reduce.o grid/HPL_broadcast.o grid/HPL_grid_exit.o grid/HPL_max.o grid/HPL_min.o grid/HPL_all_reduce.o grid/HPL_barrier.o panel/HPL_pdpanel_disp.o panel/HPL_pdpanel_free.o panel/HPL_pdpanel_init.o panel/HPL_pdpanel_new.o pauxil/HPL_pdlamch.o pauxil/HPL_pdlange.o pauxil/HPL_indxg2p.o pauxil/HPL_numroc.o pauxil/HPL_numrocI.o pauxil/HPL_numrocI.o pauxil/HPL_dlaswp00N.o pauxil/HPL_dlaswp01N.o pauxil/HPL_dlaswp01T.o pauxil/HPL_dlaswp02N.o pauxil/HPL_dlaswp03N.o pauxil/HPL_dlaswp03T.o pauxil/HPL_dlaswp04N.o pauxil/HPL_dlaswp04T.o pauxil/HPL_dlaswp05N.o pauxil/HPL_dlaswp05T.o pauxil/HPL_dlaswp06N.o pauxil/HPL_dlaswp06T.o pauxil/HPL_infog2l.o pauxil/HPL_dlaswp10N.o pauxil/HPL_pwarn.o pfact/HPL_pdpanllN.o pfact/HPL_pdpanllT.o pfact/HPL_pdpanrlN.o pfact/HPL_pdpanrlT.o pfact/HPL_pdrpancrN.o pfact/HPL_pdrpancrT.o pfact/HPL_pdrpanllN.o pfact/HPL_pdrpanllT.o pfact/HPL_pdrpanrlN.o pfact/HPL_pdrpanrlT.o pfact/HPL_pdmxswp.o pfact/HPL_pdfact.o pfact/HPL_dlocmax.o pfact/HPL_pdpancrT.o pfact/HPL_pdpancrN.o pfact/HPL_dlocmax.o pfact/HPL_dlocswpN.o pfact/HPL_dlocswpT.o pfact/HPL_pdmxswp.o pfact/HPL_pdpanllN.o pfact/HPL_pdpanllT.o pfact/HPL_pdpanrlN.o pfact/HPL_pdpanrlT.o pfact/HPL_pdrpancrN.o pfact/HPL_pdrpancrT.o pfact/HPL_pdrpanllN.o pfact/HPL_pdrpanllT.o pfact/HPL_pdrpanrlN.o pfact/HPL_pdrpanrlT.o pauxil/HPL_pabort.o pauxil/HPL_pdlamch.o pgesv/HPL_pdgesv0.o pgesv/HPL_pdgesv.o pgesv/HPL_pdgesvK1.o pgesv/HPL_pdgesvK2.o pgesv/HPL_pdupdateNN.o pgesv/HPL_pdupdateNT.o pgesv/HPL_pdupdateTN.o pgesv/HPL_pdupdateTT.o pgesv/HPL_equil.o pgesv/HPL_pipid.o pgesv/HPL_plindx0.o pgesv/HPL_plindx10.o pgesv/HPL_plindx1.o pgesv/HPL_plindx10.o pgesv/HPL_rollN.o pgesv/HPL_rollT.o pgesv/HPL_spreadN.o pgesv/HPL_spreadT.o pgesv/HPL_pdgesv0.o pgesv/HPL_pdgesv.o pgesv/HPL_pdgesvK1.o pgesv/HPL_pdgesvK2.o pgesv/HPL_pdgesv0.o pgesv/HPL_pdgesvK2.o pgesv/HPL_pdlaswp00N.o pgesv/HPL_pdlaswp00T.o pgesv/HPL_pdlaswp01N.o pgesv/HPL_pdlaswp01T.o pgesv/HPL_pdtrsv.o pgesv/HPL_pdupdateNN.o pgesv/HPL_pdupdateNT.o pgesv/HPL_pdupdateTN.o pgesv/HPL_pdupdateTT.o pgesv/HPL_logsort.o pgesv/HPL_perm.o 
+ranlib libhpl.a
+make[1]: Leaving directory '/home/hpc/hpl-2.3/src'
+Making all in testing
+make[1]: Entering directory '/home/hpc/hpl-2.3/testing'
+depbase=`echo matgen/HPL_jumpit.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+mpicc -DHAVE_CONFIG_H -I. -I../include  -I../include   -O3 -fopenmp -march=znver3 -mtune=znver3 -I/home/hpc/aocl/5.1.0/gcc/include/blis -MT matgen/HPL_jumpit.o -MD -MP -MF $depbase.Tpo -c -o matgen/HPL_jumpit.o matgen/HPL_jumpit.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo matgen/HPL_rand.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+mpicc -DHAVE_CONFIG_H -I. -I../include  -I../include   -O3 -fopenmp -march=znver3 -mtune=znver3 -I/home/hpc/aocl/5.1.0/gcc/include/blis -MT matgen/HPL_rand.o -MD -MP -MF $depbase.Tpo -c -o matgen/HPL_rand.o matgen/HPL_rand.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo matgen/HPL_setran.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+mpicc -DHAVE_CONFIG_H -I. -I../include  -I../include   -O3 -fopenmp -march=znver3 -mtune=znver3 -I/home/hpc/aocl/5.1.0/gcc/include/blis -MT matgen/HPL_setran.o -MD -MP -MF $depbase.Tpo -c -o matgen/HPL_setran.o matgen/HPL_setran.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo matgen/HPL_xjumpm.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+mpicc -DHAVE_CONFIG_H -I. -I../include  -I../include   -O3 -fopenmp -march=znver3 -mtune=znver3 -I/home/hpc/aocl/5.1.0/gcc/include/blis -MT matgen/HPL_xjumpm.o -MD -MP -MF $depbase.Tpo -c -o matgen/HPL_xjumpm.o matgen/HPL_xjumpm.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo matgen/HPL_lmul.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+mpicc -DHAVE_CONFIG_H -I. -I../include  -I../include   -O3 -fopenmp -march=znver3 -mtune=znver3 -I/home/hpc/aocl/5.1.0/gcc/include/blis -MT matgen/HPL_lmul.o -MD -MP -MF $depbase.Tpo -c -o matgen/HPL_lmul.o matgen/HPL_lmul.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo matgen/HPL_ladd.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+mpicc -DHAVE_CONFIG_H -I. -I../include  -I../include   -O3 -fopenmp -march=znver3 -mtune=znver3 -I/home/hpc/aocl/5.1.0/gcc/include/blis -MT matgen/HPL_ladd.o -MD -MP -MF $depbase.Tpo -c -o matgen/HPL_ladd.o matgen/HPL_ladd.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo pmatgen/HPL_pdmatgen.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+mpicc -DHAVE_CONFIG_H -I. -I../include  -I../include   -O3 -fopenmp -march=znver3 -mtune=znver3 -I/home/hpc/aocl/5.1.0/gcc/include/blis -MT pmatgen/HPL_pdmatgen.o -MD -MP -MF $depbase.Tpo -c -o pmatgen/HPL_pdmatgen.o pmatgen/HPL_pdmatgen.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo ptest/HPL_pddriver.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+mpicc -DHAVE_CONFIG_H -I. -I../include  -I../include   -O3 -fopenmp -march=znver3 -mtune=znver3 -I/home/hpc/aocl/5.1.0/gcc/include/blis -MT ptest/HPL_pddriver.o -MD -MP -MF $depbase.Tpo -c -o ptest/HPL_pddriver.o ptest/HPL_pddriver.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo ptest/HPL_pdinfo.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+mpicc -DHAVE_CONFIG_H -I. -I../include  -I../include   -O3 -fopenmp -march=znver3 -mtune=znver3 -I/home/hpc/aocl/5.1.0/gcc/include/blis -MT ptest/HPL_pdinfo.o -MD -MP -MF $depbase.Tpo -c -o ptest/HPL_pdinfo.o ptest/HPL_pdinfo.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo ptest/HPL_pdtest.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+mpicc -DHAVE_CONFIG_H -I. -I../include  -I../include   -O3 -fopenmp -march=znver3 -mtune=znver3 -I/home/hpc/aocl/5.1.0/gcc/include/blis -MT ptest/HPL_pdtest.o -MD -MP -MF $depbase.Tpo -c -o ptest/HPL_pdtest.o ptest/HPL_pdtest.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo ptimer/HPL_ptimer.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+mpicc -DHAVE_CONFIG_H -I. -I../include  -I../include   -O3 -fopenmp -march=znver3 -mtune=znver3 -I/home/hpc/aocl/5.1.0/gcc/include/blis -MT ptimer/HPL_ptimer.o -MD -MP -MF $depbase.Tpo -c -o ptimer/HPL_ptimer.o ptimer/HPL_ptimer.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo ptimer/HPL_ptimer_cputime.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+mpicc -DHAVE_CONFIG_H -I. -I../include  -I../include   -O3 -fopenmp -march=znver3 -mtune=znver3 -I/home/hpc/aocl/5.1.0/gcc/include/blis -MT ptimer/HPL_ptimer_cputime.o -MD -MP -MF $depbase.Tpo -c -o ptimer/HPL_ptimer_cputime.o ptimer/HPL_ptimer_cputime.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo ptimer/HPL_ptimer_walltime.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+mpicc -DHAVE_CONFIG_H -I. -I../include  -I../include   -O3 -fopenmp -march=znver3 -mtune=znver3 -I/home/hpc/aocl/5.1.0/gcc/include/blis -MT ptimer/HPL_ptimer_walltime.o -MD -MP -MF $depbase.Tpo -c -o ptimer/HPL_ptimer_walltime.o ptimer/HPL_ptimer_walltime.c &&\
+mv -f $depbase.Tpo $depbase.Po
+mpicc  -O3 -fopenmp -march=znver3 -mtune=znver3 -I/home/hpc/aocl/5.1.0/gcc/include/blis  -Wl,-rpath,/home/hpc/aocl/5.1.0/gcc/lib -L/home/hpc/aocl/5.1.0/gcc/lib -o xhpl matgen/HPL_jumpit.o matgen/HPL_rand.o matgen/HPL_setran.o matgen/HPL_xjumpm.o matgen/HPL_lmul.o matgen/HPL_ladd.o pmatgen/HPL_pdmatgen.o ptest/HPL_pddriver.o ptest/HPL_pdinfo.o ptest/HPL_pdtest.o ptimer/HPL_ptimer.o ptimer/HPL_ptimer_cputime.o ptimer/HPL_ptimer_walltime.o ../src/libhpl.a 
+make[1]: Leaving directory '/home/hpc/hpl-2.3/testing'
+make: Leaving directory '/home/hpc/hpl-2.3'
