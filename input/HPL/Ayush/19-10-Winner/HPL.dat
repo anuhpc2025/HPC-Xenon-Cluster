@@ -3,9 +3,9 @@ Optimized for 4-node AMD EPYC 7313 cluster
 HPL.out      output file name (if any)  
 6            device out (6=stdout, 7=stderr, file)  
 1            # of problems sizes (N)  
-524288       Ns (matrix size N)  
+503296       Ns (matrix size N)  
 1            # of NBs  
-384          NBs (block size)  
+256          NBs (block size)  
 0            PMAP process mapping (0=Row-,1=Column-major)  
 1            # of process grids (P x Q)  
 8            Ps (process rows)  
