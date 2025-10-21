@@ -1,0 +1,31 @@
+HPLinpack benchmark input file  
+Optimized for 4-node AMD EPYC 7313 cluster  
+HPL.out      output file name (if any)  
+6            device out (6=stdout, 7=stderr, file)  
+1            # of problems sizes (N)  
+431104       Ns (matrix size N)  
+1            # of NBs  
+256          NBs (block size)  
+0            PMAP process mapping (0=Row-,1=Column-major)  
+1            # of process grids (P x Q)  
+8            Ps (process rows)  
+16           Qs (process cols)  
+16.0         threshold (residual check)  
+1            # of panel factorizations to try  
+1            PFACT (0=Left, 1=Crout, 2=Right)  
+1            # of recursive stopping criteria  
+4            NBMIN (min block size)  
+1            # of panels in recursion  
+2            NDIV (number of sub-panels)  
+1            # of recursive panel factorizations to try  
+1            RFACT (0=Left, 1=Crout, 2=Right)  
+1            # of broadcast methods to try  
+3            BCAST (0=1rg,1=1rM,2=2rg,3=2rM,4=Long,5=LnM)  
+1            # of lookahead depths to try  
+0            DEPTH (lookahead depth)  
+2            SWAP (0=bin-exch,1=long,2=mix)  
+64           swapping threshold  
+0            L1 in (0=transposed,1=no-transposed) form  
+0            U  in (0=transposed,1=no-transposed) form  
+1            Equilibration (0=no,1=yes)  
+8            memory alignment in double (> 0)
