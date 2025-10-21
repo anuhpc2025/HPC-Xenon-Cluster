@@ -337,68 +337,90 @@ function parseSbatch(shRaw) {
 
 // CPU HPL out parser
 function parseOutCpu(raw) {
-    const lines = raw.split(/\r?\n/);
-    const runs = [];
-    let cur = null;
+  const lines = raw.split(/\r?\n/);
+  const runs = [];
+  let cur = null;
 
-    const tvRe =
-        /^\s*([A-Z]{2}[^\s]*)\s+(\d+)\s+(\d+)\s+(\d+)\s+(\d+)\s+([0-9.]+)\s+([0-9.eE+\-]+)/;
+  // Flexible run line matcher:
+  //  - optional SWP column between T/V and N
+  //  - supports various spacing & E-notation floats
+  const tvRe =
+    /^\s*([A-Z]{2}\S*)\s+(?:\S+\s+)?(\d+)\s+(\d+)\s+(\d+)\s+(\d+)\s+([0-9.]+)\s+([0-9.eE+\-]+)/;
 
-    for (let i = 0; i < lines.length; i++) {
-        const l = lines[i];
+  for (let i = 0; i < lines.length; i++) {
+    const l = lines[i];
 
-        const m = l.match(tvRe);
-        if (m) {
-            if (cur) runs.push(cur);
-            cur = {
-                tv: m[1],
-                N: Number(m[2]),
-                NB: Number(m[3]),
-                P: Number(m[4]),
-                Q: Number(m[5]),
-                timeSec: Number(m[6]),
-                gflops: Number(m[7]),
-                startTime: null,
-                endTime: null,
-                residual: null,
-                residualPassed: null,
-            };
-            continue;
-        }
-
-        if (cur) {
-            const s = l.match(/HPL_pdgesv\(\)\s+start time\s+(.+)/);
-            if (s) cur.startTime = s[1].trim();
-            const e = l.match(/HPL_pdgesv\(\)\s+end time\s+(.+)/);
-            if (e) cur.endTime = e[1].trim();
-            const r = l.match(
-                /\|\|Ax-b\|\|_oo.*=\s*([0-9.eE+\-]+).*?(PASSED|FAILED)/
-            );
-            if (r) {
-                cur.residual = Number(r[1]);
-                cur.residualPassed = r[2] === "PASSED";
-            }
-        }
-    }
-    if (cur) runs.push(cur);
-
-    const summary = {
-        testsTotal: null,
-        testsPassed: null,
-        testsFailed: null,
-        testsSkipped: null,
-    };
-    const m = raw.match(
-        /Finished\s+(\d+)\s+tests[\s\S]*?(\d+)\s+tests completed and passed[\s\S]*?(\d+)\s+tests completed and failed[\s\S]*?(\d+)\s+tests skipped/i
-    );
+    const m = l.match(tvRe);
     if (m) {
-        summary.testsTotal = Number(m[1]);
-        summary.testsPassed = Number(m[2]);
-        summary.testsFailed = Number(m[3]);
-        summary.testsSkipped = Number(m[4]);
+      // shift indexes depending on optional "SWP"
+      // The pattern above tolerates an optional unknown token,
+      // so indices 2..7 are always numeric columns
+      if (cur) runs.push(cur);
+      cur = {
+        tv: m[1],
+        N: Number(m[2]),
+        NB: Number(m[3]),
+        P: Number(m[4]),
+        Q: Number(m[5]),
+        timeSec: Number(m[6]),
+        gflops: Number(m[7]),
+        startTime: null,
+        endTime: null,
+        residual: null,
+        residualPassed: null,
+      };
+      continue;
     }
 
-    return { runs, summary };
+    if (cur) {
+      const s = l.match(/HPL_pdgesv\(\)\s+start time\s+(.+)/);
+      if (s) cur.startTime = s[1].trim();
+      const e = l.match(/HPL_pdgesv\(\)\s+end time\s+(.+)/);
+      if (e) cur.endTime = e[1].trim();
+      const r = l.match(
+        /\|\|Ax-b\|\|_oo.*=\s*([0-9.eE+\-]+).*?(PASSED|FAILED)/i
+      );
+      if (r) {
+        cur.residual = Number(r[1]);
+        cur.residualPassed = r[2].toUpperCase() === "PASSED";
+      }
+    }
+  }
+  if (cur) runs.push(cur);
+
+  // Summary extraction (still compatible with old format)
+  const summary = {
+    testsTotal: null,
+    testsPassed: null,
+    testsFailed: null,
+    testsSkipped: null,
+  };
+  
+  // AOCL and standard variants both use a similar summary wording
+  const m = raw.match(
+    /Finished\s+(\d+)\s+tests[\s\S]*?(\d+)\s+tests\s+completed\s+and\s+passed[\s\S]*?(\d+)\s+tests\s+completed\s+and\s+failed[\s\S]*?(\d+)\s+tests\s+skipped/i
+  );
+  if (m) {
+    summary.testsTotal = Number(m[1]);
+    summary.testsPassed = Number(m[2]);
+    summary.testsFailed = Number(m[3]);
+    summary.testsSkipped = Number(m[4]);
+  } else {
+    // fallback for AOCL phrasing like:
+    // "18 tests completed and passed residual checks"
+    const aocl = raw.match(
+      /(\d+)\s+tests\s+completed\s+and\s+passed\s+residual[\s\S]*?(\d+)\s+tests\s+completed\s+and\s+failed[\s\S]*?(\d+)\s+tests\s+skipped/i
+    );
+    if (aocl) {
+      summary.testsTotal =
+        Number(aocl[1]) + Number(aocl[2]) + Number(aocl[3]);
+      summary.testsPassed = Number(aocl[1]);
+      summary.testsFailed = Number(aocl[2]);
+      summary.testsSkipped = Number(aocl[3]);
+    }
+  }
+
+  return { runs, summary };
 }
 
 // NVIDIA HPL out parser
