@@ -1,0 +1,82 @@
+{
+  "id": "HPL/Ayush/22-10-1",
+  "suite": "HPL",
+  "group": "Ayush",
+  "run": "22-10-1",
+  "dat": {
+    "raw": "HPLinpack benchmark input file  \nOptimized for 4-node AMD EPYC 7313 cluster  \nHPL.out      output file name (if any)  \n6            device out (6=stdout, 7=stderr, file)  \n1            # of problems sizes (N)  \n430080       Ns (matrix size N)  \n1            # of NBs  \n240          NBs (block size)  \n0            PMAP process mapping (0=Row-,1=Column-major)  \n1            # of process grids (P x Q)  \n8            Ps (process rows)  \n16           Qs (process cols)  \n16.0         threshold (residual check)  \n1            # of panel factorizations to try  \n1            PFACT (0=Left, 1=Crout, 2=Right)  \n1            # of recursive stopping criteria  \n4            NBMIN (min block size)  \n1            # of panels in recursion  \n2            NDIV (number of sub-panels)  \n1            # of recursive panel factorizations to try  \n1            RFACT (0=Left, 1=Crout, 2=Right)  \n1            # of broadcast methods to try  \n2            BCAST (0=1rg,1=1rM,2=2rg,3=2rM,4=Long,5=LnM)  \n1            # of lookahead depths to try  \n0            DEPTH (lookahead depth)  \n2            SWAP (0=bin-exch,1=long,2=mix)  \n64           swapping threshold  \n0            L1 in (0=transposed,1=no-transposed) form  \n0            U  in (0=transposed,1=no-transposed) form  \n1            Equilibration (0=no,1=yes)  \n8            memory alignment in double (> 0)\n",
+    "parsed": {
+      "header": [
+        "HPLinpack benchmark input file",
+        "Optimized for 4-node AMD EPYC 7313 cluster"
+      ],
+      "outputFilename": "HPL.out",
+      "deviceOut": 6,
+      "numProblemSizes": 1,
+      "Ns": [
+        430080
+      ],
+      "numNBs": 1,
+      "NBs": [
+        240
+      ],
+      "pmap": 0,
+      "numGrids": 1,
+      "Ps": [
+        8
+      ],
+      "Qs": [
+        16
+      ],
+      "threshold": 16,
+      "numPFACT": 1,
+      "PFACTs": [],
+      "numNBMIN": null,
+      "NBMINs": [],
+      "numPanelsInRecursion": 1,
+      "NDIVs": [],
+      "numRFACT": 1,
+      "RFACTs": [],
+      "numBCAST": 1,
+      "BCASTs": [],
+      "numDEPTH": 1,
+      "DEPTHs": [],
+      "swapMode": 2,
+      "swapThreshold": 64,
+      "L1": 0,
+      "U": 0,
+      "equilibration": 1,
+      "memoryAlignment": 8
+    },
+    "path": "/raw/HPL/Ayush/22-10-1/HPL.dat"
+  },
+  "job": {
+    "filename": "run.sh",
+    "raw": "#!/bin/bash\n#SBATCH --job-name=hpl-test       # Job name\n#SBATCH --ntasks=128              # Total MPI tasks\n#SBATCH --ntasks-per-node=32       # MPI tasks per node\n#SBATCH --cpus-per-task=1         # CPU cores per MPI task\n#SBATCH --time=12:00:00           # Time limit hh:mm:ss\n#SBATCH --nodes=4                 # Number of nodes\n#SBATCH --nodelist=node1,node2,node3,node4    # nodes 1 and 2 are the only ones with hpcx for now\n\n# Load MPI module (adjust for your system)\n# module load openmpi\n\n# Load HPCX\nsource ~/.bashrc\nexport HPCX_HOME=/home/hpc/hpcx/hpcx-v2.24-gcc-doca_ofed-ubuntu24.04-cuda13-x86_64\nexport LD_LIBRARY_PATH=$HPCX_HOME/ucx/lib:$HPCX_HOME/ompi/lib:$LD_LIBRARY_PATH\nexport PATH=$HPCX_HOME/ompi/bin:$PATH\nsource $HPCX_HOME/hpcx-init.sh\nhpcx_load\n\n# ---- NCCL choice: use system 2.27.7 ----\nunset LD_PRELOAD\nexport LD_LIBRARY_PATH=/usr/lib/x86_64-linux-gnu:$LD_LIBRARY_PATH\n\n# --- AOCL BLIS ---\nexport AOCLROOT=/opt/AMD/aocl-5.1.0/5.1.0/gcc\nexport AOCL_DIR=${AOCLROOT}\nexport LD_LIBRARY_PATH=${AOCLROOT}/lib_LP64:${LD_LIBRARY_PATH}\n\nexport OMP_NUM_THREADS=1          # 4 threads per MPI rank (match --cpus-per-task)\nexport OMP_PROC_BIND=true         # bind threads to cores\nexport OMP_PLACES=cores           # define OpenMP threads placement on cores\n\nexport AOCL_BLIS_NUM_THREADS=${OMP_NUM_THREADS}\nexport BLIS_JC_NT=1\nexport BLIS_IC_NT=8\nexport BLIS_JR_NT=1\nexport BLIS_IR_NT=1\n\n# UCX tuning (optional)\nexport UCX_TLS=rc_x,sm,self\nexport UCX_RNDV_SCHEME=put_zcopy\nexport UCX_IB_PCI_RELAXED_ORDERING=on\n\n# Optional: add CUDA & other NVIDIA libs, but *not* /opt/.../lib/nccl\nexport LD_LIBRARY_PATH=/opt/nvidia/nvidia_hpc_benchmarks_openmpi/lib/omp:$LD_LIBRARY_PATH\nexport LD_LIBRARY_PATH=/usr/local/cuda-12.6/lib64:/opt/nvidia/nvidia_hpc_benchmarks_openmpi/lib:$LD_LIBRARY_PATH\nexport LD_LIBRARY_PATH=/usr/lib/x86_64-linux-gnu/nvshmem/12:$LD_LIBRARY_PATH\n\n\n# Ulimits\nulimit -l unlimited\nulimit -n 65536\n\n# Run the MPI program\nmpirun ./xhpl\n\n",
+    "sbatch": {
+      "job-name": "hpl-test       # Job name",
+      "ntasks": null,
+      "ntasks-per-node": null,
+      "cpus-per-task": null,
+      "time": "12:00:00           # Time limit hh:mm:ss",
+      "nodes": null,
+      "nodelist": "node1,node2,node3,node4    # nodes 1 and 2 are the only ones with hpcx for now"
+    },
+    "path": "/raw/HPL/Ayush/22-10-1/run.sh"
+  },
+  "out": {
+    "path": "/raw/HPL/Ayush/22-10-1/run.sh-1336.out",
+    "runs": [],
+    "summary": {
+      "testsTotal": null,
+      "testsPassed": null,
+      "testsFailed": null,
+      "testsSkipped": null
+    }
+  },
+  "err": {
+    "path": "/raw/HPL/Ayush/22-10-1/run.sh-1336.err",
+    "size": 84
+  },
+  "best": null
+}
