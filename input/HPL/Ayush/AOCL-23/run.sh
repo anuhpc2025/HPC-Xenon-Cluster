@@ -28,15 +28,16 @@ export AOCL_DIR=${AOCLROOT}
 export LD_LIBRARY_PATH=${AOCLROOT}/lib_LP64:${LD_LIBRARY_PATH}
 
 export OMP_NUM_THREADS=1          # 4 threads per MPI rank (match --cpus-per-task)
-export OMP_PROC_BIND=close         # bind threads to cores
+export OMP_PROC_BIND=true         # bind threads to cores
 export OMP_PLACES=cores           # define OpenMP threads placement on cores
 
 
+export BLIS_NUM_THREADS=${OMP_NUM_THREADS}
 export BLIS_JC_NT=1
 export BLIS_IC_NT=8
 export BLIS_JR_NT=1
 export BLIS_IR_NT=1
-export BLIS_NUM_THREADS=${OMP_NUM_THREADS}
+
 
 # UCX tuning (optional)
 export UCX_TLS=rc_x,sm,self
@@ -52,7 +53,8 @@ export LD_LIBRARY_PATH=/usr/lib/x86_64-linux-gnu/nvshmem/12:$LD_LIBRARY_PATH
 # Ulimits
 ulimit -l unlimited
 ulimit -n 65536
-ulimit -s unlimited
+
 
 # Run the MPI program
 mpirun ./xhpl
+
