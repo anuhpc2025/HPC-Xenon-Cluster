@@ -54,3 +54,4 @@ ulimit -n 65536
 
 # Run the MPI program
 mpirun ./xhpl
+
