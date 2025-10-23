@@ -22,15 +22,22 @@ hpcx_load
 unset LD_PRELOAD
 export LD_LIBRARY_PATH=/usr/lib/x86_64-linux-gnu:$LD_LIBRARY_PATH
 
-export OMP_NUM_THREADS=1          # 4 threads per MPI rank (match --cpus-per-task)
-export OMP_PROC_BIND=true         # bind threads to cores
-export OMP_PLACES=cores           # define OpenMP threads placement on cores
 
 # Optional: add CUDA & other NVIDIA libs, but *not* /opt/.../lib/nccl
 export LD_LIBRARY_PATH=/opt/nvidia/nvidia_hpc_benchmarks_openmpi/lib/omp:$LD_LIBRARY_PATH
 export LD_LIBRARY_PATH=/usr/local/cuda-12.6/lib64:/opt/nvidia/nvidia_hpc_benchmarks_openmpi/lib:$LD_LIBRARY_PATH
 export LD_LIBRARY_PATH=/usr/lib/x86_64-linux-gnu/nvshmem/12:$LD_LIBRARY_PATH
 
+
+export AOCLROOT=/opt/AMD/aocl-5.1.0/5.1.0/gcc
+export OMP_NUM_THREADS=1          # 4 threads per MPI rank (match --cpus-per-task)
+export OMP_PROC_BIND=true         # bind threads to cores
+export OMP_PLACES=cores           # define OpenMP threads placement on cores
+export BLIS_NUM_THREADS=$OMP_NUM_THREADS
+
+export UCX_TLS=rc_mlx5,sm,self
+export UCX_RNDV_SCHEME=put_zcopy
+export UCX_IB_PCI_RELAXED_ORDERING=on
 
 # Ulimits
 ulimit -l unlimited
