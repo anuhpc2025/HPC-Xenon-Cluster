@@ -1,0 +1,16 @@
+--------------------------------------------------------------------------
+A request for multiple cpus-per-proc was given, but a conflicting binding
+policy was specified:
+
+  #cpus-per-proc:  4
+  type of cpus:    cores as cpus
+  binding policy given: L3CACHE
+
+The correct binding policy for the given type of cpu is:
+
+  correct binding policy:  bind-to core
+
+This is the binding policy we would apply by default for this
+situation, so no binding need be specified. Please correct the
+situation and try again.
+--------------------------------------------------------------------------
