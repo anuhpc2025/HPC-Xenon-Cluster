@@ -1,8 +1,8 @@
 #!/bin/bash
 #SBATCH --job-name=hpl-test       # Job name
-#SBATCH --ntasks=16              # Total MPI tasks
-#SBATCH --ntasks-per-node=4       # MPI tasks per node
-#SBATCH --cpus-per-task=8         # CPU cores per MPI task
+#SBATCH --ntasks=8              # Total MPI tasks
+#SBATCH --ntasks-per-node=2       # MPI tasks per node
+#SBATCH --cpus-per-task=16         # CPU cores per MPI task
 #SBATCH --time=12:00:00           # Time limit hh:mm:ss
 #SBATCH --nodes=4                 # Number of nodes
 #SBATCH --nodelist=node1,node2,node3,node4    # nodes 1 and 2 are the only ones with hpcx for now
@@ -21,12 +21,15 @@ hpcx_load
 # === AOCL BLIS ===
 export AOCLROOT=/opt/AMD/aocl-5.1.0/5.1.0/gcc
 export LD_LIBRARY_PATH=${AOCLROOT}/lib:$LD_LIBRARY_PATH
-export OMP_NUM_THREADS=8
+export OMP_NUM_THREADS=16
 export OMP_PROC_BIND=true
 export OMP_PLACES=cores
 export BLIS_ENABLE_OPENMP=1
 export BLIS_CPU_EXT=ZEN3        
 export BLIS_DYNAMIC_SCHED=0
+export BLIS_IC_NT=8
+export BLIS_JC_NT=1
+
 
 # ---- NCCL choice: use system 2.27.7 ----
 unset LD_PRELOAD
@@ -51,13 +54,13 @@ export OMPI_MCA_pml=ucx
 export OMPI_MCA_btl=^openib,tcp,uct
 export OMPI_MCA_osc=ucx
 
-export SLURM_NTASKS=16
+
 # Ulimits
 ulimit -l unlimited
 ulimit -n 65536
 
 # Run the MPI program
-mpirun -np ${SLURM_NTASKS} \
+mpirun \
   --map-by ppr:1:l3cache:pe=${OMP_NUM_THREADS} \
   --bind-to core --rank-by core --report-bindings \
   -x LD_LIBRARY_PATH -x PATH \
