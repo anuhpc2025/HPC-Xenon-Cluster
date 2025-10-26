@@ -1,0 +1,112 @@
+{
+  "id": "HPL/Ayush/26-10-2",
+  "suite": "HPL",
+  "group": "Ayush",
+  "run": "26-10-2",
+  "dat": {
+    "raw": "HPLinpack benchmark input file\nCustom quick test\nHPL.out      output file name (if any)\n6            device out (6=stdout,7=stderr,file)\n1            # of problems sizes (N)\n65536        Ns\n1            # of NBs\n256          NBs\n0            PMAP process mapping (0=Row-,1=Column-major)\n1            # of process grids (P x Q)\n8            Ps\n16           Qs\n16.0         threshold\n1            # of panel fact\n1            PFACTs (0=left, 1=Crout, 2=Right)\n1            # of recursive stopping criterium\n2            NBMINs (>= 1)\n1            # of panels in recursion\n2            NDIVs\n1            # of recursive panel fact.\n1            RFACTs (0=left, 1=Crout, 2=Right)\n1            # of broadcast\n2            BCASTs (0=1rg,1=1rM,2=2rg,3=2rM,4=Lng,5=LnM)\n1            # of lookahead depth\n1            DEPTHs (>=0)\n2            SWAP (0=bin-exch,1=long,2=mix)\n64           swapping threshold\n0            L1 in (0=transposed,1=no-transposed) form\n0            U  in (0=transposed,1=no-transposed) form\n1            Equilibration (0=no,1=yes)\n8            memory alignment in double (> 0)",
+    "parsed": {
+      "header": [
+        "HPLinpack benchmark input file",
+        "Custom quick test"
+      ],
+      "outputFilename": "HPL.out",
+      "deviceOut": 6,
+      "numProblemSizes": 1,
+      "Ns": [
+        65536
+      ],
+      "numNBs": 1,
+      "NBs": [
+        256
+      ],
+      "pmap": 0,
+      "numGrids": 1,
+      "Ps": [
+        8
+      ],
+      "Qs": [
+        16
+      ],
+      "threshold": 16,
+      "numPFACT": 1,
+      "PFACTs": [
+        1,
+        0,
+        1,
+        2
+      ],
+      "numNBMIN": 1,
+      "NBMINs": [
+        2,
+        1
+      ],
+      "numPanelsInRecursion": 1,
+      "NDIVs": [
+        2
+      ],
+      "numRFACT": 1,
+      "RFACTs": [
+        1,
+        0,
+        1,
+        2
+      ],
+      "numBCAST": 1,
+      "BCASTs": [
+        2,
+        0,
+        1,
+        1,
+        1,
+        2,
+        2,
+        3,
+        2,
+        4,
+        5
+      ],
+      "numDEPTH": 1,
+      "DEPTHs": [
+        1,
+        0
+      ],
+      "swapMode": 2,
+      "swapThreshold": 64,
+      "L1": 0,
+      "U": 0,
+      "equilibration": 1,
+      "memoryAlignment": 8
+    },
+    "path": "/raw/HPL/Ayush/26-10-2/HPL.dat"
+  },
+  "job": {
+    "filename": "run.sh",
+    "raw": "#!/bin/bash\n#SBATCH --job-name=hpl-test             # Job name\n#SBATCH --nodes=4                       # Number of nodes\n#SBATCH --nodelist=node1,node2,node3,node4\n#SBATCH --ntasks=128                    # Total MPI ranks\n#SBATCH --ntasks-per-node=32            # Ranks per node\n#SBATCH --cpus-per-task=1               # Cores per rank\n#SBATCH --time=12:00:00                 # Walltime\n\n######## 1. Load HPC-X (Open MPI + UCX 1.19) ########\n\n# Point to your HPC-X install\nexport HPCX_ROOT=/home/hpc/hpcx/hpcx-v2.24-gcc-doca_ofed-ubuntu24.04-cuda13-x86_64\n\n# Load the HPC-X environment (sets some MPI/UCX bits)\nsource ${HPCX_ROOT}/hpcx-init.sh\nhpcx_load\n\n# Force PATH / LD_LIBRARY_PATH so UCX 1.19 + this OpenMPI stay first\nexport PATH=${HPCX_ROOT}/ucx/bin:${HPCX_ROOT}/ompi/bin:${PATH}\nexport LD_LIBRARY_PATH=${HPCX_ROOT}/ucx/lib:${HPCX_ROOT}/ompi/lib:${LD_LIBRARY_PATH}\n\n######## 2. AOCL BLIS (CPU math library for HPL DGEMM) ########\n\nexport AOCLROOT=/opt/AMD/aocl-5.1.0/5.1.0/gcc\n# Put AOCL BLIS on the library path (goes before system libs, after HPC-X)\nexport LD_LIBRARY_PATH=${AOCLROOT}/lib:${LD_LIBRARY_PATH}\n\n# BLIS / OpenMP tuning for AOCL on EPYC\nexport OMP_NUM_THREADS=1\nexport OMP_PROC_BIND=close\nexport OMP_PLACES=cores\n\nexport BLIS_ENABLE_OPENMP=1\nexport BLIS_CPU_ARCH=ZEN3\nexport BLIS_DYNAMIC_SCHED=1\n\n######## 3. UCX / MPI transport tuning for InfiniBand ########\n# These help MPI point-to-point / collectives use IB via UCX efficiently\n\nexport UCX_TLS=rc_x,sm,self\nexport UCX_IB_GPU_DIRECT_RDMA=y\nexport UCX_MEMTYPE_CACHE=y\nexport UCX_RNDV_SCHEME=put_zcopy\nexport UCX_IB_PCI_RELAXED_ORDERING=on   # harmless if NIC says \"unsupported\"\n\n# These tell Open MPI to speak UCX everywhere (avoid legacy BTL paths)\nexport OMPI_MCA_pml=ucx\nexport OMPI_MCA_osc=ucx\n# optional: strongly steer it off the old BTL transports\nexport OMPI_MCA_btl=^openib,tcp,uct,vader,sm,self\n\n######## 4. System prep ########\n\n# Unlimited pinned memory for RDMA\nulimit -l unlimited\n# Higher file descriptor limit (lots of ranks / sockets)\nulimit -n 65536\n\n# Flush FS caches just before the big run\nsync\n\n######## 5. Run HPL ########\n# IMPORTANT:\n#   - We pass `-x PATH -x LD_LIBRARY_PATH` so *all nodes* inherit the HPC-X env\n#   - We also pass all tuning envs so every rank sees the same config\n#   - `ppr:32:node` matches 32 ranks per node in Slurm (4 nodes * 32 = 128)\n\nmpirun \\\n  --map-by ppr:32:node:PE=1 \\\n  --rank-by core \\\n  --bind-to core \\\n  --report-bindings \\\n  -x PATH \\\n  -x LD_LIBRARY_PATH \\\n  -x AOCLROOT \\\n  -x OMP_NUM_THREADS -x OMP_PROC_BIND -x OMP_PLACES \\\n  -x BLIS_ENABLE_OPENMP -x BLIS_CPU_ARCH -x BLIS_DYNAMIC_SCHED \\\n  -x UCX_TLS -x UCX_IB_GPU_DIRECT_RDMA -x UCX_MEMTYPE_CACHE \\\n  -x UCX_RNDV_SCHEME -x UCX_IB_PCI_RELAXED_ORDERING \\\n  -x OMPI_MCA_pml -x OMPI_MCA_osc -x OMPI_MCA_btl \\\n  ./xhpl\n",
+    "sbatch": {
+      "job-name": "hpl-test             # Job name",
+      "nodes": null,
+      "nodelist": "node1,node2,node3,node4",
+      "ntasks": null,
+      "ntasks-per-node": null,
+      "cpus-per-task": null,
+      "time": "12:00:00                 # Walltime"
+    },
+    "path": "/raw/HPL/Ayush/26-10-2/run.sh"
+  },
+  "out": {
+    "path": "/raw/HPL/Ayush/26-10-2/run.sh-1369.out",
+    "runs": [],
+    "summary": {
+      "testsTotal": null,
+      "testsPassed": null,
+      "testsFailed": null,
+      "testsSkipped": null
+    }
+  },
+  "err": {
+    "path": "/raw/HPL/Ayush/26-10-2/run.sh-1369.err",
+    "size": 20938
+  },
+  "best": null
+}
