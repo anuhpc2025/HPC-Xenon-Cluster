@@ -1,0 +1,103 @@
+{
+  "id": "HPL/Ayush/26-10-11",
+  "suite": "HPL",
+  "group": "Ayush",
+  "run": "26-10-11",
+  "dat": {
+    "raw": "HPLinpack benchmark input file\nCustom quick test\nHPL.out      output file name (if any)\n6            device out (6=stdout,7=stderr,file)\n1            # of problems sizes (N)\n60000      Ns\n1            # of NBs\n128          NBs\n0            PMAP process mapping (0=Row-,1=Column-major)\n1            # of process grids (P x Q)\n8            Ps\n16           Qs\n16.0         threshold\n1            # of panel fact\n0            PFACTs (0=left, 1=Crout, 2=Right)\n1            # of recursive stopping criterium\n2            NBMINs (>= 1)\n1            # of panels in recursion\n2            NDIVs\n1            # of recursive panel fact.\n0            RFACTs (0=left, 1=Crout, 2=Right)\n1            # of broadcast\n2            BCASTs (0=1rg,1=1rM,2=2rg,3=2rM,4=Lng,5=LnM)\n1            # of lookahead depth\n1            DEPTHs (>=0)\n2            SWAP (0=bin-exch,1=long,2=mix)\n64           swapping threshold\n0            L1 in (0=transposed,1=no-transposed) form\n0            U  in (0=transposed,1=no-transposed) form\n1            Equilibration (0=no,1=yes)\n8            memory alignment in double (> 0)",
+    "parsed": {
+      "header": [
+        "HPLinpack benchmark input file",
+        "Custom quick test"
+      ],
+      "outputFilename": "HPL.out",
+      "deviceOut": 6,
+      "numProblemSizes": 1,
+      "Ns": [
+        60000
+      ],
+      "numNBs": 1,
+      "NBs": [
+        128
+      ],
+      "pmap": 0,
+      "numGrids": 1,
+      "Ps": [
+        8
+      ],
+      "Qs": [
+        16
+      ],
+      "threshold": 16,
+      "numPFACT": 1,
+      "PFACTs": [
+        0,
+        0,
+        1,
+        2
+      ],
+      "numNBMIN": 1,
+      "NBMINs": [
+        2,
+        1
+      ],
+      "numPanelsInRecursion": 1,
+      "NDIVs": [
+        2
+      ],
+      "numRFACT": 1,
+      "RFACTs": [
+        0,
+        0,
+        1,
+        2
+      ],
+      "numBCAST": 1,
+      "BCASTs": [
+        2,
+        0,
+        1,
+        1,
+        1,
+        2,
+        2,
+        3,
+        2,
+        4,
+        5
+      ],
+      "numDEPTH": 1,
+      "DEPTHs": [
+        1,
+        0
+      ],
+      "swapMode": 2,
+      "swapThreshold": 64,
+      "L1": 0,
+      "U": 0,
+      "equilibration": 1,
+      "memoryAlignment": 8
+    },
+    "path": "/raw/HPL/Ayush/26-10-11/HPL.dat"
+  },
+  "job": {
+    "filename": "run.sh",
+    "raw": "#!/bin/bash\n#SBATCH --job-name=hpl-test\n#SBATCH --ntasks=128\n#SBATCH --ntasks-per-node=32\n#SBATCH --cpus-per-task=1\n#SBATCH --time=12:00:00\n#SBATCH --nodes=4\n#SBATCH --nodelist=node1,node2,node3,node4\n\n# --- HPC-X only (don’t rely on ~/.bashrc) ---\nexport HPCX_HOME=/home/hpc/hpcx/hpcx-v2.24-gcc-doca_ofed-ubuntu24.04-cuda13-x86_64\nsource \"${HPCX_HOME}/hpcx-init.sh\"\nhpcx_load\n\n# --- AOCL BLIS ---\nexport AOCLROOT=/opt/AMD/aocl-5.1.0/5.1.0/gcc\n\n# OpenMP/BLIS (CPU HPL)\nexport OMP_NUM_THREADS=1\nexport OMP_PROC_BIND=true\nexport OMP_PLACES=cores\nexport BLIS_ENABLE_OPENMP=1\nexport BLIS_CPU_EXT=ZEN3\nexport BLIS_DYNAMIC_SCHED=0\n\n# --- UCX transport (IB) ---\nexport UCX_NET_DEVICES=mlx5_0:1\nexport UCX_TLS=rc_x,sm,self\nunset UCX_IB_GPU_DIRECT_RDMA\nunset UCX_IB_PCI_RELAXED_ORDERING\n\n# --- Clean library path: keep HPC-X first; remove system UCX/NCCL/CUDA ---\nCLEAN_LD=$(printf \"%s\" \"${LD_LIBRARY_PATH}\" \\\n  | tr ':' '\\n' \\\n  | grep -vE '^/usr/lib/x86_64-linux-gnu($|/)' \\\n  | grep -vE '^/usr/local/cuda' \\\n  | grep -vE '/nccl' \\\n  | paste -sd:)\nexport LD_LIBRARY_PATH=\"${HPCX_HOME}/ucx/lib:${HPCX_HOME}/ompi/lib:${AOCLROOT}/lib:${CLEAN_LD}\"\n\n# No LD_PRELOAD; no /usr/lib pre-pend\nulimit -l unlimited\nulimit -n 65536\n\n# --- Force remote prefix to HPC-X tree ---\nexport OPAL_PREFIX=\"${HPCX_HOME}/ompi\"\n\n# --- Run ---\n\"${HPCX_HOME}/ompi/bin/mpirun\" \\\n  --prefix \"${HPCX_HOME}/ompi\" \\\n  --map-by ppr:32:node:PE=1 --rank-by core --bind-to core --report-bindings \\\n  -x LD_LIBRARY_PATH -x PATH -x OPAL_PREFIX \\\n  -x AOCLROOT -x OMP_NUM_THREADS -x OMP_PROC_BIND -x OMP_PLACES \\\n  -x BLIS_ENABLE_OPENMP -x BLIS_CPU_EXT -x BLIS_DYNAMIC_SCHED \\\n  -x UCX_TLS -x UCX_NET_DEVICES \\\n  ./xhpl\n",
+    "sbatch": {
+      "job-name": "hpl-test",
+      "ntasks": 128,
+      "ntasks-per-node": 32,
+      "cpus-per-task": 1,
+      "time": "12:00:00",
+      "nodes": 4,
+      "nodelist": "node1,node2,node3,node4"
+    },
+    "path": "/raw/HPL/Ayush/26-10-11/run.sh"
+  },
+  "out": null,
+  "err": {
+    "path": "/raw/HPL/Ayush/26-10-11/run.sh-1377.err",
+    "size": 20938
+  },
+  "best": null
+}
