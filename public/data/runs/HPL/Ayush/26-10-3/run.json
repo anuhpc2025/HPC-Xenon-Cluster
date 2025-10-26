@@ -4,7 +4,7 @@
   "group": "Ayush",
   "run": "26-10-3",
   "dat": {
-    "raw": "HPLinpack benchmark input file\nCustom quick test\nHPL.out      output file name (if any)\n6            device out (6=stdout,7=stderr,file)\n1            # of problems sizes (N)\n65536        Ns\n1            # of NBs\n128          NBs\n0            PMAP process mapping (0=Row-,1=Column-major)\n1            # of process grids (P x Q)\n8            Ps\n16           Qs\n16.0         threshold\n1            # of panel fact\n1            PFACTs (0=left, 1=Crout, 2=Right)\n1            # of recursive stopping criterium\n2            NBMINs (>= 1)\n1            # of panels in recursion\n2            NDIVs\n1            # of recursive panel fact.\n1            RFACTs (0=left, 1=Crout, 2=Right)\n1            # of broadcast\n2            BCASTs (0=1rg,1=1rM,2=2rg,3=2rM,4=Lng,5=LnM)\n1            # of lookahead depth\n1            DEPTHs (>=0)\n2            SWAP (0=bin-exch,1=long,2=mix)\n64           swapping threshold\n0            L1 in (0=transposed,1=no-transposed) form\n0            U  in (0=transposed,1=no-transposed) form\n1            Equilibration (0=no,1=yes)\n8            memory alignment in double (> 0)",
+    "raw": "HPLinpack benchmark input file\nCustom quick test\nHPL.out      output file name (if any)\n6            device out (6=stdout,7=stderr,file)\n1            # of problems sizes (N)\n339968       Ns\n5            # of NBs\n512         NBs\n0            PMAP process mapping (0=Row-,1=Column-major)\n1            # of process grids (P x Q)\n16           Ps\n16           Qs\n16.0         threshold\n1            # of panel fact\n2            PFACTs (0=left, 1=Crout, 2=Right)\n1            # of recursive stopping criterium\n1            NBMINs (>= 1)\n1            # of panels in recursion\n2            NDIVs\n1            # of recursive panel fact.\n2            RFACTs (0=left, 1=Crout, 2=Right)\n1            # of broadcast\n1            BCASTs (0=1rg,1=1rM,2=2rg,3=2rM,4=Lng,5=LnM)\n1            # of lookahead depth\n1            DEPTHs (>=0)\n2            SWAP (0=bin-exch,1=long,2=mix)\n64           swapping threshold\n0            L1 in (0=transposed,1=no-transposed) form\n0            U  in (0=transposed,1=no-transposed) form\n1            Equilibration (0=no,1=yes)\n8            memory alignment in double (> 0)",
     "parsed": {
       "header": [
         "HPLinpack benchmark input file",
@@ -14,16 +14,16 @@
       "deviceOut": 6,
       "numProblemSizes": 1,
       "Ns": [
-        65536
+        339968
       ],
-      "numNBs": 1,
+      "numNBs": 5,
       "NBs": [
-        128
+        512
       ],
       "pmap": 0,
       "numGrids": 1,
       "Ps": [
-        8
+        16
       ],
       "Qs": [
         16
@@ -31,14 +31,14 @@
       "threshold": 16,
       "numPFACT": 1,
       "PFACTs": [
-        1,
+        2,
         0,
         1,
         2
       ],
       "numNBMIN": 1,
       "NBMINs": [
-        2,
+        1,
         1
       ],
       "numPanelsInRecursion": 1,
@@ -47,14 +47,14 @@
       ],
       "numRFACT": 1,
       "RFACTs": [
-        1,
+        2,
         0,
         1,
         2
       ],
       "numBCAST": 1,
       "BCASTs": [
-        2,
+        1,
         0,
         1,
         1,
@@ -82,15 +82,14 @@
   },
   "job": {
     "filename": "run.sh",
-    "raw": "#!/bin/bash\n#SBATCH --job-name=hpl-test       # Job name\n#SBATCH --ntasks=128              # Total MPI tasks\n#SBATCH --ntasks-per-node=32       # MPI tasks per node\n#SBATCH --cpus-per-task=1         # CPU cores per MPI task\n#SBATCH --time=12:00:00           # Time limit hh:mm:ss\n#SBATCH --nodes=4                 # Number of nodes\n#SBATCH --nodelist=node1,node2,node3,node4    # nodes 1 and 2 are the only ones with hpcx for now\n\n# Load MPI module (adjust for your system)\n# module load openmpi\n\n# Load HPCX\nsource ~/.bashrc\nexport HPCX_ROOT=/home/hpc/hpcx/hpcx-v2.24-gcc-doca_ofed-ubuntu24.04-cuda13-x86_64\nsource ${HPCX_ROOT}/hpcx-init.sh\nhpcx_load\n\nexport PATH=${HPCX_ROOT}/ucx/bin:${HPCX_ROOT}/ompi/bin:${PATH}\nexport LD_LIBRARY_PATH=${HPCX_ROOT}/ucx/lib:${HPCX_ROOT}/ompi/lib:${LD_LIBRARY_PATH}\n\n# === AOCL BLIS ===\nexport AOCLROOT=/opt/AMD/aocl-5.1.0/5.1.0/gcc\nexport LD_LIBRARY_PATH=${AOCLROOT}/lib:${LD_LIBRARY_PATH}\n\nexport OMP_NUM_THREADS=1\nexport OMP_PROC_BIND=true\nexport OMP_PLACES=cores\nexport BLIS_ENABLE_OPENMP=1\nexport BLIS_CPU_EXT=ZEN3        \nexport BLIS_DYNAMIC_SCHED=0\n\n\n# OMPI / UCX tuning\nexport UCX_TLS=rc_x,sm,self\nexport UCX_IB_GPU_DIRECT_RDMA=y\nexport UCX_MEMTYPE_CACHE=y\nexport UCX_RNDV_SCHEME=put_zcopy\nexport UCX_IB_PCI_RELAXED_ORDERING=on \n\n# Ulimits\nulimit -l unlimited\nulimit -n 65536\n\n# Run the MPI program\nmpirun \\\n  --map-by ppr:32:node:PE=1 --rank-by core --bind-to core --report-bindings \\\n  -x PATH -x LD_LIBRARY_PATH \\\n  -x AOCLROOT -x OMP_NUM_THREADS -x OMP_PROC_BIND -x OMP_PLACES \\\n  -x BLIS_ENABLE_OPENMP -x BLIS_CPU_EXT -x BLIS_DYNAMIC_SCHED \\\n  -x OMPI_MCA_pml -x OMPI_MCA_osc -x OMPI_MCA_btl \\\n  -x UCX_TLS -x UCX_NET_DEVICES \\\n  ./xhpl",
+    "raw": "#!/bin/bash\n#SBATCH --job-name=hpl-hero\n#SBATCH --nodes=4\n#SBATCH --ntasks=256             \n#SBATCH --ntasks-per-node=64     \n#SBATCH --cpus-per-task=1\n#SBATCH --time=24:00:00\n\n# --- Spack / env setup ---\nexport SPACK_USER_CONFIG_PATH=/tmp/spack-config\nexport SPACK_USER_CACHE_PATH=/tmp/spack-cache\nexport SPACK_ROOT=/opt/spack\nsource ${SPACK_ROOT}/share/spack/setup-env.sh\n\n# Load the exact OpenMPI + AOCL-tuned HPL you built\nspack load /buou2hh         \nspack load hpl %aocc \n\n\nexport PATH=$(spack location -i /buou2hh)/bin:$PATH\nexport LD_LIBRARY_PATH=$(spack location -i /buou2hh)/lib:$LD_LIBRARY_PATH\n\n# --- MPI transport / launch ---\nunset OMPI_MCA_osc                      # avoid shared memory RMA oddities\nexport OMPI_MCA_btl=self,vader,tcp      # tcp over Ethernet\nexport OMPI_MCA_btl_tcp_if_include=eth0\nexport OMPI_MCA_oob_tcp_if_include=eth0\nexport OMPI_MCA_pml=ob1\n\n# Let OpenMPI auto-pick collective algs at this scale\nunset OMPI_MCA_coll_tuned_use_dynamic_rules\nunset OMPI_MCA_coll_tuned_bcast_algorithm\nunset OMPI_MCA_coll_tuned_allreduce_algorithm\n\n# Slurm integration (mpirun knows we're under Slurm)\nexport OMPI_MCA_plm=slurm\nunset OMPI_MCA_orte_launch\n\n# --- Threading / binding ---\nexport OMP_NUM_THREADS=1           # 1 thread per rank, critical\nexport BLIS_NUM_THREADS=1          # force AOCL BLIS single-thread\nexport OMP_PLACES=cores\nexport OMP_PROC_BIND=close         # keep rank near its core/L3\n\n# BLIS low-level knobs: keep them simple and consistent with 1 thread.\nexport BLIS_ENABLE_OPENMP=0       \nexport BLIS_DYNAMIC_SCHED=0\nexport BLIS_JC_NT=1\nexport BLIS_IC_NT=1\nexport BLIS_JR_NT=1\nexport BLIS_IR_NT=1\n\n# Tell OMPI/hwloc: bind to physical cores, not SMT siblings\nexport OMPI_MCA_hwloc_base_binding_policy=core\nexport OMPI_MCA_hwloc_base_use_hwthreads_as_cpus=0\n\n# --- System hygiene ---\nulimit -l unlimited\nulimit -n 65536\nsync   \n\nnumactl --interleave=all \\\n  mpirun --bind-to core --map-by ppr:64:node:pe=1 --report-bindings \\\n    $(spack location -i hpl)/bin/xhpl",
     "sbatch": {
-      "job-name": "hpl-test       # Job name",
-      "ntasks": null,
-      "ntasks-per-node": null,
-      "cpus-per-task": null,
-      "time": "12:00:00           # Time limit hh:mm:ss",
-      "nodes": null,
-      "nodelist": "node1,node2,node3,node4    # nodes 1 and 2 are the only ones with hpcx for now"
+      "job-name": "hpl-hero",
+      "nodes": 4,
+      "ntasks": 256,
+      "ntasks-per-node": 64,
+      "cpus-per-task": 1,
+      "time": "24:00:00"
     },
     "path": "/raw/HPL/Ayush/26-10-3/run.sh"
   },
