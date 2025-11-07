@@ -1,0 +1,111 @@
+{
+  "id": "HPL/Ayush/7-11-5",
+  "suite": "HPL",
+  "group": "Ayush",
+  "run": "7-11-5",
+  "dat": {
+    "raw": "HPLinpack benchmark input file\nCustom quick test\nHPL.out      output file name (if any)\n6            device out (6=stdout,7=stderr,file)\n1            # of problems sizes (N)\n65536      Ns\n1            # of NBs\n256          NBs\n0            PMAP process mapping (0=Row-,1=Column-major)\n1            # of process grids (P x Q)\n8            Ps\n8            Qs\n16.0         threshold\n1            # of panel fact\n0            PFACTs (0=left, 1=Crout, 2=Right)\n1            # of recursive stopping criterium\n2            NBMINs (>= 1)\n1            # of panels in recursion\n2            NDIVs\n1            # of recursive panel fact.\n0            RFACTs (0=left, 1=Crout, 2=Right)\n1            # of broadcast\n2            BCASTs (0=1rg,1=1rM,2=2rg,3=2rM,4=Lng,5=LnM)\n1            # of lookahead depth\n1            DEPTHs (>=0)\n2            SWAP (0=bin-exch,1=long,2=mix)\n64           swapping threshold\n0            L1 in (0=transposed,1=no-transposed) form\n0            U  in (0=transposed,1=no-transposed) form\n1            Equilibration (0=no,1=yes)\n8            memory alignment in double (> 0)",
+    "parsed": {
+      "header": [
+        "HPLinpack benchmark input file",
+        "Custom quick test"
+      ],
+      "outputFilename": "HPL.out",
+      "deviceOut": 6,
+      "numProblemSizes": 1,
+      "Ns": [
+        65536
+      ],
+      "numNBs": 1,
+      "NBs": [
+        256
+      ],
+      "pmap": 0,
+      "numGrids": 1,
+      "Ps": [
+        8
+      ],
+      "Qs": [
+        8
+      ],
+      "threshold": 16,
+      "numPFACT": 1,
+      "PFACTs": [
+        0,
+        0,
+        1,
+        2
+      ],
+      "numNBMIN": 1,
+      "NBMINs": [
+        2,
+        1
+      ],
+      "numPanelsInRecursion": 1,
+      "NDIVs": [
+        2
+      ],
+      "numRFACT": 1,
+      "RFACTs": [
+        0,
+        0,
+        1,
+        2
+      ],
+      "numBCAST": 1,
+      "BCASTs": [
+        2,
+        0,
+        1,
+        1,
+        1,
+        2,
+        2,
+        3,
+        2,
+        4,
+        5
+      ],
+      "numDEPTH": 1,
+      "DEPTHs": [
+        1,
+        0
+      ],
+      "swapMode": 2,
+      "swapThreshold": 64,
+      "L1": 0,
+      "U": 0,
+      "equilibration": 1,
+      "memoryAlignment": 8
+    },
+    "path": "/raw/HPL/Ayush/7-11-5/HPL.dat"
+  },
+  "job": {
+    "filename": "run.sh",
+    "raw": "#!/bin/bash\n#SBATCH --job-name=hpl-test\n#SBATCH --nodes=4\n#SBATCH --ntasks=64\n#SBATCH --ntasks-per-node=16\n#SBATCH --cpus-per-task=1\n#SBATCH --time=12:00:00\n\n# ---- 1) load HPC-X ----\nsource ~/.bashrc\nexport HPCX_HOME=/home/hpc/hpcx/hpcx-v2.24-gcc-doca_ofed-ubuntu24.04-cuda13-x86_64\nsource $HPCX_HOME/hpcx-init.sh\nhpcx_load\n\n# ---- 2) add the SYSTEM libs FIRST (so everything needed is there) ----\n# this is the line you said makes the hang go away, so keep it:\nexport LD_LIBRARY_PATH=/usr/lib/x86_64-linux-gnu:${LD_LIBRARY_PATH}\n\n# ---- 3) NOW re-prepend HPC-X UCX + OMPI so UCX 1.19 wins ----\nexport LD_LIBRARY_PATH=${HPCX_HOME}/ucx/lib:${HPCX_HOME}/ompi/lib:${LD_LIBRARY_PATH}\nexport PATH=${HPCX_HOME}/ompi/bin:${PATH}\n\n# ---- 4) AOCL ----\nexport AOCLROOT=/opt/AMD/aocl-5.1.0/5.1.0/gcc\nexport LD_LIBRARY_PATH=${AOCLROOT}/lib:${LD_LIBRARY_PATH}\n\n# ---- 5) OpenMP / BLIS ----\nexport OMP_NUM_THREADS=1\nexport OMP_PROC_BIND=true\nexport OMP_PLACES=cores\nexport BLIS_ENABLE_OPENMP=1\nexport BLIS_CPU_EXT=ZEN3\nexport BLIS_DYNAMIC_SCHED=0\n\n# ---- 7) UCX tuning / hang workaround from HPC-X known issues ----\nexport UCX_TLS=rc_x,sm,self\nexport UCX_IB_GPU_DIRECT_RDMA=y\nexport UCX_MEMTYPE_CACHE=y\nexport UCX_RNDV_SCHEME=put_zcopy\nexport UCX_IB_PCI_RELAXED_ORDERING=on\n# HPC-X says some hangs are solved by disabling adaptive progress: :contentReference[oaicite:3]{index=3}\nexport UCX_ADAPTIVE_PROGRESS=n\n\n# ---- 8) make REALLY sure every rank uses this UCX (belt + suspenders) ----\nexport LD_PRELOAD=${HPCX_HOME}/ucx/lib/libucp.so.0:${HPCX_HOME}/ucx/lib/libuct.so.0:${HPCX_HOME}/ucx/lib/libucs.so.0\n\nulimit -l unlimited\nulimit -n 65536\n\nmpirun \\\n  --map-by ppr:16:node:PE=1 --rank-by core --bind-to core --report-bindings \\\n  --mca pml ucx --mca osc ucx \\\n  -x LD_LIBRARY_PATH -x PATH -x LD_PRELOAD \\\n  -x AOCLROOT -x OMP_NUM_THREADS -x OMP_PROC_BIND -x OMP_PLACES \\\n  -x BLIS_ENABLE_OPENMP -x BLIS_CPU_EXT -x BLIS_DYNAMIC_SCHED \\\n  -x UCX_TLS -x UCX_ADAPTIVE_PROGRESS -x UCX_IB_GPU_DIRECT_RDMA \\\n  -x UCX_MEMTYPE_CACHE -x UCX_RNDV_SCHEME -x UCX_IB_PCI_RELAXED_ORDERING \\\n  ./xhpl\n",
+    "sbatch": {
+      "job-name": "hpl-test",
+      "nodes": 4,
+      "ntasks": 64,
+      "ntasks-per-node": 16,
+      "cpus-per-task": 1,
+      "time": "12:00:00"
+    },
+    "path": "/raw/HPL/Ayush/7-11-5/run.sh"
+  },
+  "out": {
+    "path": "/raw/HPL/Ayush/7-11-5/run.sh-1384.out",
+    "runs": [],
+    "summary": {
+      "testsTotal": null,
+      "testsPassed": null,
+      "testsFailed": null,
+      "testsSkipped": null
+    }
+  },
+  "err": {
+    "path": "/raw/HPL/Ayush/7-11-5/run.sh-1384.err",
+    "size": 10446
+  },
+  "best": null
+}
