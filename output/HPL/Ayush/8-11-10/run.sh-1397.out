@@ -1,0 +1,89 @@
+=== Checking UCX on each node ===
+/home/hpc/hpcx/hpcx-v2.24-gcc-doca_ofed-ubuntu24.04-cuda13-x86_64/ucx/bin/ucx_info
+/home/hpc/hpcx/hpcx-v2.24-gcc-doca_ofed-ubuntu24.04-cuda13-x86_64/ucx/bin/ucx_info
+/home/hpc/hpcx/hpcx-v2.24-gcc-doca_ofed-ubuntu24.04-cuda13-x86_64/ucx/bin/ucx_info
+/home/hpc/hpcx/hpcx-v2.24-gcc-doca_ofed-ubuntu24.04-cuda13-x86_64/ucx/bin/ucx_info
+# Library version: 1.19.0
+# Library path: /home/hpc/hpcx/hpcx-v2.24-gcc-doca_ofed-ubuntu24.04-cuda13-x86_64/ucx/lib/libucs.so.0
+# Library version: 1.19.0
+# Library path: /home/hpc/hpcx/hpcx-v2.24-gcc-doca_ofed-ubuntu24.04-cuda13-x86_64/ucx/lib/libucs.so.0
+# Library version: 1.19.0
+# Library path: /home/hpc/hpcx/hpcx-v2.24-gcc-doca_ofed-ubuntu24.04-cuda13-x86_64/ucx/lib/libucs.so.0
+# Library version: 1.19.0
+# Library path: /home/hpc/hpcx/hpcx-v2.24-gcc-doca_ofed-ubuntu24.04-cuda13-x86_64/ucx/lib/libucs.so.0
+=== Checking libucp resolution ===
+	libopen-rte.so.40 => /home/hpc/hpcx/hpcx-v2.24-gcc-doca_ofed-ubuntu24.04-cuda13-x86_64/ompi/lib/libopen-rte.so.40 (0x000070157cc8b000)
+	libopen-pal.so.40 => /home/hpc/hpcx/hpcx-v2.24-gcc-doca_ofed-ubuntu24.04-cuda13-x86_64/ompi/lib/libopen-pal.so.40 (0x000070157cb70000)
+	libopen-rte.so.40 => /home/hpc/hpcx/hpcx-v2.24-gcc-doca_ofed-ubuntu24.04-cuda13-x86_64/ompi/lib/libopen-rte.so.40 (0x000073a9130c0000)
+	libopen-pal.so.40 => /home/hpc/hpcx/hpcx-v2.24-gcc-doca_ofed-ubuntu24.04-cuda13-x86_64/ompi/lib/libopen-pal.so.40 (0x000073a912fa5000)
+	libopen-rte.so.40 => /home/hpc/hpcx/hpcx-v2.24-gcc-doca_ofed-ubuntu24.04-cuda13-x86_64/ompi/lib/libopen-rte.so.40 (0x00007feb41ddb000)
+	libopen-pal.so.40 => /home/hpc/hpcx/hpcx-v2.24-gcc-doca_ofed-ubuntu24.04-cuda13-x86_64/ompi/lib/libopen-pal.so.40 (0x00007feb41cc0000)
+	libopen-rte.so.40 => /home/hpc/hpcx/hpcx-v2.24-gcc-doca_ofed-ubuntu24.04-cuda13-x86_64/ompi/lib/libopen-rte.so.40 (0x00007c3168c93000)
+	libopen-pal.so.40 => /home/hpc/hpcx/hpcx-v2.24-gcc-doca_ofed-ubuntu24.04-cuda13-x86_64/ompi/lib/libopen-pal.so.40 (0x00007c3168b78000)
+=== Checking xhpl linkage on each node ===
+================================================================================
+AMD Zen HPL 2024_10_08
+Using AOCL BLIS
+================================================================================
+Derived from:
+HPLinpack 2.3  --  High-Performance Linpack benchmark  --   December 2, 2018
+Written by A. Petitet and R. Clint Whaley,  Innovative Computing Laboratory, UTK
+Modified by Piotr Luszczek, Innovative Computing Laboratory, UTK
+Modified by Julien Langou, University of Colorado Denver
+================================================================================
+
+An explanation of the input/output parameters follows:
+T/V    : Wall time / encoded variant.
+N      : The order of the coefficient matrix A.
+NB     : The partitioning blocking factor.
+P      : The number of process rows.
+Q      : The number of process columns.
+Time   : Time in seconds to solve the linear system.
+Gflops : Rate of execution for solving the linear system.
+
+The following parameter values will be used:
+
+N      :   65536 
+NB     :     256 
+PMAP   : Row-major process mapping
+P      :       8 
+Q      :      16 
+PFACT  :    Left 
+NBMIN  :       2 
+NDIV   :       2 
+RFACT  :    Left 
+BCAST  :   2ring 
+DEPTH  :       1 
+SWAP   : (002) Mix (@ 64)
+L1     : transposed form
+A      : no-transposed form (ColMajor)
+EQUIL  : yes
+ALIGN  : 8 double precision words
+MXSWP  : (O/o) Orig 
+
+--------------------------------------------------------------------------------
+
+- The matrix A is randomly generated for each test.
+- The following scaled residual check will be computed:
+      ||Ax-b||_oo / ( eps * ( || x ||_oo * || A ||_oo + || b ||_oo ) * N )
+- The relative machine precision (eps) is taken to be               1.110223e-16
+- Computational tests pass if scaled residuals are less than                16.0
+
+================================================================================
+T/V         SWP           N    NB     P     Q            Time             Gflops
+--------------------------------------------------------------------------------
+WRC12L2L2o 002        65536   256     8    16           51.75         3.6264e+03
+HPL_pdgesv() start time Sat Nov  8 04:53:59 2025
+HPL_pdgesv() end time   Sat Nov  8 04:54:50 2025
+--------------------------------------------------------------------------------
+||Ax-b||_oo/(eps*(||A||_oo*||x||_oo+||b||_oo)*N)=   2.07165217e-03 ...... PASSED
+================================================================================
+
+Finished      1 tests with the following results:
+              1 tests completed and passed residual checks,
+              0 tests completed and failed residual checks,
+              0 tests skipped because of illegal input values.
+--------------------------------------------------------------------------------
+
+End of Tests.
+================================================================================
