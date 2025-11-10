@@ -1,8 +1,8 @@
 #!/bin/bash
 #SBATCH --job-name=hpl-test       # Job name
-#SBATCH --ntasks=128              # Total MPI tasks
-#SBATCH --ntasks-per-node=32       # MPI tasks per node
-#SBATCH --cpus-per-task=1         # CPU cores per MPI task
+#SBATCH --ntasks=64              # Total MPI tasks
+#SBATCH --ntasks-per-node=16       # MPI tasks per node
+#SBATCH --cpus-per-task=2         # CPU cores per MPI task
 #SBATCH --time=12:00:00           # Time limit hh:mm:ss
 #SBATCH --nodes=4                 # Number of nodes
 #SBATCH --nodelist=node1,node2,node3,node4    
@@ -24,7 +24,7 @@ export BLIS_DYNAMIC_SCHED=0
 
 
 # --- OpenMP for HPL (MPI-only run) ---
-export OMP_NUM_THREADS=1
+export OMP_NUM_THREADS=2
 export OMP_PROC_BIND=true
 export OMP_PLACES=cores
 
@@ -60,7 +60,7 @@ sync
 
 # Run the MPI program
 mpirun \
-  --map-by ppr:16:socket:PE=1 --rank-by core --bind-to core --report-bindings \
+  --map-by ppr:8:socket:PE=2 --rank-by core --bind-to core --report-bindings \
   -x PATH -x LD_LIBRARY_PATH \
   -x AOCLROOT -x OMP_NUM_THREADS -x OMP_PROC_BIND -x OMP_PLACES \
   -x BLIS_ENABLE_OPENMP -x BLIS_CPU_EXT -x BLIS_DYNAMIC_SCHED \
