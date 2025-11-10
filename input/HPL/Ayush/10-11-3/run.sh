@@ -73,3 +73,4 @@ mpirun \
   -x OMPI_MCA_coll_ucc_enable -x OMPI_MCA_coll_hcoll_enable -x OMPI_MCA_coll_sharp_enable -x OMPI_MCA_coll \
   -x UCX_TLS -x UCX_NET_DEVICES -x UCX_RNDV_SCHEME \
   ./xhpl
+  
