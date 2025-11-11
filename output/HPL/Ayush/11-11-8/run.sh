@@ -61,7 +61,7 @@ sync
 # Run the MPI program
 mpirun \
   --oversubscribe \
-  --map-by ppr:1:l3cache:PE=8 --rank-by core --bind-to cache --report-bindings \
+  --map-by ppr:1:l3cache:PE=8 --rank-by core --bind-to core --report-bindings \
   -x PATH -x LD_LIBRARY_PATH \
   -x AOCLROOT -x OMP_NUM_THREADS -x OMP_PROC_BIND -x OMP_PLACES \
   -x BLIS_ENABLE_OPENMP -x BLIS_CPU_EXT -x BLIS_DYNAMIC_SCHED \
