@@ -1,0 +1,19 @@
+--------------------------------------------------------------------------
+The specified binding policy is not recognized:
+
+  Policy: cache
+
+Please check for a typo or ensure that the option is a supported
+one.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+It looks like opal_init failed for some reason; your parallel process is
+likely to abort.  There are many reasons that a parallel process can
+fail during opal_init; some of which are due to configuration or
+environment problems.  This failure appears to be an internal failure;
+here's some additional information (which may only be relevant to an
+Open MPI developer):
+
+  opal_hwloc_base_open failed
+  --> Returned value -5 instead of OPAL_SUCCESS
+--------------------------------------------------------------------------
