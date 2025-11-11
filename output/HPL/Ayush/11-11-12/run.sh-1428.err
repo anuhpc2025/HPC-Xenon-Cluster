@@ -1,0 +1,19 @@
+--------------------------------------------------------------------------
+The mapping request contains an unrecognized modifier:
+
+  Request: rankfile:file=rankfile.txt
+
+Please check your request and try again.
+--------------------------------------------------------------------------
+[node1:1602104] [[14664,0],0] ORTE_ERROR_LOG: Bad parameter in file ess_hnp_module.c at line 549
+--------------------------------------------------------------------------
+It looks like orte_init failed for some reason; your parallel process is
+likely to abort.  There are many reasons that a parallel process can
+fail during orte_init; some of which are due to configuration or
+environment problems.  This failure appears to be an internal failure;
+here's some additional information (which may only be relevant to an
+Open MPI developer):
+
+  orte_rmaps_base_open failed
+  --> Returned value Bad parameter (-5) instead of ORTE_SUCCESS
+--------------------------------------------------------------------------
