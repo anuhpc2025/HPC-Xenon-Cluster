@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2025-11-12T20:12:42.870Z",
+  "generatedAt": "2025-11-12T23:08:10.973Z",
   "runs": [
     {
       "id": "HPL/Ayush/10-11-1",
@@ -1809,6 +1809,25 @@
       "run": "Hero-Xenon-6",
       "best": null,
       "outSummary": null,
+      "hasErr": true
+    },
+    {
+      "id": "HPL/Ayush/Hero-Xenon-7",
+      "suite": "HPL",
+      "group": "Ayush",
+      "run": "Hero-Xenon-7",
+      "best": {
+        "gflops": 5444.4,
+        "N": 433920,
+        "NB": 240,
+        "timeSec": 10004.43
+      },
+      "outSummary": {
+        "testsTotal": 1,
+        "testsPassed": 1,
+        "testsFailed": 0,
+        "testsSkipped": 0
+      },
       "hasErr": true
     },
     {
