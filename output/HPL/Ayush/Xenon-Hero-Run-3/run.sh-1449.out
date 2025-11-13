@@ -1,0 +1,66 @@
+================================================================================
+AMD Zen HPL 2024_10_08
+Using AOCL BLIS
+================================================================================
+Derived from:
+HPLinpack 2.3  --  High-Performance Linpack benchmark  --   December 2, 2018
+Written by A. Petitet and R. Clint Whaley,  Innovative Computing Laboratory, UTK
+Modified by Piotr Luszczek, Innovative Computing Laboratory, UTK
+Modified by Julien Langou, University of Colorado Denver
+================================================================================
+
+An explanation of the input/output parameters follows:
+T/V    : Wall time / encoded variant.
+N      : The order of the coefficient matrix A.
+NB     : The partitioning blocking factor.
+P      : The number of process rows.
+Q      : The number of process columns.
+Time   : Time in seconds to solve the linear system.
+Gflops : Rate of execution for solving the linear system.
+
+The following parameter values will be used:
+
+N      :  437760 
+NB     :     240 
+PMAP   : Row-major process mapping
+P      :       4 
+Q      :       4 
+PFACT  :   Crout 
+NBMIN  :       2 
+NDIV   :       2 
+RFACT  :   Crout 
+BCAST  :   2ring 
+DEPTH  :       1 
+SWAP   : (002) Mix (@ 16)
+L1     : transposed form
+A      : no-transposed form (ColMajor)
+EQUIL  : yes
+ALIGN  : 32 double precision words
+MXSWP  : (O/o) Orig 
+
+--------------------------------------------------------------------------------
+
+- The matrix A is randomly generated for each test.
+- The following scaled residual check will be computed:
+      ||Ax-b||_oo / ( eps * ( || x ||_oo * || A ||_oo + || b ||_oo ) * N )
+- The relative machine precision (eps) is taken to be               1.110223e-16
+- Computational tests pass if scaled residuals are less than                16.0
+
+================================================================================
+T/V         SWP           N    NB     P     Q            Time             Gflops
+--------------------------------------------------------------------------------
+WRC12C2C2o 002       437760   240     4     4        10298.94         5.4303e+03
+HPL_pdgesv() start time Thu Nov 13 13:01:07 2025
+HPL_pdgesv() end time   Thu Nov 13 15:52:45 2025
+--------------------------------------------------------------------------------
+||Ax-b||_oo/(eps*(||A||_oo*||x||_oo+||b||_oo)*N)=   3.06141613e-03 ...... PASSED
+================================================================================
+
+Finished      1 tests with the following results:
+              1 tests completed and passed residual checks,
+              0 tests completed and failed residual checks,
+              0 tests skipped because of illegal input values.
+--------------------------------------------------------------------------------
+
+End of Tests.
+================================================================================
