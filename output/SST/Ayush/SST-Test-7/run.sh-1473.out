@@ -1,0 +1,36 @@
+SST_RUN_START job=1473 host=node1 threads=4 app=halo groups=5 jobs=2 iters=2 link_bw=25GB/s router_latency=100ns link_latency=50ns
+[1763212070.964486] [node1:1895354:0]     ucp_context.c:2137 UCX  WARN  UCP API version is incompatible: required >= 1.18, actual 1.16.0 (loaded from /lib/x86_64-linux-gnu/libucp.so.0)
+Halo3D processor decomposition solution: 6x6x6
+Halo3D problem size: 30x30x30
+Halo3D compute time: 187200 ns
+Halo3D copy time:    0 ns
+Halo3D iterations:   1
+Halo3D items/cell:   8
+Halo3D do reduction: 1
+Halo3D processor decomposition solution: 6x6x6
+Halo3D problem size: 30x30x30
+Halo3D compute time: 187200 ns
+Halo3D copy time:    0 ns
+Halo3D iterations:   1
+Halo3D items/cell:   8
+Halo3D do reduction: 1
+Allreduce: ranks 216, loop 1, 1 double(s), latency 356.082 us
+Halo3D processor decomposition solution: 6x6x6
+Halo3D problem size: 30x30x30
+Halo3D compute time: 187200 ns
+Halo3D copy time:    0 ns
+Halo3D iterations:   1
+Halo3D items/cell:   8
+Halo3D do reduction: 1
+Allreduce: ranks 216, loop 1, 1 double(s), latency 264.232 us
+Halo3D processor decomposition solution: 6x6x6
+Halo3D problem size: 30x30x30
+Halo3D compute time: 187200 ns
+Halo3D copy time:    0 ns
+Halo3D iterations:   1
+Halo3D items/cell:   8
+Halo3D do reduction: 1
+Allreduce: ranks 216, loop 1, 1 double(s), latency 202.392 us
+Allreduce: ranks 216, loop 1, 1 double(s), latency 307.599 us
+Simulation is complete, simulated time: 1.44058 ms
+SST_RUN_COMPLETE job=1473 exit_code=0
