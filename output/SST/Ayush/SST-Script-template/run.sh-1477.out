@@ -1,0 +1,2276 @@
+SST_RUN_START job=1477 host=node1 threads=16 app=halo groups=5 jobs=2 iters=2 link_bw=25GB/s router_latency=100ns link_latency=50ns profiling_points=\
+clocks:sst.profile.handler.clock.time.steady(level=type)[clock];\
+events:sst.profile.handler.event.time.steady(level=type,track_ports=true,profile_receives=true)[event];\
+sync:sst.profile.sync.time.steady[sync]
+[1763217985.928267] [node1:1899932:0]     ucp_context.c:2137 UCX  WARN  UCP API version is incompatible: required >= 1.18, actual 1.16.0 (loaded from /lib/x86_64-linux-gnu/libucp.so.0)
+Halo3D processor decomposition solution: 6x6x6
+Halo3D problem size: 30x30x30
+Halo3D compute time: 187200 ns
+Halo3D copy time:    0 ns
+Halo3D iterations:   1
+Halo3D items/cell:   8
+Halo3D do reduction: 1
+Halo3D processor decomposition solution: 6x6x6
+Halo3D problem size: 30x30x30
+Halo3D compute time: 187200 ns
+Halo3D copy time:    0 ns
+Halo3D iterations:   1
+Halo3D items/cell:   8
+Halo3D do reduction: 1
+Allreduce: ranks 216, loop 1, 1 double(s), latency 356.082 us
+Halo3D processor decomposition solution: 6x6x6
+Halo3D problem size: 30x30x30
+Halo3D compute time: 187200 ns
+Halo3D copy time:    0 ns
+Halo3D iterations:   1
+Halo3D items/cell:   8
+Halo3D do reduction: 1
+Allreduce: ranks 216, loop 1, 1 double(s), latency 264.232 us
+Halo3D processor decomposition solution: 6x6x6
+Halo3D problem size: 30x30x30
+Halo3D compute time: 187200 ns
+Halo3D copy time:    0 ns
+Halo3D iterations:   1
+Halo3D items/cell:   8
+Halo3D do reduction: 1
+Allreduce: ranks 216, loop 1, 1 double(s), latency 202.392 us
+Allreduce: ranks 216, loop 1, 1 double(s), latency 307.599 us
+
+------------------------------------------------------------
+Profiling Output:
+
+-----------------------------
+Rank = 0, thread = 0:
+
+\
+clocks
+Name, count, handler time (s), avg. handler time (ns)
+merlin.hr_router, 10840648, 5.095064, 469
+
+\
+events
+Name, recv count, recv time (s), avg. recv time (ns)
+ember.EmberEngine:self, 3112, 0.007757, 2492
+firefly.VirtNic:nic, 2968, 0.004253, 1432
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x620e22dff970, 158, 0.000427, 2700
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x620e22e0ed90, 232, 0.000646, 2785
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x620e22e15bc0, 242, 0.000475, 1963
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x620e22e1e1e0, 241, 0.000537, 2226
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x620e22e2b180, 230, 0.000470, 2041
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x620e22e316a0, 182, 0.000276, 1517
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x620e22e7b240, 233, 0.000468, 2010
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x620e22e81960, 318, 0.000536, 1685
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x620e22e90570, 318, 0.000531, 1668
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x620e22e99bd0, 316, 0.000681, 2155
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x620e22ea08f0, 320, 0.000529, 1654
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x620e22ea9350, 237, 0.000310, 1306
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x620e22eb8730, 239, 0.000305, 1275
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x620e22ebf9c0, 328, 0.000546, 1664
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x620e22ec9e90, 319, 0.000702, 2199
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x620e22ed2650, 315, 0.000516, 1638
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x620e22efd330, 328, 0.000543, 1656
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x620e22f08610, 237, 0.000477, 2013
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x620e22f10ed0, 242, 0.000314, 1299
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x620e22f19750, 327, 0.000536, 1639
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x620e22f25a40, 317, 0.000517, 1630
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x620e22f320f0, 325, 0.000522, 1605
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x620e22f38d30, 313, 0.000685, 2188
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x620e22f415e0, 230, 0.000486, 2113
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x620e22f50b90, 235, 0.000467, 1985
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x620e22f5a190, 327, 0.000732, 2238
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x620e22f60eb0, 328, 0.000521, 1588
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x620e22f697f0, 312, 0.000577, 1849
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x620e22f79310, 319, 0.000532, 1668
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x620e22f82140, 241, 0.000315, 1308
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x620e22f88e10, 173, 0.000430, 2488
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x620e22f916d0, 234, 0.000465, 1986
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x620e22fbe150, 245, 0.000325, 1324
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x620e22fcb520, 237, 0.000473, 1994
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x620e22fd21d0, 233, 0.000470, 2015
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x620e22fdaa90, 181, 0.000299, 1650
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x620e22fea4f0, 235, 0.000325, 1385
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x620e22ff1770, 324, 0.000540, 1665
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x620e22ffa020, 313, 0.000538, 1717
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x620e23002870, 331, 0.000409, 1237
+firefly.ctrlMsg:loop, 492, 0.000167, 339
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x620e22e08c20, 72, 0.000081, 1121
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x620e22e11a00, 112, 0.000086, 765
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x620e22e18c90, 114, 0.000087, 761
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x620e22e21080, 124, 0.000098, 792
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x620e22e2f0d0, 130, 0.000095, 732
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x620e22e31560, 96, 0.000114, 1191
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x620e22e79a10, 126, 0.000121, 958
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x620e22e81820, 176, 0.000143, 812
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x620e22e91770, 180, 0.000142, 788
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x620e22e983a0, 182, 0.000148, 811
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x620e22ea07b0, 184, 0.000149, 807
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x620e22ead360, 138, 0.000172, 1248
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x620e22eb9860, 138, 0.000183, 1325
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x620e22ebf880, 184, 0.000147, 800
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x620e22ec8660, 182, 0.000165, 907
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x620e22ed0e20, 180, 0.000143, 794
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x620e22efae30, 185, 0.000140, 759
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x620e22f084d0, 136, 0.000127, 931
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x620e22f14ee0, 139, 0.000120, 863
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x620e22f1d760, 190, 0.000140, 734
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x620e22f2b180, 188, 0.000141, 752
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x620e22f308c0, 186, 0.000149, 798
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x620e22f38bf0, 182, 0.000145, 794
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x620e22f414a0, 132, 0.000280, 2119
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x620e22f51d90, 132, 0.000147, 1114
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x620e22f58960, 194, 0.000168, 866
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x620e22f62250, 184, 0.000157, 851
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x620e22f696b0, 188, 0.000159, 848
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x620e22f749e0, 188, 0.000146, 774
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x620e22f80970, 138, 0.000144, 1040
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x620e22f88cd0, 96, 0.000129, 1341
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x620e22f956e0, 128, 0.000123, 958
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x620e22fbbba0, 138, 0.000133, 965
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x620e22fcaf00, 136, 0.000121, 888
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x620e22fd2090, 136, 0.000116, 853
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x620e22fdeaa0, 102, 0.000157, 1540
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x620e22fe1b00, 138, 0.000146, 1054
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x620e22ff1630, 195, 0.000171, 877
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x620e22ff9ee0, 188, 0.000165, 876
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x620e23002730, 190, 0.000172, 903
+firefly.functionSM:FromDriver, 2472, 0.024177, 9780
+firefly.functionSM:ToDriver, 2472, 0.032321, 13074
+firefly.functionSM:ToMe, 3226, 0.001740, 539
+firefly.loopBack:nic0core0, 72, 0.000008, 113
+firefly.loopBack:nic0core1, 86, 0.000011, 126
+firefly.loopBack:nic0core2, 66, 0.000009, 129
+firefly.loopBack:nic0core3, 44, 0.000006, 138
+firefly.loopBack:nic1core0, 38, 0.000004, 115
+firefly.loopBack:nic1core1, 46, 0.000007, 154
+firefly.loopBack:nic1core2, 70, 0.000010, 139
+firefly.loopBack:nic1core3, 70, 0.000010, 143
+firefly.nic:Nic::selfLink, 28180, 0.024335, 863
+firefly.nic:core0, 846, 0.000097, 114
+firefly.nic:core1, 830, 0.000081, 97
+firefly.nic:core2, 826, 0.000083, 100
+firefly.nic:core3, 878, 0.000086, 97
+merlin.linkcontrol:_congestion_timing, 0, 0.000000, 0
+merlin.linkcontrol:rtr_port, 14650, 0.005423, 370
+merlin.linkcontrol:rtr_port_output_timing, 9480, 0.008584, 905
+merlin.portcontrol:port0, 3806, 0.000490, 128
+merlin.portcontrol:port0_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port0_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port0_output_timing, 2479, 0.000824, 332
+merlin.portcontrol:port1, 4728, 0.000585, 123
+merlin.portcontrol:port10, 2927, 0.000686, 234
+merlin.portcontrol:port10_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port10_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port10_output_timing, 3679, 0.000813, 220
+merlin.portcontrol:port11, 3093, 0.000774, 250
+merlin.portcontrol:port11_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port11_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port11_output_timing, 3662, 0.000723, 197
+merlin.portcontrol:port12, 887, 0.000223, 251
+merlin.portcontrol:port12_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port12_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port12_output_timing, 1445, 0.000314, 217
+merlin.portcontrol:port1_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port1_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port1_output_timing, 2915, 0.001014, 347
+merlin.portcontrol:port2, 5076, 0.000689, 135
+merlin.portcontrol:port2_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port2_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port2_output_timing, 3159, 0.001071, 338
+merlin.portcontrol:port3, 5108, 0.000736, 144
+merlin.portcontrol:port3_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port3_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port3_output_timing, 3120, 0.001076, 344
+merlin.portcontrol:port4, 3785, 0.000610, 161
+merlin.portcontrol:port4_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port4_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port4_output_timing, 5482, 0.001080, 197
+merlin.portcontrol:port5, 3597, 0.000552, 153
+merlin.portcontrol:port5_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port5_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port5_output_timing, 4683, 0.000908, 193
+merlin.portcontrol:port6, 3740, 0.000839, 224
+merlin.portcontrol:port6_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port6_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port6_output_timing, 4615, 0.000931, 201
+merlin.portcontrol:port7, 3465, 0.000795, 229
+merlin.portcontrol:port7_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port7_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port7_output_timing, 4632, 0.000940, 202
+merlin.portcontrol:port8, 2729, 0.000595, 218
+merlin.portcontrol:port8_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port8_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port8_output_timing, 3875, 0.000797, 205
+merlin.portcontrol:port9, 2513, 0.000540, 214
+merlin.portcontrol:port9_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port9_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port9_output_timing, 3553, 0.000778, 218
+
+\
+sync
+  SyncManager Count = 20973
+  Total SyncManager Time = 18.080070s
+  Average SyncManager Time = 862064ns
+
+-----------------------------
+Rank = 0, thread = 1:
+
+\
+clocks
+Name, count, handler time (s), avg. handler time (ns)
+merlin.hr_router, 11735727, 5.513089, 469
+
+\
+events
+Name, recv count, recv time (s), avg. recv time (ns)
+ember.EmberEngine:self, 4172, 0.008988, 2154
+firefly.VirtNic:nic, 4276, 0.004908, 1147
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780df0076650, 326, 0.000528, 1619
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780df00832c0, 229, 0.000459, 2006
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780df008a370, 330, 0.000361, 1094
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780df0094310, 468, 0.000730, 1560
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780df009e760, 441, 0.000629, 1426
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780df00aaff0, 441, 0.000594, 1346
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780df00b1cb0, 440, 0.000759, 1725
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780df00ba560, 319, 0.000518, 1624
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780df00e6ba0, 331, 0.000526, 1589
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780df00f5e20, 441, 0.000744, 1686
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780df00ffdf0, 449, 0.000598, 1332
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780df0108ac0, 455, 0.000596, 1309
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780df0112c10, 450, 0.000605, 1343
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780df015f7f0, 329, 0.000355, 1079
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780df01681c0, 321, 0.000548, 1707
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780df0170990, 442, 0.000597, 1351
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780df017eb40, 459, 0.000605, 1318
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780df0187d70, 447, 0.000759, 1697
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780df018f2d0, 458, 0.000611, 1333
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780df01975b0, 342, 0.000408, 1191
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780df01a6de0, 345, 0.000388, 1123
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780df01afc90, 499, 0.000639, 1281
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780df01b8600, 441, 0.000765, 1734
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780df01bf2d0, 459, 0.000639, 1392
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780df01ebed0, 491, 0.000634, 1290
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780df01f9290, 330, 0.000519, 1572
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780df0201b60, 239, 0.000301, 1257
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780df020a3b0, 329, 0.000526, 1598
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780df02182e0, 331, 0.000537, 1622
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780df021f570, 324, 0.000510, 1574
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780df0227fd0, 315, 0.000711, 2257
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780df0230a20, 237, 0.000468, 1973
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780df0240170, 236, 0.000479, 2028
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780df0249740, 321, 0.000694, 2162
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780df0250250, 334, 0.000521, 1560
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780df025a800, 325, 0.000524, 1613
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780df0268670, 323, 0.000530, 1642
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780df02701e0, 237, 0.000300, 1265
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780df0278600, 329, 0.000534, 1621
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780df02827a0, 438, 0.000612, 1397
+firefly.ctrlMsg:loop, 448, 0.000114, 253
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780df007ad40, 180, 0.000121, 673
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780df0084e90, 132, 0.000111, 842
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780df008a230, 193, 0.000158, 817
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780df0096950, 297, 0.000204, 687
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780df00a3420, 264, 0.000185, 702
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780df00a97c0, 260, 0.000194, 747
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780df00b1b70, 258, 0.000174, 675
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780df00ba420, 186, 0.000143, 770
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780df00f1660, 189, 0.000161, 851
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780df00f7a00, 261, 0.000180, 689
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780df0103570, 266, 0.000441, 1658
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780df010bdf0, 270, 0.000252, 934
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780df0117950, 268, 0.000187, 699
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780df015df80, 196, 0.000130, 660
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780df0166a00, 189, 0.000122, 644
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780df016f160, 261, 0.000181, 692
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780df017f890, 260, 0.000231, 888
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780df0186540, 260, 0.000173, 666
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780df018ed80, 266, 0.000179, 673
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780df0197470, 193, 0.000129, 670
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780df01a2210, 206, 0.000149, 722
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780df01ae4b0, 300, 0.000305, 1017
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780df01b8150, 258, 0.000183, 708
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780df01bf190, 256, 0.000211, 825
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780df01f22f0, 326, 0.000203, 621
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780df01f7ab0, 189, 0.000126, 665
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780df02002f0, 138, 0.000091, 659
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780df0208de0, 204, 0.000135, 662
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780df0219290, 191, 0.000163, 852
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780df021f430, 184, 0.000121, 656
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780df022bfe0, 182, 0.000128, 705
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780df02308e0, 137, 0.000089, 649
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780df02429a0, 133, 0.000106, 799
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780df0249600, 182, 0.000166, 909
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780df0250110, 185, 0.000129, 696
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780df025a350, 188, 0.000139, 737
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780df0261b00, 188, 0.000130, 693
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780df026fcd0, 138, 0.000096, 694
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780df02784c0, 190, 0.000130, 683
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780df0282660, 260, 0.000202, 775
+firefly.functionSM:FromDriver, 3532, 0.020963, 5935
+firefly.functionSM:ToDriver, 3532, 0.026848, 7601
+firefly.functionSM:ToMe, 4292, 0.001688, 393
+firefly.loopBack:nic0core0, 72, 0.000010, 135
+firefly.loopBack:nic0core1, 72, 0.000010, 137
+firefly.loopBack:nic0core2, 44, 0.000006, 137
+firefly.loopBack:nic0core3, 36, 0.000005, 133
+firefly.loopBack:nic1core0, 36, 0.000005, 126
+firefly.loopBack:nic1core1, 44, 0.000006, 127
+firefly.loopBack:nic1core2, 72, 0.000009, 123
+firefly.loopBack:nic1core3, 72, 0.000011, 146
+firefly.nic:Nic::selfLink, 38649, 0.032320, 836
+firefly.nic:core0, 1194, 0.000125, 104
+firefly.nic:core1, 1138, 0.000117, 102
+firefly.nic:core2, 1170, 0.000113, 96
+firefly.nic:core3, 1238, 0.000127, 102
+merlin.linkcontrol:_congestion_timing, 0, 0.000000, 0
+merlin.linkcontrol:rtr_port, 19852, 0.007317, 368
+merlin.linkcontrol:rtr_port_output_timing, 13010, 0.011571, 889
+merlin.portcontrol:port0, 6332, 0.000752, 118
+merlin.portcontrol:port0_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port0_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port0_output_timing, 3873, 0.001298, 335
+merlin.portcontrol:port1, 6012, 0.000735, 122
+merlin.portcontrol:port10, 4275, 0.000710, 166
+merlin.portcontrol:port10_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port10_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port10_output_timing, 5821, 0.001075, 184
+merlin.portcontrol:port11, 1909, 0.000463, 242
+merlin.portcontrol:port11_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port11_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port11_output_timing, 2255, 0.000459, 203
+merlin.portcontrol:port12, 621, 0.000158, 255
+merlin.portcontrol:port12_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port12_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port12_output_timing, 908, 0.000198, 217
+merlin.portcontrol:port1_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port1_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port1_output_timing, 3818, 0.001217, 318
+merlin.portcontrol:port2, 6012, 0.000752, 125
+merlin.portcontrol:port2_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port2_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port2_output_timing, 3810, 0.001234, 323
+merlin.portcontrol:port3, 6332, 0.000839, 132
+merlin.portcontrol:port3_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port3_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port3_output_timing, 3955, 0.001313, 332
+merlin.portcontrol:port4, 2465, 0.000479, 194
+merlin.portcontrol:port4_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port4_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port4_output_timing, 3635, 0.000722, 198
+merlin.portcontrol:port5, 3293, 0.000715, 217
+merlin.portcontrol:port5_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port5_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port5_output_timing, 4490, 0.000916, 203
+merlin.portcontrol:port6, 4176, 0.000874, 209
+merlin.portcontrol:port6_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port6_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port6_output_timing, 5636, 0.001104, 195
+merlin.portcontrol:port7, 3975, 0.000643, 161
+merlin.portcontrol:port7_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port7_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port7_output_timing, 5218, 0.001095, 209
+merlin.portcontrol:port8, 4345, 0.000692, 159
+merlin.portcontrol:port8_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port8_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port8_output_timing, 5593, 0.001096, 196
+merlin.portcontrol:port9, 4719, 0.000837, 177
+merlin.portcontrol:port9_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port9_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port9_output_timing, 6287, 0.001209, 192
+
+\
+sync
+  SyncManager Count = 20973
+  Total SyncManager Time = 17.601745s
+  Average SyncManager Time = 839257ns
+
+-----------------------------
+Rank = 0, thread = 2:
+
+\
+clocks
+Name, count, handler time (s), avg. handler time (ns)
+merlin.hr_router, 7243874, 4.189689, 578
+
+\
+events
+Name, recv count, recv time (s), avg. recv time (ns)
+ember.EmberEngine:self, 5184, 0.021643, 4175
+firefly.VirtNic:nic, 5162, 0.006071, 1176
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780de8081790, 439, 0.000592, 1348
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780de808a710, 440, 0.000745, 1692
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780de80911a0, 457, 0.000596, 1303
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780de80999f0, 332, 0.000352, 1061
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780de80a97a0, 335, 0.000355, 1060
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780de80b11f0, 449, 0.000606, 1350
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780de80b9090, 455, 0.000787, 1728
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780de80c3800, 457, 0.000597, 1305
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780de80d1600, 457, 0.000603, 1318
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780de80d8e90, 323, 0.000518, 1604
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780de80e1980, 337, 0.000358, 1062
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780de80e9e20, 463, 0.000607, 1310
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780de80f99e0, 453, 0.000604, 1333
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780de8100bf0, 449, 0.000596, 1328
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780de81094a0, 437, 0.000751, 1718
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780de8111d50, 327, 0.000511, 1563
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780de813e300, 333, 0.000534, 1603
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780de814cd30, 450, 0.000787, 1748
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780de8155090, 461, 0.000606, 1313
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780de815e120, 448, 0.000610, 1361
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780de816d0e0, 451, 0.000598, 1326
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780de81b43b0, 333, 0.000358, 1074
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780de81bcc60, 237, 0.000468, 1974
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780de81c54b0, 335, 0.000525, 1567
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780de81d4d30, 341, 0.000360, 1054
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780de81de370, 335, 0.000528, 1576
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780de81e6c30, 333, 0.000536, 1610
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780de81ee1f0, 223, 0.000290, 1299
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780de81f9870, 196, 0.000277, 1414
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780de82046d0, 283, 0.000498, 1759
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780de820cf90, 285, 0.000513, 1798
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780de8215a30, 297, 0.000338, 1138
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780de8242990, 282, 0.000509, 1803
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780de824f8b0, 197, 0.000449, 2281
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780de8256570, 286, 0.000337, 1178
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780de825ee20, 400, 0.000572, 1430
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780de826ea70, 409, 0.000578, 1411
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780de8277a20, 405, 0.000574, 1417
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780de8280180, 409, 0.000742, 1814
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780de82889d0, 279, 0.000500, 1791
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780de8296cc0, 280, 0.000547, 1954
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780de829e0f0, 408, 0.000771, 1890
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780de82a88b0, 421, 0.000616, 1462
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780de82af220, 418, 0.000582, 1393
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780de82bec70, 413, 0.000583, 1412
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780de82c7ba0, 286, 0.000338, 1181
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780de82cead0, 283, 0.000511, 1804
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780de82d6ff0, 403, 0.000601, 1492
+firefly.ctrlMsg:loop, 496, 0.000120, 241
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780de8082570, 258, 0.000279, 1079
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780de808a430, 258, 0.000200, 775
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780de8093870, 263, 0.000173, 657
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780de80998b0, 193, 0.000136, 704
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780de80aa8d0, 196, 0.000129, 660
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780de80b0bb0, 266, 0.000180, 676
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780de80bb780, 263, 0.000202, 769
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780de80c3350, 261, 0.000267, 1022
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780de80d25a0, 262, 0.000185, 708
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780de80d8d50, 190, 0.000157, 824
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780de80e1840, 194, 0.000128, 660
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780de80ec4c0, 269, 0.000187, 693
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780de80fab10, 268, 0.000180, 671
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780de8100ab0, 265, 0.000180, 681
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780de8109360, 262, 0.000169, 644
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780de8111c10, 190, 0.000148, 777
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780de8148ee0, 186, 0.000147, 790
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780de814e7c0, 264, 0.000231, 875
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780de8156220, 266, 0.000578, 2173
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780de8159da0, 265, 0.000171, 646
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780de816e090, 266, 0.000189, 711
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780de81b4270, 192, 0.000124, 646
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780de81bcb20, 132, 0.000111, 844
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780de81c5370, 185, 0.000120, 646
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780de81d5f30, 196, 0.000128, 652
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780de81dcd50, 193, 0.000132, 682
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780de81e5450, 194, 0.000125, 646
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780de81edbb0, 128, 0.000119, 927
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780de81fe7a0, 114, 0.000083, 725
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780de8204590, 164, 0.000108, 657
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780de8210fa0, 164, 0.000104, 633
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780de82158f0, 166, 0.000122, 736
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780de8242850, 156, 0.000098, 627
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780de824e0d0, 108, 0.000151, 1397
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780de8256430, 166, 0.000112, 672
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780de825ece0, 240, 0.000175, 730
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780de8267c50, 240, 0.000159, 664
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780de82778e0, 236, 0.000160, 676
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780de827e910, 234, 0.000150, 642
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780de82871f0, 160, 0.000100, 628
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780de8291020, 160, 0.000110, 686
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780de82a0800, 234, 0.000160, 681
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780de82a8770, 236, 0.000177, 749
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780de82af920, 240, 0.000223, 928
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780de82bfc20, 240, 0.000160, 666
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780de82c6370, 166, 0.000108, 650
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780de82ce990, 160, 0.000130, 814
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780de82d9700, 232, 0.000180, 776
+firefly.functionSM:FromDriver, 4416, 0.025245, 5716
+firefly.functionSM:ToDriver, 4416, 0.034088, 7719
+firefly.functionSM:ToMe, 4962, 0.001719, 346
+firefly.loopBack:nic0core0, 76, 0.000010, 129
+firefly.loopBack:nic0core1, 80, 0.000010, 125
+firefly.loopBack:nic0core2, 52, 0.000007, 129
+firefly.loopBack:nic0core3, 40, 0.000006, 153
+firefly.loopBack:nic1core0, 40, 0.000005, 131
+firefly.loopBack:nic1core1, 52, 0.000007, 127
+firefly.loopBack:nic1core2, 80, 0.000010, 123
+firefly.loopBack:nic1core3, 76, 0.000011, 145
+firefly.nic:Nic::selfLink, 48420, 0.040260, 831
+firefly.nic:core0, 1462, 0.000158, 108
+firefly.nic:core1, 1415, 0.000135, 95
+firefly.nic:core2, 1414, 0.000138, 97
+firefly.nic:core3, 1455, 0.000151, 103
+merlin.linkcontrol:_congestion_timing, 0, 0.000000, 0
+merlin.linkcontrol:rtr_port, 24986, 0.010201, 408
+merlin.linkcontrol:rtr_port_output_timing, 15797, 0.014149, 895
+merlin.portcontrol:port0, 4020, 0.000616, 153
+merlin.portcontrol:port0_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port0_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port0_output_timing, 2517, 0.000948, 376
+merlin.portcontrol:port1, 4020, 0.000615, 152
+merlin.portcontrol:port10, 3204, 0.000581, 181
+merlin.portcontrol:port10_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port10_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port10_output_timing, 4194, 0.000877, 209
+merlin.portcontrol:port11, 1660, 0.000357, 214
+merlin.portcontrol:port11_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port11_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port11_output_timing, 2062, 0.000429, 208
+merlin.portcontrol:port12, 720, 0.000216, 299
+merlin.portcontrol:port12_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port12_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port12_output_timing, 1262, 0.000283, 224
+merlin.portcontrol:port1_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port1_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port1_output_timing, 2474, 0.000934, 377
+merlin.portcontrol:port2, 3994, 0.000634, 158
+merlin.portcontrol:port2_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port2_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port2_output_timing, 2563, 0.000914, 356
+merlin.portcontrol:port3, 4048, 0.000676, 167
+merlin.portcontrol:port3_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port3_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port3_output_timing, 2446, 0.000929, 379
+merlin.portcontrol:port4, 2004, 0.000469, 233
+merlin.portcontrol:port4_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port4_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port4_output_timing, 2715, 0.000580, 213
+merlin.portcontrol:port5, 1132, 0.000231, 204
+merlin.portcontrol:port5_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port5_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port5_output_timing, 1658, 0.000359, 216
+merlin.portcontrol:port6, 2304, 0.000537, 233
+merlin.portcontrol:port6_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port6_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port6_output_timing, 3276, 0.000685, 208
+merlin.portcontrol:port7, 2170, 0.000401, 184
+merlin.portcontrol:port7_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port7_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port7_output_timing, 3130, 0.000627, 200
+merlin.portcontrol:port8, 3793, 0.000724, 190
+merlin.portcontrol:port8_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port8_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port8_output_timing, 4719, 0.000920, 195
+merlin.portcontrol:port9, 3031, 0.000581, 191
+merlin.portcontrol:port9_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port9_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port9_output_timing, 3779, 0.000771, 203
+
+\
+sync
+  SyncManager Count = 20973
+  Total SyncManager Time = 18.994426s
+  Average SyncManager Time = 905660ns
+
+-----------------------------
+Rank = 0, thread = 3:
+
+\
+clocks
+Name, count, handler time (s), avg. handler time (ns)
+merlin.hr_router, 11339755, 5.031198, 443
+
+\
+events
+Name, recv count, recv time (s), avg. recv time (ns)
+ember.EmberEngine:self, 4268, 0.011245, 2634
+firefly.VirtNic:nic, 3902, 0.004883, 1251
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780de0095570, 412, 0.000631, 1530
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780de00a6540, 407, 0.000749, 1840
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780de00ae920, 418, 0.000596, 1426
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780de00b71d0, 291, 0.000344, 1183
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780de00c52d0, 285, 0.000348, 1220
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780de010e1a0, 406, 0.000585, 1439
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780de01168c0, 407, 0.000757, 1859
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780de011f090, 418, 0.000597, 1429
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780de012cd50, 407, 0.000603, 1481
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780de01364f0, 279, 0.000505, 1810
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780de013d130, 199, 0.000284, 1425
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780de0146280, 281, 0.000511, 1818
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780de0151a40, 279, 0.000511, 1831
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780de015c990, 283, 0.000553, 1954
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780de0164eb0, 264, 0.000668, 2528
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780de016daf0, 197, 0.000447, 2270
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780de019a9f0, 189, 0.000453, 2397
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780de01a7900, 264, 0.000666, 2523
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780de01b0100, 284, 0.000503, 1771
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780de01b8950, 276, 0.000508, 1840
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780de01c68f0, 283, 0.000508, 1795
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780de01cf840, 197, 0.000308, 1564
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780de01d64c0, 275, 0.000509, 1849
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780de01e0940, 380, 0.000579, 1524
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780de01eeb90, 401, 0.000592, 1476
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780de01f6040, 398, 0.000753, 1891
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780de02004b0, 438, 0.000624, 1424
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780de02070f0, 297, 0.000352, 1186
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780de0213020, 281, 0.000350, 1246
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780de021fb00, 424, 0.000602, 1419
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780de02282d0, 406, 0.000753, 1855
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780de022eff0, 407, 0.000606, 1489
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780de025be80, 421, 0.000590, 1400
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780de0269200, 284, 0.000509, 1791
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780de0271a80, 285, 0.000495, 1737
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780de027a2d0, 412, 0.000609, 1477
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780de0288200, 407, 0.000588, 1444
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780de028f510, 419, 0.000661, 1577
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780de0299950, 411, 0.000756, 1840
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780de02a0550, 285, 0.000526, 1845
+firefly.ctrlMsg:loop, 456, 0.000113, 248
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780de00a0890, 232, 0.000183, 790
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780de00a9900, 234, 0.000304, 1299
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780de00b1e10, 236, 0.000168, 711
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780de00ba750, 166, 0.000124, 745
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780de00c6400, 166, 0.000128, 768
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780de010db80, 236, 0.000174, 736
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780de0115100, 234, 0.000190, 813
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780de011d860, 232, 0.000182, 786
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780de012df50, 233, 0.000184, 791
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780de0134ed0, 160, 0.000112, 702
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780de013cff0, 114, 0.000131, 1146
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780de0145d30, 164, 0.000121, 740
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780de0156650, 164, 0.000126, 766
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780de015c850, 160, 0.000114, 711
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780de01675c0, 158, 0.000113, 717
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780de016d9b0, 108, 0.000085, 785
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780de019aee0, 108, 0.000090, 829
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780de01a6080, 158, 0.000113, 714
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780de01ae890, 160, 0.000099, 619
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780de01b7170, 164, 0.000136, 830
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780de01c7880, 168, 0.000124, 739
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780de01cf390, 114, 0.000089, 780
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780de01d6380, 160, 0.000120, 748
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780de01df0d0, 232, 0.000170, 730
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780de01f1820, 232, 0.000199, 857
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780de01f5f00, 234, 0.000167, 712
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780de01fee90, 266, 0.000188, 705
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780de0206fb0, 172, 0.000133, 775
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780de0217c40, 166, 0.000118, 708
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780de021e340, 236, 0.000172, 730
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780de0226aa0, 234, 0.000175, 749
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780de022eeb0, 232, 0.000177, 763
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780de0262220, 232, 0.000176, 757
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780de02679d0, 160, 0.000108, 675
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780de0270210, 166, 0.000119, 715
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780de0278af0, 240, 0.000172, 715
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780de0289330, 240, 0.000643, 2680
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780de028f3d0, 236, 0.000175, 741
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780de0298100, 234, 0.000169, 720
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780de02a0410, 160, 0.000099, 621
+firefly.functionSM:FromDriver, 3628, 0.032642, 8997
+firefly.functionSM:ToDriver, 3628, 0.016144, 4449
+firefly.functionSM:ToMe, 3668, 0.000802, 218
+firefly.loopBack:nic0core0, 76, 0.000010, 127
+firefly.loopBack:nic0core1, 72, 0.000011, 153
+firefly.loopBack:nic0core2, 44, 0.000007, 151
+firefly.loopBack:nic0core3, 32, 0.000004, 138
+firefly.loopBack:nic1core0, 32, 0.000004, 133
+firefly.loopBack:nic1core1, 52, 0.000007, 130
+firefly.loopBack:nic1core2, 76, 0.000010, 134
+firefly.loopBack:nic1core3, 72, 0.000011, 153
+firefly.nic:Nic::selfLink, 38224, 0.033635, 879
+firefly.nic:core0, 1132, 0.000128, 112
+firefly.nic:core1, 1086, 0.000113, 103
+firefly.nic:core2, 1086, 0.000113, 104
+firefly.nic:core3, 1092, 0.000115, 104
+merlin.linkcontrol:_congestion_timing, 0, 0.000000, 0
+merlin.linkcontrol:rtr_port, 19832, 0.007009, 353
+merlin.linkcontrol:rtr_port_output_timing, 12470, 0.011663, 935
+merlin.portcontrol:port0, 5868, 0.000995, 169
+merlin.portcontrol:port0_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port0_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port0_output_timing, 3625, 0.001243, 342
+merlin.portcontrol:port1, 6188, 0.000917, 148
+merlin.portcontrol:port10, 2653, 0.000740, 278
+merlin.portcontrol:port10_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port10_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port10_output_timing, 3539, 0.000737, 208
+merlin.portcontrol:port11, 3217, 0.000729, 226
+merlin.portcontrol:port11_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port11_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port11_output_timing, 4229, 0.000855, 202
+merlin.portcontrol:port12, 3244, 0.000561, 172
+merlin.portcontrol:port12_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port12_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port12_output_timing, 3445, 0.000668, 194
+merlin.portcontrol:port1_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port1_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port1_output_timing, 3795, 0.001249, 329
+merlin.portcontrol:port2, 6188, 0.000983, 158
+merlin.portcontrol:port2_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port2_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port2_output_timing, 3738, 0.001208, 323
+merlin.portcontrol:port3, 5560, 0.000914, 164
+merlin.portcontrol:port3_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port3_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port3_output_timing, 3369, 0.001129, 334
+merlin.portcontrol:port4, 4311, 0.000651, 150
+merlin.portcontrol:port4_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port4_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port4_output_timing, 5842, 0.001131, 193
+merlin.portcontrol:port5, 5265, 0.000805, 152
+merlin.portcontrol:port5_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port5_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port5_output_timing, 6563, 0.001242, 189
+merlin.portcontrol:port6, 3562, 0.000779, 218
+merlin.portcontrol:port6_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port6_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port6_output_timing, 4978, 0.000976, 196
+merlin.portcontrol:port7, 4207, 0.000940, 223
+merlin.portcontrol:port7_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port7_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port7_output_timing, 5978, 0.001163, 194
+merlin.portcontrol:port8, 2224, 0.000482, 216
+merlin.portcontrol:port8_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port8_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port8_output_timing, 3035, 0.000589, 193
+merlin.portcontrol:port9, 3485, 0.001073, 307
+merlin.portcontrol:port9_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port9_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port9_output_timing, 4906, 0.000990, 201
+
+\
+sync
+  SyncManager Count = 20973
+  Total SyncManager Time = 18.145176s
+  Average SyncManager Time = 865168ns
+
+-----------------------------
+Rank = 0, thread = 4:
+
+\
+clocks
+Name, count, handler time (s), avg. handler time (ns)
+merlin.hr_router, 10449454, 4.343386, 415
+
+\
+events
+Name, recv count, recv time (s), avg. recv time (ns)
+ember.EmberEngine:self, 3432, 0.016503, 4808
+firefly.VirtNic:nic, 2970, 0.004017, 1352
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780de40765a0, 287, 0.000516, 1797
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780de4082850, 442, 0.000783, 1771
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780de408aee0, 420, 0.000594, 1414
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780de4094110, 410, 0.000643, 1568
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780de40a1fa0, 450, 0.000628, 1395
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780de40aae60, 305, 0.000371, 1216
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780de40b3910, 194, 0.000447, 2303
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780de40bbfa0, 285, 0.000504, 1769
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780de40e73a0, 295, 0.000354, 1200
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780de40f5f10, 287, 0.000508, 1768
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780de40ff2a0, 297, 0.000527, 1775
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780de4108bb0, 202, 0.000292, 1446
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780de4118b20, 139, 0.000258, 1855
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780de415ea30, 195, 0.000463, 2373
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780de4167340, 192, 0.000455, 2368
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780de416fbd0, 205, 0.000292, 1425
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780de417d940, 193, 0.000458, 2372
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780de4186eb0, 131, 0.000414, 3157
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780de418f800, 201, 0.000287, 1427
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780de4197f10, 279, 0.000504, 1804
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780de41a22b0, 287, 0.000514, 1792
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780de41aed30, 279, 0.000499, 1789
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780de41b62f0, 278, 0.000667, 2399
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780de41be220, 191, 0.000442, 2316
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780de41eaf20, 195, 0.000449, 2302
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780de41f81f0, 272, 0.000656, 2410
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780de41fef10, 288, 0.000515, 1787
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780de4207a00, 285, 0.000501, 1759
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780de4213660, 288, 0.000515, 1789
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780de42200b0, 197, 0.000292, 1479
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780de4226e20, 189, 0.000446, 2360
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780de422f9b0, 278, 0.000505, 1818
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780de423f130, 281, 0.000513, 1824
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780de4248660, 275, 0.000680, 2473
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780de424f260, 285, 0.000522, 1831
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780de4259820, 201, 0.000298, 1484
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780de4267620, 199, 0.000300, 1507
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780de4270440, 272, 0.000503, 1849
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780de4278cd0, 272, 0.000677, 2490
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780de4280290, 278, 0.000511, 1836
+firefly.ctrlMsg:loop, 408, 0.000098, 239
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780de40741f0, 160, 0.000150, 938
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780de4082710, 274, 0.000170, 620
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780de408ada0, 236, 0.000160, 679
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780de40922d0, 240, 0.000270, 1126
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780de40a30d0, 278, 0.000188, 675
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780de40a95e0, 180, 0.000129, 715
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780de40b37d0, 108, 0.000111, 1023
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780de40ba720, 156, 0.000111, 711
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780de40f1a80, 166, 0.000130, 784
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780de40f7100, 176, 0.000127, 723
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780de40fb010, 164, 0.000133, 810
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780de4108340, 78, 0.000085, 1083
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780de410c1b0, 114, 0.000100, 873
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780de415d250, 112, 0.000084, 746
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780de4166ee0, 112, 0.000079, 703
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780de416e3a0, 114, 0.000109, 952
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780de41764b0, 104, 0.000082, 790
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780de4185680, 72, 0.000072, 1001
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780de4191bb0, 114, 0.000080, 703
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780de4196730, 164, 0.000110, 671
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780de41a6e80, 164, 0.000109, 664
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780de41ad500, 160, 0.000108, 672
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780de41b5da0, 164, 0.000291, 1771
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780de41c08c0, 108, 0.000076, 706
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780de41f12c0, 108, 0.000114, 1052
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780de41f6a10, 158, 0.000102, 648
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780de41fedd0, 160, 0.000105, 658
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780de42078c0, 164, 0.000113, 686
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780de42184d0, 164, 0.000109, 664
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780de421e880, 114, 0.000080, 698
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780de4226ce0, 108, 0.000089, 826
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780de422f870, 156, 0.000115, 736
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780de423bb90, 156, 0.000117, 749
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780de4248170, 158, 0.000132, 832
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780de424f120, 160, 0.000111, 695
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780de425bbd0, 114, 0.000107, 940
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780de4268750, 114, 0.000087, 760
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780de426ffe0, 160, 0.000116, 722
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780de42774a0, 158, 0.000109, 692
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780de427fd40, 156, 0.000119, 762
+firefly.functionSM:FromDriver, 2792, 0.015876, 5686
+firefly.functionSM:ToDriver, 2792, 0.036870, 13205
+firefly.functionSM:ToMe, 2832, 0.000805, 284
+firefly.loopBack:nic0core0, 60, 0.000008, 135
+firefly.loopBack:nic0core1, 68, 0.000010, 148
+firefly.loopBack:nic0core2, 48, 0.000008, 158
+firefly.loopBack:nic0core3, 32, 0.000005, 144
+firefly.loopBack:nic1core0, 32, 0.000005, 150
+firefly.loopBack:nic1core1, 40, 0.000005, 122
+firefly.loopBack:nic1core2, 64, 0.000009, 142
+firefly.loopBack:nic1core3, 64, 0.000008, 130
+firefly.nic:Nic::selfLink, 30578, 0.025128, 821
+firefly.nic:core0, 858, 0.000097, 113
+firefly.nic:core1, 843, 0.000090, 107
+firefly.nic:core2, 831, 0.000089, 106
+firefly.nic:core3, 878, 0.000100, 113
+merlin.linkcontrol:_congestion_timing, 0, 0.000000, 0
+merlin.linkcontrol:rtr_port, 16068, 0.005663, 352
+merlin.linkcontrol:rtr_port_output_timing, 10221, 0.009163, 896
+merlin.portcontrol:port0, 4608, 0.000593, 128
+merlin.portcontrol:port0_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port0_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port0_output_timing, 2731, 0.000915, 335
+merlin.portcontrol:port1, 3728, 0.000490, 131
+merlin.portcontrol:port10, 2323, 0.000505, 217
+merlin.portcontrol:port10_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port10_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port10_output_timing, 3149, 0.000643, 204
+merlin.portcontrol:port11, 2159, 0.000460, 212
+merlin.portcontrol:port11_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port11_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port11_output_timing, 2934, 0.000597, 203
+merlin.portcontrol:port12, 2107, 0.000473, 224
+merlin.portcontrol:port12_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port12_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port12_output_timing, 2527, 0.000500, 197
+merlin.portcontrol:port1_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port1_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port1_output_timing, 2285, 0.000742, 324
+merlin.portcontrol:port2, 3734, 0.000504, 135
+merlin.portcontrol:port2_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port2_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port2_output_timing, 2291, 0.000730, 318
+merlin.portcontrol:port3, 4360, 0.000664, 152
+merlin.portcontrol:port3_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port3_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port3_output_timing, 2693, 0.000893, 331
+merlin.portcontrol:port4, 2747, 0.000635, 231
+merlin.portcontrol:port4_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port4_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port4_output_timing, 3672, 0.000748, 203
+merlin.portcontrol:port5, 3412, 0.000751, 220
+merlin.portcontrol:port5_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port5_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port5_output_timing, 4381, 0.000858, 195
+merlin.portcontrol:port6, 3834, 0.000897, 233
+merlin.portcontrol:port6_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port6_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port6_output_timing, 4890, 0.000936, 191
+merlin.portcontrol:port7, 2492, 0.000368, 147
+merlin.portcontrol:port7_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port7_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port7_output_timing, 3384, 0.000653, 192
+merlin.portcontrol:port8, 2974, 0.000438, 147
+merlin.portcontrol:port8_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port8_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port8_output_timing, 4136, 0.000777, 187
+merlin.portcontrol:port9, 2560, 0.000533, 208
+merlin.portcontrol:port9_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port9_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port9_output_timing, 3617, 0.000713, 197
+
+\
+sync
+  SyncManager Count = 20973
+  Total SyncManager Time = 18.916012s
+  Average SyncManager Time = 901922ns
+
+-----------------------------
+Rank = 0, thread = 5:
+
+\
+clocks
+Name, count, handler time (s), avg. handler time (ns)
+merlin.hr_router, 7188175, 3.291716, 457
+
+\
+events
+Name, recv count, recv time (s), avg. recv time (ns)
+ember.EmberEngine:self, 3648, 0.015000, 4111
+firefly.VirtNic:nic, 3362, 0.004303, 1279
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dd80817b0, 283, 0.000527, 1861
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dd808a740, 195, 0.000452, 2318
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dd80938a0, 139, 0.000246, 1771
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dd8099960, 194, 0.000448, 2310
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dd80a9620, 194, 0.000450, 2322
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dd80b2470, 191, 0.000447, 2338
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dd80bacf0, 185, 0.000607, 3280
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dd80c2250, 132, 0.000407, 3083
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dd80d14f0, 158, 0.000416, 2630
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dd80da960, 232, 0.000640, 2760
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dd80e3270, 242, 0.000464, 1918
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dd80ebb80, 241, 0.000477, 1980
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dd80f9ba0, 224, 0.000455, 2033
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dd8100cc0, 182, 0.000270, 1481
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dd810b130, 234, 0.000468, 1998
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dd8113990, 323, 0.000533, 1650
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dd813e470, 316, 0.000515, 1631
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dd814cfb0, 313, 0.000675, 2155
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dd8156ed0, 316, 0.000512, 1621
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dd815ea30, 239, 0.000300, 1257
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dd816e090, 241, 0.000312, 1294
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dd81b4530, 325, 0.000519, 1596
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dd81bce40, 317, 0.000687, 2166
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dd81c72a0, 313, 0.000524, 1673
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dd81d5010, 319, 0.000527, 1650
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dd81dd320, 235, 0.000461, 1959
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dd81e5250, 241, 0.000297, 1233
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dd81edbd0, 321, 0.000528, 1644
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dd81fd690, 323, 0.000523, 1619
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dd8206450, 323, 0.000540, 1671
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dd820d090, 317, 0.000696, 2195
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dd8215b80, 232, 0.000458, 1975
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dd8242af0, 235, 0.000460, 1957
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dd824f9b0, 328, 0.000701, 2137
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dd8258210, 327, 0.000520, 1590
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dd82609d0, 311, 0.000513, 1650
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dd826ec10, 317, 0.000515, 1624
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dd8277970, 242, 0.000312, 1288
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dd827e5c0, 173, 0.000423, 2442
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dd8286dc0, 235, 0.000462, 1964
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dd82968a0, 243, 0.000310, 1274
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dd829fcf0, 237, 0.000460, 1938
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dd82a7250, 231, 0.000469, 2028
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dd82af530, 181, 0.000273, 1507
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dd82bb1b0, 236, 0.000310, 1314
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dd82c5f80, 326, 0.000540, 1657
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dd82d03f0, 319, 0.000530, 1660
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dd82d7030, 327, 0.000368, 1125
+firefly.ctrlMsg:loop, 580, 0.000177, 306
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dd8082590, 170, 0.000163, 961
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dd8089b20, 108, 0.000087, 806
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dd8093760, 78, 0.000071, 909
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dd8099820, 112, 0.000077, 687
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dd80aa7c0, 112, 0.000077, 688
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dd80b0ea0, 108, 0.000084, 776
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dd80b94c0, 106, 0.000075, 704
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dd80c1d00, 72, 0.000059, 824
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dd80d26f0, 72, 0.000043, 599
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dd80da340, 112, 0.000084, 745
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dd80e1a90, 114, 0.000064, 559
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dd80ea310, 124, 0.000086, 692
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dd80faae0, 130, 0.000088, 673
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dd8100b80, 96, 0.000077, 802
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dd8109900, 126, 0.000199, 1576
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dd8112160, 176, 0.000119, 677
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dd8145cc0, 184, 0.000130, 706
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dd81490a0, 180, 0.000128, 710
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dd815a450, 184, 0.000131, 709
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dd8163a40, 138, 0.000092, 665
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dd8165ca0, 138, 0.000095, 688
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dd81b43f0, 184, 0.000124, 671
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dd81bcd00, 182, 0.000137, 753
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dd81c6c80, 180, 0.000138, 764
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dd81d8320, 180, 0.000131, 728
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dd81dcdd0, 132, 0.000106, 805
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dd81e6ac0, 138, 0.000140, 1017
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dd81eda90, 188, 0.000125, 663
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dd81fe7c0, 188, 0.000126, 672
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dd8204ea0, 184, 0.000140, 760
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dd820cf50, 182, 0.000143, 786
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dd8215a40, 132, 0.000092, 698
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dd82429b0, 132, 0.000113, 852
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dd824e180, 194, 0.000217, 1117
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dd82569e0, 189, 0.000123, 652
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dd825f1a0, 188, 0.000127, 678
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dd826b200, 188, 0.000148, 788
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dd8277830, 138, 0.000089, 647
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dd827e480, 96, 0.000060, 626
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dd8286c80, 128, 0.000082, 638
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dd8299030, 138, 0.000134, 968
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dd829e4c0, 136, 0.000152, 1120
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dd82a6d00, 136, 0.000110, 808
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dd82af3f0, 102, 0.000089, 871
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dd82bfce0, 138, 0.000102, 739
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dd82c5e40, 195, 0.000142, 725
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dd82cedd0, 188, 0.000143, 758
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dd82d6ef0, 190, 0.000217, 1139
+firefly.functionSM:FromDriver, 2880, 0.014768, 5127
+firefly.functionSM:ToDriver, 2880, 0.022669, 7871
+firefly.functionSM:ToMe, 3642, 0.001881, 516
+firefly.loopBack:nic0core0, 88, 0.000010, 116
+firefly.loopBack:nic0core1, 98, 0.000012, 117
+firefly.loopBack:nic0core2, 70, 0.000009, 133
+firefly.loopBack:nic0core3, 52, 0.000007, 138
+firefly.loopBack:nic1core0, 46, 0.000005, 118
+firefly.loopBack:nic1core1, 58, 0.000007, 116
+firefly.loopBack:nic1core2, 86, 0.000010, 121
+firefly.loopBack:nic1core3, 82, 0.000012, 149
+firefly.nic:Nic::selfLink, 32265, 0.032217, 998
+firefly.nic:core0, 996, 0.000109, 109
+firefly.nic:core1, 949, 0.000090, 95
+firefly.nic:core2, 924, 0.000092, 100
+firefly.nic:core3, 977, 0.000103, 105
+merlin.linkcontrol:_congestion_timing, 0, 0.000000, 0
+merlin.linkcontrol:rtr_port, 16814, 0.006444, 383
+merlin.linkcontrol:rtr_port_output_timing, 10905, 0.010361, 950
+merlin.portcontrol:port0, 3148, 0.000555, 176
+merlin.portcontrol:port0_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port0_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port0_output_timing, 2011, 0.000704, 350
+merlin.portcontrol:port1, 2968, 0.000538, 181
+merlin.portcontrol:port10, 3106, 0.000550, 177
+merlin.portcontrol:port10_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port10_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port10_output_timing, 3964, 0.000789, 199
+merlin.portcontrol:port11, 1738, 0.000367, 210
+merlin.portcontrol:port11_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port11_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port11_output_timing, 2133, 0.000451, 211
+merlin.portcontrol:port12, 1759, 0.000538, 306
+merlin.portcontrol:port12_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port12_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port12_output_timing, 2158, 0.000481, 223
+merlin.portcontrol:port1_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port1_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port1_output_timing, 1879, 0.000684, 364
+merlin.portcontrol:port2, 2944, 0.000529, 179
+merlin.portcontrol:port2_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port2_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port2_output_timing, 1884, 0.000674, 357
+merlin.portcontrol:port3, 3420, 0.000679, 198
+merlin.portcontrol:port3_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port3_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port3_output_timing, 2104, 0.000788, 374
+merlin.portcontrol:port4, 2414, 0.000824, 341
+merlin.portcontrol:port4_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port4_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port4_output_timing, 2847, 0.000643, 225
+merlin.portcontrol:port5, 1387, 0.000408, 294
+merlin.portcontrol:port5_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port5_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port5_output_timing, 2143, 0.000490, 228
+merlin.portcontrol:port6, 2337, 0.000787, 336
+merlin.portcontrol:port6_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port6_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port6_output_timing, 3022, 0.000672, 222
+merlin.portcontrol:port7, 965, 0.000215, 222
+merlin.portcontrol:port7_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port7_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port7_output_timing, 1445, 0.000309, 213
+merlin.portcontrol:port8, 1907, 0.000490, 256
+merlin.portcontrol:port8_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port8_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port8_output_timing, 2425, 0.000500, 206
+merlin.portcontrol:port9, 2011, 0.000420, 208
+merlin.portcontrol:port9_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port9_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port9_output_timing, 2822, 0.000591, 209
+
+\
+sync
+  SyncManager Count = 20973
+  Total SyncManager Time = 20.085770s
+  Average SyncManager Time = 957696ns
+
+-----------------------------
+Rank = 0, thread = 6:
+
+\
+clocks
+Name, count, handler time (s), avg. handler time (ns)
+merlin.hr_router, 11001229, 5.833609, 530
+
+\
+events
+Name, recv count, recv time (s), avg. recv time (ns)
+ember.EmberEngine:self, 4172, 0.008621, 2066
+firefly.VirtNic:nic, 4276, 0.005062, 1183
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780ddc095960, 317, 0.000541, 1706
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780ddc0a6fe0, 232, 0.000471, 2028
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780ddc0aceb0, 327, 0.000365, 1117
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780ddc0b7790, 471, 0.000625, 1326
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780ddc0c5a60, 449, 0.000597, 1329
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780ddc10e320, 449, 0.000596, 1328
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780ddc116b60, 451, 0.000784, 1739
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780ddc11f3b0, 323, 0.000527, 1631
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780ddc12d090, 326, 0.000523, 1604
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780ddc136800, 444, 0.000769, 1732
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780ddc13ef70, 443, 0.000604, 1364
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780ddc145c30, 452, 0.000609, 1346
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780ddc1557a0, 453, 0.000613, 1352
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780ddc15d250, 329, 0.000363, 1103
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780ddc165530, 323, 0.000523, 1618
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780ddc16f7c0, 445, 0.000601, 1351
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780ddc19e490, 451, 0.000615, 1363
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780ddc1a5f80, 445, 0.000776, 1744
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780ddc1aea50, 459, 0.000635, 1383
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780ddc1b7330, 339, 0.000358, 1057
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780ddc1c6d20, 339, 0.000391, 1153
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780ddc1cf9d0, 503, 0.000662, 1316
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780ddc1d65d0, 449, 0.000765, 1703
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780ddc1e0ae0, 449, 0.000604, 1345
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780ddc1eebe0, 469, 0.000640, 1364
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780ddc1f6310, 328, 0.000524, 1598
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780ddc1ff420, 236, 0.000303, 1282
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780ddc207770, 333, 0.000528, 1586
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780ddc2132d0, 330, 0.000533, 1615
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780ddc21e240, 331, 0.000522, 1577
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780ddc2273f0, 320, 0.000685, 2140
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780ddc22f720, 238, 0.000474, 1993
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780ddc25c170, 238, 0.000483, 2030
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780ddc269480, 317, 0.000687, 2165
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780ddc271d10, 332, 0.000594, 1788
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780ddc27a4d0, 322, 0.000520, 1615
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780ddc284830, 315, 0.000519, 1648
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780ddc2912c0, 239, 0.000310, 1297
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780ddc297f70, 325, 0.000541, 1663
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780ddc2a0a50, 443, 0.000615, 1388
+firefly.ctrlMsg:loop, 448, 0.000107, 238
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780ddc0a0cd0, 180, 0.000126, 700
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780ddc0aa360, 132, 0.000132, 1003
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780ddc0b20c0, 193, 0.000138, 716
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780ddc0bad10, 297, 0.000355, 1195
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780ddc0c6b90, 267, 0.000196, 735
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780ddc10ccc0, 262, 0.000221, 844
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780ddc1152f0, 258, 0.000189, 731
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780ddc11dde0, 184, 0.000136, 738
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780ddc12e290, 184, 0.000138, 747
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780ddc138bb0, 260, 0.000202, 775
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780ddc13d740, 265, 0.000182, 688
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780ddc145af0, 268, 0.000285, 1063
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780ddc150b60, 270, 0.000199, 738
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780ddc15cd00, 194, 0.000146, 751
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780ddc1653f0, 189, 0.000129, 680
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780ddc171b70, 261, 0.000192, 736
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780ddc1a0b30, 260, 0.000178, 683
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780ddc1a5e40, 262, 0.000195, 742
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780ddc1ae910, 262, 0.000174, 665
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780ddc1b71f0, 192, 0.000138, 716
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780ddc1c7b10, 206, 0.000143, 695
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780ddc1ce180, 300, 0.000222, 738
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780ddc1d6490, 258, 0.000181, 703
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780ddc1df270, 256, 0.000214, 834
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780ddc1e8090, 290, 0.000199, 687
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780ddc1f61d0, 187, 0.000133, 709
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780ddc1fef40, 138, 0.000113, 819
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780ddc207630, 207, 0.000299, 1446
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780ddc2180d0, 194, 0.000126, 648
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780ddc21e100, 190, 0.000126, 664
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780ddc226ea0, 182, 0.000128, 704
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780ddc22f5e0, 135, 0.000115, 850
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780ddc259c00, 136, 0.000123, 905
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780ddc269020, 182, 0.000125, 684
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780ddc2704e0, 186, 0.000163, 874
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780ddc278eb0, 188, 0.000134, 710
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780ddc289590, 188, 0.000133, 707
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780ddc28fb00, 138, 0.000110, 799
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780ddc297e30, 184, 0.000141, 768
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780ddc2a0910, 256, 0.000205, 801
+firefly.functionSM:FromDriver, 3532, 0.030062, 8511
+firefly.functionSM:ToDriver, 3532, 0.033822, 9575
+firefly.functionSM:ToMe, 4292, 0.001845, 429
+firefly.loopBack:nic0core0, 72, 0.000012, 169
+firefly.loopBack:nic0core1, 72, 0.000011, 148
+firefly.loopBack:nic0core2, 44, 0.000007, 159
+firefly.loopBack:nic0core3, 36, 0.000006, 178
+firefly.loopBack:nic1core0, 36, 0.000006, 162
+firefly.loopBack:nic1core1, 44, 0.000007, 147
+firefly.loopBack:nic1core2, 72, 0.000010, 137
+firefly.loopBack:nic1core3, 72, 0.000011, 156
+firefly.nic:Nic::selfLink, 38616, 0.033934, 878
+firefly.nic:core0, 1194, 0.000134, 112
+firefly.nic:core1, 1138, 0.000115, 101
+firefly.nic:core2, 1170, 0.000119, 101
+firefly.nic:core3, 1238, 0.000129, 103
+merlin.linkcontrol:_congestion_timing, 0, 0.000000, 0
+merlin.linkcontrol:rtr_port, 19852, 0.007382, 371
+merlin.linkcontrol:rtr_port_output_timing, 12905, 0.011261, 872
+merlin.portcontrol:port0, 5704, 0.000947, 166
+merlin.portcontrol:port0_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port0_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port0_output_timing, 3671, 0.001250, 340
+merlin.portcontrol:port1, 6332, 0.000957, 151
+merlin.portcontrol:port10, 2540, 0.000403, 158
+merlin.portcontrol:port10_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port10_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port10_output_timing, 3145, 0.000629, 199
+merlin.portcontrol:port11, 2043, 0.000408, 199
+merlin.portcontrol:port11_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port11_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port11_output_timing, 2604, 0.000498, 191
+merlin.portcontrol:port12, 3328, 0.000510, 153
+merlin.portcontrol:port12_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port12_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port12_output_timing, 4847, 0.000897, 185
+merlin.portcontrol:port1_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port1_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port1_output_timing, 3973, 0.001286, 323
+merlin.portcontrol:port2, 6332, 0.000899, 141
+merlin.portcontrol:port2_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port2_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port2_output_timing, 3887, 0.001262, 324
+merlin.portcontrol:port3, 6012, 0.000886, 147
+merlin.portcontrol:port3_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port3_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port3_output_timing, 3803, 0.001208, 317
+merlin.portcontrol:port4, 4926, 0.000801, 162
+merlin.portcontrol:port4_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port4_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port4_output_timing, 5940, 0.001160, 195
+merlin.portcontrol:port5, 4620, 0.000689, 149
+merlin.portcontrol:port5_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port5_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port5_output_timing, 6655, 0.001264, 189
+merlin.portcontrol:port6, 3959, 0.000613, 154
+merlin.portcontrol:port6_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port6_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port6_output_timing, 5455, 0.001031, 188
+merlin.portcontrol:port7, 4632, 0.000719, 155
+merlin.portcontrol:port7_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port7_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port7_output_timing, 6709, 0.001232, 183
+merlin.portcontrol:port8, 2612, 0.000380, 145
+merlin.portcontrol:port8_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port8_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port8_output_timing, 3752, 0.000696, 185
+merlin.portcontrol:port9, 3902, 0.000636, 163
+merlin.portcontrol:port9_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port9_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port9_output_timing, 4971, 0.000951, 191
+
+\
+sync
+  SyncManager Count = 20973
+  Total SyncManager Time = 17.213880s
+  Average SyncManager Time = 820763ns
+
+-----------------------------
+Rank = 0, thread = 7:
+
+\
+clocks
+Name, count, handler time (s), avg. handler time (ns)
+merlin.hr_router, 11643584, 5.240031, 450
+
+\
+events
+Name, recv count, recv time (s), avg. recv time (ns)
+ember.EmberEngine:self, 4268, 0.009610, 2251
+firefly.VirtNic:nic, 4304, 0.005291, 1229
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dd0079c90, 450, 0.000601, 1334
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dd0082560, 447, 0.000759, 1697
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dd008b4d0, 453, 0.000594, 1311
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dd0091d60, 334, 0.000367, 1099
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dd00a1c60, 335, 0.000377, 1123
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dd00a8f40, 467, 0.000629, 1347
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dd00b33b0, 449, 0.000760, 1691
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dd00b9ff0, 457, 0.000602, 1317
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dd00e65d0, 461, 0.000610, 1322
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dd00f55b0, 325, 0.000547, 1683
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dd00ff310, 337, 0.000364, 1080
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dd0106de0, 454, 0.000613, 1349
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dd0117de0, 458, 0.000606, 1322
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dd015e460, 458, 0.000605, 1320
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dd0166cf0, 448, 0.000758, 1690
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dd016e250, 325, 0.000525, 1616
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dd017d310, 329, 0.000528, 1604
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dd01869b0, 455, 0.000768, 1688
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dd018d540, 465, 0.000617, 1327
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dd0195e50, 461, 0.000606, 1314
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dd01a5690, 453, 0.000604, 1334
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dd01ae640, 329, 0.000392, 1192
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dd01b6db0, 241, 0.000466, 1933
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dd01be310, 333, 0.000530, 1591
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dd01e83c0, 342, 0.000394, 1151
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dd01f7b90, 335, 0.000529, 1580
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dd0200460, 329, 0.000568, 1727
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dd0208cf0, 222, 0.000303, 1364
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dd0216d20, 196, 0.000284, 1446
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dd021f990, 281, 0.000508, 1806
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dd0226650, 285, 0.000519, 1822
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dd022ef10, 291, 0.000367, 1261
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dd023ec30, 280, 0.000504, 1798
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dd0247ef0, 197, 0.000449, 2278
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dd0250900, 281, 0.000342, 1217
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dd02574f0, 404, 0.000584, 1445
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dd0263420, 417, 0.000590, 1415
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dd026fea0, 415, 0.000598, 1441
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dd0278750, 415, 0.000752, 1812
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dd0280f20, 273, 0.000505, 1850
+firefly.ctrlMsg:loop, 408, 0.000088, 215
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dd007c010, 258, 0.000223, 863
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dd0082420, 258, 0.000189, 734
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dd008cfb0, 266, 0.000190, 714
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dd00963d0, 194, 0.000141, 725
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dd00a2c10, 193, 0.000221, 1146
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dd00a8e00, 266, 0.000187, 704
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dd00b1d90, 264, 0.000253, 958
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dd00b9eb0, 260, 0.000218, 840
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dd00f0e50, 262, 0.000186, 709
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dd00f2270, 190, 0.000129, 681
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dd01028f0, 194, 0.000134, 689
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dd010be10, 270, 0.000191, 708
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dd01174b0, 268, 0.000180, 672
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dd015e000, 264, 0.000204, 773
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dd0165510, 262, 0.000175, 668
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dd016dd00, 186, 0.000153, 820
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dd017fae0, 184, 0.000141, 769
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dd0186870, 262, 0.000173, 660
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dd018d400, 266, 0.000223, 838
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dd0199e60, 270, 0.000177, 656
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dd01a67c0, 269, 0.000227, 844
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dd01b09f0, 193, 0.000129, 667
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dd01b5580, 135, 0.000169, 1248
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dd01bddc0, 183, 0.000116, 631
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dd01f0ac0, 196, 0.000131, 666
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dd01f63b0, 193, 0.000120, 624
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dd0200000, 191, 0.000126, 660
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dd0207510, 128, 0.000098, 764
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dd0210090, 114, 0.000097, 852
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dd021e1b0, 164, 0.000122, 744
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dd0226510, 164, 0.000109, 666
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dd0232f20, 166, 0.000125, 750
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dd02412d0, 156, 0.000107, 684
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dd0246670, 108, 0.000449, 4159
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dd02507c0, 166, 0.000118, 709
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dd02573b0, 240, 0.000172, 716
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dd0268100, 240, 0.000174, 722
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dd026f880, 236, 0.000183, 773
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dd0278280, 234, 0.000160, 682
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dd0280900, 160, 0.000110, 690
+firefly.functionSM:FromDriver, 3628, 0.024898, 6862
+firefly.functionSM:ToDriver, 3628, 0.034240, 9437
+firefly.functionSM:ToMe, 4166, 0.001642, 394
+firefly.loopBack:nic0core0, 64, 0.000008, 122
+firefly.loopBack:nic0core1, 64, 0.000009, 141
+firefly.loopBack:nic0core2, 40, 0.000006, 149
+firefly.loopBack:nic0core3, 32, 0.000005, 158
+firefly.loopBack:nic1core0, 32, 0.000004, 128
+firefly.loopBack:nic1core1, 48, 0.000006, 126
+firefly.loopBack:nic1core2, 68, 0.000009, 134
+firefly.loopBack:nic1core3, 60, 0.000009, 151
+firefly.nic:Nic::selfLink, 40167, 0.032082, 798
+firefly.nic:core0, 1231, 0.000132, 107
+firefly.nic:core1, 1184, 0.000122, 103
+firefly.nic:core2, 1186, 0.000118, 99
+firefly.nic:core3, 1184, 0.000117, 98
+merlin.linkcontrol:_congestion_timing, 0, 0.000000, 0
+merlin.linkcontrol:rtr_port, 20706, 0.007336, 354
+merlin.linkcontrol:rtr_port_output_timing, 13397, 0.011391, 850
+merlin.portcontrol:port0, 6230, 0.000730, 117
+merlin.portcontrol:port0_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port0_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port0_output_timing, 3789, 0.001105, 291
+merlin.portcontrol:port1, 6188, 0.000739, 119
+merlin.portcontrol:port10, 4701, 0.000763, 162
+merlin.portcontrol:port10_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port10_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port10_output_timing, 6517, 0.001204, 184
+merlin.portcontrol:port11, 2980, 0.000581, 194
+merlin.portcontrol:port11_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port11_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port11_output_timing, 3846, 0.000755, 196
+merlin.portcontrol:port12, 2224, 0.000477, 214
+merlin.portcontrol:port12_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port12_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port12_output_timing, 2882, 0.000558, 193
+merlin.portcontrol:port1_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port1_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port1_output_timing, 3774, 0.001142, 302
+merlin.portcontrol:port2, 6236, 0.000767, 122
+merlin.portcontrol:port2_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port2_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port2_output_timing, 3889, 0.001161, 298
+merlin.portcontrol:port3, 6236, 0.000802, 128
+merlin.portcontrol:port3_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port3_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port3_output_timing, 3774, 0.001163, 308
+merlin.portcontrol:port4, 3270, 0.000585, 178
+merlin.portcontrol:port4_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port4_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port4_output_timing, 4303, 0.000847, 196
+merlin.portcontrol:port5, 3876, 0.000626, 161
+merlin.portcontrol:port5_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port5_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port5_output_timing, 4930, 0.000931, 188
+merlin.portcontrol:port6, 4057, 0.000604, 148
+merlin.portcontrol:port6_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port6_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port6_output_timing, 5132, 0.000934, 181
+merlin.portcontrol:port7, 3957, 0.000577, 145
+merlin.portcontrol:port7_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port7_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port7_output_timing, 5591, 0.001025, 183
+merlin.portcontrol:port8, 3851, 0.000557, 144
+merlin.portcontrol:port8_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port8_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port8_output_timing, 4879, 0.000906, 185
+merlin.portcontrol:port9, 4658, 0.000807, 173
+merlin.portcontrol:port9_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port9_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port9_output_timing, 6306, 0.001207, 191
+
+\
+sync
+  SyncManager Count = 20973
+  Total SyncManager Time = 17.918245s
+  Average SyncManager Time = 854348ns
+
+-----------------------------
+Rank = 0, thread = 8:
+
+\
+clocks
+Name, count, handler time (s), avg. handler time (ns)
+merlin.hr_router, 7670847, 3.515054, 458
+
+\
+events
+Name, recv count, recv time (s), avg. recv time (ns)
+ember.EmberEngine:self, 4268, 0.015875, 3719
+firefly.VirtNic:nic, 3902, 0.004857, 1244
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dc8078910, 280, 0.000516, 1842
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dc80804b0, 411, 0.000750, 1824
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dc8088f60, 421, 0.000598, 1419
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dc8090ba0, 421, 0.000599, 1422
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dc80a0f20, 426, 0.000605, 1420
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dc80a9960, 291, 0.000353, 1214
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dc80b2290, 281, 0.000508, 1808
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dc80baa50, 413, 0.000598, 1446
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dc80c8c50, 412, 0.000703, 1706
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dc80d1ed0, 406, 0.000747, 1839
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dc80da7c0, 421, 0.000604, 1434
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dc80e14f0, 291, 0.000348, 1196
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dc80f0f70, 287, 0.000347, 1210
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dc80f9db0, 408, 0.000585, 1434
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dc8102760, 399, 0.000737, 1847
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dc8109430, 410, 0.000591, 1441
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dc81358e0, 414, 0.000599, 1446
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dc8143f10, 281, 0.000500, 1779
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dc814c530, 201, 0.000294, 1461
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dc8156900, 285, 0.000500, 1755
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dc81646f0, 283, 0.000521, 1840
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dc81ad710, 287, 0.000523, 1822
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dc81b5d90, 268, 0.000664, 2477
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dc81bd350, 197, 0.000448, 2274
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dc81cc570, 189, 0.000444, 2350
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dc81d59a0, 265, 0.000655, 2472
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dc81de2d0, 283, 0.000500, 1767
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dc81e6a90, 279, 0.000514, 1842
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dc81f4ab0, 289, 0.000519, 1795
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dc81fd8d0, 199, 0.000286, 1436
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dc8204590, 279, 0.000517, 1853
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dc820ce50, 415, 0.000613, 1476
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dc823d9b0, 405, 0.000597, 1473
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dc82470b0, 405, 0.000732, 1807
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dc824f860, 439, 0.000616, 1403
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dc8258070, 296, 0.000374, 1264
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dc8265ff0, 291, 0.000350, 1203
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dc826ee90, 414, 0.000616, 1488
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dc8277740, 411, 0.000751, 1827
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dc827ff10, 407, 0.000593, 1456
+firefly.ctrlMsg:loop, 456, 0.000098, 214
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dc807afc0, 160, 0.000127, 791
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dc8080370, 234, 0.000163, 697
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dc8088ae0, 236, 0.000160, 679
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dc8092590, 240, 0.000181, 755
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dc80a1c70, 240, 0.000156, 649
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dc80a80f0, 166, 0.000121, 731
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dc80b0a60, 160, 0.000106, 661
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dc80b9220, 232, 0.000162, 699
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dc80c99a0, 232, 0.000185, 797
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dc80d0650, 234, 0.000406, 1736
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dc80da310, 236, 0.000151, 640
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dc80e13b0, 166, 0.000127, 767
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dc80f1f20, 166, 0.000115, 695
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dc80f85d0, 236, 0.000179, 758
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dc81022b0, 234, 0.000161, 688
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dc81092f0, 232, 0.000207, 890
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dc8140510, 233, 0.000165, 706
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dc8148ca0, 160, 0.000108, 673
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dc81512f0, 114, 0.000079, 696
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dc8159ab0, 164, 0.000107, 650
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dc8160eb0, 164, 0.000112, 682
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dc81ad5d0, 160, 0.000112, 702
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dc81b45b0, 158, 0.000112, 709
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dc81bce00, 108, 0.000187, 1734
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dc81c7b20, 108, 0.000075, 697
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dc81d4130, 158, 0.000119, 752
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dc81dcaa0, 160, 0.000115, 716
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dc81e5260, 164, 0.000131, 797
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dc81f5a40, 168, 0.000123, 734
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dc81fc0f0, 114, 0.000085, 749
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dc8204450, 160, 0.000107, 665
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dc8210e60, 244, 0.000172, 704
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dc823fba0, 232, 0.000206, 886
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dc8245860, 234, 0.000160, 682
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dc824f240, 266, 0.000217, 814
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dc82567f0, 172, 0.000126, 732
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dc8261d60, 166, 0.000120, 725
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dc826d660, 236, 0.000175, 741
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dc8279af0, 234, 0.000153, 655
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dc827e730, 232, 0.000172, 740
+firefly.functionSM:FromDriver, 3628, 0.020341, 5606
+firefly.functionSM:ToDriver, 3628, 0.025324, 6980
+firefly.functionSM:ToMe, 3668, 0.000767, 209
+firefly.loopBack:nic0core0, 72, 0.000009, 127
+firefly.loopBack:nic0core1, 76, 0.000009, 119
+firefly.loopBack:nic0core2, 52, 0.000007, 135
+firefly.loopBack:nic0core3, 32, 0.000010, 312
+firefly.loopBack:nic1core0, 32, 0.000005, 160
+firefly.loopBack:nic1core1, 44, 0.000006, 128
+firefly.loopBack:nic1core2, 72, 0.000009, 131
+firefly.loopBack:nic1core3, 76, 0.000009, 117
+firefly.nic:Nic::selfLink, 38240, 0.032464, 848
+firefly.nic:core0, 1092, 0.000110, 100
+firefly.nic:core1, 1089, 0.000107, 98
+firefly.nic:core2, 1083, 0.000104, 96
+firefly.nic:core3, 1132, 0.000117, 103
+merlin.linkcontrol:_congestion_timing, 0, 0.000000, 0
+merlin.linkcontrol:rtr_port, 19832, 0.006608, 333
+merlin.linkcontrol:rtr_port_output_timing, 12647, 0.010755, 850
+merlin.portcontrol:port0, 4096, 0.000591, 144
+merlin.portcontrol:port0_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port0_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port0_output_timing, 2425, 0.000776, 320
+merlin.portcontrol:port1, 3680, 0.000574, 156
+merlin.portcontrol:port10, 3012, 0.000474, 157
+merlin.portcontrol:port10_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port10_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port10_output_timing, 3807, 0.000730, 191
+merlin.portcontrol:port11, 1969, 0.000483, 245
+merlin.portcontrol:port11_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port11_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port11_output_timing, 2712, 0.000547, 201
+merlin.portcontrol:port12, 1864, 0.000499, 267
+merlin.portcontrol:port12_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port12_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port12_output_timing, 2506, 0.000520, 207
+merlin.portcontrol:port1_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port1_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port1_output_timing, 2334, 0.000737, 315
+merlin.portcontrol:port2, 3652, 0.000593, 162
+merlin.portcontrol:port2_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port2_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port2_output_timing, 2414, 0.000712, 295
+merlin.portcontrol:port3, 3972, 0.000659, 165
+merlin.portcontrol:port3_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port3_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port3_output_timing, 2400, 0.000791, 329
+merlin.portcontrol:port4, 1933, 0.000343, 177
+merlin.portcontrol:port4_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port4_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port4_output_timing, 2686, 0.000540, 201
+merlin.portcontrol:port5, 2728, 0.000438, 160
+merlin.portcontrol:port5_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port5_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port5_output_timing, 4085, 0.000775, 189
+merlin.portcontrol:port6, 1781, 0.000253, 142
+merlin.portcontrol:port6_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port6_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port6_output_timing, 2481, 0.000458, 184
+merlin.portcontrol:port7, 2756, 0.000453, 164
+merlin.portcontrol:port7_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port7_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port7_output_timing, 3621, 0.000666, 183
+merlin.portcontrol:port8, 2777, 0.000442, 159
+merlin.portcontrol:port8_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port8_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port8_output_timing, 3367, 0.000641, 190
+merlin.portcontrol:port9, 3826, 0.000628, 164
+merlin.portcontrol:port9_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port9_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port9_output_timing, 4732, 0.000859, 181
+
+\
+sync
+  SyncManager Count = 20973
+  Total SyncManager Time = 19.847270s
+  Average SyncManager Time = 946324ns
+
+-----------------------------
+Rank = 0, thread = 9:
+
+\
+clocks
+Name, count, handler time (s), avg. handler time (ns)
+merlin.hr_router, 6673254, 3.164143, 474
+
+\
+events
+Name, recv count, recv time (s), avg. recv time (ns)
+ember.EmberEngine:self, 3660, 0.012017, 3283
+firefly.VirtNic:nic, 3248, 0.004013, 1235
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dbc072900, 420, 0.000593, 1411
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dbc083f90, 283, 0.000499, 1763
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dbc08cf60, 287, 0.000344, 1197
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dbc095980, 419, 0.000593, 1416
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dbc0a15e0, 418, 0.000593, 1419
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dbc0ac480, 411, 0.000588, 1430
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dbc0b68f0, 400, 0.000739, 1847
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dbc0bf150, 287, 0.000517, 1801
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dbc0eb280, 286, 0.000500, 1748
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dbc0fb360, 406, 0.000745, 1836
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dbc1036f0, 406, 0.000595, 1466
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dbc10b110, 403, 0.000584, 1450
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dbc119ef0, 442, 0.000617, 1395
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dbc1610f0, 304, 0.000361, 1186
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dbc16a240, 194, 0.000442, 2279
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dbc172550, 285, 0.000511, 1793
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dbc181bc0, 299, 0.000348, 1163
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dbc18b250, 283, 0.000507, 1791
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dbc191f10, 295, 0.000521, 1767
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dbc19aa00, 203, 0.000279, 1375
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dbc1a6660, 137, 0.000249, 1815
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dbc1b3110, 193, 0.000447, 2316
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dbc1bb910, 193, 0.000441, 2282
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dbc1c4160, 203, 0.000296, 1456
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dbc1ef5b0, 189, 0.000446, 2360
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dbc1fc960, 131, 0.000414, 3157
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dbc2034d0, 198, 0.000278, 1404
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dbc20bd90, 272, 0.000492, 1809
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dbc21b7a0, 281, 0.000520, 1851
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dbc224750, 275, 0.000496, 1805
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dbc22cee0, 270, 0.000672, 2489
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dbc235920, 186, 0.000445, 2390
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dbc243900, 196, 0.000460, 2349
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dbc24cbe0, 274, 0.000662, 2416
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dbc255490, 282, 0.000509, 1804
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dbc25c160, 282, 0.000502, 1780
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dbc26bdf0, 287, 0.000502, 1750
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dbc272f70, 197, 0.000287, 1457
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dbc27c220, 189, 0.000449, 2377
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dbc2840f0, 276, 0.000514, 1861
+firefly.ctrlMsg:loop, 400, 0.000084, 208
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dbc0727c0, 232, 0.000181, 779
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dbc085b00, 160, 0.000120, 748
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dbc090f60, 166, 0.000116, 701
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dbc095840, 240, 0.000163, 680
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dbc0a0760, 240, 0.000228, 951
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dbc0ac340, 236, 0.000402, 1705
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dbc0b50c0, 234, 0.000155, 662
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dbc0bd920, 160, 0.000107, 667
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dbc0f5b50, 160, 0.000110, 685
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dbc0fe3b0, 253, 0.000161, 636
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dbc106c70, 236, 0.000177, 749
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dbc10c120, 240, 0.000164, 681
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dbc1166f0, 278, 0.000190, 682
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dbc160fb0, 180, 0.000128, 712
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dbc169cf0, 108, 0.000084, 775
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dbc172410, 156, 0.000120, 766
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dbc184e80, 166, 0.000113, 683
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dbc189a70, 164, 0.000109, 661
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dbc191dd0, 176, 0.000119, 673
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dbc19a8c0, 114, 0.000081, 714
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dbc1a3610, 78, 0.000068, 866
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dbc1b18c0, 112, 0.000079, 705
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dbc1ba090, 112, 0.000073, 651
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dbc1c28f0, 114, 0.000084, 737
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dbc1ed0d0, 104, 0.000110, 1058
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dbc1fc820, 72, 0.000060, 835
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dbc203390, 114, 0.000079, 690
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dbc20fda0, 164, 0.000108, 657
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dbc216e60, 164, 0.000105, 639
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dbc224610, 160, 0.000109, 678
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dbc22b660, 164, 0.000110, 671
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dbc2340b0, 108, 0.000192, 1776
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dbc246820, 108, 0.000110, 1021
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dbc24c5c0, 158, 0.000100, 632
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dbc255030, 160, 0.000123, 770
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dbc25c020, 164, 0.000116, 709
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dbc26cd30, 164, 0.000108, 657
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dbc272e30, 114, 0.000085, 746
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dbc27bcd0, 108, 0.000097, 896
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dbc285960, 156, 0.000108, 694
+firefly.functionSM:FromDriver, 3020, 0.016200, 5364
+firefly.functionSM:ToDriver, 3020, 0.018608, 6161
+firefly.functionSM:ToMe, 3060, 0.000843, 275
+firefly.loopBack:nic0core0, 60, 0.000008, 131
+firefly.loopBack:nic0core1, 64, 0.000008, 132
+firefly.loopBack:nic0core2, 40, 0.000006, 142
+firefly.loopBack:nic0core3, 36, 0.000004, 121
+firefly.loopBack:nic1core0, 36, 0.000005, 147
+firefly.loopBack:nic1core1, 40, 0.000005, 124
+firefly.loopBack:nic1core2, 64, 0.000009, 134
+firefly.loopBack:nic1core3, 60, 0.000008, 132
+firefly.nic:Nic::selfLink, 32824, 0.025376, 773
+firefly.nic:core0, 965, 0.000101, 104
+firefly.nic:core1, 899, 0.000086, 96
+firefly.nic:core2, 890, 0.000085, 95
+firefly.nic:core3, 945, 0.000092, 97
+merlin.linkcontrol:_congestion_timing, 0, 0.000000, 0
+merlin.linkcontrol:rtr_port, 17172, 0.005756, 335
+merlin.linkcontrol:rtr_port_output_timing, 10423, 0.009343, 896
+merlin.portcontrol:port0, 3376, 0.000613, 181
+merlin.portcontrol:port0_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port0_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port0_output_timing, 2099, 0.000720, 343
+merlin.portcontrol:port1, 3344, 0.000555, 166
+merlin.portcontrol:port10, 1522, 0.000329, 216
+merlin.portcontrol:port10_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port10_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port10_output_timing, 1864, 0.000409, 219
+merlin.portcontrol:port11, 1533, 0.000321, 209
+merlin.portcontrol:port11_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port11_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port11_output_timing, 1911, 0.000397, 207
+merlin.portcontrol:port12, 611, 0.000124, 203
+merlin.portcontrol:port12_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port12_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port12_output_timing, 917, 0.000181, 197
+merlin.portcontrol:port1_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port1_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port1_output_timing, 2080, 0.000719, 345
+merlin.portcontrol:port2, 3324, 0.000538, 161
+merlin.portcontrol:port2_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port2_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port2_output_timing, 1995, 0.000693, 347
+merlin.portcontrol:port3, 2848, 0.000482, 169
+merlin.portcontrol:port3_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port3_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port3_output_timing, 1794, 0.000617, 344
+merlin.portcontrol:port4, 2758, 0.000452, 163
+merlin.portcontrol:port4_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port4_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port4_output_timing, 3690, 0.000712, 192
+merlin.portcontrol:port5, 2617, 0.000478, 182
+merlin.portcontrol:port5_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port5_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port5_output_timing, 3907, 0.000745, 190
+merlin.portcontrol:port6, 1369, 0.000233, 169
+merlin.portcontrol:port6_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port6_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port6_output_timing, 1728, 0.000355, 205
+merlin.portcontrol:port7, 550, 0.000122, 222
+merlin.portcontrol:port7_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port7_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port7_output_timing, 918, 0.000207, 225
+merlin.portcontrol:port8, 1371, 0.000277, 202
+merlin.portcontrol:port8_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port8_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port8_output_timing, 1895, 0.000423, 222
+merlin.portcontrol:port9, 557, 0.000080, 142
+merlin.portcontrol:port9_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port9_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port9_output_timing, 928, 0.000199, 214
+
+\
+sync
+  SyncManager Count = 20973
+  Total SyncManager Time = 20.227277s
+  Average SyncManager Time = 964443ns
+
+-----------------------------
+Rank = 0, thread = 10:
+
+\
+clocks
+Name, count, handler time (s), avg. handler time (ns)
+merlin.hr_router, 6038996, 2.379976, 394
+
+\
+events
+Name, recv count, recv time (s), avg. recv time (ns)
+ember.EmberEngine:self, 1224, 0.006081, 4968
+firefly.VirtNic:nic, 974, 0.001331, 1366
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dc007bd80, 282, 0.000507, 1798
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dc008c8f0, 274, 0.000675, 2464
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dc0093480, 286, 0.000508, 1777
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dc009d660, 199, 0.000493, 2477
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dc00a76e0, 197, 0.000286, 1451
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dc00f4490, 271, 0.000496, 1831
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dc00fccf0, 274, 0.000681, 2484
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dc0105640, 277, 0.000508, 1833
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dc0113440, 285, 0.000516, 1808
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dc011c910, 192, 0.000449, 2339
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dc0123630, 139, 0.000252, 1814
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dc012bee0, 193, 0.000460, 2383
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dc013b970, 189, 0.000444, 2347
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dc0143430, 193, 0.000455, 2356
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dc014d110, 185, 0.000606, 3277
+firefly.ctrlMsg:ProcessQueuesStateSelfLink.0x780dc0155900, 132, 0.000414, 3134
+firefly.ctrlMsg:loop, 184, 0.000051, 276
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dc0086d30, 156, 0.000123, 791
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dc008fa00, 158, 0.000122, 772
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dc00981d0, 160, 0.000120, 749
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dc00a0b50, 114, 0.000131, 1145
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dc00ac730, 114, 0.000089, 776
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dc00f4080, 160, 0.000109, 680
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dc00fb4c0, 158, 0.000106, 670
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dc01079f0, 156, 0.000115, 738
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dc0114480, 170, 0.000114, 672
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dc011b130, 108, 0.000087, 804
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dc01234f0, 78, 0.000076, 973
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dc012bda0, 112, 0.000082, 728
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dc013caa0, 112, 0.000080, 714
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dc0142f80, 108, 0.000077, 717
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dc014b8e0, 106, 0.000092, 866
+firefly.ctrlMsgMemory:ProcessQueuesStateSelfLink.0x780dc0154140, 72, 0.000060, 826
+firefly.functionSM:FromDriver, 968, 0.016090, 16622
+firefly.functionSM:ToDriver, 968, 0.027945, 28869
+firefly.functionSM:ToMe, 984, 0.000275, 279
+firefly.loopBack:nic0core0, 32, 0.000004, 129
+firefly.loopBack:nic0core1, 28, 0.000004, 127
+firefly.loopBack:nic0core2, 16, 0.000004, 255
+firefly.loopBack:nic0core3, 12, 0.000002, 160
+firefly.loopBack:nic1core0, 12, 0.000001, 117
+firefly.loopBack:nic1core1, 24, 0.000003, 129
+firefly.loopBack:nic1core2, 32, 0.000004, 122
+firefly.loopBack:nic1core3, 28, 0.000004, 128
+firefly.nic:Nic::selfLink, 10127, 0.008115, 801
+firefly.nic:core0, 314, 0.000035, 112
+firefly.nic:core1, 291, 0.000030, 101
+firefly.nic:core2, 269, 0.000028, 103
+firefly.nic:core3, 263, 0.000028, 106
+merlin.linkcontrol:_congestion_timing, 0, 0.000000, 0
+merlin.linkcontrol:rtr_port, 5340, 0.001884, 352
+merlin.linkcontrol:rtr_port_output_timing, 3392, 0.002928, 863
+merlin.portcontrol:port0, 1588, 0.000275, 172
+merlin.portcontrol:port0_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port0_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port0_output_timing, 955, 0.000345, 361
+merlin.portcontrol:port1, 1588, 0.000223, 140
+merlin.portcontrol:port10, 326, 0.000074, 226
+merlin.portcontrol:port10_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port10_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port10_output_timing, 494, 0.000117, 235
+merlin.portcontrol:port11, 1581, 0.000356, 225
+merlin.portcontrol:port11_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port11_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port11_output_timing, 1858, 0.000372, 200
+merlin.portcontrol:port12, 569, 0.000159, 279
+merlin.portcontrol:port12_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port12_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port12_output_timing, 743, 0.000172, 231
+merlin.portcontrol:port1_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port1_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port1_output_timing, 945, 0.000322, 341
+merlin.portcontrol:port2, 1284, 0.000188, 146
+merlin.portcontrol:port2_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port2_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port2_output_timing, 807, 0.000273, 338
+merlin.portcontrol:port3, 880, 0.000133, 150
+merlin.portcontrol:port3_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port3_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port3_output_timing, 585, 0.000198, 338
+merlin.portcontrol:port4, 2453, 0.000458, 186
+merlin.portcontrol:port4_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port4_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port4_output_timing, 2847, 0.000562, 197
+merlin.portcontrol:port5, 1533, 0.000304, 198
+merlin.portcontrol:port5_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port5_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port5_output_timing, 2276, 0.000418, 183
+merlin.portcontrol:port6, 624, 0.000098, 156
+merlin.portcontrol:port6_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port6_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port6_output_timing, 886, 0.000182, 205
+merlin.portcontrol:port7, 299, 0.000070, 235
+merlin.portcontrol:port7_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port7_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port7_output_timing, 481, 0.000115, 238
+merlin.portcontrol:port8, 309, 0.000065, 211
+merlin.portcontrol:port8_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port8_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port8_output_timing, 552, 0.000131, 237
+merlin.portcontrol:port9, 260, 0.000042, 161
+merlin.portcontrol:port9_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port9_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port9_output_timing, 428, 0.000092, 214
+
+\
+sync
+  SyncManager Count = 20973
+  Total SyncManager Time = 21.110315s
+  Average SyncManager Time = 1006547ns
+
+-----------------------------
+Rank = 0, thread = 11:
+
+\
+clocks
+Name, count, handler time (s), avg. handler time (ns)
+merlin.hr_router, 4557939, 1.787380, 392
+
+\
+events
+Name, recv count, recv time (s), avg. recv time (ns)
+merlin.linkcontrol:_congestion_timing, 0, 0.000000, 0
+merlin.linkcontrol:rtr_port, 0, 0.000000, 0
+merlin.linkcontrol:rtr_port_output_timing, 0, 0.000000, 0
+merlin.portcontrol:port0, 0, 0.000000, 0
+merlin.portcontrol:port0_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port0_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port0_output_timing, 0, 0.000000, 0
+merlin.portcontrol:port1, 0, 0.000000, 0
+merlin.portcontrol:port10, 33, 0.000006, 192
+merlin.portcontrol:port10_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port10_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port10_output_timing, 76, 0.000020, 260
+merlin.portcontrol:port11, 1555, 0.000542, 348
+merlin.portcontrol:port11_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port11_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port11_output_timing, 2066, 0.000467, 226
+merlin.portcontrol:port12, 588, 0.000160, 271
+merlin.portcontrol:port12_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port12_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port12_output_timing, 832, 0.000183, 220
+merlin.portcontrol:port1_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port1_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port1_output_timing, 0, 0.000000, 0
+merlin.portcontrol:port2, 0, 0.000000, 0
+merlin.portcontrol:port2_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port2_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port2_output_timing, 0, 0.000000, 0
+merlin.portcontrol:port3, 0, 0.000000, 0
+merlin.portcontrol:port3_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port3_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port3_output_timing, 0, 0.000000, 0
+merlin.portcontrol:port4, 1132, 0.000417, 367
+merlin.portcontrol:port4_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port4_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port4_output_timing, 1450, 0.000352, 242
+merlin.portcontrol:port5, 789, 0.000271, 343
+merlin.portcontrol:port5_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port5_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port5_output_timing, 1067, 0.000223, 208
+merlin.portcontrol:port6, 570, 0.000205, 358
+merlin.portcontrol:port6_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port6_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port6_output_timing, 638, 0.000157, 245
+merlin.portcontrol:port7, 38, 0.000008, 222
+merlin.portcontrol:port7_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port7_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port7_output_timing, 92, 0.000025, 271
+merlin.portcontrol:port8, 66, 0.000014, 217
+merlin.portcontrol:port8_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port8_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port8_output_timing, 99, 0.000029, 297
+merlin.portcontrol:port9, 89, 0.000024, 265
+merlin.portcontrol:port9_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port9_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port9_output_timing, 125, 0.000035, 277
+
+\
+sync
+  SyncManager Count = 20973
+  Total SyncManager Time = 21.845883s
+  Average SyncManager Time = 1041619ns
+
+-----------------------------
+Rank = 0, thread = 12:
+
+\
+clocks
+Name, count, handler time (s), avg. handler time (ns)
+merlin.hr_router, 1637200, 0.595001, 363
+
+\
+events
+Name, recv count, recv time (s), avg. recv time (ns)
+merlin.linkcontrol:_congestion_timing, 0, 0.000000, 0
+merlin.linkcontrol:rtr_port, 0, 0.000000, 0
+merlin.linkcontrol:rtr_port_output_timing, 0, 0.000000, 0
+merlin.portcontrol:port0, 0, 0.000000, 0
+merlin.portcontrol:port0_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port0_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port0_output_timing, 0, 0.000000, 0
+merlin.portcontrol:port1, 0, 0.000000, 0
+merlin.portcontrol:port10, 24, 0.000005, 219
+merlin.portcontrol:port10_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port10_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port10_output_timing, 62, 0.000022, 354
+merlin.portcontrol:port11, 274, 0.000097, 354
+merlin.portcontrol:port11_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port11_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port11_output_timing, 479, 0.000107, 223
+merlin.portcontrol:port12, 352, 0.000143, 406
+merlin.portcontrol:port12_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port12_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port12_output_timing, 502, 0.000114, 226
+merlin.portcontrol:port1_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port1_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port1_output_timing, 0, 0.000000, 0
+merlin.portcontrol:port2, 0, 0.000000, 0
+merlin.portcontrol:port2_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port2_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port2_output_timing, 0, 0.000000, 0
+merlin.portcontrol:port3, 0, 0.000000, 0
+merlin.portcontrol:port3_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port3_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port3_output_timing, 0, 0.000000, 0
+merlin.portcontrol:port4, 328, 0.000095, 288
+merlin.portcontrol:port4_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port4_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port4_output_timing, 399, 0.000090, 226
+merlin.portcontrol:port5, 229, 0.000062, 271
+merlin.portcontrol:port5_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port5_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port5_output_timing, 287, 0.000063, 218
+merlin.portcontrol:port6, 224, 0.000065, 288
+merlin.portcontrol:port6_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port6_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port6_output_timing, 261, 0.000060, 230
+merlin.portcontrol:port7, 36, 0.000010, 267
+merlin.portcontrol:port7_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port7_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port7_output_timing, 78, 0.000020, 257
+merlin.portcontrol:port8, 66, 0.000024, 358
+merlin.portcontrol:port8_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port8_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port8_output_timing, 89, 0.000025, 285
+merlin.portcontrol:port9, 23, 0.000006, 267
+merlin.portcontrol:port9_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port9_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port9_output_timing, 51, 0.000016, 313
+
+\
+sync
+  SyncManager Count = 20973
+  Total SyncManager Time = 23.322065s
+  Average SyncManager Time = 1112004ns
+
+-----------------------------
+Rank = 0, thread = 13:
+
+\
+clocks
+Name, count, handler time (s), avg. handler time (ns)
+merlin.hr_router, 2859953, 1.125233, 393
+
+\
+events
+Name, recv count, recv time (s), avg. recv time (ns)
+merlin.linkcontrol:_congestion_timing, 0, 0.000000, 0
+merlin.linkcontrol:rtr_port, 0, 0.000000, 0
+merlin.linkcontrol:rtr_port_output_timing, 0, 0.000000, 0
+merlin.portcontrol:port0, 0, 0.000000, 0
+merlin.portcontrol:port0_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port0_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port0_output_timing, 0, 0.000000, 0
+merlin.portcontrol:port1, 0, 0.000000, 0
+merlin.portcontrol:port10, 24, 0.000010, 419
+merlin.portcontrol:port10_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port10_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port10_output_timing, 9, 0.000003, 308
+merlin.portcontrol:port11, 1415, 0.000582, 411
+merlin.portcontrol:port11_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port11_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port11_output_timing, 1473, 0.000317, 215
+merlin.portcontrol:port12, 232, 0.000036, 155
+merlin.portcontrol:port12_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port12_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port12_output_timing, 340, 0.000078, 230
+merlin.portcontrol:port1_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port1_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port1_output_timing, 0, 0.000000, 0
+merlin.portcontrol:port2, 0, 0.000000, 0
+merlin.portcontrol:port2_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port2_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port2_output_timing, 0, 0.000000, 0
+merlin.portcontrol:port3, 0, 0.000000, 0
+merlin.portcontrol:port3_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port3_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port3_output_timing, 0, 0.000000, 0
+merlin.portcontrol:port4, 840, 0.000301, 358
+merlin.portcontrol:port4_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port4_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port4_output_timing, 1138, 0.000243, 213
+merlin.portcontrol:port5, 682, 0.000218, 319
+merlin.portcontrol:port5_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port5_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port5_output_timing, 1143, 0.000236, 206
+merlin.portcontrol:port6, 326, 0.000112, 343
+merlin.portcontrol:port6_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port6_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port6_output_timing, 444, 0.000100, 224
+merlin.portcontrol:port7, 0, 0.000000, 0
+merlin.portcontrol:port7_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port7_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port7_output_timing, 0, 0.000000, 0
+merlin.portcontrol:port8, 33, 0.000008, 248
+merlin.portcontrol:port8_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port8_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port8_output_timing, 21, 0.000007, 311
+merlin.portcontrol:port9, 0, 0.000000, 0
+merlin.portcontrol:port9_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port9_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port9_output_timing, 0, 0.000000, 0
+
+\
+sync
+  SyncManager Count = 20973
+  Total SyncManager Time = 22.650665s
+  Average SyncManager Time = 1079991ns
+
+-----------------------------
+Rank = 0, thread = 14:
+
+\
+clocks
+Name, count, handler time (s), avg. handler time (ns)
+merlin.hr_router, 3328144, 1.491606, 448
+
+\
+events
+Name, recv count, recv time (s), avg. recv time (ns)
+merlin.linkcontrol:_congestion_timing, 0, 0.000000, 0
+merlin.linkcontrol:rtr_port, 0, 0.000000, 0
+merlin.linkcontrol:rtr_port_output_timing, 0, 0.000000, 0
+merlin.portcontrol:port0, 0, 0.000000, 0
+merlin.portcontrol:port0_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port0_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port0_output_timing, 0, 0.000000, 0
+merlin.portcontrol:port1, 0, 0.000000, 0
+merlin.portcontrol:port10, 135, 0.000042, 313
+merlin.portcontrol:port10_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port10_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port10_output_timing, 231, 0.000059, 256
+merlin.portcontrol:port11, 453, 0.000155, 342
+merlin.portcontrol:port11_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port11_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port11_output_timing, 666, 0.000156, 234
+merlin.portcontrol:port12, 479, 0.000199, 416
+merlin.portcontrol:port12_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port12_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port12_output_timing, 503, 0.000104, 206
+merlin.portcontrol:port1_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port1_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port1_output_timing, 0, 0.000000, 0
+merlin.portcontrol:port2, 0, 0.000000, 0
+merlin.portcontrol:port2_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port2_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port2_output_timing, 0, 0.000000, 0
+merlin.portcontrol:port3, 0, 0.000000, 0
+merlin.portcontrol:port3_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port3_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port3_output_timing, 0, 0.000000, 0
+merlin.portcontrol:port4, 80, 0.000024, 305
+merlin.portcontrol:port4_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port4_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port4_output_timing, 117, 0.000031, 264
+merlin.portcontrol:port5, 95, 0.000030, 317
+merlin.portcontrol:port5_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port5_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port5_output_timing, 136, 0.000039, 289
+merlin.portcontrol:port6, 143, 0.000037, 260
+merlin.portcontrol:port6_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port6_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port6_output_timing, 261, 0.000068, 262
+merlin.portcontrol:port7, 106, 0.000036, 342
+merlin.portcontrol:port7_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port7_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port7_output_timing, 134, 0.000036, 266
+merlin.portcontrol:port8, 109, 0.000034, 316
+merlin.portcontrol:port8_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port8_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port8_output_timing, 180, 0.000051, 284
+merlin.portcontrol:port9, 104, 0.000038, 362
+merlin.portcontrol:port9_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port9_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port9_output_timing, 108, 0.000029, 266
+
+\
+sync
+  SyncManager Count = 20973
+  Total SyncManager Time = 22.288546s
+  Average SyncManager Time = 1062725ns
+
+-----------------------------
+Rank = 0, thread = 15:
+
+\
+clocks
+Name, count, handler time (s), avg. handler time (ns)
+merlin.hr_router, 10231600, 4.457523, 435
+
+\
+events
+Name, recv count, recv time (s), avg. recv time (ns)
+merlin.linkcontrol:_congestion_timing, 0, 0.000000, 0
+merlin.linkcontrol:rtr_port, 0, 0.000000, 0
+merlin.linkcontrol:rtr_port_output_timing, 0, 0.000000, 0
+merlin.portcontrol:port0_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port0_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port10, 352, 0.000077, 219
+merlin.portcontrol:port10_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port10_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port10_output_timing, 519, 0.000135, 260
+merlin.portcontrol:port11, 1419, 0.000523, 368
+merlin.portcontrol:port11_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port11_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port11_output_timing, 2119, 0.000498, 234
+merlin.portcontrol:port12, 1393, 0.000488, 350
+merlin.portcontrol:port12_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port12_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port12_output_timing, 1500, 0.000330, 219
+merlin.portcontrol:port1_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port1_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port2_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port2_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port3_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port3_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port4, 271, 0.000073, 269
+merlin.portcontrol:port4_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port4_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port4_output_timing, 346, 0.000096, 276
+merlin.portcontrol:port5, 421, 0.000147, 348
+merlin.portcontrol:port5_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port5_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port5_output_timing, 636, 0.000174, 273
+merlin.portcontrol:port6, 259, 0.000049, 188
+merlin.portcontrol:port6_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port6_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port6_output_timing, 376, 0.000100, 266
+merlin.portcontrol:port7, 397, 0.000079, 199
+merlin.portcontrol:port7_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port7_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port7_output_timing, 638, 0.000166, 260
+merlin.portcontrol:port8, 276, 0.000064, 232
+merlin.portcontrol:port8_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port8_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port8_output_timing, 396, 0.000108, 271
+merlin.portcontrol:port9, 334, 0.000063, 188
+merlin.portcontrol:port9_disable_timing, 0, 0.000000, 0
+merlin.portcontrol:port9_dynlink_timing, 0, 0.000000, 0
+merlin.portcontrol:port9_output_timing, 460, 0.000119, 259
+
+\
+sync
+  SyncManager Count = 20973
+  Total SyncManager Time = 18.947699s
+  Average SyncManager Time = 903432ns
+
+------------------------------------------------------------
+Simulation is complete, simulated time: 1.44058 ms
