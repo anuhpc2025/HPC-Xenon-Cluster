@@ -1,0 +1,5 @@
+SST_RUN_START job=1472 host=node1 threads=4 app=halo groups=1000 jobs=1 iters=1 link_bw=25GB/s router_latency=100ns link_latency=50ns timeout_sec=60
+SST_WORKDIR /home/hpc/Programs/sst-scc-practice/network
+SST_CMD sst --num-threads=4 ./scc-network.py -- \
+    --app halo --groups 1000 --jobs 1 --iters 1 \
+    --link_bw 25GB/s --router_latency 100ns --link_latency 50ns
