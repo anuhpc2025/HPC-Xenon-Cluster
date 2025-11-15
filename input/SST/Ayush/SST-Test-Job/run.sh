@@ -1,62 +1,113 @@
 #!/bin/bash
-#SBATCH -J sst-halo_batchjobs
-#SBATCH -N 1
-#SBATCH -n 1
-#SBATCH -w node1
-#SBATCH --cpus-per-task=16
-#SBATCH -t 00:40:00
-#SBATCH -o /home/hpc/logs/%x-%A_%a.out
-#SBATCH --array=0-14%4    # Changed from 0-15 to 0-14 for 15 total jobs or
-# to any other range as needed
+#SBATCH --job-name=sst-halo-test        # Job name
+#SBATCH --ntasks=16                     # Total MPI tasks (1 per node)
+#SBATCH --ntasks-per-node=16            # MPI tasks per node
+#SBATCH --cpus-per-task=1               # SST threads per MPI rank (EPYC 7313 has 16 cores)
+#SBATCH --time=12:00:00                 # Time limit hh:mm:ss
+#SBATCH --nodes=1                       # Number of nodes
+#SBATCH --nodelist=node1
 
 
-set -euo pipefail
+########################################
+# 1. MPI / basic environment
+########################################
 
+# If you use modules for MPI/SST, load them here:
+# module load openmpi
+# module load sst-core sst-elements
 
-APPPY="/home/hpc/Programs/sst-scc-practice/network/scc-network.py"
-OUT="/home/hpc/uprof-out/${SLURM_JOB_NAME}_${SLURM_ARRAY_JOB_ID}_${SLURM_ARRAY_TASK_ID}"
-mkdir -p "$OUT"
+# Optional: pick up your PATH/custom env
+# source ~/.bashrc
 
+# Ulimits (nice to keep for MPI-heavy sims)
+ulimit -l unlimited
+ulimit -n 65536
 
-# ----- parameter lists (renamed to avoid GROUPS conflict) -----
-declare -a G_LIST=(8 8 8 12 12 12 16 16 16 20 20 20 24 24 24) 
-declare -a J_LIST=(4 4 4 4 4 4 4 4 4 8 8 8 8 8 8)            
-declare -a K_LIST=(10 20 30 10 20 30 10 20 30 10 20 30 10 20 30)
+########################################
+# 2. SST / model paths
+########################################
 
+# Your Ember/Merlin network Python config
+SST_PY=/home/hpc/Programs/sst-scc-practice/network/scc-network.py
 
-# Array index: default to 0 if not set (so the script can be tested),
-IDX=${SLURM_ARRAY_TASK_ID:-0}
+# Base directory where we store per-run outputs (for GitHub Actions to pick up)
+OUT_BASE=/home/hpc/sst-runs
+OUT_DIR="${OUT_BASE}/${SLURM_JOB_NAME}_${SLURM_JOB_ID}"
+mkdir -p "${OUT_DIR}"
 
+########################################
+# 3. Simulation parameters (env-overridable)
+#    Override via:
+#    sbatch --export=ALL,GROUPS=16,JOBS=8 run_sst_halo.sh
+########################################
 
-# Debug output to verify array job is running
-echo "SLURM_ARRAY_JOB_ID: ${SLURM_ARRAY_JOB_ID:-not set}"
-echo "SLURM_ARRAY_TASK_ID: ${SLURM_ARRAY_TASK_ID:-not set}"
-echo "SLURM_JOB_ID: ${SLURM_JOB_ID:-not set}"
+APP="${APP:-halo}"          # Ember motif
+GROUPS="${GROUPS:-8}"
+JOBS="${JOBS:-4}"
+ITERS="${ITERS:-10}"
 
+LINK_BW="${LINK_BW:-25GB/s}"
+ROUTER_LAT="${ROUTER_LAT:-150ns}"
+LINK_LAT="${LINK_LAT:-100ns}"
 
-if (( IDX < 0 || IDX >= ${#G_LIST[@]} )); then
-  echo "Error: SLURM_ARRAY_TASK_ID=$IDX is out of range (0..$(( ${#G_LIST[@]} - 1 )))"
-  exit 1
-fi
+PARTITIONER="${PARTITIONER:-linear}"   # SST partitioner
 
+# Threads per rank – default to cpus-per-task from Slurm
+SST_THREADS="${SST_THREADS:-${SLURM_CPUS_PER_TASK}}"
 
-g=${G_LIST[$IDX]}
-j=${J_LIST[$IDX]}
-k=${K_LIST[$IDX]}
+########################################
+# 4. Internal SST profiling points (clock / event / sync)
+########################################
+# Used with:
+#   --enable-profiling="${PROFILE_POINTS}"
+#   --profiling-output="${PROFILE_OUT}"
 
+PROFILE_POINTS="\
+clk_time:sst.profile.handler.clock.time.steady(level=component)[clock];\
+evt_time:sst.profile.handler.event.time.steady(level=type,track_ports=true,profile_receives=true)[event];\
+sync_time:sst.profile.sync.time.steady[sync]"
 
-echo "[cfg] idx=$IDX groups=$g jobs=$j iters=$k threads=$SLURM_CPUS_PER_TASK" | tee "$OUT/run.log"
+PROFILE_OUT="${OUT_DIR}/sst-profile.txt"
+TIMING_JSON="${OUT_DIR}/timing.json"
 
+########################################
+# 5. Run info header (easy for GitHub Actions to parse)
+########################################
 
-unset PMI_RANK PMI_SIZE PMI_FD PMIX_RANK PMIX_NAMESPACE PMIX_SERVER_URI2
+echo "SST_RUN_START job=${SLURM_JOB_ID} \
+ranks=${SLURM_NTASKS} threads_per_rank=${SST_THREADS} \
+app=${APP} groups=${GROUPS} jobs=${JOBS} iters=${ITERS} \
+link_bw=${LINK_BW} router_latency=${ROUTER_LAT} link_latency=${LINK_LAT} \
+partitioner=${PARTITIONER}"
+echo "SST_OUTPUT_DIR ${OUT_DIR}"
 
+########################################
+# 6. Launch SST under MPI
+########################################
+# Slurm gives us the allocation (4 nodes × 1 rank per node).
+# mpirun will honour that by default.
 
-/opt/AMDuProf_Linux_x64_5.1.701/bin/AMDuProfCLI collect \
-  --config hotspots \
-  --profiling-signal 50 \
-  -o "$OUT/uprof" \
-  sst --num-threads "$SLURM_CPUS_PER_TASK" "$APPPY" -- \
-  --app halo --groups "$g" --jobs "$j" --iters "$k" \
-  --link_bw 25GB/s --router_latency 150ns --link_latency 100ns \
-  | tee -a "$OUT/run.log"
+mpirun \
+  sst \
+    --partitioner="${PARTITIONER}" \
+    --num-threads="${SST_THREADS}" \
+    --print-timing-info=2 \
+    --timing-info-json="${TIMING_JSON}" \
+    --enable-profiling="${PROFILE_POINTS}" \
+    --profiling-output="${PROFILE_OUT}" \
+    "${SST_PY}" -- \
+      --app "${APP}" \
+      --groups "${GROUPS}" \
+      --jobs "${JOBS}" \
+      --iters "${ITERS}" \
+      --link_bw "${LINK_BW}" \
+      --router_latency="${ROUTER_LAT}" \
+      --link_latency="${LINK_LAT}"
 
+########################################
+# 7. Footer for CI parsing
+########################################
+
+echo "SST_RUN_COMPLETE job=${SLURM_JOB_ID} \
+timing_json=${TIMING_JSON} profile=${PROFILE_OUT} \
+ranks=${SLURM_NTASKS} threads_per_rank=${SST_THREADS}"
