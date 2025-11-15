@@ -1,0 +1,3 @@
+SST_RUN_START job=1468 ranks=1 threads_per_rank=4 app=halo groups=1000 jobs=2 iters=10 link_bw=25GB/s router_latency=100ns link_latency=50ns partitioner=linear
+SST_OUTPUT_DIR /home/hpc/sst-runs/sst-halo-test_1468
+[1763208484.920995] [node1:1887377:0]     ucp_context.c:2137 UCX  WARN  UCP API version is incompatible: required >= 1.18, actual 1.16.0 (loaded from /lib/x86_64-linux-gnu/libucp.so.0)
