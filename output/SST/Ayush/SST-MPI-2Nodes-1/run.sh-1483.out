@@ -1,0 +1,6 @@
+SST_RUN_START job=1483 hosts=node[1-2] ranks=2 threads_per_rank=16 app=halo groups=5 jobs=10 iters=5 link_bw=25GB/s router_latency=100ns link_latency=50ns profiling_points=\
+clocks:sst.profile.handler.clock.time.steady(level=type)[clock];\
+events:sst.profile.handler.event.time.steady(level=type,track_ports=true,profile_receives=true)[event];\
+sync:sst.profile.sync.time.steady[sync]
+mpirun: Error: unknown option "-np"
+SST_RUN_COMPLETE job=1483 exit_code=1
