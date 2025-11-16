@@ -1,0 +1,26 @@
+SST_RUN_START job=1484 hosts=node[1-2] ranks=2 threads_per_rank=16 app=halo groups=5 jobs=10 iters=5 link_bw=25GB/s router_latency=100ns link_latency=50ns profiling_points=\
+clocks:sst.profile.handler.clock.time.steady(level=type)[clock];\
+events:sst.profile.handler.event.time.steady(level=type,track_ports=true,profile_receives=true)[event];\
+sync:sst.profile.sync.time.steady[sync]
+[node1:1917717] MCW rank 0 bound to socket 0[core 0[hwt 0]], socket 0[core 1[hwt 0]], socket 0[core 2[hwt 0]], socket 0[core 3[hwt 0]], socket 0[core 4[hwt 0]], socket 0[core 5[hwt 0]], socket 0[core 6[hwt 0]], socket 0[core 7[hwt 0]], socket 0[core 8[hwt 0]], socket 0[core 9[hwt 0]], socket 0[core 10[hwt 0]], socket 0[core 11[hwt 0]], socket 0[core 12[hwt 0]], socket 0[core 13[hwt 0]], socket 0[core 14[hwt 0]], socket 0[core 15[hwt 0]]: [B/B/B/B/B/B/B/B/B/B/B/B/B/B/B/B][./././././././././././././././.]
+[node2:1813311] MCW rank 1 bound to socket 0[core 0[hwt 0-1]], socket 0[core 1[hwt 0-1]], socket 0[core 2[hwt 0-1]], socket 0[core 3[hwt 0-1]], socket 0[core 4[hwt 0-1]], socket 0[core 5[hwt 0-1]], socket 0[core 6[hwt 0-1]], socket 0[core 7[hwt 0-1]], socket 0[core 8[hwt 0-1]], socket 0[core 9[hwt 0-1]], socket 0[core 10[hwt 0-1]], socket 0[core 11[hwt 0-1]], socket 0[core 12[hwt 0-1]], socket 0[core 13[hwt 0-1]], socket 0[core 14[hwt 0-1]], socket 0[core 15[hwt 0-1]]: [BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB][../../../../../../../../../../../../../../../..]
+FATAL: [1:15] SST Core: can't find requested component 'merlin.hr_router'
+Error: unable to find "merlin" element library
+
+SST Fatal Backtrace Information:
+    0 : sst(_ZNK3SST6Output5fatalEjPKcS2_iS2_z+0x310) [0x5dff9e95ef70]
+    1 : sst(_ZN3SST7Factory15CreateComponentEmRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEERNS_6ParamsE+0x3d9) [0x5dff9e93f269]
+    2 : sst(_ZN3SST15Simulation_impl13performWireUpERNS_11ConfigGraphERKNS_8RankInfoEm+0x97) [0x5dff9e98e827]
+    3 : sst(+0x1850f6) [0x5dff9e8930f6]
+    4 : /lib/x86_64-linux-gnu/libstdc++.so.6(+0xecdb4) [0x720e26cecdb4]
+    5 : /lib/x86_64-linux-gnu/libc.so.6(+0x9caa4) [0x720e2689caa4]
+    6 : /lib/x86_64-linux-gnu/libc.so.6(+0x129c6c) [0x720e26929c6c]
+--------------------------------------------------------------------------
+MPI_ABORT was invoked on rank 1 in communicator MPI_COMM_WORLD
+with errorcode 1.
+
+NOTE: invoking MPI_ABORT causes Open MPI to kill all MPI processes.
+You may or may not see output from other processes, depending on
+exactly when Open MPI kills them.
+--------------------------------------------------------------------------
+SST_RUN_COMPLETE job=1484 exit_code=1
