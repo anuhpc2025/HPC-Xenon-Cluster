@@ -1,0 +1,6 @@
+SST_RUN_START job=1497 hosts=node[1-2] ranks=2 threads_per_rank=8 app=halo groups=5 jobs=2 iters=5 link_bw=25GB/s router_latency=100ns link_latency=50ns
+SST_CONFIG_GRAPH_START job=1497 dot=/home/hpc/sst-runs/sst-halo-test_1497/halo_config_1497.dot
+mpirun: Error: unknown option "--output-dot=/home/hpc/sst-runs/sst-halo-test_1497/halo_config_1497.dot"
+Type 'mpirun --help' for usage.
+==== First lines of /home/hpc/sst-runs/sst-halo-test_1497/halo_config_1497.dot ====
+=====================================
