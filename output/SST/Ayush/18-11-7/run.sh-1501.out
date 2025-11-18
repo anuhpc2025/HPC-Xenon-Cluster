@@ -1,0 +1,51 @@
+SLURM job 1501
+Node list : node[1,3]
+N nodes   : 2
+Tasks     : 2
+CPUs/task : 2
+SST_RUN_START job=1501 hosts=node[1,3] ranks=2 threads_per_rank=2 app=halo groups=5 jobs=2 iters=5 link_bw=25GB/s router_latency=100ns link_latency=50ns
+SST_CONFIG_GRAPH_START job=1501 dot=/home/hpc/sst-runs/sst-halo-test_1501/halo_config_1501.dot
+==== First lines of /home/hpc/sst-runs/sst-halo-test_1501/halo_config_1501.dot ====
+graph "sst_simulation" {
+overlap=scale;
+splines=spline;
+node [shape=record];
+graph [style=invis];
+
+subgraph cluster_0 {
+0 [label="{<main> rtr_G0R0}"];
+
+}
+
+subgraph cluster_1 {
+1 [label="{<main> nic0}"];
+
+}
+
+subgraph cluster_2 {
+2 [label="{<main> loopBack0}"];
+
+}
+
+subgraph cluster_3 {
+3 [label="{<main> nic0core0_EmberEP}"];
+
+}
+
+subgraph cluster_4 {
+4 [label="{<main> nic0core1_EmberEP}"];
+
+}
+
+subgraph cluster_5 {
+5 [label="{<main> nic0core2_EmberEP}"];
+
+}
+
+subgraph cluster_6 {
+6 [label="{<main> nic0core3_EmberEP}"];
+
+}
+=====================================
+[node1:1966663] MCW rank 0 bound to socket 0[core 0[hwt 0]], socket 0[core 1[hwt 0]]: [B/B/./././././././././././././.][./././././././././././././././.]
+[node3:1854557] MCW rank 1 bound to socket 0[core 0[hwt 0-1]], socket 0[core 1[hwt 0-1]]: [BB/BB/../../../../../../../../../../../../../..][../../../../../../../../../../../../../../../..]
